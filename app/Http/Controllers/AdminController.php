@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -23,7 +24,14 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($adminuser);
         // echo "</pre>";
-        return view('admin.adminuser', ['page_name' => 'Admin detail', 'navstatus' => "adminuser", "adminuserdata" => $adminuser]);
+        // exit;
+        $adminuserdata = [];
+        foreach ($adminuser as $data) {
+            $adminuser = $data->name;
+            $adminid = $data->id;
+            $adminuserdata[$adminid] = $data;
+        }
+        return view('admin.adminuser', ['page_name' => 'Admin detail', 'navstatus' => "adminuser", "adminuserdata" => $adminuserdata]);
     }
 
     /**
@@ -69,8 +77,15 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Admin $admin)
+    public function deleteadmin(Request $request)
     {
-        //
+        $id = base64_decode($request->id);
+        //echo json_encode(array('status' => 1, 'msg' => $id));
+        $adminuser = User::where('id', $id)->delete();
+        if ($adminuser) {
+            echo json_encode(array('status' => 1, 'msg' => "true"));
+        } else {
+            echo json_encode(array('status' => 0, 'msg' => "false"));
+        }
     }
 }

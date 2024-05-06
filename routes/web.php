@@ -25,7 +25,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Admin Sidenavbar
+
+    //Admin user management
     Route::get('/adminuser', [AdminController::class, 'adminuser']);
+    Route::post('registeradmin', [RegisteredUserController::class, 'store']);
+    Route::get('/deleteadmin', [AdminController::class, 'deleteadmin']);
+
+
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/adminservice', [ServiceController::class, 'adminservice']);
     Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
@@ -36,7 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/manageblog', [AdminController::class, 'dashboard']);
     Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
-    Route::post('registeradmin', [RegisteredUserController::class, 'store']);
 });
 
 require __DIR__ . '/auth.php';

@@ -12,7 +12,7 @@
         </h1>
 
         <div class="card mb-4">
-            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Add new admin</button>
+            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addadminuser">Add new admin</button>
         </div>
 
         <div class="card mb-4">
@@ -20,6 +20,11 @@
                 <i class="fas fa-table me-1"></i>
                 Admin User table
             </div>
+            <!-- <div class="card-body">
+                <div class="alert alert-info" role="alert">
+                   
+                </div>
+            </div> -->
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
@@ -53,8 +58,10 @@
                             <td>{{ $usertype }}</td>
                             <td>{{ $userdata->email }}</td>
                             <td>
-                                <a class="btn btn-warning" href="login.html">Edit</a>
-                                <a class="btn btn-danger" href="login.html">Delete</a>
+                                <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editadminuser" href="login.html">Edit admin</a>
+                                @if($userdata->usertype != '0')
+                                <a title="Delete Admin" class="btn btn-danger deleteadmin" adminid="{{ base64_encode($userdata->id)}}"><i class="fas fa-trash"></i></a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

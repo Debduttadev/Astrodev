@@ -29,16 +29,17 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-
-        // echo "<pre>";
-        // print_r($request->all());
-        // echo "</pre>";
-        // exit;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // echo "<pre>";
+        // echo "sdsad";
+        // print_r($request->all());
+        // echo "</pre>";
+        // exit;
 
         $user = User::create([
             'name' => $request->name,
@@ -47,10 +48,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        $added = event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        if ($request->madeby === '1') {
+            session(["errors"], "=>", "Add Admin is successful");
+            return redirect()->back();
+        } else {
+            Auth::login($user);
+            return redirect(route('dashboard', absolute: false));
+        }
     }
 }
