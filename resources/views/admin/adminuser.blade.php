@@ -20,11 +20,6 @@
                 <i class="fas fa-table me-1"></i>
                 Admin User table
             </div>
-            <!-- <div class="card-body">
-                <div class="alert alert-info" role="alert">
-                   
-                </div>
-            </div> -->
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
@@ -58,8 +53,9 @@
                             <td>{{ $usertype }}</td>
                             <td>{{ $userdata->email }}</td>
                             <td>
-                                <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editadminuser" href="login.html">Edit admin</a>
                                 @if($userdata->usertype != '0')
+                                <a style="font-size: medium;" title="Edit Admin" class="btn btn-warning" href="{{ URL::to('editadmin/' .base64_encode($userdata->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i>Edit Admin</a>
+
                                 <a title="Delete Admin" class="btn btn-danger deleteadmin" adminid="{{ base64_encode($userdata->id)}}"><i class="fas fa-trash"></i></a>
                                 @endif
                             </td>

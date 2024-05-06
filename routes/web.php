@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/adminuser', [AdminController::class, 'adminuser']);
     Route::post('registeradmin', [RegisteredUserController::class, 'store']);
     Route::get('/deleteadmin', [AdminController::class, 'deleteadmin']);
+    Route::get('editadmin/{id}', [AdminController::class, 'editadmin']);
+    Route::post('updateadminuser', [AdminController::class, 'updateadminuser']);
+
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

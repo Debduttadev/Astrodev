@@ -59,19 +59,25 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the admin resource.
      */
-    public function edit(Admin $admin)
+    public function editadmin($id)
     {
-        //
+        $id = base64_decode($id);
+
+        $adminuser = User::where('id', $id)->first();
+
+        //dd($adminuser);
+        return view('admin.editadminuser', ['page_name' => 'editadminuser', 'admin' => $adminuser, 'navstatus' => "adminuser"]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the Admin detail resource in storage.
      */
-    public function update(UpdateAdminRequest $request, Admin $admin)
+    public function updateadminuser(UpdateAdminRequest $request, Admin $admin)
     {
-        //
+        echo "dsfsdfdsf";
+        exit;
     }
 
     /**
