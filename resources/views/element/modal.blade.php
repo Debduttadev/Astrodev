@@ -60,3 +60,52 @@
          </div>
      </div>
  </div>
+
+
+ <!-- model for service add in database -->
+
+ <div class="modal fade" id="addservice" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Add Service</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form class="user" id="formdata" method="POST" action="{{ URL::to('addservice') }}" enctype="multipart/form-data">
+                         {{ csrf_field() }}
+
+                         <div class="mt-4">
+                             <label class="control-label">Service Name</label>
+                             <input type="text" class="form-control form-control-user" placeholder="Service Name" name="name" value="" required autofocus>
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">Short Description</label>
+                             limit <span class="limit">0</span>/100
+                             <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="100"></textarea>
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">Description</label>
+                             limit <span class="limit">0</span>/2000
+                             <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description" placeholder="Enter Service description..." value="" maxlength="2000"></textarea>
+                         </div>
+
+                         <div class="mt-4">
+                             <label>Upload Service Image</label>
+                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" required="">
+                         </div>
+                         <div class="mt-4">
+                             <button type="submit" class="btn btn-success btn-user btn-block">
+                                 Add Service
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>

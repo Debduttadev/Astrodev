@@ -30,7 +30,7 @@ class AdminController extends Controller
         // exit;
         $adminuserdata = [];
         foreach ($adminuser as $data) {
-            $adminuser = $data->name;
+            // $adminuser = $data->name;
             $adminid = $data->id;
             $adminuserdata[$adminid] = $data;
         }
@@ -81,7 +81,6 @@ class AdminController extends Controller
      */
     public function updateadminuser(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255']
         ]);

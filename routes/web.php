@@ -33,10 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::get('editadmin/{id}', [AdminController::class, 'editadmin']);
     Route::post('updateadminuser', [AdminController::class, 'updateadminuser']);
 
+    //Admin service management
+    Route::get('/adminservice', [ServiceController::class, 'adminservice']);
+    Route::post('addservice', [ServiceController::class, 'addservice']);
+    Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
+    Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
+
+
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
-    Route::get('/adminservice', [ServiceController::class, 'adminservice']);
     Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);

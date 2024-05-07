@@ -44,7 +44,7 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Email</th>
-                            <th>Setting</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
