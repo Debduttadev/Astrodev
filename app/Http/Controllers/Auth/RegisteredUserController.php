@@ -50,8 +50,8 @@ class RegisteredUserController extends Controller
 
         $added = event(new Registered($user));
 
-        if ($request->madeby === '1') {
-            session(["errors"], "=>", "Add Admin is successful");
+        if ($request->madeby === '1' && $added) {
+            session(['status' => "1", 'msg' => 'Add Admin is successful']);
             return redirect()->back();
         } else {
             Auth::login($user);

@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('placeOfBirth');
             $table->time('timeOfBirth');
             $table->date('bookingDate');
-            $table->enum('appointmentType', ['o', 'p']);
+            $table->enum('appointmentType', ['o', 'm']);
             $table->timestamps();
         });
     }

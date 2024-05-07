@@ -15,6 +15,23 @@
             <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addadminuser">Add new admin</button>
         </div>
 
+        <!-- to show the session status message -->
+        @php
+        $sessiondata = session()->all();
+
+        @endphp
+        @if(session()->has('status') && session()->has('msg'))
+        @if($sessiondata['status'] === '1')
+        <div class="alert alert-info sessiondata" role="alert">{{ $sessiondata['msg'] }}</div>
+        @else
+        <div class="alert alert-danger sessiondata" role="alert">{{ $sessiondata['msg'] }}</div>
+        @endif
+        @php
+        session()->forget(['status', 'msg']);
+        @endphp
+        @endif
+
+
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>

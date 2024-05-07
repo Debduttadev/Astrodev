@@ -6,7 +6,10 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -31,6 +34,8 @@ class AdminController extends Controller
             $adminid = $data->id;
             $adminuserdata[$adminid] = $data;
         }
+
+
         return view('admin.adminuser', ['page_name' => 'Admin detail', 'navstatus' => "adminuser", "adminuserdata" => $adminuserdata]);
     }
 
@@ -74,10 +79,41 @@ class AdminController extends Controller
     /**
      * Update the Admin detail resource in storage.
      */
-    public function updateadminuser(UpdateAdminRequest $request, Admin $admin)
+    public function updateadminuser(Request $request)
     {
-        echo "dsfsdfdsf";
-        exit;
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255']
+        ]);
+
+        $userdata = User::where('id', $request->id)->first();
+        //dd($email);
+        if ($userdata->email != $request->email) {
+            $request->validate([
+                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class]
+            ]);
+        }
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['usertype'] = $request->usertype;
+
+        //dd($data);
+        if (!empty($request->password) or  $request->password != "") {
+            $request->validate(['password' => ['required', 'confirmed', Rules\Password::defaults()]]);
+
+            $data['password'] = Hash::make($request->password);
+        }
+        //dd($data);
+        $update = User::where('id', $request->id)
+            ->update($data);
+        //set session
+        if ($update) {
+            session(['status' => "1", 'msg' => 'Admin data Update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'Admin data is not Updated']);
+        }
+        return redirect('/adminuser');
     }
 
     /**

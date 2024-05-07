@@ -74,6 +74,11 @@
 
       var base_url = "{{ URL::to('/') }}";
 
+
+      setTimeout(function() {
+        $('.sessiondata').fadeOut('400');
+      }, 3000);
+
       $('.deleteadmin').on('click', function() {
         var obj = $(this);
         var id = $(this).attr('adminid');
