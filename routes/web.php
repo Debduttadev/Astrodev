@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::post('addservice', [ServiceController::class, 'addservice']);
     Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
     Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
+    Route::post('updateservice', [ServiceController::class, 'updateservice']);
+
 
 
 

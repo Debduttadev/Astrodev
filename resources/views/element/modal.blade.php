@@ -84,7 +84,7 @@
                          <div class="mt-4">
                              <label class="control-label">Short Description</label>
                              limit <span class="limit">0</span>/100
-                             <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="100"></textarea>
+                             <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="200"></textarea>
                          </div>
 
                          <div class="mt-4">
@@ -95,7 +95,7 @@
 
                          <div class="mt-4">
                              <label>Upload Service Image</label>
-                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" required="">
+                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" required="" accept="image/png, image/gif, image/jpeg, image/jpg">
                          </div>
                          <div class="mt-4">
                              <button type="submit" class="btn btn-success btn-user btn-block">

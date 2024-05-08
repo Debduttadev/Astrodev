@@ -35,6 +35,16 @@
       background-color: transparent;
       border: 0;
     }
+
+    table.servicetable tbody td {
+      word-break: break-word !important;
+      vertical-align: top !important;
+      width: 20%;
+    }
+
+    table.servicetable tbody td a {
+      margin: 10px !important;
+    }
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
@@ -106,6 +107,7 @@ class AdminController extends Controller
         //dd($data);
         $update = User::where('id', $request->id)
             ->update($data);
+
         //set session
         if ($update) {
             session(['status' => "1", 'msg' => 'Admin data Update is successful']);

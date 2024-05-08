@@ -67,7 +67,7 @@
                             <td>{{ $data->name }}</td>
                             <td>
                                 <div class="text-center">
-                                    <img src="{{ URL::to('service')."/".$data->Image }}" class="rounded img-thumbnail img-fluid" alt="...">
+                                    <img src="{{ URL::to('service')."/".$data->Image }}" class="rounded  img-fluid" alt="..." hight=200px width=200px>
                                 </div>
                             </td>
                             <td>{{ $data->shortdescription }}</td>

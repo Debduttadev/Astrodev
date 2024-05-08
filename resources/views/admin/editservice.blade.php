@@ -14,22 +14,31 @@
                     <input type="text" class="form-control form-control-user" placeholder="Service Name" name="name" value="{{$servicedata->name}}" required autofocus>
                 </div>
 
+                <input type="hidden" value="{{$servicedata->id}}" name="id">
+
                 <div class="mt-4">
                     <label class="control-label">Short Description</label>
                     limit <span class="limit">0</span>/100
-                    <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" placeholder="{{$servicedata->shortdescription}}" value="{{$servicedata->shortdescription}}" maxlength="100"></textarea>
+                    <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" maxlength="200">{{$servicedata->shortdescription}}</textarea>
                 </div>
 
                 <div class="mt-4">
                     <label class="control-label">Description</label>
                     limit <span class="limit">0</span>/2000
-                    <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description" placeholder="{{$servicedata->description}}" value="{{$servicedata->description}}" maxlength="2000" rows="10" cols="50"></textarea>
+                    <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description" maxlength="2000" rows="10" cols="50">{{$servicedata->description}}</textarea>
+                </div>
+
+                <div class="mt-4">
+                    <label>Service Image</label>
+                </div>
+                <div class="mt-4">
+                    <img src="{{ URL::to('service')."/".$servicedata->Image }}" class="rounded img-fluid" id="showimage" alt="no old iamge" hight=10% width=10%>
                 </div>
 
                 <div class="mt-4">
                     <label>Upload Service Image</label>
-                    <inpuT type="hidden" name="oldimage" value="{{$servicedata->image}}">
-                    <input type="file" class="form-control" name="fileToUpload" id="fileToUpload" required="">
+                    <inpuT type="hidden" name="oldimage" value="{{$servicedata->Image}}">
+                    <input type="file" class="form-control newimage" name="fileToUpload" id="fileToUpload" value="" accept="image/png, image/gif, image/jpeg, image/jpg">
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success btn-user btn-block">

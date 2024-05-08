@@ -41,6 +41,8 @@ class ServiceController extends Controller
         $data = $request->except('_token');
         // dd($request->file('fileToUpload'));
 
+        $request->validate(['name' => 'unique:services,name']);
+
         if ($request->hasFile('fileToUpload')) {
             //dd($data);
             $request->validate([
@@ -51,8 +53,12 @@ class ServiceController extends Controller
             $ext = $file->getClientOriginalExtension();
             $filename = 'Service' . time() . '.' . $ext;
             $file->move(public_path('service'), $filename);
+
+            $shortdescription = str_replace("\"", "&quot;", $data['shortdescription']);
+            $shortdescription = str_replace("\'", "&apos;", $shortdescription);
             $description = str_replace("\"", "&quot;", $data['description']);
             $description = str_replace("\'", "&apos;", $description);
+
             $newService = new Service;
             $newService->name = $data['name'];
             $newService->shortdescription = $data['shortdescription'];
@@ -63,7 +69,7 @@ class ServiceController extends Controller
             if ($newService->save()) {
                 session(['status' => "1", 'msg' => 'Service Add is successful']);
             } else {
-                session(['status' => "0", 'msg' => 'Service data is not Updated']);
+                session(['status' => "0", 'msg' => 'Service data is not Added']);
             }
         } else {
             session(['status' => "0", 'msg' => 'Image not uploaded']);
@@ -103,9 +109,49 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function updateservice(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        //dd($request);
+
+        $shortdescription = str_replace("\"", "&quot;", $data['shortdescription']);
+        $shortdescription = str_replace("\'", "&apos;", $shortdescription);
+
+        $description = str_replace("\"", "&quot;", $data['description']);
+        $description = str_replace("\'", "&apos;", $description);
+
+        $updatedata['name'] = $request->name;
+        $updatedata['shortdescription'] = $request->shortdescription;
+        $updatedata['description'] = $request->description;
+
+        if ($request->hasFile('fileToUpload')) {
+
+            $request->validate([
+                'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
+            ]);
+
+            $file = $request->file('fileToUpload');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'Service' . time() . '.' . $ext;
+            $file->move(public_path('service'), $filename);
+            $updatedata['Image'] = $filename;
+        } else {
+
+            $updatedata['Image'] = $request->oldimage;
+        }
+        // echo $request->id;
+        // dd($updatedata);
+
+        $update = Service::where('id', $request->id)
+            ->update($updatedata);
+
+        if ($update) {
+            session(['status' => "1", 'msg' => 'Service Update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'Service data is not Updated']);
+        }
+
+        return redirect('/adminservice');
     }
 
     /**
