@@ -79,7 +79,7 @@
                             <td>
                                 <a style="font-size: medium;" title="Edit Service" class="btn btn-warning" href="{{ URL::to('editservice/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 
-                                <a title="Delete Service" class="btn btn-danger deleteservice" serviceid="{{ base64_encode($data->id)}}"><i class="fas fa-trash"></i></a>
+                                <a title="Delete Service" class="btn btn-danger deleteservice" serviceid="{{ base64_encode($data->id)}}" serviceimage="{{ $data->Image }}"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

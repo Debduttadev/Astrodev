@@ -160,9 +160,11 @@ class ServiceController extends Controller
     public function deleteservice(Request $request)
     {
         $id = base64_decode($request->id);
-        //echo json_encode(array('status' => 1, 'msg' => $id));
+        $image = public_path('service') . '/' . $request->serviceimage;
+        //echo json_encode(array('status' => 1, 'msg' => $image));
         $service = Service::where('id', $id)->delete();
         if ($service) {
+            unlink($image);
             echo json_encode(array('status' => 1, 'msg' => "true"));
         } else {
             echo json_encode(array('status' => 0, 'msg' => "false"));

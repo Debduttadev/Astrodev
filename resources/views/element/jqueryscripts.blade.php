@@ -39,18 +39,20 @@
         $('.deleteservice').on('click', function() {
             var obj = $(this);
             var id = $(this).attr('serviceid');
-            //alert(id);
+            var serviceimage = $(this).attr('serviceimage');
+            //alert(serviceimage);
             bootbox.confirm("Are you sure to delete this Service?", function(result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deleteservice',
                         method: "get",
                         data: {
-                            'id': id
+                            'id': id,
+                            'serviceimage': serviceimage,
                         }
                     }).done(function(msg) {
                         var massage = JSON.parse(msg);
-                        //console.log(massage);
+                        console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
                             bootbox.alert("Service Deleted Successful")
                             obj.parent().parent().remove();
