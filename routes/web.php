@@ -40,8 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
     Route::post('updateservice', [ServiceController::class, 'updateservice']);
 
-
-
+    //Admin chamber management
+    Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
+    Route::post('addchamber', [ChamberController::class, 'addchamber']);
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

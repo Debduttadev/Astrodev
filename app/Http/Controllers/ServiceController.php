@@ -11,8 +11,6 @@ use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-
-
 class ServiceController extends Controller
 {
     /**

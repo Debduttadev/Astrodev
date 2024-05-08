@@ -79,5 +79,14 @@
             }
         });
 
+        $('#alldays').on('change', function() {
+            var obj = $(this);
+            if ($('.dayselect').prop('checked') == true) {
+                $('.dayselect').prop('checked', false);
+            } else {
+                $('.dayselect').prop('checked', true);
+            }
+        });
+
     });
 </script>

@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\chamber;
 use App\Http\Requests\StorechamberRequest;
 use App\Http\Requests\UpdatechamberRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
 
 class ChamberController extends Controller
 {
@@ -13,15 +19,40 @@ class ChamberController extends Controller
      */
     public function adminchamber()
     {
-        return view('admin.chamber', ['page_name' => 'Chambers', 'navstatus' => "adminchember"]);
+
+        $chambers = Chamber::get();
+
+        $chamberdata = [];
+        foreach ($chambers as $data) {
+
+            $chamberid = $data->id;
+            $chamberdata[$chamberid] = $data;
+        }
+
+        return view('admin.chamber', ['page_name' => 'Chambers', 'navstatus' => "adminchember", "chamberdata" => $chamberdata]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function addchamber(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $days = $data['day'];
+        //dd($data);
+        $newChamber = new Chamber;
+        $newChamber->locationname = $data['name'];
+        $newChamber->availabledays = json_encode($days);
+        $newChamber->description = $data['description'];
+
+        //set session
+        if ($newChamber->save()) {
+            session(['status' => "1", 'msg' => 'Chamber Add is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'Chamber data is not Added']);
+        }
+
+        return redirect()->back();
     }
 
     /**

@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('chambers', function (Blueprint $table) {
             $table->id();
-            $table->string('LocationName');
-            $table->string('AvailableFromDate');
-            $table->string('AvailableToDate');
-            $table->string('AvailableFromTime');
-            $table->string('AvailableToTime');
-            $table->string('Description');
+            $table->string('locationname');
+            $table->string('availabledays');
+            $table->string('description');
             $table->timestamps();
         });
     }
