@@ -63,12 +63,13 @@
                         @foreach ($chamberdata as $data)
                         <tr>
                             <td>{{ $data->locationname }}</td>
-                            <td>{{ $data->availablefromdate }}</td>
+
+                            <td>{{ $data->availabledays }}</td>
                             <td>{{ $data->description }}</td>
                             <td>
-                                <a style="font-size: medium;" title="Edit Chamber" class="btn btn-warning" href="{{ URL::to('editservice/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
+                                <a style="font-size: medium;" title="Edit Chamber" class="btn btn-warning" href="{{ URL::to('editchamber/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 
-                                <a title="Delete Chamber" class="btn btn-danger deleteservice" serviceid="{{ base64_encode($data->id)}}" serviceimage="{{ $data->Image }}"><i class="fas fa-trash"></i></a>
+                                <a title="Delete Chamber" class="btn btn-danger deletechember" chamberid="{{ base64_encode($data->id)}}"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

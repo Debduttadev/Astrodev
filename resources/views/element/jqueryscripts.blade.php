@@ -81,11 +81,50 @@
 
         $('#alldays').on('change', function() {
             var obj = $(this);
-            if ($('.dayselect').prop('checked') == true) {
-                $('.dayselect').prop('checked', false);
-            } else {
+            if ($('#alldays').prop('checked') == true) {
                 $('.dayselect').prop('checked', true);
+            } else {
+                $('.dayselect').prop('checked', false);
             }
+        });
+
+
+        $('#editalldays').on('change', function() {
+            var obj = $(this);
+            if ($('#editalldays').prop('checked') == true) {
+                $('.dayselect').prop('checked', true);
+
+            } else {
+                $('.dayselect').prop('checked', false);
+            }
+        });
+
+
+        // delete chamber
+        $('.deletechember').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('chamberid');
+
+            bootbox.confirm("Are you sure to delete this Chamber Location?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deletechamber',
+                        method: "get",
+                        data: {
+                            'id': id
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Service Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Service Not Deleted")
+                        }
+                    })
+                } else {}
+            });
         });
 
     });

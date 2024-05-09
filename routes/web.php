@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function () {
     //Admin chamber management
     Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
     Route::post('addchamber', [ChamberController::class, 'addchamber']);
+    Route::get('/deletechamber', [ChamberController::class, 'deletechamber']);
+    Route::get('editchamber/{id}', [ChamberController::class, 'editchamber']);
+    Route::post('updatechamber', [ChamberController::class, 'updatechamber']);
+
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
