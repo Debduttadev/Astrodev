@@ -32,7 +32,7 @@
                     <label>Service Image</label>
                 </div>
                 <div class="mt-4">
-                    <img src="{{ URL::to('service')."/".$servicedata->Image }}" class="rounded img-fluid" id="showimage" alt="no old iamge" hight=10% width=10%>
+                    <img src="{{ URL::to('service')."/".$servicedata->Image }}" class="rounded img-fluid" id="showimage" alt="no old image" hight=10% width=10%>
                 </div>
 
                 <div class="mt-4">

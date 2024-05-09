@@ -64,6 +64,7 @@
             });
         });
 
+        //show image if edited in update service
         $('.newimage').on('change', function() {
             var obj = $(this);
             var file = $("input[type=file]").get(0).files[0];
@@ -79,6 +80,7 @@
             }
         });
 
+        //checkbox checked property change for add chamber section 
         $('#alldays').on('change', function() {
             var obj = $(this);
             if ($('#alldays').prop('checked') == true) {
@@ -88,7 +90,7 @@
             }
         });
 
-
+        //checkbox checked property change for edit chamber section 
         $('#editalldays').on('change', function() {
             var obj = $(this);
             if ($('#editalldays').prop('checked') == true) {
@@ -117,10 +119,40 @@
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
-                            bootbox.alert("Service Deleted Successful")
+                            bootbox.alert("Chamber Deleted Successful")
                             obj.parent().parent().remove();
                         } else if (massage.status == 0 && massage.msg == "false") {
-                            bootbox.alert("Sorry Service Not Deleted")
+                            bootbox.alert("Sorry Chamber Not Deleted")
+                        }
+                    })
+                } else {}
+            });
+        });
+
+
+        // delete bannervideo
+        $('.deletebannervideo').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('bannervideoid');
+            var bannervideoimage = $(this).attr('bannervideoimage');
+
+            bootbox.confirm("Are you sure to delete this File?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deletebannervideo',
+                        method: "get",
+                        data: {
+                            'id': id,
+                            'bannervideoimage': bannervideoimage
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("File Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry File Not Deleted")
                         }
                     })
                 } else {}

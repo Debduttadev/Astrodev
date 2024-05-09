@@ -47,6 +47,12 @@ Route::middleware('auth')->group(function () {
     Route::get('editchamber/{id}', [ChamberController::class, 'editchamber']);
     Route::post('updatechamber', [ChamberController::class, 'updatechamber']);
 
+    // Manage banner and videos
+    Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
+    Route::post('addbannervideo', [BannerVideoController::class, 'addbannervideo']);
+    Route::get('/deletebannervideo', [BannerVideoController::class, 'deletebannervideo']);
+    Route::get('editbannervideo/{id}', [BannerVideoController::class, 'editbannervideo']);
+    Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

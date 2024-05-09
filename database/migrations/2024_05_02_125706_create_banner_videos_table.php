@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail');
             $table->string('videolink')->nullable();
-            $table->enum('thumbnailtype', ['0', '1']);
-            $table->enum('show', ['0', '1']);
+            $table->enum('thumbnailtype', ['0', '1'])->comment('0 = banner, 1 = video');
+            $table->enum('show', ['0', '1'])->comment('0=hide, 1=show');
             $table->timestamps();
         });
     }
