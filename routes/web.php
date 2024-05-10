@@ -54,13 +54,16 @@ Route::middleware('auth')->group(function () {
     Route::get('editbannervideo/{id}', [BannerVideoController::class, 'editbannervideo']);
     Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
 
+    //Manage Social Links
+    Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);
     Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
-    Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+
     Route::get('/manageblog', [AdminController::class, 'dashboard']);
     Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);

@@ -17,7 +17,7 @@
                 <div class="mt-4">
                     <label>Upload Thumbnail Image</label>
                     <inpuT type="hidden" name="oldimage" value="{{$bannervideodata->thumbnail}}">
-                    <input <input type="file" class="form-control newimage" name="fileToUpload" id="editfileToUpload2" accept="image/png, image/gif, image/jpeg, image/jpg">
+                    <input type="file" class="form-control newimage" name="fileToUpload" id="editfileToUpload2" accept="image/png, image/gif, image/jpeg, image/jpg">
                 </div>
 
                 <div class="mt-4">

@@ -10,7 +10,8 @@
   <meta name="author" content="" />
   <!-- Title -->
   <title>{{ env('APP_NAME') }}</title>
-  <i rel="icon" class="fa fa-hand-paper-o" aria-hidden="true"></i>
+  <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/astroachariyalogo-01-42d8b8ef.png') }}" />
+
   <link href="{{ URL::to('admin/css/style.min.css') }}" rel="stylesheet" />
   <link href="{{ URL::to('admin/css/styles.css') }}" rel="stylesheet" />
   <script src="{{ URL::to('admin/js/fontawesomeall.js') }}" crossorigin="anonymous"></script>

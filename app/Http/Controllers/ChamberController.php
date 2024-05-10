@@ -19,15 +19,15 @@ class ChamberController extends Controller
      */
     public function adminchamber()
     {
-
         $chambers = Chamber::get();
-
+        $chamberdata = [];
         foreach ($chambers as $data) {
 
             $availabledays = $data->availabledays;
             $daysavailable = json_decode($availabledays);
             $i = 0;
             $days = [];
+
             foreach ($daysavailable as $day) {
 
                 if ($day == "1") {
