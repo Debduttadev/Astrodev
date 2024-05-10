@@ -253,18 +253,18 @@
                              <label class="control-label">File Visibility</label>
 
                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="show" id="flexRadioDefault3" value="0">
-                                 <label class="form-check-label" for="flexRadioDefault3">
-                                     Hide
-                                 </label>
-                             </div>
-
-                             <div class="form-check">
                                  <input class="form-check-input" type="radio" name="show" id="flexRadioDefault4" value="1" checked>
                                  <label class="form-check-label" for="flexRadioDefault4">
                                      Show
                                  </label>
                              </div>
+                         </div>
+
+                         <div class="form-check">
+                             <input class="form-check-input" type="radio" name="show" id="flexRadioDefault3" value="0">
+                             <label class="form-check-label" for="flexRadioDefault3">
+                                 Hide
+                             </label>
                          </div>
 
                          <div class="mt-4">

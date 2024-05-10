@@ -127,7 +127,8 @@ class ServiceController extends Controller
             $request->validate([
                 'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
             ]);
-
+            $image = public_path('service') . '/' . $request->oldimage;
+            unlink($image);
             $file = $request->file('fileToUpload');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Service' . time() . '.' . $ext;

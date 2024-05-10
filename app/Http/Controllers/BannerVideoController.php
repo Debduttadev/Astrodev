@@ -98,6 +98,40 @@ class BannerVideoController extends Controller
      */
     public function updatebannervideo(Request $request)
     {
+        $data = $request->except('_token');
+        //dd($request);
+        $updatedata['videolink'] = $request->videolink;
+        $updatedata['thumbnailtype'] = $request->thumbnailtype;
+        $updatedata['show'] = $request->show;
+
+        if ($request->hasFile('fileToUpload')) {
+
+            $request->validate([
+                'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
+            ]);
+            $image = public_path('bannervideo') . '/' . $request->oldimage;
+            unlink($image);
+            $file = $request->file('fileToUpload');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'Banner' . time() . '.' . $ext;
+            $file->move(public_path('bannervideo'), $filename);
+            $updatedata['thumbnail'] = $filename;
+        } else {
+            $updatedata['thumbnail'] = $request->oldimage;
+        }
+        //echo $request->id;
+        //dd($updatedata);
+
+        $update = banner_video::where('id', $request->id)
+            ->update($updatedata);
+
+        if ($update) {
+            session(['status' => "1", 'msg' => 'File Update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'File data is not Updated']);
+        }
+
+        return redirect('/managebannervideo');
     }
 
     /**

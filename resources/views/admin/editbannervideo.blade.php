@@ -6,7 +6,7 @@
         <h3 class="mt-4">Edit Admin User</h3>
         <div class="row">
 
-            <form class="user" id="formdata6" method="POST" action="{{ URL::to('addbannervideo') }}" enctype="multipart/form-data">
+            <form class="user" id="formdata7" method="POST" action="{{ URL::to('updatebannervideo') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <input type="hidden" value="{{$bannervideodata->id}}" name="id">
@@ -17,12 +17,18 @@
                 <div class="mt-4">
                     <label>Upload Thumbnail Image</label>
                     <inpuT type="hidden" name="oldimage" value="{{$bannervideodata->thumbnail}}">
-                    <input <input type="file" class="form-control" name="fileToUpload" id="fileToUpload2" required="" accept="image/png, image/gif, image/jpeg, image/jpg" required>
+                    <input <input type="file" class="form-control newimage" name="fileToUpload" id="editfileToUpload2" accept="image/png, image/gif, image/jpeg, image/jpg">
                 </div>
 
                 <div class="mt-4">
                     <label class="control-label">Video link </label>
-                    <input type="url" pattern="https://.*" class="form-control form-control-user" placeholder="https://www.youtube.com/watch?v=tZJeArQpsrI" name="videolink" value="{{$bannervideodata->videolink}}" autofocus>
+                    @php
+                    if(is_null($bannervideodata->videolink)){
+                    $placehoslder=" https://www.youtube.com/@AchariyaDebdutta";
+                    }else{
+                    $placehoslder = $bannervideodata->videolink;}
+                    @endphp
+                    <input type="url" pattern="https://.*" class="form-control form-control-user" placeholder="{{$placehoslder}}" name="videolink" value="{{$bannervideodata->videolink}}" autofocus>
                 </div>
 
                 <div class="mt-4">
@@ -38,8 +44,6 @@
 
                         @if($bannervideodata->thumbnailtype == 0)
                         @php
-
-
                         $banner="checked";
                         @endphp
                         @else
@@ -47,14 +51,14 @@
                         $video="checked";
                         @endphp
                         @endif
-                        @endphp
-                        <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault1" value="0" {{$banner}}>
+
+                        <input class="form-check-input" type="radio" name="thumbnailtype" id="editflexRadioDefault1" value="0" {{$banner}}>
                         <label class="form-check-label" for="flexRadioDefault1">
                             Banner
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault2" value="1" {{$video}}>
+                        <input class="form-check-input" type="radio" name="thumbnailtype" id="editflexRadioDefault2" value="1" {{$video}}>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Video panel
                         </label>
@@ -72,19 +76,20 @@
                     $show="checked";
                     @endphp
                     @endif
-                    @endphp
+
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="show" id="flexRadioDefault3" value="0" {{$hide}}>
-                        <label class="form-check-label" for="flexRadioDefault3">
-                            Hide
+                        <input class="form-check-input" type="radio" name="show" id="editflexRadioDefault4" value="1" {{$show}}>
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            Show
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="show" id="flexRadioDefault4" value="1" {{$show}}>
-                        <label class="form-check-label" for="flexRadioDefault4">
-                            Show
+                        <input class="form-check-input" type="radio" name="show" id="editflexRadioDefault3" value="0" {{$hide}}>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Hide
                         </label>
+
                     </div>
                 </div>
 
