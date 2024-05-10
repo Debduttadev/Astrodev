@@ -279,3 +279,73 @@
          </div>
      </div>
  </div>
+
+ <div class="modal fade" id="addsociallink" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Add Social Link</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form class="user" id="formdata8" method="POST" action="{{ URL::to('addsociallink') }}" enctype="multipart/form-data">
+                         {{ csrf_field() }}
+
+                         <div class="mt-4">
+                             <label>Upload Thumbnail Image</label>
+                             <input type="file" class="form-control" name="fileToUpload" id="fileToUpload2" required="" accept="image/png, image/gif, image/jpeg, image/jpg" required>
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">Video link </label>
+                             <input type="url" pattern="https://.*" class="form-control form-control-user" placeholder="https://www.youtube.com/watch?v=tZJeArQpsrI" name="videolink" value="" autofocus>
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">File Type</label>
+
+                             <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault1" value="0">
+                                 <label class="form-check-label" for="flexRadioDefault1">
+                                     Banner
+                                 </label>
+                             </div>
+                             <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault2" value="1" checked>
+                                 <label class="form-check-label" for="flexRadioDefault2">
+                                     Video panel
+                                 </label>
+                             </div>
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">File Visibility</label>
+
+                             <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="show" id="flexRadioDefault4" value="1" checked>
+                                 <label class="form-check-label" for="flexRadioDefault4">
+                                     Show
+                                 </label>
+                             </div>
+                         </div>
+
+                         <div class="form-check">
+                             <input class="form-check-input" type="radio" name="show" id="flexRadioDefault3" value="0">
+                             <label class="form-check-label" for="flexRadioDefault3">
+                                 Hide
+                             </label>
+                         </div>
+
+                         <div class="mt-4">
+                             <button type="submit" class="btn btn-success btn-user btn-block">
+                                 Add Banner or Video
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>

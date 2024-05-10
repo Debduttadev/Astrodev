@@ -13,7 +13,8 @@ class SocialController extends Controller
      */
     public function adminsocial()
     {
-        return view('admin.adminsocial', ['page_name' => 'Manage Social Media links', 'navstatus' => "adminsocial"]);
+        $social = Social::get();
+        return view('admin.adminsocial', ['page_name' => 'Manage Social Media links', 'navstatus' => "adminsocial", 'socialdata' => $social]);
     }
 
     /**
