@@ -14,7 +14,9 @@
 
   <link href="{{ URL::to('admin/css/style.min.css') }}" rel="stylesheet" />
   <link href="{{ URL::to('admin/css/styles.css') }}" rel="stylesheet" />
-  <script src="{{ URL::to('admin/js/fontawesomeall.js') }}" crossorigin="anonymous"></script>
+  <!-- <script src="{{ URL::to('admin/js/fontawesomeall.js') }}" crossorigin="anonymous"></script> -->
+  <link href="{{ URL::to('admin/css/all.css') }}" rel="stylesheet" />
+
   <link rel="icon" class="fa fa-hand-paper-o" href="fa fa-hand-paper-o" type="image/icon type">
 
   <!-- Datetime -->

@@ -86,10 +86,10 @@
                 </a>
 
                 <a class="nav-link {{ $adminsocial }}" href="{{ URL::to('adminsocial') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-brands fa-square-facebook {{ $adminsocial }}"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa-brands fa-square-hashtag {{ $adminsocial }}"></i></div>
                     Social media link
                 </a>
-
+                
                 <a class="nav-link {{ $manageblog }}" href="{{ URL::to('manageblog') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard {{ $manageblog }}"></i></div>
                     Manage Blog

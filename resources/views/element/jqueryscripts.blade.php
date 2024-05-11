@@ -159,5 +159,94 @@
             });
         });
 
+
+        // delete Social Link
+        $('.deletesocial').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('socialid');
+
+            bootbox.confirm("Are you sure to delete this Social Link?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deletesocials',
+                        method: "get",
+                        data: {
+                            'id': id
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Chamber Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Chamber Not Deleted")
+                        }
+                    })
+                } else {}
+            });
+        });
+
+
+
+        // edit Social Link
+        $('.addediturl').on('change', function() {
+            var obj = $(this);
+            var preva = $(this).prev('.jqueryurl');
+            var id = $(this).attr('socialid');
+            var url = $(this).val();
+            //alert(url);
+            bootbox.confirm("Are you sure to update this Social Link?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/addeditsocials',
+                        method: "get",
+                        data: {
+                            'id': id,
+                            'url': url
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Link Updated Successful")
+                            location.reload(true);
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Link Not Updated")
+                        }
+                    })
+                } else {}
+            });
+        });
+
+        // delete Social Link
+        $('.urlradio').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('linkid');
+            var radioValue = $('input[name="visibility' + id + '"]:checked').val();
+            //console.log(radioValue);
+            bootbox.confirm("Are you sure to change visibility of this Social Link?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/visibilitylink',
+                        method: "get",
+                        data: {
+                            'id': id,
+                            'radioValue': radioValue
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Link Visibility Updated Successful")
+                            location.reload(true);
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Link Visibility Not Updated")
+                        }
+                    })
+                } else {}
+            });
+
+        });
     });
 </script>

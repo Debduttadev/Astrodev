@@ -56,13 +56,18 @@ Route::middleware('auth')->group(function () {
 
     //Manage Social Links
     Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+    Route::post('addsociallink', [SocialController::class, 'addsociallink']);
+    Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
+    Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
+
+
+
+
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
-    Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);
-    Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
 
     Route::get('/manageblog', [AdminController::class, 'dashboard']);
     Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
