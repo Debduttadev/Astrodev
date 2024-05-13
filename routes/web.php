@@ -9,6 +9,7 @@ use App\Http\Controllers\BannerVideoController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\AboutContactController;
 use App\Http\Controllers\ContactusController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,7 +61,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
     Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
 
-
+    //manage blog
+    Route::get('/manageblog', [BlogController::class, 'manageblog']);
+    Route::post('addblog', [BlogController::class, 'addblog']);
 
 
 
@@ -69,7 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);
 
-    Route::get('/manageblog', [AdminController::class, 'dashboard']);
     Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
 });

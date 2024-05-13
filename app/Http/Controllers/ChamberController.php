@@ -19,7 +19,7 @@ class ChamberController extends Controller
      */
     public function adminchamber()
     {
-        $chambers = Chamber::get();
+        $chambers = chamber::get();
         $chamberdata = [];
         foreach ($chambers as $data) {
 
@@ -64,7 +64,7 @@ class ChamberController extends Controller
         $data = $request->except('_token');
         $days = $data['day'];
         //dd($data);
-        $newChamber = new Chamber;
+        $newChamber = new chamber;
         $newChamber->locationname = ucfirst($data['name']);
         $newChamber->availabledays = json_encode($days);
         $newChamber->description = $data['description'];
@@ -101,7 +101,7 @@ class ChamberController extends Controller
     public function editchamber($id)
     {
         $id = base64_decode($id);
-        $chamberdata = Chamber::where('id', $id)->first();
+        $chamberdata = chamber::where('id', $id)->first();
         $availabledays = json_decode($chamberdata->availabledays);
         $chamberdata->availabledays = $availabledays;
         //dd($chamberdata);

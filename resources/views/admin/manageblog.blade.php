@@ -12,7 +12,7 @@
         </h1>
 
         <div class="card mb-4">
-            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addchamber">Add new Chamber</button>
+            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addblog">Add new Blog</button>
         </div>
 
         <!-- to show the session status message -->
@@ -35,41 +35,41 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Chamber
+                Blogs
             </div>
             <div class="card-body">
 
-                @if(count($chamberdata) === 0)
-                <h5>No Chamber are added</h5>
+                @if(count($blogsdata) === 0)
+                <h5>No Blogs are added</h5>
                 @else
                 <table id="datatablesSimple" class="servicetable">
                     <thead>
                         <tr>
-                            <th>Location</th>
-                            <th>Available Days</th>
+                            <th>Title</th>
+                            <th>Image</th>
                             <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Location</th>
-                            <th>Available Days</th>
+                            <th>Title</th>
+                            <th>Image</th>
                             <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($chamberdata as $data)
+                        @foreach ($blogsdata as $data)
                         <tr>
-                            <td>{{ $data->locationname }}</td>
+                            <td>{{ $data->title }}</td>
 
-                            <td>{{ $data->availabledays }}</td>
+                            <td>{{ $data->image }}</td>
                             <td>{{ $data->description }}</td>
                             <td>
-                                <a style="font-size: medium;" title="Edit Chamber" class="btn btn-warning" href="{{ URL::to('editchamber/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
+                                <a style="font-size: medium;" title="Edit Blog" class="btn btn-warning" href="{{ URL::to('editblog/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 
-                                <a title="Delete Chamber" class="btn btn-danger deletechember" chamberid="{{ base64_encode($data->id)}}"><i class="fas fa-trash"></i></a>
+                                <a title="Delete Chamber" class="btn btn-danger deleteblog" blogid="{{ base64_encode($data->id)}}"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

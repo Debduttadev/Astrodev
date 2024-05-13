@@ -17,6 +17,12 @@
   <!-- <script src="{{ URL::to('admin/js/fontawesomeall.js') }}" crossorigin="anonymous"></script> -->
   <link href="{{ URL::to('admin/css/all.css') }}" rel="stylesheet" />
 
+  <!-- text editor -->
+  <script src="{{ URL::to('admin/js/jquery.min.js') }}"></script>
+  <script src="{{ URL::to('tinymce/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+  <link rel="stylesheet" href="{{ URL::to('chosen/docsupport/style.css') }}">
+  <link rel="stylesheet" href="{{ URL::to('chosen/docsupport/prism.css') }}">
+  <link rel="stylesheet" href="{{ URL::to('chosen/chosen.css') }}">
 
   <!-- Datetime -->
 
@@ -59,6 +65,10 @@
     table.servicetable tbody td a {
       margin: 10px !important;
     }
+
+    .chosen-container-multi {
+      width: 100% !important;
+    }
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">
@@ -72,9 +82,10 @@
     </div>
   </div>
   <!-- End of Main Content -->
+  @include('element.modal')
 
   <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
-  <script src="{{ URL::to('admin/js/jquery.min.js') }}"></script>
+
   <script src="{{ URL::to('admin/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ URL::to('admin/js/scripts.js') }}"></script>
   <script src="{{ URL::to('admin/js/Chart.min.js') }}" crossorigin=" anonymous"></script>
@@ -86,11 +97,16 @@
   <script src="{{ URL::to('admin/js/bootbox.min.js') }}"></script>
   <script src="{{ URL::to('admin/js/bootbox.js') }}"></script>
 
+  <!-- multiselect -->
+  <script src="{{ URL::to('chosen/chosen.jquery.js') }}" type="text/javascript"></script>
+  <script src="{{ URL::to('chosen/docsupport/prism.js') }}" type="text/javascript" charset="utf-8"></script>
+  <script src="{{ URL::to('chosen/docsupport/init.js') }}" type="text/javascript" charset="utf-8"></script>
+
+
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-  @include('element.modal')
 
   @stack('scripts')
   @include('element.jqueryscripts')

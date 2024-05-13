@@ -35,12 +35,12 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Services
+                Banner and Videos
             </div>
             <div class="card-body">
 
                 @if(count($bannervideo) === 0)
-                <h5>No services are added</h5>
+                <h5>No Banner or Videos are added</h5>
                 @else
                 <table id="datatablesSimple" class="servicetable">
                     <thead>

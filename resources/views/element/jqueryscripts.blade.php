@@ -243,5 +243,26 @@
                 }
             })
         });
+
+        tinymce.init({
+            selector: '#default',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: 'wordcount | code | insertdatetime | link',
+            link_context_toolbar: true,
+            max_height: 400,
+            toolbar: 'styles| undo redo |underline bold italic | link  | paste |floating| wordcount |outdent indent | insertdatetime ',
+            insertdatetime_dateformat: '%d-%m-%Y',
+            link_default_target: '_blank',
+        });
+
+        $(document).on('focusin', function(e) {
+            console.log(e);
+            if ($(e.target).closest("tox-silver-sink .tox-dialog").length) {
+                //console.log("sdfsdfsdf");
+                e.stopImmediatePropagation();
+            }
+        });
+
     });
 </script>
