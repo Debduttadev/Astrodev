@@ -17,18 +17,17 @@
   <!-- <script src="{{ URL::to('admin/js/fontawesomeall.js') }}" crossorigin="anonymous"></script> -->
   <link href="{{ URL::to('admin/css/all.css') }}" rel="stylesheet" />
 
-  <link rel="icon" class="fa fa-hand-paper-o" href="fa fa-hand-paper-o" type="image/icon type">
 
   <!-- Datetime -->
 
 
   <!-- not needed now -->
   <!-- Popperjs -->
-  <script src="{{ URL::to('admin/js/popper.min.js') }}" crossorigin="anonymous"></script>
+  <!-- <script src="{{ URL::to('admin/js/popper.min.js') }}" crossorigin="anonymous"></script> -->
   <!-- Tempus Dominus JavaScript -->
-  <script src="{{ URL::to('admin/js/tempus-dominus.min.js') }}" crossorigin="anonymous"></script>
+  <!-- <script src="{{ URL::to('admin/js/tempus-dominus.min.js') }}" crossorigin="anonymous"></script> -->
   <!-- Tempus Dominus Styles -->
-  <link href="{{ URL::to('admin/css/tempus-dominus.min.css') }}" rel="stylesheet" />
+  <!-- <link href="{{ URL::to('admin/css/tempus-dominus.min.css') }}" rel="stylesheet" /> -->
 </head>
 
 <body class="sb-nav-fixed">

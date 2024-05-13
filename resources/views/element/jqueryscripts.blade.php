@@ -225,28 +225,23 @@
             var id = $(this).attr('linkid');
             var radioValue = $('input[name="visibility' + id + '"]:checked').val();
             //console.log(radioValue);
-            bootbox.confirm("Are you sure to change visibility of this Social Link?", function(result) {
-                if (result) {
-                    $.ajax({
-                        url: base_url + '/visibilitylink',
-                        method: "get",
-                        data: {
-                            'id': id,
-                            'radioValue': radioValue
-                        }
-                    }).done(function(msg) {
-                        var massage = JSON.parse(msg);
-                        console.log(massage);
-                        if (massage.status == 1 && massage.msg == "true") {
-                            bootbox.alert("Link Visibility Updated Successful")
-                            location.reload(true);
-                        } else if (massage.status == 0 && massage.msg == "false") {
-                            bootbox.alert("Sorry Link Visibility Not Updated")
-                        }
-                    })
-                } else {}
-            });
-
+            $.ajax({
+                url: base_url + '/visibilitylink',
+                method: "get",
+                data: {
+                    'id': id,
+                    'radioValue': radioValue
+                }
+            }).done(function(msg) {
+                var massage = JSON.parse(msg);
+                console.log(massage);
+                if (massage.status == 1 && massage.msg == "true") {
+                    alert("Link Visibility Updated Successful")
+                    location.reload(true);
+                } else if (massage.status == 0 && massage.msg == "false") {
+                    alert("Sorry Link Visibility Not Updated")
+                }
+            })
         });
     });
 </script>

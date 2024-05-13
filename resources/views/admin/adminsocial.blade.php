@@ -82,31 +82,34 @@
                                 <div class="mt-4">
                                     <label class="control-label">Link Visibility</label>
                                     @php
-                                    $hide="";
-                                    $show="";
                                     if($data['visibility'] == 0){
-                                    //echo "hide";
+                                    echo "Hide";
                                     $hide="checked";
-                                    }else{
-                                    //echo "show";
+                                    $show= "";
+                                    }elseif($data['visibility'] == 1){
+                                    echo "Show";
                                     $show="checked";
+                                    $hide="";
                                     }
                                     @endphp
 
-                                    <div class="form-check">
-                                        <input class="form-check-input urlradio" type="radio" name="visibility{{ $data['id']}}" id="editflexRadioDefault{{ $data['id']}}" value="1" {{$show}} linkid="{{ $data['id']}}">
-                                        <label class="form-check-label" for="editflexRadioDefault{{ $data['id']}}">
-                                            Show
-                                        </label>
-                                    </div>
+                                    <form class="form-check">
+                                        <div class="form-check form-check-solid">
 
-                                    <div class="form-check">
-                                        <input class="form-check-input urlradio" type="radio" name="visibility{{ $data['id']}}" id="editflexRadioDefault{{ $data['id']}}" value="0" {{$hide}} linkid="{{ $data['id']}}">
-                                        <label class="form-check-label" for="editflexRadioDefault{{ $data['id']}}">
-                                            Hide
-                                        </label>
+                                            <input class="form-check-input urlradio" type="radio" name="visibility{{ $data['id']}}" id="RadioDefault{{ $data['id']}}1" value="1" linkid="{{ $data['id']}}" {!!$show!!}>
+                                            <label class="form-check-label" for="RadioDefault{{ $data['name']}}1">
+                                                Show
+                                            </label>
+                                        </div>
 
-                                    </div>
+                                        <div class="form-check form-check-solid">
+                                            <input class="form-check-input urlradio" type="radio" name="visibility{{ $data['id']}}" id="RadioDefault{{ $data['id']}}2" value="0" linkid="{{ $data['id']}}" {!!$hide!!}>
+                                            <label class="form-check-label" for="RadioDefault{{ $data['name']}}2">
+                                                Hide
+                                            </label>
+
+                                        </div>
+                                    </form>
                                 </div>
                             </td>
 
