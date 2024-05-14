@@ -187,8 +187,6 @@
             });
         });
 
-
-
         // edit Social Link
         $('.addediturl').on('change', function() {
             var obj = $(this);
@@ -219,7 +217,7 @@
             });
         });
 
-        // delete Social Link
+        // Change visibility of Social Link
         $('.urlradio').on('click', function() {
             var obj = $(this);
             var id = $(this).attr('linkid');
@@ -248,21 +246,53 @@
             selector: '#default',
             license_key: 'gpl',
             menubar: false,
-            plugins: 'wordcount | code | insertdatetime | link',
-            link_context_toolbar: true,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
-            toolbar: 'styles| undo redo |underline bold italic | link  | paste |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline bold italic | link |floating| wordcount |outdent indent | insertdatetime ',
             insertdatetime_dateformat: '%d-%m-%Y',
             link_default_target: '_blank',
+            convert_urls: false,
         });
 
-        $(document).on('focusin', function(e) {
-            console.log(e);
-            if ($(e.target).closest("tox-silver-sink .tox-dialog").length) {
-                //console.log("sdfsdfsdf");
+        document.addEventListener('focusin', (e) => {
+            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root .tox-dialog") !== null) {
                 e.stopImmediatePropagation();
             }
         });
 
+        $('#formdatablog').on('shown.bs.modal', function() {
+            $(document).off('focusin.modal');
+        });
+
+
+        $('.deleteblog').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('blogid');
+            var blogimage = $(this).attr('blogimage');
+
+
+
+            bootbox.confirm("Are you sure to delete this Blog?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deleteblog',
+                        method: "get",
+                        data: {
+                            'id': id,
+                            'blogimage': blogimage
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("File Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry File Not Deleted")
+                        }
+                    })
+                } else {}
+            });
+        });
     });
 </script>

@@ -333,7 +333,7 @@
              </div>
              <div class="modal-body">
                  <div class="container">
-                     <form class="user" id="formdata9" method="POST" action="{{ URL::to('addblog') }}" enctype="multipart/form-data">
+                     <form class="user" id="formdatablog" method="POST" action="{{ URL::to('addblog') }}" enctype="multipart/form-data">
                          {{ csrf_field() }}
 
                          <div class="mt-4">
@@ -343,7 +343,7 @@
 
                          <div class="mt-4">
                              <label>Upload Image</label>
-                             <input type="file" class="form-control" name="image" id="fileToUpload9" required="" accept="image/png, image/gif, image/jpeg, image/jpg">
+                             <input type="file" class="form-control" name="image" id="fileToUpload9" accept="image/png, image/gif, image/jpeg, image/jpg">
                          </div>
 
                          <div class="mt-4">
@@ -351,159 +351,60 @@
                              limit <span class="limit">0</span>/2000
                              <textarea name="blogdescription" class="form-control form-control-user" id="default" aria-describedby="description5" placeholder="Enter blog description..." value=""></textarea>
                          </div>
+                         <div class="row">
+                             <div style="width: 40%;">
+                                 <label>Tags</label>
+                                 <select name="tags[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
+                                     <option value=""></option>
+                                     @if(isset($tagsdata))
+                                     @foreach ( $tagsdata as $tags )
+                                     <option value="{{$tags}}">{{$tags}}</option>
+                                     @endforeach
+                                     @endif
+                                 </select>
+                             </div>
+                             <div style="width: 60%;">
+                                 <label>New Tags</label>
+                                 <lable style="font-size:12px;">(enter "," between two Category )</lable>
+                                 <input type="text" class="form-control form-control-user" placeholder="New Tags" name="newtags" multiple value="">
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div style="width: 40%;">
+                                 <label>Keywords</label>
+                                 <select name="keyword[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
+                                     <option value=""></option>
+                                     @if(isset($keyworddata))
+                                     @foreach ( $keyworddata as $keywords )
+                                     <option value="{{$keywords}}">{{$keywords}}</option>
+                                     @endforeach
+                                     @endif
+                                 </select>
+                             </div>
+                             <div style="width: 60%;">
+                                 <label>New Keywords</label>
+                                 <lable style="font-size:12px;">(enter "," between two Category )</lable>
+                                 <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
+                             </div>
+                         </div>
 
-                         <div class="mt-4">
-                             <label>Tags</label>
-                             <select name="tags[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
-                                 <option value=""></option>
-                                 <option value="United States">United States</option>
-                                 <option value="United Kingdom">United Kingdom</option>
-                                 <option value="Afghanistan">Afghanistan</option>
-                                 <option value="Aland Islands">Aland Islands</option>
-                                 <option value="Albania">Albania</option>
-                                 <option value="Algeria">Algeria</option>
-                                 <option value="American Samoa">American Samoa</option>
-                                 <option value="Andorra">Andorra</option>
-                                 <option value="Angola">Angola</option>
-                                 <option value="Anguilla">Anguilla</option>
-                                 <option value="Antarctica">Antarctica</option>
-                                 <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                 <option value="Argentina">Argentina</option>
-                                 <option value="Armenia">Armenia</option>
-                                 <option value="Aruba">Aruba</option>
-                                 <option value="Australia">Australia</option>
-                                 <option value="Austria">Austria</option>
-                                 <option value="Azerbaijan">Azerbaijan</option>
-                                 <option value="Bahamas">Bahamas</option>
-                                 <option value="Bahrain">Bahrain</option>
-                                 <option value="Bangladesh">Bangladesh</option>
-                                 <option value="Barbados">Barbados</option>
-                                 <option value="Belarus">Belarus</option>
-                                 <option value="Belgium">Belgium</option>
-                                 <option value="Belize">Belize</option>
-                                 <option value="Benin">Benin</option>
-                                 <option value="Bermuda">Bermuda</option>
-                                 <option value="Bhutan">Bhutan</option>
-                                 <option value="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
-                                 <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
-                                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                 <option value="Botswana">Botswana</option>
-                                 <option value="Bouvet Island">Bouvet Island</option>
-                                 <option value="Brazil">Brazil</option>
-                                 <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                 <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                 <option value="Bulgaria">Bulgaria</option>
-                                 <option value="Burkina Faso">Burkina Faso</option>
-                                 <option value="Burundi">Burundi</option>
-                                 <option value="Cambodia">Cambodia</option>
-                                 <option value="Cameroon">Cameroon</option>
-                                 <option value="Canada">Canada</option>
-                                 <option value="Cape Verde">Cape Verde</option>
-                                 <option value="Cayman Islands">Cayman Islands</option>
-                                 <option value="Central African Republic">Central African Republic</option>
-                             </select>
-                         </div>
-                         <div class="mt-4">
-                             <label>Keywords</label>
-                             <select name="keyword[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
-                                 <option value=""></option>
-                                 <option value="United States">United States</option>
-                                 <option value="United Kingdom">United Kingdom</option>
-                                 <option value="Afghanistan">Afghanistan</option>
-                                 <option value="Aland Islands">Aland Islands</option>
-                                 <option value="Albania">Albania</option>
-                                 <option value="Algeria">Algeria</option>
-                                 <option value="American Samoa">American Samoa</option>
-                                 <option value="Andorra">Andorra</option>
-                                 <option value="Angola">Angola</option>
-                                 <option value="Anguilla">Anguilla</option>
-                                 <option value="Antarctica">Antarctica</option>
-                                 <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                 <option value="Argentina">Argentina</option>
-                                 <option value="Armenia">Armenia</option>
-                                 <option value="Aruba">Aruba</option>
-                                 <option value="Australia">Australia</option>
-                                 <option value="Austria">Austria</option>
-                                 <option value="Azerbaijan">Azerbaijan</option>
-                                 <option value="Bahamas">Bahamas</option>
-                                 <option value="Bahrain">Bahrain</option>
-                                 <option value="Bangladesh">Bangladesh</option>
-                                 <option value="Barbados">Barbados</option>
-                                 <option value="Belarus">Belarus</option>
-                                 <option value="Belgium">Belgium</option>
-                                 <option value="Belize">Belize</option>
-                                 <option value="Benin">Benin</option>
-                                 <option value="Bermuda">Bermuda</option>
-                                 <option value="Bhutan">Bhutan</option>
-                                 <option value="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
-                                 <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
-                                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                 <option value="Botswana">Botswana</option>
-                                 <option value="Bouvet Island">Bouvet Island</option>
-                                 <option value="Brazil">Brazil</option>
-                                 <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                 <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                 <option value="Bulgaria">Bulgaria</option>
-                                 <option value="Burkina Faso">Burkina Faso</option>
-                                 <option value="Burundi">Burundi</option>
-                                 <option value="Cambodia">Cambodia</option>
-                                 <option value="Cameroon">Cameroon</option>
-                                 <option value="Canada">Canada</option>
-                                 <option value="Cape Verde">Cape Verde</option>
-                                 <option value="Cayman Islands">Cayman Islands</option>
-                                 <option value="Central African Republic">Central African Republic</option>
-                             </select>
-                         </div>
-                         <div class="mt-4">
-                             <label>Category</label>
-                             <select data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4" name="category[]">
-                                 <option value=""></option>
-                                 <option value="United States">United States</option>
-                                 <option value="United Kingdom">United Kingdom</option>
-                                 <option value="Afghanistan">Afghanistan</option>
-                                 <option value="Aland Islands">Aland Islands</option>
-                                 <option value="Albania">Albania</option>
-                                 <option value="Algeria">Algeria</option>
-                                 <option value="American Samoa">American Samoa</option>
-                                 <option value="Andorra">Andorra</option>
-                                 <option value="Angola">Angola</option>
-                                 <option value="Anguilla">Anguilla</option>
-                                 <option value="Antarctica">Antarctica</option>
-                                 <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                 <option value="Argentina">Argentina</option>
-                                 <option value="Armenia">Armenia</option>
-                                 <option value="Aruba">Aruba</option>
-                                 <option value="Australia">Australia</option>
-                                 <option value="Austria">Austria</option>
-                                 <option value="Azerbaijan">Azerbaijan</option>
-                                 <option value="Bahamas">Bahamas</option>
-                                 <option value="Bahrain">Bahrain</option>
-                                 <option value="Bangladesh">Bangladesh</option>
-                                 <option value="Barbados">Barbados</option>
-                                 <option value="Belarus">Belarus</option>
-                                 <option value="Belgium">Belgium</option>
-                                 <option value="Belize">Belize</option>
-                                 <option value="Benin">Benin</option>
-                                 <option value="Bermuda">Bermuda</option>
-                                 <option value="Bhutan">Bhutan</option>
-                                 <option value="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
-                                 <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
-                                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                 <option value="Botswana">Botswana</option>
-                                 <option value="Bouvet Island">Bouvet Island</option>
-                                 <option value="Brazil">Brazil</option>
-                                 <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                 <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                 <option value="Bulgaria">Bulgaria</option>
-                                 <option value="Burkina Faso">Burkina Faso</option>
-                                 <option value="Burundi">Burundi</option>
-                                 <option value="Cambodia">Cambodia</option>
-                                 <option value="Cameroon">Cameroon</option>
-                                 <option value="Canada">Canada</option>
-                                 <option value="Cape Verde">Cape Verde</option>
-                                 <option value="Cayman Islands">Cayman Islands</option>
-                                 <option value="Central African Republic">Central African Republic</option>
-                             </select>
+                         <div class="row">
+                             <div style="width: 40%;">
+                                 <label>Category</label>
+                                 <select data-placeholder=" Choose a Country..." class="chosen-select" multiple tabindex="4" name="category[]">
+                                     <option value=""></option>
+                                     @if(isset($categorydata))
+                                     @foreach ( $categorydata as $categorys )
+                                     <option value="{{$categorys}}">{{$categorys}}</option>
+                                     @endforeach
+                                     @endif
+                                 </select>
+                             </div>
+                             <div style="width: 60%;">
+                                 <label>New Category</label>
+                                 <lable style="font-size:12px;">(enter "," between two Category )</lable>
+                                 <input type="text" class="form-control form-control-user" placeholder="New Category" name="newcategory" multiple value="">
+                             </div>
                          </div>
 
                          <div class="mt-4">
