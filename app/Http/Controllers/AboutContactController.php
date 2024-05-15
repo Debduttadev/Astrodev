@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\about_contact;
 use App\Http\Requests\Storeabout_contactRequest;
 use App\Http\Requests\Updateabout_contactRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class AboutContactController extends Controller
 {
@@ -13,7 +18,9 @@ class AboutContactController extends Controller
      */
     public function magageaboutcontactus()
     {
-        return view('admin.magageaboutcontactus', ['page_name' => 'Mange  About and Contact details', 'navstatus' => "magageaboutcontactus"]);
+        $aboutcontactus = about_contact::first();
+        //dd(($aboutcontactus));
+        return view('admin.magageaboutcontactus', ['page_name' => 'Mange  About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
     }
 
     /**
@@ -51,9 +58,38 @@ class AboutContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateabout_contactRequest $request, about_contact $about_contact)
+    public function updateaboutus(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        //dd($data);
+
+        $updateabout['title'] = htmlentities($request->title);
+        $updateabout['description'] = htmlentities($request->description);
+        if ($request->hasFile('image')) {
+
+            $request->validate([
+                'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            ]);
+
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'About' . time() . '.' . $ext;
+            $file->move(public_path('about'), $filename);
+
+            $updateabout['image'] = $filename;
+        } else {
+            $updateabout['image'] = $request->oldimage;
+        }
+        //dd($updateabout);
+        $update = about_contact::where('id', $request->id)
+            ->update($updateabout);
+
+        if ($update) {
+            session(['status' => "1", 'msg' => 'About details update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'About details is not Updated']);
+        }
+        return redirect('/magageaboutcontactus');
     }
 
     /**

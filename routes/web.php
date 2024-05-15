@@ -68,16 +68,20 @@ Route::middleware('auth')->group(function () {
     Route::get('editblog/{id}', [BlogController::class, 'editblog']);
     Route::post('updateblog', [BlogController::class, 'updateblog']);
 
+    //manage about us and contact us details
+    Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
+    Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
 
 
 
+    //manage contact us page form details
+    Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);
 
-    Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
 });
 

@@ -68,10 +68,8 @@
         $('.newimage').on('change', function() {
             var obj = $(this);
             var file = $("input[type=file]").get(0).files[0];
-
             if (file) {
                 var reader = new FileReader();
-
                 reader.onload = function() {
                     $("#showimage").attr("src", reader.result);
                 }
@@ -248,8 +246,38 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
-            toolbar: 'styles| undo redo |underline bold italic | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
+            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
+        tinymce.init({
+            selector: '#abouttitle',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 200,
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
+        tinymce.init({
+            selector: '#aboutdescription',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 400,
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -293,6 +321,20 @@
                     })
                 } else {}
             });
+        });
+
+        //show image if edited in update about
+        $('.aboutimage').on('change', function() {
+            var obj = $(this);
+            var file = $(".aboutimage").get(0).files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    $("#showaboutimage").attr("src", reader.result);
+                }
+
+                reader.readAsDataURL(file);
+            }
         });
     });
 </script>

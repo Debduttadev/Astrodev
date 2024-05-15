@@ -69,6 +69,10 @@
     .chosen-container-multi {
       width: 100% !important;
     }
+
+    div.accordion-item div.accordion-collapse div.accordion-body p {
+      max-width: 100% !important;
+    }
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">

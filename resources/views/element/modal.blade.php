@@ -351,7 +351,9 @@
                              limit <span class="limit">0</span>/2000
                              <textarea name="blogdescription" class="form-control form-control-user" id="default" aria-describedby="description5" placeholder="Enter blog description..." value=""></textarea>
                          </div>
-                         <div class="row">
+
+
+                         <div class="row g-3">
                              <div style="width: 40%;">
                                  <label>Tags</label>
                                  <select name="tags[]" data-placeholder="Choose Tags..." class="chosen-select" multiple tabindex="4">
@@ -370,7 +372,7 @@
                              </div>
                          </div>
 
-                         <div class="row">
+                         <div class="row g-3">
                              <div style="width: 40%;">
                                  <label>Category</label>
                                  <select data-placeholder="Choose Categories..." class="chosen-select" multiple tabindex="4" name="category[]">
@@ -389,7 +391,7 @@
                              </div>
                          </div>
 
-                         <div class="row">
+                         <div class="row g-3">
                              <div style="width: 40%;">
                                  <label>Keywords</label>
                                  <select name="keyword[]" data-placeholder="Choose Keywords..." class="chosen-select" multiple tabindex="4">
@@ -411,6 +413,89 @@
                          <div class="mt-4">
                              <button type="submit" class="btn btn-success btn-user btn-block">
                                  Add Blog
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>
+
+ <!-- modal for edit about us -->
+ <div class="modal fade" id="editaboutus" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-xl" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Edit About Us</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form class="user" id="formdataabout" method="POST" action="{{ URL::to('updateaboutus') }}" enctype="multipart/form-data">
+                         {{ csrf_field() }}
+                         @php
+                         $abouttitle="";
+                         $aboutdescription="";
+                         $aboutimage="";
+                         $aboutid="";
+                         if(isset($aboutcontactus)){
+                         $title=html_entity_decode($aboutcontactus->title);
+                         if(isset($title)){
+                         $abouttitle=$title;
+                         }else{
+                         $abouttitle="";
+                         }
+                         $description=html_entity_decode($aboutcontactus->description);
+                         if(isset($description)){
+                         $aboutdescription=$description;
+                         }else{
+                         $aboutdescription="";
+                         }
+                         $image=$aboutcontactus->image;
+                         if(isset($image)){
+                         $aboutimage=$image;
+                         }else{
+                         $aboutimage="";
+                         }
+                         $id=$aboutcontactus->id;
+                         if(isset($id)){
+                         $aboutid=$id;
+                         }else{
+                         $aboutid="";
+                         }
+                         }
+                         @endphp
+
+                         <div class="mt-4">
+                             <label class="control-label">Title</label>
+                             <textarea name="title" class="form-control form-control-user" id="abouttitle" aria-describedby="description5" placeholder="Enter blog description..." required cols="2" value="{{$abouttitle}}">{{$abouttitle}}</textarea>
+                         </div>
+
+                         <div class="mt-4">
+                             @if(!empty($aboutimage))
+                             <img src="{{ URL::to('about')."/".$aboutimage }}" class="rounded img-fluid" id="showimage" alt="no old image" hight=10% width=10%>
+                             @else
+                             <img src="{{ URL::to('about')."/default.jpg" }}" class="rounded img-fluid" id="showaboutimage" alt="no old image" hight=10% width=10%>
+                             @endif
+                         </div>
+                         <div class="mt-4">
+                             <label>Upload Image</label>
+                             <input type="hidden" name="id" value="{{$id}}">
+                             <inpuT type="hidden" name="oldimage" value="{{$aboutimage}}">
+                             <input type="file" class="form-control aboutimage" name="image" id="fileToUpload10" accept="image/png, image/gif, image/jpeg, image/jpg">
+                         </div>
+
+                         <div class="mt-4">
+                             <label class="control-label">Description</label>
+                             limit <span class="limit">0</span>/2000
+                             <textarea name="description" class="form-control form-control-user" id="aboutdescription" aria-describedby="description5" placeholder="Enter blog description..." value="{{$aboutdescription}}">{{$aboutdescription}}</textarea>
+                         </div>
+
+                         <div class="mt-4">
+                             <button type="submit" class="btn btn-success btn-user btn-block">
+                                 Update About us details
                              </button>
                          </div>
                      </form>

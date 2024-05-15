@@ -343,7 +343,11 @@ class BlogController extends Controller
         $updateblog['category'] = $categoryid;
         $updateblog['title'] = $request->name;
         $updateblog['description'] = htmlentities($request->blogdescription);
-
+        // dd($updateblog['description']);
+        // echo "<pre>";
+        // print_r($updateblog);
+        // echo "</pre>";
+        // exit;
         if ($request->hasFile('newimage')) {
 
             $request->validate([
