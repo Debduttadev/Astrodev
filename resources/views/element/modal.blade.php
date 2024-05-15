@@ -354,7 +354,7 @@
                          <div class="row">
                              <div style="width: 40%;">
                                  <label>Tags</label>
-                                 <select name="tags[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
+                                 <select name="tags[]" data-placeholder="Choose Tags..." class="chosen-select" multiple tabindex="4">
                                      <option value=""></option>
                                      @if(isset($tagsdata))
                                      @foreach ( $tagsdata as $tags )
@@ -365,33 +365,15 @@
                              </div>
                              <div style="width: 60%;">
                                  <label>New Tags</label>
-                                 <lable style="font-size:12px;">(enter "," between two Category )</lable>
+                                 <lable style="font-size:12px;">(enter "," between two Tags )</lable>
                                  <input type="text" class="form-control form-control-user" placeholder="New Tags" name="newtags" multiple value="">
-                             </div>
-                         </div>
-                         <div class="row">
-                             <div style="width: 40%;">
-                                 <label>Keywords</label>
-                                 <select name="keyword[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
-                                     <option value=""></option>
-                                     @if(isset($keyworddata))
-                                     @foreach ( $keyworddata as $keywords )
-                                     <option value="{{$keywords}}">{{$keywords}}</option>
-                                     @endforeach
-                                     @endif
-                                 </select>
-                             </div>
-                             <div style="width: 60%;">
-                                 <label>New Keywords</label>
-                                 <lable style="font-size:12px;">(enter "," between two Category )</lable>
-                                 <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
                              </div>
                          </div>
 
                          <div class="row">
                              <div style="width: 40%;">
                                  <label>Category</label>
-                                 <select data-placeholder=" Choose a Country..." class="chosen-select" multiple tabindex="4" name="category[]">
+                                 <select data-placeholder="Choose Categories..." class="chosen-select" multiple tabindex="4" name="category[]">
                                      <option value=""></option>
                                      @if(isset($categorydata))
                                      @foreach ( $categorydata as $categorys )
@@ -404,6 +386,25 @@
                                  <label>New Category</label>
                                  <lable style="font-size:12px;">(enter "," between two Category )</lable>
                                  <input type="text" class="form-control form-control-user" placeholder="New Category" name="newcategory" multiple value="">
+                             </div>
+                         </div>
+
+                         <div class="row">
+                             <div style="width: 40%;">
+                                 <label>Keywords</label>
+                                 <select name="keyword[]" data-placeholder="Choose Keywords..." class="chosen-select" multiple tabindex="4">
+                                     <option value=""></option>
+                                     @if(isset($keyworddata))
+                                     @foreach ( $keyworddata as $keywords )
+                                     <option value="{{$keywords}}">{{$keywords}}</option>
+                                     @endforeach
+                                     @endif
+                                 </select>
+                             </div>
+                             <div style="width: 60%;">
+                                 <label>New Keywords</label>
+                                 <lable style="font-size:12px;">(enter "," between two Keywords )</lable>
+                                 <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
                              </div>
                          </div>
 

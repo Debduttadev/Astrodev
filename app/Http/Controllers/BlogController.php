@@ -151,7 +151,7 @@ class BlogController extends Controller
         }
         $categoryid = [];
         $c = 0;
-        foreach ($categorydata as $category) {
+        foreach ($categoriesdata as $category) {
             $ifdata = category::where('category', '=', $category)->first();
             if ($ifdata === null) {
                 $savecategory = new category;
@@ -248,9 +248,127 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateblogRequest $request, blog $blog)
+    public function updateblog(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        //dd($data);
+        if (!empty($request->newtags)) {
+            $tagdata = explode(",", $request->newtags);
+        } else {
+            $tagdata = [];
+        }
+        if (!empty($request->tags)) {
+            $oldtag = $request->tags;
+            $tagsdata = array_merge($oldtag, $tagdata);
+        } else {
+            $tagsdata = $tagdata;
+        }
+
+        $tagid = [];
+        $i = 0;
+        foreach ($tagsdata as $tag) {
+            $ifdata = tag::where('tag', '=', $tag)->first();
+            if ($ifdata === null) {
+                $savetag = new tag;
+                $savetag->tag = $tag;
+                $savetag->save();
+                $tagid[$i] = $savetag->id;
+                $i++;
+            } else {
+                $tagid[$i] = $ifdata->id;
+                $i++;
+            }
+        }
+
+        if (!empty($request->newkeyword)) {
+            $keyworddata = explode(",", $request->newkeyword);
+        } else {
+            $keyworddata = [];
+        }
+        if (!empty($request->keyword)) {
+            $oldkeyword = $request->keyword;
+            $keywordsdata = array_merge($oldkeyword, $keyworddata);
+        } else {
+            $keywordsdata = $keyworddata;
+        }
+        $keywordid = [];
+        $k = 0;
+        foreach ($keywordsdata as $keyword) {
+            $ifdata = keyword::where('keyword', '=', $keyword)->first();
+            if ($ifdata === null) {
+                $savekeyword = new keyword;
+                $savekeyword->keyword = $keyword;
+                $savekeyword->save();
+                $keywordid[$k] = $savekeyword->id;
+                $k++;
+            } else {
+                $keywordid[$k] = $ifdata->id;
+                $k++;
+            }
+        }
+
+        if (!empty($request->newcategory)) {
+            $categorydata = explode(",", $request->newcategory);
+        } else {
+            $categorydata = [];
+        }
+        if (!empty($request->category)) {
+            $oldcategory = $request->category;
+            $categoriesdata = array_merge($oldcategory, $categorydata);
+        } else {
+            $categoriesdata = $categorydata;
+        }
+        $categoryid = [];
+        $c = 0;
+        foreach ($categoriesdata as $category) {
+            $ifdata = category::where('category', '=', $category)->first();
+            if ($ifdata === null) {
+                $savecategory = new category;
+                $savecategory->category = $category;
+                $savecategory->save();
+                $categoryid[$c] = $savecategory->id;
+                $c++;
+            } else {
+                $categoryid[$c] = $ifdata->id;
+                $c++;
+            }
+        }
+        //dd($categoryid);
+        $tagid = implode(",", $tagid);
+        $keywordid = implode(",", $keywordid);
+        $categoryid = implode(",", $categoryid);
+
+        $updateblog['tags'] = $tagid;
+        $updateblog['keyword'] = $keywordid;
+        $updateblog['category'] = $categoryid;
+        $updateblog['title'] = $request->name;
+        $updateblog['description'] = htmlentities($request->blogdescription);
+
+        if ($request->hasFile('newimage')) {
+
+            $request->validate([
+                'newimage' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            ]);
+
+            $file = $request->file('newimage');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'Blog' . time() . '.' . $ext;
+            $file->move(public_path('blog'), $filename);
+
+            $updateblog['image'] = $filename;
+        } else {
+            $updateblog['image'] = $request->oldimage;
+        }
+        //dd($updateblog);
+        $update = blog::where('id', $request->id)
+            ->update($updateblog);
+
+        if ($update) {
+            session(['status' => "1", 'msg' => 'Blog update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'Blog data is not Updated']);
+        }
+        return redirect('/manageblog');
     }
 
     /**

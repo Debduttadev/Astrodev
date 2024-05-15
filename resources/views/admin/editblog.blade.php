@@ -12,6 +12,7 @@
                 <div class="mt-4">
                     <label class="control-label">Title</label>
                     <input type="text" class="form-control form-control-user" placeholder="Daily Panchang" name="name" value="{{$blogsdata->title}}" required autofocus>
+                    <input type="hidden" name="id" value="{{$blogsdata->id}}">
                 </div>
                 <div class="mt-4">
                     <img src="{{ URL::to('blog')."/".$blogsdata->image }}" class="rounded img-fluid" id="showimage" alt="no old image" hight=10% width=10%>
@@ -38,19 +39,15 @@
                 <div class="row">
                     <div style="width: 40%;">
                         <label>Tags</label>
-                        <select name="tags[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
+                        <select name="tags[]" data-placeholder="Choose Tags......" class="chosen-select" multiple tabindex="4">
                             <option value=""></option>
-
                             @if(isset($tagsdata))
-                            @foreach ( $tagsdata as $tags )
-                            @foreach ( $blogtags as $blogtag)
-                            @if ($tagsdata[$blogtag] === $tags )
+                            @foreach ( $tagsdata as $key => $tags )
+                            @if (in_array($key,$blogtags))
                             <option value="{{$tags}}" selected>{{$tags}} </option>
                             @else
                             <option value="{{$tags}}">{{$tags}}</option>
                             @endif
-
-                            @endforeach
                             @endforeach
                             @endif
                         </select>
@@ -61,42 +58,11 @@
                         <input type="text" class="form-control form-control-user" placeholder="New Tags" name="newtags" multiple value="">
                     </div>
                 </div>
-                <div class="row">
-                    <div style="width: 40%;">
-                        <label>Keywords</label>
-                        <select name="keyword[]" data-placeholder="Choose a Country..." class="chosen-select" multiple tabindex="4">
-                            <option value=""></option>
-                            @if(isset($keyworddata))
-                            @foreach ( $keyworddata as $keywords )
-                            @foreach ( $blogkeywords as $blogkeyword)
-                            @if ($keyworddata[$blogkeyword] === $keywords )
-                            <option value="{{$keywords}}" selected>{{$keywords}} </option>
-                            @else
-                            <option value="{{$keywords}}">{{$keywords}}</option>
-                            @endif
 
-                            @endforeach
-                            @endforeach
-                            @endif
-                        </select>
-                    </div>
-                    <div style="width: 60%;">
-                        <label>New Keywords</label>
-                        <lable style="font-size:12px;">(enter "," between two Category )</lable>
-                        <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
-                    </div>
-                </div>
-                @php
-                echo "
-                <pre>";
-                            print_r($categorydata);
-                            print_r($blogcategories);
-                            echo "</pre>";
-                @endphp
                 <div class="row">
                     <div style="width: 40%;">
                         <label>Category</label>
-                        <select data-placeholder=" Choose a Country..." class="chosen-select" multiple tabindex="4" name="category[]">
+                        <select data-placeholder="Choose Categories..." class="chosen-select" multiple tabindex="4" name="category[]">
                             <option value=""></option>
                             @if(isset($categorydata))
                             @foreach ( $categorydata as $key => $category )
@@ -116,9 +82,33 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div style="width: 40%;">
+                        <label>Keywords</label>
+                        <select name="keyword[]" data-placeholder="Choose Categories..." class="chosen-select" multiple tabindex="4">
+                            <option value=""></option>
+                            @if(isset($keyworddata))
+                            @foreach ( $keyworddata as $key => $keywords )
+                            @if (in_array($key,$blogkeywords))
+                            <option value="{{$keywords}}" selected>{{$keywords}} </option>
+                            @else
+                            <option value="{{$keywords}}">{{$keywords}}</option>
+                            @endif
+                            @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    <div style="width: 60%;">
+                        <label>New Keywords</label>
+                        <lable style="font-size:12px;">(enter "," between two Category )</lable>
+                        <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
+                    </div>
+                </div>
+
+
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success btn-user btn-block">
-                        Add Blog
+                        Update Blog
                     </button>
                 </div>
             </form>
