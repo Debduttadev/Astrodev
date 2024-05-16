@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Contactus;
 use App\Http\Requests\StorecontactusRequest;
 use App\Http\Requests\UpdatecontactusRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ContactusController extends Controller
 {
@@ -13,7 +18,9 @@ class ContactusController extends Controller
      */
     public function managecontactus()
     {
-        return view('admin.managecontactus', ['page_name' => 'Mange Contact us page', 'navstatus' => "managecontactus"]);
+        $contactus = Contactus::get();
+
+        return view('admin.managecontactus', ['page_name' => 'Mange Contact us page', 'navstatus' => "managecontactus", 'contactus' => $contactus]);
     }
 
     /**
@@ -59,8 +66,16 @@ class ContactusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(contactus $contactus)
+    public function deletecontactdetails(Request $request)
     {
-        //
+        $id = base64_decode($request->id);
+        // echo json_encode(array('status' => 1, 'msg' => $id));
+        $contact = Contactus::where('id', $id)->delete();
+
+        if ($contact) {
+            echo json_encode(array('status' => 1, 'msg' => "true"));
+        } else {
+            echo json_encode(array('status' => 0, 'msg' => "false"));
+        }
     }
 }

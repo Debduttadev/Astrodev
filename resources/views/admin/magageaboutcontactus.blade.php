@@ -49,11 +49,14 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse show " data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <div class="col-md-10"></div>
-                                    <button type="button" class="btn btn-primary btn-sm col-md-2 " data-bs-toggle="modal" data-bs-target="#editaboutus">Edit</button>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button type="button" class="btn btn-primary me-md-2" data-bs-toggle="modal" data-bs-target="#editaboutus" style="
+                                            padding-left: 80px;
+                                            padding-right: 80px;">Edit</button>
+                                    </div>
                                 </div>
                                 <div>
-                                    <img src="{{ URL::to('about')."/".$aboutcontactus->image }}" class="rounded img-fluid  float-end img-thumbnail" id="showimage" alt="no old image" hight=20% width=20%>
+                                    <img src=" {{ URL::to('about')."/".$aboutcontactus->image }}" class="rounded img-fluid  float-end img-thumbnail" id="showimage" alt="no old image" hight=20% width=20%>
                                 </div>
                                 <div class="row">
                                     <p>
@@ -74,8 +77,11 @@
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <div class="col-md-10"></div>
-                                    <button type="button" class="btn btn-primary btn-sm col-md-2 " data-bs-toggle="modal" data-bs-target="#editcontactus">Edit</button>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button type="button" class="btn btn-primary me-md-2" data-bs-toggle="modal" data-bs-target="#editcontactus" style="
+                                            padding-left: 80px;
+                                            padding-right: 80px;">Edit</button>
+                                    </div>
                                 </div>
                                 <div class="row align-items-center">
                                     <div class="d-flex mb-4">

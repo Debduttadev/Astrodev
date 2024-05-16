@@ -75,6 +75,8 @@ Route::middleware('auth')->group(function () {
 
     //manage contact us page form details
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
+    Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
+
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

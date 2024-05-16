@@ -75,7 +75,9 @@
                             $small = substr( $data->description, 0, 200);
 
                             @endphp
-                            <td>{{ $small."..." }}</td>
+                            <td>{{ $small }}<a class="more" msg="{!!$data->description!!}">
+                                    ...more
+                                </a></td>
                             <td>
                                 <a style="font-size: medium;" title="Edit Service" class="btn btn-warning" href="{{ URL::to('editservice/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 

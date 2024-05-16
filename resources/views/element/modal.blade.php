@@ -524,6 +524,7 @@
                          $contactwhatsapp="";
                          $contactemail="";
                          $contactid="";
+                         $contactphonearray=[];
 
                          if(isset($aboutcontactus)){
                          $address=$aboutcontactus->address;

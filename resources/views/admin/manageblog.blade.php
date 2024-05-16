@@ -79,11 +79,16 @@
                                     @endif
                                 </div>
                             </td>
+                            @php
+                            $small = substr( $data['description'], 0, 200);
+                            @endphp
+
                             <td>
-                                @php
-                                $small = substr( $data['description'], 0, 200);
-                                @endphp
-                                {{$small}}...
+                                {!!$small!!}
+                                <a class="more" msg="{{html_entity_decode($data['description'])}}">
+                                    ...more
+                                </a>
+                            </td>
                             </td>
                             <td>
                                 @foreach ($data['tag'] as $tag)

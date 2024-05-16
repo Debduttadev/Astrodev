@@ -298,8 +298,6 @@
             var id = $(this).attr('blogid');
             var blogimage = $(this).attr('blogimage');
 
-
-
             bootbox.confirm("Are you sure to delete this Blog?", function(result) {
                 if (result) {
                     $.ajax({
@@ -355,6 +353,38 @@
         $(document).on('click', '.phonenumminus', function() {
             //alert("sdasdsadsad");
             $(this).parent().remove();
+        });
+
+
+        $('.deletecontact').on('click', function() {
+            var obj = $(this);
+            var id = $(this).attr('contactid');
+
+            bootbox.confirm("Are you sure to delete this Contact?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deletecontactdetails',
+                        method: "get",
+                        data: {
+                            'id': id
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Contact Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Contact Not Deleted")
+                        }
+                    })
+                } else {}
+            });
+        });
+
+        $('.more').on('click', function() {
+            var msg = $(this).attr('msg');
+            bootbox.alert(msg)
         });
 
     });
