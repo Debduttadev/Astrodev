@@ -336,5 +336,26 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        $('#phonenum').on('click', function() {
+
+            var obj = $(this);
+            var key = $(this).attr('key');
+            var html = '<div class="input-group mb-3 ">';
+            html += '<span class="input-group-text">+91</span>';
+            html += '<span class="input-group-text"> &nbsp;-&nbsp;</span>';
+            html += '<input type="text" maxlength="10" class="form-control form-control-user" name="phone[]" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required />';
+            html += '<spann class="input-group-text phonenumminus" key=' + key + ' ><i class="fa-solid fa-minus"></i></spann>';
+            html += '</div>';
+
+            obj.parent().prepend(html)
+
+        });
+
+        $(document).on('click', '.phonenumminus', function() {
+            //alert("sdasdsadsad");
+            $(this).parent().remove();
+        });
+
     });
 </script>

@@ -3,17 +3,14 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">
-            @if ($page_name === null)
-            client
-            @else
-            {{ $page_name}}
-            @endif
+        <h1 class="mt-4"><strong>
+                @if ($page_name === null)
+                client
+                @else
+                {{ $page_name}}
+                @endif
+            </strong>
         </h1>
-
-        <!-- <div class="card mb-4">
-            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addaboutcontactus">Add new About us details and Contact us</button>
-        </div> -->
 
         <!-- to show the session status message -->
         @php
@@ -72,53 +69,50 @@
                             <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="background:#d9e3ef;">
                                 Contact us Detais
                             </button>
+
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <div class="row align-items-center mt-1-9 mt-sm-n2-9">
-                                    <div class=" mt-1-9 mt-sm-2-9 order-2 order-lg-1">
+                                <div class="row">
+                                    <div class="col-md-10"></div>
+                                    <button type="button" class="btn btn-primary btn-sm col-md-2 " data-bs-toggle="modal" data-bs-target="#editcontactus">Edit</button>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="d-flex mb-4">
                                         <div>
-                                            <div class="title-three mb-1-9 mb-md-5">
-                                                <h2 class="text-secondary mb-0">Get In Touch</h2>
-                                            </div>
-                                            <div class="d-flex mb-4">
-                                                <div>
-                                                    <i class="fa-solid fa-location-dot fa-xl"></i>
-                                                </div>
-                                                <div class="ps-4">
-                                                    <h4 class="h5">Location</h4>
-                                                    <p class="mb-0">{{$aboutcontactus->address}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex mb-4">
-                                                <div>
-                                                    <i class="fa-solid fa-phone fa-xl"></i>
-                                                </div>
-                                                <div class="ps-4">
-                                                    <h4 class="h5 ">Phone</h4>
-                                                    <p class="mb-0">{{$aboutcontactus->phone}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <i class="fa-brands fa-whatsapp fa-xl"></i></i>
-                                                </div>
-                                                <div class="ps-4">
-                                                    <h4 class="h5 ">Whatsapp</h4>
-                                                    <p class="mb-0">{{$aboutcontactus->whatsapp}}</p>
-                                                </div>
-                                            </div>
+                                            <i class="fa-solid fa-location-dot fa-xl"></i>
+                                        </div>
+                                        <div class="ps-4">
+                                            <h4 class="h5">Location</h4>
+                                            <p class="mb-0">{{$aboutcontactus->address}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mb-4">
+                                        <div>
+                                            <i class="fa-solid fa-phone fa-xl"></i>
+                                        </div>
+                                        <div class="ps-4">
+                                            <h4 class="h5 ">Phone</h4>
+                                            <p class="mb-2">{{$aboutcontactus->phone}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div>
+                                            <i class="fa-brands fa-whatsapp fa-xl"></i></i>
+                                        </div>
+                                        <div class="ps-4">
+                                            <h4 class="h5 ">Whatsapp</h4>
+                                            <p class="mb-4">{{$aboutcontactus->whatsapp}}</p>
+                                        </div>
+                                    </div>
 
-                                            <div class="d-flex">
-                                                <div>
-                                                    <i class="fa-regular fa-envelope fa-xl"></i>
-                                                </div>
-                                                <div class="ps-4">
-                                                    <h4 class="h5 ">Email</h4>
-                                                    <p class="mb-0">{{$aboutcontactus->email}}</p>
-                                                </div>
-                                            </div>
-
+                                    <div class="d-flex">
+                                        <div>
+                                            <i class="fa-regular fa-envelope fa-xl"></i>
+                                        </div>
+                                        <div class="ps-4">
+                                            <h4 class="h5 ">Email</h4>
+                                            <p class="mb-2">{{$aboutcontactus->email}}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -71,8 +71,7 @@ Route::middleware('auth')->group(function () {
     //manage about us and contact us details
     Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
     Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
-
-
+    Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
 
     //manage contact us page form details
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);

@@ -482,7 +482,7 @@
                          </div>
                          <div class="mt-4">
                              <label>Upload Image</label>
-                             <input type="hidden" name="id" value="{{$id}}">
+                             <input type="hidden" name="id" value="{{$aboutid}}">
                              <inpuT type="hidden" name="oldimage" value="{{$aboutimage}}">
                              <input type="file" class="form-control aboutimage" name="image" id="fileToUpload10" accept="image/png, image/gif, image/jpeg, image/jpg">
                          </div>
@@ -496,6 +496,112 @@
                          <div class="mt-4">
                              <button type="submit" class="btn btn-success btn-user btn-block">
                                  Update About us details
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>
+
+ <!-- modal for edit contact us show details -->
+ <div class="modal fade" id="editcontactus" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Edit Contact Us</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form class="user" id="formdatacontact" method="POST" action="{{ URL::to('updatecontactus') }}" enctype="multipart/form-data">
+                         {{ csrf_field() }}
+                         @php
+                         $contactaddress="";
+                         $contactphone="";
+                         $contactwhatsapp="";
+                         $contactemail="";
+                         $contactid="";
+
+                         if(isset($aboutcontactus)){
+                         $address=$aboutcontactus->address;
+                         if(isset($address)){
+                         $contactaddress=$address;
+                         }else{
+                         $contactaddress="";
+                         }
+
+                         $phone=$aboutcontactus->phone;
+                         if(isset($phone)){
+                         $contactphone=$phone;
+                         }else{
+                         $contactphone="";
+                         }
+
+                         $contactphonearray=explode(",",$contactphone);
+                         $phonecount=count($contactphonearray);
+
+                         $whatsapp=$aboutcontactus->whatsapp;
+                         if(isset($whatsapp)){
+                         $contactwhatsapp=$whatsapp;
+                         }else{
+                         $contactwhatsapp="";
+                         }
+
+                         $email=$aboutcontactus->email;
+                         if(isset($email)){
+                         $contactemail=$email;
+                         }else{
+                         $contactemail="";
+                         }
+
+                         $id=$aboutcontactus->id;
+                         if(isset($id)){
+                         $contactid=$id;
+                         }else{
+                         $contactid="";
+                         }
+                         }
+                         @endphp
+
+                         <div class="mt-4">
+                             <label class="control-label">Address</label>
+                             <input type="text" class="form-control form-control-user" placeholder="........" name="address" value="{{$contactaddress}}" required autofocus>
+                         </div>
+                         <div class="mt-4">
+                             <label class="control-label">Phone number</label>
+                             @foreach ( $contactphonearray as $key => $phone)
+                             <div class="input-group mb-3">
+                                 <span class="input-group-text">+91</span>
+                                 <span class="input-group-text"> &nbsp;-&nbsp;</span>
+                                 <input type="text" maxlength="10" class="form-control form-control-user" name="phone[]" value="{{ $phone }}" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required />
+
+                                 @if($key+1 == $phonecount)
+                                 <span class="input-group-text" key="{{$key}}" id="phonenum"><i class="fa-solid fa-plus"></i></span>
+                                 @else
+                                 <spann class="input-group-text phonenumminus" key="{{$key}}"><i class="fa-solid fa-minus"></i></spann>
+                                 @endif
+                             </div>
+                             @endforeach
+                         </div>
+                         <input type="hidden" name="contactid" value="{{$contactid}}">
+                         <div class="mt-4">
+                             <label class="control-label">Whatsapp</label>
+                             <div class="input-group mb-3">
+                                 <span class="input-group-text">+91</span>
+                                 <span class="input-group-text"> &nbsp;-&nbsp;</span>
+                                 <input type="text" maxlength="10" id="whatsapp" name="whatsapp" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="{{$contactwhatsapp}}" class="form-control form-control-user" required style="width: 85%;" />
+                             </div>
+                         </div>
+                         <div class="mt-4">
+                             <label class="control-label">Email</label>
+                             <input type="email" class="form-control form-control-user" placeholder="........" name="email" value="{{$contactemail}}" required autofocus>
+                         </div>
+                         <div class="mt-4">
+                             <button type="submit" class="btn btn-success btn-user btn-block">
+                                 Update Contact us details
                              </button>
                          </div>
                      </form>

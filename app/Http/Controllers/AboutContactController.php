@@ -24,39 +24,7 @@ class AboutContactController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Storeabout_contactRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(about_contact $about_contact)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(about_contact $about_contact)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update the about us resource in storage.
      */
     public function updateaboutus(Request $request)
     {
@@ -91,6 +59,31 @@ class AboutContactController extends Controller
         }
         return redirect('/magageaboutcontactus');
     }
+
+    /**
+     * Update the contact us resource in storage.
+     */
+    public function updatecontactus(Request $request)
+    {
+        $data = $request->except('_token');
+
+        $updatecontact['address'] = $request->address;
+        $updatecontact['email'] = $request->email;
+        $updatecontact['phone'] = implode(",", $request->phone);
+        $updatecontact['whatsapp'] = $request->whatsapp;
+
+        //dd($updatecontact);
+        $update = about_contact::where('id', $request->contactid)
+            ->update($updatecontact);
+
+        if ($update) {
+            session(['status' => "1", 'msg' => 'Contact details update is successful']);
+        } else {
+            session(['status' => "0", 'msg' => 'Contact details is not Updated']);
+        }
+        return redirect('/magageaboutcontactus');
+    }
+
 
     /**
      * Remove the specified resource from storage.
