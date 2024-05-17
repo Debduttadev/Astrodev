@@ -9,6 +9,7 @@ use App\Http\Controllers\BannerVideoController;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\AboutContactController;
 use App\Http\Controllers\ContactusController;
+use App\Http\Controllers\AlttagController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
@@ -77,11 +78,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
     Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
 
+    // seo details and alt tag for every image
+    Route::get('/alttag', [AlttagController::class, 'alttag']);
+    Route::get('/seodetails', [AdminController::class, 'dashboard']);
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
-    Route::get('/seodetails', [AdminController::class, 'dashboard']);
+
 
     Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
 });

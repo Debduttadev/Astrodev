@@ -72,7 +72,7 @@
                             </td>
                             <td>{{ $data->shortdescription }}</td>
                             @php
-                            $small = substr( $data->description, 0, 200);
+                            $small = substr( strip_tags($data->description), 0, 200);
 
                             @endphp
                             <td>{{ $small }}<a class="more" msg="{!!$data->description!!}">

@@ -387,5 +387,46 @@
             bootbox.alert(msg)
         });
 
+        // Get the button
+        let mybutton = document.getElementById("topbutton");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        $('#topbutton').on('click', function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        });
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // will try to call function
+        $('.aboutalt').on('click', function() {
+            var page = $(this).attr('page');
+            var page = $(this).attr('page');
+        });
+
+        $('.bannarvideoalt').on('click', function() {
+            var page = $(this).attr('page');
+            var page = $(this).attr('page');
+        });
+
+        $('.servicealt').on('click', function() {
+            var page = $(this).attr('page');
+            var page = $(this).attr('page');
+        });
+
+        $('.blogalt').on('click', function() {
+            var page = $(this).attr('page');
+            var page = $(this).attr('page');
+        });
     });
 </script>

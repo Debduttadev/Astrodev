@@ -17,6 +17,7 @@
                 $magageaboutcontactus = "";
                 $managecontactus = "";
                 $seodetails = "";
+                $alltag="";
 
                 if ($navstatus == "adminuser"){
                 $adminuser = "active";
@@ -40,11 +41,12 @@
                 $managecontactus = "active";
                 }elseif ($navstatus == "seodetails"){
                 $seodetails = "active";
+                }elseif ($navstatus == "alttag"){
+                $seodetails = "active";
                 }else{
                 $dashboard = "active";
                 }
                 @endphp
-
 
                 <a class="nav-link {{ $dashboard }}" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-table-columns {{ $dashboard }}"></i></div>
@@ -75,10 +77,22 @@
                     Client
                 </a>
 
-                <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-globe {{ $seodetails }}"></i></div>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon">
+                        <i class="fa-solid fa-globe {{ $seodetails }}"></i>
+                    </div>
+
                     SEO Details
+                    <div class="sb-sidenav-collapse-arrow">
+                        <i class="fas fa-angle-down"></i>
+                    </div>
                 </a>
+                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('alttag') }}">Alt Tag for Images</a>
+                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">Seo Form for Pages</a>
+                    </nav>
+                </div>
 
                 <a class="nav-link {{ $managebannervideo }}" href="{{ URL::to('managebannervideo') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-images {{ $managebannervideo }}"></i></div>

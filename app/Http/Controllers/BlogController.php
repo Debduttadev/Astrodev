@@ -25,11 +25,12 @@ class BlogController extends Controller
         $blogs = blog::get();
         $blogitems = [];
         foreach ($blogs as $blogdata) {
+
             $cataegoryid = explode(",", $blogdata->category);
             $categories = [];
             foreach ($cataegoryid as $id) {
                 $category = category::where('id', $id)->first();
-                $categories[$category->id] = $category->category;
+                $categories[$id] = $category->category;
             }
             $blogitems[$blogdata->id]['category'] = $categories;
 
@@ -37,7 +38,7 @@ class BlogController extends Controller
             $keywords = [];
             foreach ($keywordid as $id) {
                 $keyword = keyword::where('id', $id)->first();
-                $keywords[$keyword->id] = $keyword->keyword;
+                $keywords[$id] = $keyword->keyword;
             }
             $blogitems[$blogdata->id]['keyword'] = $keywords;
 
@@ -45,7 +46,7 @@ class BlogController extends Controller
             $tags = [];
             foreach ($tagid as $id) {
                 $tag = tag::where('id', $id)->first();
-                $tags[$tag->id] = $tag->tag;
+                $tags[$id] = $tag->tag;
             }
             $blogitems[$blogdata->id]['tag'] = $tags;
 
@@ -54,7 +55,7 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             $blogitems[$blogdata->id]['image'] = $blogdata->image;
         }
-
+        //dd($blogitems);
         $alltags = tag::select('id', 'tag')->get();
         $alltag = [];
         foreach ($alltags as $tag) {
@@ -73,7 +74,6 @@ class BlogController extends Controller
             $allcategory[$category->id] = $category->category;
         }
 
-        // dd($alltag);
         return view('admin.manageblog', ['page_name' => 'manageblog', 'navstatus' => "manageblog", "blogsdata" => $blogitems, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
     }
 
@@ -84,6 +84,7 @@ class BlogController extends Controller
     {
         $data = $request->except('_token');
         //dd($data);
+
         if (!empty($request->newtags)) {
             $tagdata = explode(",", $request->newtags);
         } else {
@@ -95,20 +96,26 @@ class BlogController extends Controller
         } else {
             $tagsdata = $tagdata;
         }
-        $tagid = [];
-        $i = 0;
-        foreach ($tagsdata as $tag) {
-            $ifdata = tag::where('tag', '=', $tag)->first();
-            if ($ifdata === null) {
-                $savetag = new tag;
-                $savetag->tag = $tag;
-                $savetag->save();
-                $tagid[$i] = $savetag->id;
-                $i++;
-            } else {
-                $tagid[$i] = $ifdata->id;
-                $i++;
+
+        if (!empty($tagsdata)) {
+            $tagid = [];
+            $i = 0;
+            foreach ($tagsdata as $tag) {
+                $ifdata = tag::where('tag', '=', $tag)->first();
+                if ($ifdata === null) {
+                    $savetag = new tag;
+                    $savetag->tag = $tag;
+                    $savetag->save();
+                    $tagid[$i] = $savetag->id;
+                    $i++;
+                } else {
+                    $tagid[$i] = $ifdata->id;
+                    $i++;
+                }
             }
+        } else {
+            session(['status' => "0", 'msg' => 'tag not selected']);
+            return redirect()->back();
         }
 
         if (!empty($request->newkeyword)) {
@@ -122,20 +129,26 @@ class BlogController extends Controller
         } else {
             $keywordsdata = $keyworddata;
         }
-        $keywordid = [];
-        $k = 0;
-        foreach ($keywordsdata as $keyword) {
-            $ifdata = keyword::where('keyword', '=', $keyword)->first();
-            if ($ifdata === null) {
-                $savekeyword = new keyword;
-                $savekeyword->keyword = $keyword;
-                $savekeyword->save();
-                $keywordid[$k] = $savekeyword->id;
-                $k++;
-            } else {
-                $keywordid[$k] = $ifdata->id;
-                $k++;
+
+        if (!empty($keywordsdata)) {
+            $keywordid = [];
+            $k = 0;
+            foreach ($keywordsdata as $keyword) {
+                $ifdata = keyword::where('keyword', '=', $keyword)->first();
+                if ($ifdata === null) {
+                    $savekeyword = new keyword;
+                    $savekeyword->keyword = $keyword;
+                    $savekeyword->save();
+                    $keywordid[$k] = $savekeyword->id;
+                    $k++;
+                } else {
+                    $keywordid[$k] = $ifdata->id;
+                    $k++;
+                }
             }
+        } else {
+            session(['status' => "0", 'msg' => 'tag not selected']);
+            return redirect()->back();
         }
 
         if (!empty($request->newcategory)) {
@@ -149,20 +162,26 @@ class BlogController extends Controller
         } else {
             $categoriesdata = $categorydata;
         }
-        $categoryid = [];
-        $c = 0;
-        foreach ($categoriesdata as $category) {
-            $ifdata = category::where('category', '=', $category)->first();
-            if ($ifdata === null) {
-                $savecategory = new category;
-                $savecategory->category = $category;
-                $savecategory->save();
-                $categoryid[$c] = $savecategory->id;
-                $c++;
-            } else {
-                $categoryid[$c] = $ifdata->id;
-                $c++;
+
+        if (!empty($categoriesdata)) {
+            $categoryid = [];
+            $c = 0;
+            foreach ($categoriesdata as $category) {
+                $ifdata = category::where('category', '=', $category)->first();
+                if ($ifdata === null) {
+                    $savecategory = new category;
+                    $savecategory->category = $category;
+                    $savecategory->save();
+                    $categoryid[$c] = $savecategory->id;
+                    $c++;
+                } else {
+                    $categoryid[$c] = $ifdata->id;
+                    $c++;
+                }
             }
+        } else {
+            session(['status' => "0", 'msg' => 'tag not selected']);
+            return redirect()->back();
         }
 
         $tagid = implode(",", $tagid);

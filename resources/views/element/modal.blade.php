@@ -612,3 +612,39 @@
          </div>
      </div>
  </div>
+
+ <!-- modal for add edit alt tag for every images -->
+ <div class="modal fade" id="addalttag" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Edit Contact Us</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form class="user" id="formdataalt" method="POST" action="{{ URL::to('updatealttag') }}" enctype="multipart/form-data">
+                         {{ csrf_field() }}
+
+                         <div class="mt-4">
+                             <label class="control-label">Title</label>
+                             <input type="text" class="form-control form-control-user" placeholder="This is image title" name="title" value="" required autofocus>
+                         </div>
+                         <div class="mt-4">
+                             <label class="control-label">Alt Tag Data</label>
+                             <input type="text" class="form-control form-control-user" placeholder="this is alt tag for this image" name="alttag" value="" required autofocus>
+                         </div>
+
+                         <input type="hidden" name="contactid" value="">
+                         <div class="mt-4">
+                             <button type="submit" class="btn btn-success btn-user btn-block">
+                                 Update Alt Tag
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>

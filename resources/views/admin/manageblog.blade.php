@@ -80,11 +80,12 @@
                                 </div>
                             </td>
                             @php
-                            $small = substr( $data['description'], 0, 200);
+                            $small = substr( strip_tags($data['description']), 0, 200);
                             @endphp
 
                             <td>
-                                {!!$small!!}
+                                <p>{!!$small!!}</p>
+
                                 <a class="more" msg="{{html_entity_decode($data['description'])}}">
                                     ...more
                                 </a>
