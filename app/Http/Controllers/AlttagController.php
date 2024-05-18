@@ -9,6 +9,11 @@ use App\Models\about_contact;
 use App\Models\banner_video;
 use App\Models\blog;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class AlttagController extends Controller
 {
@@ -29,25 +34,98 @@ class AlttagController extends Controller
         $blog = blog::select('id', 'image')->get();
 
         $allimages = [];
-
+        $i = 0;
         foreach ($aboutimage as $image) {
             if ($image->image != null) {
-                $allimages['about_contacts'][$image->id] = $image->image;
+                $alttagdetails = alttag::where([
+                    ['relatedid', $image->id],
+                    ['page', 'about_contact'],
+                ])->first();
+
+                if (!empty($alttagdetails)) {
+
+                    $allimages['about_contact'][$i]['id'] = $alttagdetails->id;
+                    $allimages['about_contact'][$i]['page'] = $alttagdetails->page;
+                    $allimages['about_contact'][$i]['alttag'] = $alttagdetails->alttag;
+                    $allimages['about_contact'][$i]['title'] = $alttagdetails->title;
+                } else {
+                    $allimages['about_contact'][$i]['id'] = '';
+                    $allimages['about_contact'][$i]['page'] = 'about_contact';
+                    $allimages['about_contact'][$i]['alttag'] = "";
+                    $allimages['about_contact'][$i]['title'] = "";
+                }
+                $allimages['about_contact'][$i]['image'] = $image->image;
+                $allimages['about_contact'][$i]['relatedid'] = $image->id;
+                $i++;
             }
         }
+        $j = 0;
         foreach ($bannervideos as $image) {
             if ($image->thumbnail != null) {
-                $allimages['banner_videos'][$image->id] = $image->thumbnail;
+                $alttagdetails = alttag::where([
+                    ['relatedid', $image->id],
+                    ['page', 'banner_video'],
+                ])->first();
+                if (!empty($alttagdetails)) {
+                    $allimages['banner_video'][$j]['id'] = $alttagdetails->id;
+                    $allimages['banner_video'][$j]['page'] = $alttagdetails->page;
+                    $allimages['banner_video'][$j]['alttag'] = $alttagdetails->alttag;
+                    $allimages['banner_video'][$j]['title'] = $alttagdetails->title;
+                } else {
+                    $allimages['banner_video'][$j]['id'] = "";
+                    $allimages['banner_video'][$j]['page'] = "banner_video";
+                    $allimages['banner_video'][$j]['alttag'] = "";
+                    $allimages['banner_video'][$j]['title'] = "";
+                }
+                $allimages['banner_video'][$j]['image'] = $image->thumbnail;
+                $allimages['banner_video'][$j]['relatedid'] = $image->id;
+                $j++;
             }
         }
+        $k = 0;
         foreach ($service as $image) {
             if ($image->Image != null) {
-                $allimages['services'][$image->id] = $image->Image;
+                $alttagdetails = alttag::where([
+                    ['relatedid', $image->id],
+                    ['page', 'Service'],
+                ])->first();
+                if (!empty($alttagdetails)) {
+                    $allimages['Service'][$k]['id'] = $alttagdetails->id;
+                    $allimages['Service'][$k]['page'] = $alttagdetails->page;
+                    $allimages['Service'][$k]['alttag'] = $alttagdetails->alttag;
+                    $allimages['Service'][$k]['title'] = $alttagdetails->title;
+                } else {
+                    $allimages['Service'][$k]['id'] = "";
+                    $allimages['Service'][$k]['page'] = "Service";
+                    $allimages['Service'][$k]['alttag'] = "";
+                    $allimages['Service'][$k]['title'] = "";
+                }
+                $allimages['Service'][$k]['image'] = $image->Image;
+                $allimages['Service'][$k]['relatedid'] = $image->id;
+                $k++;
             }
         }
+        $l = 0;
         foreach ($blog as $image) {
             if ($image->image != null) {
-                $allimages['blogs'][$image->id] = $image->image;
+                $alttagdetails = alttag::where([
+                    ['relatedid', $image->id],
+                    ['page', 'blog'],
+                ])->first();
+                if (!empty($alttagdetails)) {
+                    $allimages['blog'][$l]['id'] = $alttagdetails->id;
+                    $allimages['blog'][$l]['page'] = $alttagdetails->page;
+                    $allimages['blog'][$l]['alttag'] = $alttagdetails->alttag;
+                    $allimages['blog'][$l]['title'] = $alttagdetails->title;
+                } else {
+                    $allimages['blog'][$l]['id'] = "";
+                    $allimages['blog'][$l]['page'] = "blog";
+                    $allimages['blog'][$l]['alttag'] = "";
+                    $allimages['blog'][$l]['title'] = "";
+                }
+                $allimages['blog'][$l]['image'] = $image->image;
+                $allimages['blog'][$l]['relatedid'] = $image->id;
+                $l++;
             }
         }
         // echo "<pre>";
@@ -92,9 +170,49 @@ class AlttagController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatealttagRequest $request, alttag $alttag)
+    public function updatealttag(Request $request)
     {
-        //
+
+        $data = $request->except('_token');
+        //dd($data['page']);
+
+        $ifdata = alttag::where([
+            ['relatedid', $data['relatedid']],
+            ['page', $data['page']],
+        ])->first();
+        //dd($ifdata);
+        if (empty($ifdata)) {
+            $newalttag = new alttag;
+            $newalttag->title = $data['title'];
+            $newalttag->alttag = $data['alttag'];
+            $newalttag->page = $data['page'];
+            $newalttag->relatedid = $data['relatedid'];
+            //set session
+            if ($newalttag->save()) {
+                session(['status' => "1", 'msg' => 'Alt tag and Title Add is successful']);
+            } else {
+                session(['status' => "0", 'msg' => 'Alt tag and Title data is not Added']);
+            }
+        } else {
+            $updatedata['alttag'] = $data['alttag'];
+            $updatedata['title'] = $data['title'];
+
+            $update = alttag::where([
+                ['relatedid', $data['relatedid']],
+                ['page', $data['page']]
+            ])
+                ->update($updatedata);
+
+            //set session
+
+            if ($update) {
+                session(['status' => "1", 'msg' => 'Alt tag and Title Update is successful']);
+            } else {
+                session(['status' => "0", 'msg' => 'Alt tag and Title data is not Updated']);
+            }
+        }
+
+        return redirect()->back();
     }
 
     /**

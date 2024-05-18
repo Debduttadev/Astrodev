@@ -410,23 +410,53 @@
 
         // will try to call function
         $('.aboutalt').on('click', function() {
-            var page = $(this).attr('page');
-            var page = $(this).attr('page');
+            var obj = $(this);
+            alttagmodaldata(obj);
         });
 
         $('.bannarvideoalt').on('click', function() {
-            var page = $(this).attr('page');
-            var page = $(this).attr('page');
+            var obj = $(this);
+            alttagmodaldata(obj);
         });
 
         $('.servicealt').on('click', function() {
-            var page = $(this).attr('page');
-            var page = $(this).attr('page');
+            var obj = $(this);
+            alttagmodaldata(obj);
         });
 
         $('.blogalt').on('click', function() {
-            var page = $(this).attr('page');
-            var page = $(this).attr('page');
+            var obj = $(this);
+            alttagmodaldata(obj);
+
         });
+
+
+        function alttagmodaldata(obj) {
+            var page = obj.attr('page');
+            var relatedid = obj.attr('relatedid');
+            var alttag = obj.attr('alttag');
+            var title = obj.attr('title');
+            //console.log(title);
+            $('#relatedid').val(relatedid);
+            $('#page').val(page);
+            $('#alttitle').val(title);
+            $('#alttag').val(alttag);
+
+            var textstart = "This image belongs to ";
+            var textend = ' page.';
+            textend += '<a href=" # " class="link - warning link - offset - 2 link - underline - opacity - 25 link - underline - opacity - 100 - hover ">Here is the details page link.</a>';
+            //console.log(textend);
+            if (page == 'about_contact') {
+                $('#pagetitle').html(textstart + ' About Us ' + textend);
+            } else if (page == 'banner_video') {
+                $('#pagetitle').html(textstart + ' Banner and video thumbnail ' + textend);
+            } else if (page == 'Service') {
+                $('#pagetitle').html(textstart + ' Service ' + textend);
+            } else if (page == 'blog') {
+                $('#pagetitle').html(textstart + ' Blog ' + textend);
+            } else {
+                $('#pagetitle').text('source not found ');
+            }
+        }
     });
 </script>

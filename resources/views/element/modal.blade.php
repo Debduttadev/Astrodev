@@ -618,24 +618,30 @@
      <div class="modal-dialog modal-lg" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title">Edit Contact Us</h5>
+                 <h5 class="modal-title">Alt Tags</h5>
                  <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
                  <div class="container">
+                     <div class="card">
+                         <div class="card-body">
+                             <h5 class="card-title" id="pagetitle"></h5>
+                             <!-- need to give image use page link from front end-->
+                         </div>
+                     </div>
                      <form class="user" id="formdataalt" method="POST" action="{{ URL::to('updatealttag') }}" enctype="multipart/form-data">
                          {{ csrf_field() }}
 
                          <div class="mt-4">
                              <label class="control-label">Title</label>
-                             <input type="text" class="form-control form-control-user" placeholder="This is image title" name="title" value="" required autofocus>
+                             <input type="text" class="form-control form-control-user" id="alttitle" placeholder="This is image title" name="title" value="" required autofocus>
                          </div>
+                         <input type="hidden" name="relatedid" value="" id="relatedid">
+                         <input type="hidden" name="page" value="" id="page">
                          <div class="mt-4">
                              <label class="control-label">Alt Tag Data</label>
-                             <input type="text" class="form-control form-control-user" placeholder="this is alt tag for this image" name="alttag" value="" required autofocus>
+                             <input type="text" class="form-control form-control-user" id="alttag" placeholder="this is alt tag for this image" name="alttag" value="" required autofocus>
                          </div>
-
-                         <input type="hidden" name="contactid" value="">
                          <div class="mt-4">
                              <button type="submit" class="btn btn-success btn-user btn-block">
                                  Update Alt Tag

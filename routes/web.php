@@ -81,13 +81,12 @@ Route::middleware('auth')->group(function () {
     // seo details and alt tag for every image
     Route::get('/alttag', [AlttagController::class, 'alttag']);
     Route::get('/seodetails', [AdminController::class, 'dashboard']);
+    // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
+    Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
 
 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/adminclient', [AdminController::class, 'dashboard']);
-
-
-    Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
 });
 
 require __DIR__ . '/auth.php';

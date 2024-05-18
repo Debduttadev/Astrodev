@@ -76,8 +76,14 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users {{ $adminclient }}"></i></div>
                     Client
                 </a>
-
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                @php
+                if($seodetails==="active"){
+                $aria_expanded=true;
+                }else{
+                $aria_expanded=false;
+                }
+                @endphp
+                <a class="nav-link collapsed {{ $seodetails }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="{{$aria_expanded}}" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon">
                         <i class="fa-solid fa-globe {{ $seodetails }}"></i>
                     </div>

@@ -30,7 +30,6 @@
 
         <!-- Page Content -->
         <div class="container">
-
             <nav class="nav">
                 <a class="nav-link active" aria-current="page" href="{{ URL::to('alttag')}}#about" style="color: darkgoldenrod;">About Images</a>
                 <a class="nav-link" href="{{ URL::to('alttag')}}#bannervideos" style="color: darkgoldenrod;">Banner and Video thumbnails</a>
@@ -43,10 +42,13 @@
             $blog = '';
             $service = '';
 
-            $aboutimage =$allimages['about_contacts'];
-            $bannervideos =$allimages['banner_videos'];
-            $service =$allimages['services'];
-            $blog =$allimages['blogs'];
+            $aboutimage =$allimages['about_contact'];
+            $bannervideos =$allimages['banner_video'];
+            $services =$allimages['Service'];
+            $blog =$allimages['blog'];
+
+            $alttag='';
+            $title=''
             @endphp
 
             <div class="row text-center text-lg-start" id="about">
@@ -56,11 +58,26 @@
             <div class="row text-center text-lg-start">
                 <!-- section for about page image -->
                 @if(!empty($aboutimage))
-                @foreach($aboutimage as $key => $image)
+                @foreach($aboutimage as $aboutdata)
+                @if(!empty($aboutdata['alttag']) && !empty($aboutdata['title']))
+                @php
+                $alttag=$aboutdata['alttag'];
+                $title=$aboutdata['title'];
+                @endphp
+                @else
+                @php
+                $alttag='';
+                $title='';
+                @endphp
+                @endif
                 <div class="card" style="width: 18rem;">
-                    <img class="img-fluid img-thumbnail" src="{{ URL::to('about')."/".$image }}" alt="" title="">
+                    <img class="img-fluid img-thumbnail" src="{{ URL::to('about')."/".$aboutdata['image'] }}" alt="" title="">
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-secondary aboutalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="about_contacts" relatedid="{{$key}}">
+
+                        <p><span class="fw-bold">Title : </span>{{$title}}</p>
+                        <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
+
+                        <button type="button" class="btn btn-outline-secondary aboutalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$aboutdata['page']}}" relatedid="{{$aboutdata['relatedid']}}" alttag="{{$aboutdata['alttag']}}" title="{{$aboutdata['title']}}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
@@ -76,11 +93,26 @@
             <div class="row text-center text-lg-start">
                 <!-- section for bannervideos thumbnails -->
                 @if(!empty($bannervideos))
-                @foreach($bannervideos as $key => $image)
+                @foreach($bannervideos as $bannerdata)
+                @if(!empty($bannerdata['alttag']) && !empty($bannerdata['title']))
+                @php
+                $alttag=$bannerdata['alttag'];
+                $title=$bannerdata['title'];
+                @endphp
+                @else
+                @php
+                $alttag='';
+                $title='';
+                @endphp
+                @endif
                 <div class="card" style="width: 18rem;">
-                    <img class="img-fluid img-thumbnail" src="{{ URL::to('bannervideo')."/".$image }}" alt="" title="" page="banner_videos" relatedid="{{$key}}">
+                    <img class="img-fluid img-thumbnail" src="{{ URL::to('bannervideo')."/".$bannerdata['image'] }}" alt="" title="" page="{{$bannerdata['page']}}" relatedid="{{$bannerdata['relatedid']}}">
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-secondary bannarvideoalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="banner_videos" relatedid="{{$key}}">
+
+                        <p><span class="fw-bold">Title : </span>{{$title}}</p>
+                        <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
+
+                        <button type="button" class="btn btn-outline-secondary bannarvideoalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$bannerdata['page']}}" relatedid=" {{$bannerdata['relatedid']}}" alttag="{{$bannerdata['alttag']}}" title="{{$bannerdata['title']}}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
@@ -89,18 +121,33 @@
                 @endif
             </div>
 
-            <div class="row text-center text-lg-start" id="service">
+            <div class=" row text-center text-lg-start" id="service">
                 <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Service Images</h1>
                 <hr class="mt-2 mb-5">
             </div>
             <div class="row text-center text-lg-start">
                 <!-- section for service images -->
-                @if(!empty($service))
-                @foreach($service as $key => $image)
+                @if(!empty($services))
+                @foreach($services as $servicedata)
+                @if(!empty($servicedata['alttag']) && !empty($servicedata['title']))
+                @php
+                $alttag=$servicedata['alttag'];
+                $title=$servicedata['title'];
+                @endphp
+                @else
+                @php
+                $alttag='';
+                $title='';
+                @endphp
+                @endif
                 <div class="card" style="width: 18rem;">
-                    <img class="img-fluid img-thumbnail" src="{{ URL::to('service')."/".$image }}" alt="" title="" page="services" relatedid="{{$key}}">
+                    <img class="img-fluid img-thumbnail" src="{{ URL::to('service')."/".$servicedata['image'] }}" alt="" title="" page="{{$servicedata['page']}}" relatedid="{{$servicedata['relatedid']}}">
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-secondary servicealt" data-bs-toggle="modal" data-bs-target="#addalttag" page="services" relatedid="{{$key}}">
+
+                        <p><span class="fw-bold">Title : </span>{{$title}}</p>
+                        <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
+
+                        <button type="button" class="btn btn-outline-secondary servicealt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$servicedata['page']}}" relatedid="{{$servicedata['relatedid']}}" alttag="{{$servicedata['alttag']}}" title="{{$servicedata['title']}}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
@@ -109,19 +156,33 @@
                 @endif
             </div>
 
-            <div class="row text-center text-lg-start" id="blog">
+            <div class=" row text-center text-lg-start" id="blog">
                 <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Blog Images</h1>
                 <hr class="mt-2 mb-5">
             </div>
             <div class="row text-center text-lg-start">
                 <!-- section for blogs images -->
                 @if(!empty($blog))
-
-                @foreach($blog as $key => $image)
+                @foreach($blog as $blogdata)
+                @if(!empty($blogdata['alttag']) && !empty($blogdata['title']))
+                @php
+                $alttag=$blogdata['alttag'];
+                $title=$blogdata['title'];
+                @endphp
+                @else
+                @php
+                $alttag='';
+                $title='';
+                @endphp
+                @endif
                 <div class="card" style="width: 18rem;">
-                    <img class="img-fluid img-thumbnail" src="{{ URL::to('blog')."/".$image }}" alt="" title="">
+                    <img class="img-fluid img-thumbnail" src="{{ URL::to('blog')."/".$blogdata['image'] }}" alt="" title="">
                     <div class="card-body">
-                        <button type="button" class="btn btn-outline-secondary blogalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="blogs" relatedid="{{$key}}">
+
+                        <p><span class="fw-bold">Title : </span>{{$title}}</p>
+                        <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
+
+                        <button type="button" class="btn btn-outline-secondary blogalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$blogdata['page']}}" relatedid="{{$blogdata['relatedid']}}" alttag="{{$blogdata['alttag']}}" title="{{$blogdata['title']}}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
@@ -130,7 +191,7 @@
                 @endif
             </div>
         </div>
-        <ol class="breadcrumb mb-4">
+        <ol class=" breadcrumb mb-4">
             <!-- <li class="breadcrumb-item active">Dashboard</li> -->
         </ol>
 
