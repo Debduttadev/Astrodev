@@ -128,10 +128,7 @@ class AlttagController extends Controller
                 $l++;
             }
         }
-        // echo "<pre>";
-        // print_r($allimages);
-        // echo "</pre>";
-        // exit;
+
         return view('admin.alttag', ['page_name' => 'Alt Tag', 'navstatus' => "alttag", 'allimages' => $allimages]);
     }
 
