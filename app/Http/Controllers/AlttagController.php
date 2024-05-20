@@ -34,6 +34,11 @@ class AlttagController extends Controller
         $blog = blog::select('id', 'image')->get();
 
         $allimages = [];
+        $allimages['about_contact']='';
+        $allimages['banner_video']='';
+        $allimages['Service']='';
+        $allimages['blog']='';
+        
         $i = 0;
         foreach ($aboutimage as $image) {
             if ($image->image != null) {

@@ -39,7 +39,10 @@ class ServiceController extends Controller
         $data = $request->except('_token');
         // dd($request->file('fileToUpload'));
 
-        $request->validate(['name' => 'unique:services,name']);
+        $request->validate([['name' => 'unique:services,name'],
+       ['shortdescription' => ['required|max:255']],
+        ['description' => 'required|max:255'],
+    ]);
 
         if ($request->hasFile('fileToUpload')) {
             //dd($data);

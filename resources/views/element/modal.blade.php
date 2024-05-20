@@ -84,13 +84,13 @@
                          <div class="mt-4">
                              <label class="control-label">Short Description</label>
                              limit <span class="limit">0</span>/200
-                             <textarea name="shortdescription" class="form-control form-control-user" id="shortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="200" required></textarea>
+                             <textarea name="shortdescription" class="form-control form-control-user" id="addshortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="200" ></textarea>
                          </div>
 
                          <div class="mt-4">
                              <label class="control-label">Description</label>
                              limit <span class="limit">0</span>/2000
-                             <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description5" placeholder="Enter Service description..." value="" maxlength="2000" rows="10" cols="50" required></textarea>
+                             <textarea name="description" class="form-control form-control-user" id="adddescription" aria-describedby="description5" placeholder="Enter Service description..." value="" maxlength="2000" rows="10" cols="50" ></textarea>
                          </div>
 
                          <div class="mt-4">

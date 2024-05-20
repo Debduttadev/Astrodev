@@ -70,12 +70,12 @@
                                     <img src="{{ URL::to('service')."/".$data->Image }}" class="rounded  img-fluid" alt="..." hight=200px width=200px>
                                 </div>
                             </td>
-                            <td>{{ $data->shortdescription }}</td>
+                            <td>{{ strip_tags($data->shortdescription) }}</td>
                             @php
                             $small = substr( strip_tags($data->description), 0, 200);
 
                             @endphp
-                            <td>{{ $small }}<a class="more" msg="{!!$data->description!!}">
+                            <td>{{ $small }}<a class="more" descriptiondata="{!!htmlentities($data->description)!!}">
                                     ...more
                                 </a></td>
                             <td>

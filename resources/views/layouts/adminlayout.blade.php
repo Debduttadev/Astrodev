@@ -112,9 +112,6 @@
 
   <script src="{{ URL::to('admin/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ URL::to('admin/js/scripts.js') }}"></script>
-  <script src="{{ URL::to('admin/js/Chart.min.js') }}" crossorigin=" anonymous"></script>
-  <script src="{{ URL::to('admin/assets/demo/chart-area-demo.js') }}"></script>
-  <script src="{{ URL::to('admin/assets/demo/chart-bar-demo.js') }}"></script>
   <script src="{{ URL::to('admin/js/simple-datatables.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ URL::to('admin/js/datatables-simple-demo.js') }}"></script>
   <script src="{{ URL::to('admin/js/datatables-simple-demo.js') }}"></script>
