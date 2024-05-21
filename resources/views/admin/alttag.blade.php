@@ -2,7 +2,7 @@
 @section('content')
 <!-- Begin Page Content -->
 <main>
-    <button id="topbutton" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
+
     <div class="container-fluid px-4">
         <h1 class="mt-4">
             @if ($page_name === null)
@@ -83,6 +83,8 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <p class="fw-medium">No image available</p>
                 @endif
             </div>
 
@@ -118,6 +120,8 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <p class="fw-medium">No image available</p>
                 @endif
             </div>
 
@@ -153,6 +157,8 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <p class="fw-medium">No image available</p>
                 @endif
             </div>
 
@@ -188,6 +194,8 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <p class="fw-medium">No image available</p>
                 @endif
             </div>
         </div>

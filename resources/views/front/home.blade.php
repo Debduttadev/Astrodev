@@ -2,69 +2,45 @@
 @section('content')
 <!-- Begin Page Content -->
 <section id="slider">
-    <div class="rev_slider_wrapper fullscreen-container" data-alias="agency-website" id="rev_slider_280_1_wrapper" style="background-color:#fff;padding:0px;height:1080px;">
-        <!-- START REVOLUTION SLIDER 5.1.4 fullscreen mode -->
-        <div class="rev_slider fullscreenbanner" id="rev_slider_nagency" style="display:none;">
-            <ul style="display:none;">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
 
-                <!-- slider Item 1 -->
-                <li data-index="rs-1" data-transition="fadetotopfadefrombottom" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500" data-rotate="0" data-saveperformance="off" data-title="N.Agency" data-description="">
-                    <img src="img/slider/s1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption NotGeneric-Title tp-resizeme white-color rs-parallaxlevel-3" id="slide-1-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-160','-170','-170','-120']" data-fontsize="['70','60','60','36']" data-lineheight="['70','60','60','50']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rZ:-35deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1000" data-splitin="chars" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap;">Welcome to n. Agency
-                    </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption NotGeneric-SubTitle tp-resizeme white-color rs-parallaxlevel-4" id="slide-1-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-80','-90','-90','-60']" data-fontsize="['28','24','24','20']" data-lineheight="['28','24','36','30']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap;">#1 digital solution in the city
-                    </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption rs-parallaxlevel-5" id="slide-1-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['15','5','5','10']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);cursor:pointer;" data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_out="x:inherit;y:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style=""><a data-scroll href='#portfolio' class='btn btn-main btn-white'>View Projects</a>
-                    </div>
-
-                </li>
-
-                <!-- slider Item 2 -->
-                <li data-index="rs-3" data-transition="slideremoveright" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500" data-rotate="0" data-saveperformance="off">
-                    <img src="img/slider/s3.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption NotGeneric-Title tp-resizeme black-color rs-parallaxlevel-3" id="slide-2-layer-1" data-x="['left','left','left','left']" data-hoffset="['0','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-100','-100','-85']" data-fontsize="['70','60','60','36']" data-lineheight="['70','60','60','50']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rx:0deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1000" data-splitin="chars" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap;">Creative & Digital
-                    </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption tp-resizeme NotGeneric-Text black-color rs-parallaxlevel-4" id="slide-2-layer-2" data-x="['left','left','left','left']" data-hoffset="['0','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','-10']" data-fontsize="['18','18','20','14']" data-lineheight="['28','28','32','24']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6;">Particular unaffected projection sentiments no my. Music marry as at cause<br> party worth weeks. Saw how marianne graceful dissuade new outlived.<br> Uneasy no settle whence nature narrow.
-                    </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption rs-parallaxlevel-5" id="slide-2-layer-3" data-x="['left','left','left','left']" data-hoffset="['0','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['105','105','115','85']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);cursor:pointer;" data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_out="x:inherit;y:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style=""><a data-scroll href='#portfolio' class='btn btn-main btn-black'>View Projects</a>
-                    </div>
-
-                </li>
-
-                <!-- slider Item 3 -->
-                <li data-index="rs-2" data-slotamount="default" data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut" data-masterspeed="1500" data-rotate="0" data-saveperformance="off">
-                    <img alt="" class="rev-slidebg" data-bgparallax="3" data-bgposition="center center" data-duration="5000" data-ease="Linear.easeNone" data-kenburns="on" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="110" src="img/slider/s2.jpg">
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption NotGeneric-Title tp-resizeme white-color rs-parallaxlevel-3" id="slide-3-layer-1" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-75','-70','-70','-45']" data-fontsize="['70','60','60','36']" data-lineheight="['70','60','60','50']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1000" data-splitin="chars" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="z-index: 5; white-space: nowrap;">100% Responsive.
-                    </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption NotGeneric-SubTitle white-color tp-resizeme rs-parallaxlevel-2" id="slide-3-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-fontsize="['28','24','24','20']" data-lineheight="['28','24','36','30']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap;">Create Beautiful Websites
-                    </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption rs-parallaxlevel-5" id="slide-3-layer-3" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['90','90','100','75']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);cursor:pointer;" data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_out="x:inherit;y:inherit;" data-start="2000" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"next","delay":""}]' data-responsive_offset="on" data-responsive="off" style=""><a href='#' class='btn btn-main btn-transparent-light'>Purchase Now</a>
-                    </div>
-
-                </li>
-
-            </ul>
-            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="...">
+                <div class="carousel-caption">
+                    this is image
+                </div>
+            </div>
+            @foreach ($banner_video as $key => $thumbnail )
+            @if($key != 0)
+            <div class="item">
+                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="...">
+                <div class="carousel-caption">
+                    this is image
+                </div>
+            </div>
+            @endif
+            @endforeach
         </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
 
     <!-- Start Service -->
     <section id="service" class="p-top-80 p-bottom-80">
@@ -166,9 +142,9 @@
 
                 <!-- Portfolio Item -->
                 <div class="pf-item branding">
-                    <a href="img/portfolio/1.jpg" class="pf-style lightbox-image mfp-image">
+                    <a href="{{ URL::to('frontend/img/portfolio/1.jpg') }}" class="pf-style lightbox-image mfp-image">
                         <div class="pf-image">
-                            <img src="img/portfolio/1.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/1.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -185,9 +161,9 @@
 
                 <!-- Portfolio Item -->
                 <div class="pf-item graphic webdesign">
-                    <a href="img/portfolio/2.jpg" class="pf-style lightbox-image mfp-image">
+                    <a href="{{ URL::to('frontend/img/portfolio/2.jpg') }}" class="pf-style lightbox-image mfp-image">
                         <div class="pf-image">
-                            <img src="img/portfolio/2.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/2.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -206,7 +182,7 @@
                 <div class="pf-item video webdesign">
                     <a href="https://www.youtube.com/watch?v=6D-A6CL3Pv8" class="pf-style lightbox-video mfp-iframe">
                         <div class="pf-image">
-                            <img src="img/portfolio/3.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/3.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -225,7 +201,7 @@
                 <div class="pf-item video webdesign">
                     <a href="https://www.youtube.com/watch?v=6D-A6CL3Pv8" class="pf-style lightbox-video mfp-iframe">
                         <div class="pf-image">
-                            <img src="img/portfolio/4.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/4.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -244,7 +220,7 @@
                 <div class="pf-item branding graphic">
                     <a href="img/portfolio/5.jpg" class="pf-style lightbox-image mfp-image">
                         <div class="pf-image">
-                            <img src="img/portfolio/5.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/5.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -263,7 +239,7 @@
                 <div class="pf-item branding graphic">
                     <a href="img/portfolio/6.jpg" class="pf-style lightbox-image mfp-image">
                         <div class="pf-image">
-                            <img src="img/portfolio/6.jpg" alt="">
+                            <img src="{{ URL::to('frontend/img/portfolio/6.jpg') }}" alt="">
                             <div class="overlay">
                                 <div class="overlay-caption">
                                     <div class="overlay-content">
@@ -310,7 +286,7 @@
                 <div class="col-md-6">
 
                     <div class="feature-image">
-                        <img src="img/sample1.png" alt="Feature Image" class="img-responsive wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s" />
+                        <img src="{{ URL::to('frontend/img/sample1.png') }}" alt="Feature Image" class="img-responsive wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s" />
                     </div>
 
                 </div> <!-- /.col -->
@@ -369,7 +345,7 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </div>
-                            <img src="img/team/1.jpg" alt="" />
+                            <img src="{{ URL::to('frontend/img/team/1.jpg') }}" alt="" />
                         </div>
                         <div class="team-item-info">
                             <div class="team-item-name">
@@ -393,7 +369,7 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </div>
-                            <img src="img/team/2.jpg" alt="" />
+                            <img src="{{ URL::to('frontend/img/team/2.jpg') }}" alt="" />
                         </div>
                         <div class="team-item-info">
                             <div class="team-item-name">
@@ -417,7 +393,7 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </div>
-                            <img src="img/team/3.jpg" alt="" />
+                            <img src="{{ URL::to('frontend/img/team/3.jpg') }}" alt="" />
                         </div>
                         <div class="team-item-info">
                             <div class="team-item-name">
@@ -441,7 +417,7 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                 </div>
                             </div>
-                            <img src="img/team/4.jpg" alt="" />
+                            <img src="{{ URL::to('frontend/img/team/4.jpg') }}" alt="" />
                         </div> <!-- /.team-item-image -->
                         <div class="team-item-info">
                             <div class="team-item-name">
@@ -671,7 +647,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Residence you satisfied and rapturous certainty two. Procured outweigh as outlived so so. On in bringing graceful proposal blessing of marriage outlived. Son rent face our loud near.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="img/testimonial/1.jpg" alt="">
+                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/1.jpg') }}" alt="">
                 </div>
                 <h5 class="testimonial-author">Jenny Doe - Star Inc</h5>
             </div>
@@ -680,7 +656,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Excellent so to no sincerity smallness. Removal request delight if on he we. Unaffected in we by apartments astonished to decisively themselves. Offended ten old consider speaking.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="img/testimonial/2.jpg" alt="">
+                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/2.jpg') }}" alt="">
                 </div>
                 <h5 class="testimonial-author">Kathy Doe - Service Corp</h5>
             </div>
@@ -689,7 +665,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Advanced and procured civility not absolute put continue. Overcame breeding or my concerns removing desirous so absolute. My melancholy unpleasing imprudence considered in advantages.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="img/testimonial/3.jpg" alt="">
+                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/3.jpg') }}" alt="">
                 </div>
                 <h5 class="testimonial-author">Jack Doe - Inka Design</h5>
             </div>
@@ -723,7 +699,7 @@
                     <!-- === Blog item 1 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="blog_single_post.html"><img src="img/blog/b1.jpg" alt=""></a>
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b1.jpg') }}" alt=""></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
@@ -732,16 +708,16 @@
                         </div><!--post info-->
 
                         <div class="blog-post-body">
-                            <h4><a class="title" href="blog_single_post.html">Working in Cool Head</a></h4>
+                            <h4><a class="title" href="#">Working in Cool Head</a></h4>
                             <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="blog_single_post.html" class="read-more">Read More >></a>
+                            <a href="#" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
 
                     <!-- === Blog item 2 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="blog_single_post.html"><img src="img/blog/b2.jpg" alt=""></a>
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b2.jpg') }}" alt=""></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
@@ -750,16 +726,16 @@
                         </div><!--post info-->
 
                         <div class="blog-post-body">
-                            <h4><a class="title" href="blog_single_post.html">Sing me to sleep</a></h4>
+                            <h4><a class="title" href="#">Sing me to sleep</a></h4>
                             <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="blog_single_post.html" class="read-more">Read More >></a>
+                            <a href="#" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
 
                     <!-- === Blog item 3 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="blog_single_post.html"><img src="img/blog/b3.jpg" alt=""></a>
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b3.jpg') }}" alt=""></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
@@ -768,16 +744,16 @@
                         </div><!--post info-->
 
                         <div class="blog-post-body">
-                            <h4><a class="title" href="blog_single_post.html">Hold Me Tight</a></h4>
+                            <h4><a class="title" href="#">Hold Me Tight</a></h4>
                             <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="blog_single_post.html" class="read-more">Read More >></a>
+                            <a href="#" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
 
                     <!-- === Blog item 4 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="blog_single_post.html"><img src="img/blog/b4.jpg" alt=""></a>
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b4.jpg') }}" alt=""></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
@@ -786,9 +762,9 @@
                         </div><!--post info-->
 
                         <div class="blog-post-body">
-                            <h4><a class="title" href="blog_single_post.html">Only I can do it</a></h4>
+                            <h4><a class="title" href="#">Only I can do it</a></h4>
                             <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="blog_single_post.html" class="read-more">Read More >></a>
+                            <a href="#" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
 
@@ -818,37 +794,37 @@
 
                     <!-- === Client 1 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/1.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/1.png') }}" alt="">
                     </div>
 
                     <!-- === Client 2 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/2.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/2.png') }}" alt="">
                     </div>
 
                     <!-- === Client 3 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/3.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/3.png') }}" alt="">
                     </div>
 
                     <!-- === Client 4 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/4.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/4.png') }}" alt="">
                     </div>
 
                     <!-- === Client 5 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/5.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/5.png') }}" alt="">
                     </div>
 
                     <!-- === Client 6 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/6.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/6.png') }}" alt="">
                     </div>
 
                     <!-- === Client 7 === -->
                     <div class="client-item text-center">
-                        <img class="img-responsive" src="img/client/7.png" alt="">
+                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/7.png') }}" alt="">
                     </div>
 
                 </div><!-- /#owl-testimonials -->

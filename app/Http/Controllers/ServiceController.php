@@ -39,10 +39,11 @@ class ServiceController extends Controller
         $data = $request->except('_token');
         // dd($request->file('fileToUpload'));
 
-        $request->validate([['name' => 'unique:services,name'],
-       ['shortdescription' => ['required|max:255']],
-        ['description' => 'required|max:255'],
-    ]);
+        $request->validate([
+            ['name' => 'unique:services,name'],
+            ['shortdescription' => ['required|max:255']],
+            ['description' => 'required|max:255'],
+        ]);
 
         if ($request->hasFile('fileToUpload')) {
             //dd($data);
@@ -55,10 +56,8 @@ class ServiceController extends Controller
             $filename = 'Service' . time() . '.' . $ext;
             $file->move(public_path('service'), $filename);
 
-            $shortdescription = str_replace("\"", "&quot;", $data['shortdescription']);
-            $shortdescription = str_replace("\'", "&apos;", $shortdescription);
-            $description = str_replace("\"", "&quot;", $data['description']);
-            $description = str_replace("\'", "&apos;", $description);
+            $shortdescription = htmlentities($data['shortdescription']);
+            $description = htmlentities($data['description']);
 
             $newService = new Service;
             $newService->name = $data['name'];
@@ -113,13 +112,10 @@ class ServiceController extends Controller
     public function updateservice(Request $request)
     {
         $data = $request->except('_token');
-        //dd($request);
 
-        $shortdescription = str_replace("\"", "&quot;", $data['shortdescription']);
-        $shortdescription = str_replace("\'", "&apos;", $shortdescription);
 
-        $description = str_replace("\"", "&quot;", $data['description']);
-        $description = str_replace("\'", "&apos;", $description);
+        $shortdescription = htmlentities($data['shortdescription']);
+        $description = htmlentities($data['description']);
 
         $updatedata['name'] = $request->name;
         $updatedata['shortdescription'] = $request->shortdescription;

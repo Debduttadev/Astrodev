@@ -30,109 +30,131 @@ class AlttagController extends Controller
         // about page images
         $aboutimage = about_contact::select('id', 'image')->get();
         $bannervideos = banner_video::select('id', 'thumbnail')->get();
-        $service = Service::select('id', 'Image')->get();
-        $blog = blog::select('id', 'image')->get();
+        $serviceimage = Service::select('id', 'Image')->get();
+        $blogimage = blog::select('id', 'image')->get();
 
         $allimages = [];
-        $allimages['about_contact']='';
-        $allimages['banner_video']='';
-        $allimages['Service']='';
-        $allimages['blog']='';
-        
-        $i = 0;
-        foreach ($aboutimage as $image) {
-            if ($image->image != null) {
-                $alttagdetails = alttag::where([
-                    ['relatedid', $image->id],
-                    ['page', 'about_contact'],
-                ])->first();
+        $allimages['about_contact'] = [];
+        $allimages['banner_video'] = [];
+        $allimages['Service'] = [];
+        $allimages['blog'] = [];
 
-                if (!empty($alttagdetails)) {
 
-                    $allimages['about_contact'][$i]['id'] = $alttagdetails->id;
-                    $allimages['about_contact'][$i]['page'] = $alttagdetails->page;
-                    $allimages['about_contact'][$i]['alttag'] = $alttagdetails->alttag;
-                    $allimages['about_contact'][$i]['title'] = $alttagdetails->title;
-                } else {
-                    $allimages['about_contact'][$i]['id'] = '';
-                    $allimages['about_contact'][$i]['page'] = 'about_contact';
-                    $allimages['about_contact'][$i]['alttag'] = "";
-                    $allimages['about_contact'][$i]['title'] = "";
+        if (!empty($aboutimage)) {
+            $i = 0;
+            foreach ($aboutimage as $image) {
+                if ($image->image != null) {
+                    $alttagdetails = alttag::where([
+                        ['relatedid', $image->id],
+                        ['page', 'about_contact'],
+                    ])->first();
+
+                    if (!empty($alttagdetails)) {
+
+                        $allimages['about_contact'][$i]['id'] = $alttagdetails->id;
+                        $allimages['about_contact'][$i]['page'] = $alttagdetails->page;
+                        $allimages['about_contact'][$i]['alttag'] = $alttagdetails->alttag;
+                        $allimages['about_contact'][$i]['title'] = $alttagdetails->title;
+                    } else {
+                        $allimages['about_contact'][$i]['id'] = '';
+                        $allimages['about_contact'][$i]['page'] = 'about_contact';
+                        $allimages['about_contact'][$i]['alttag'] = "";
+                        $allimages['about_contact'][$i]['title'] = "";
+                    }
+                    $allimages['about_contact'][$i]['image'] = $image->image;
+                    $allimages['about_contact'][$i]['relatedid'] = $image->id;
+                    $i++;
                 }
-                $allimages['about_contact'][$i]['image'] = $image->image;
-                $allimages['about_contact'][$i]['relatedid'] = $image->id;
-                $i++;
             }
+        } else {
+            $allimages['about_contact'] = '';
         }
-        $j = 0;
-        foreach ($bannervideos as $image) {
-            if ($image->thumbnail != null) {
-                $alttagdetails = alttag::where([
-                    ['relatedid', $image->id],
-                    ['page', 'banner_video'],
-                ])->first();
-                if (!empty($alttagdetails)) {
-                    $allimages['banner_video'][$j]['id'] = $alttagdetails->id;
-                    $allimages['banner_video'][$j]['page'] = $alttagdetails->page;
-                    $allimages['banner_video'][$j]['alttag'] = $alttagdetails->alttag;
-                    $allimages['banner_video'][$j]['title'] = $alttagdetails->title;
-                } else {
-                    $allimages['banner_video'][$j]['id'] = "";
-                    $allimages['banner_video'][$j]['page'] = "banner_video";
-                    $allimages['banner_video'][$j]['alttag'] = "";
-                    $allimages['banner_video'][$j]['title'] = "";
+
+        if (!empty($bannervideos)) {
+            $j = 0;
+            foreach ($bannervideos as $image) {
+                if ($image->thumbnail != null) {
+                    $alttagdetails = alttag::where([
+                        ['relatedid', $image->id],
+                        ['page', 'banner_video'],
+                    ])->first();
+                    if (!empty($alttagdetails)) {
+                        $allimages['banner_video'][$j]['id'] = $alttagdetails->id;
+                        $allimages['banner_video'][$j]['page'] = $alttagdetails->page;
+                        $allimages['banner_video'][$j]['alttag'] = $alttagdetails->alttag;
+                        $allimages['banner_video'][$j]['title'] = $alttagdetails->title;
+                    } else {
+                        $allimages['banner_video'][$j]['id'] = "";
+                        $allimages['banner_video'][$j]['page'] = "banner_video";
+                        $allimages['banner_video'][$j]['alttag'] = "";
+                        $allimages['banner_video'][$j]['title'] = "";
+                    }
+                    $allimages['banner_video'][$j]['image'] = $image->thumbnail;
+                    $allimages['banner_video'][$j]['relatedid'] = $image->id;
+                    $j++;
                 }
-                $allimages['banner_video'][$j]['image'] = $image->thumbnail;
-                $allimages['banner_video'][$j]['relatedid'] = $image->id;
-                $j++;
             }
+        } else {
+            $allimages['banner_video'] = '';
         }
-        $k = 0;
-        foreach ($service as $image) {
-            if ($image->Image != null) {
-                $alttagdetails = alttag::where([
-                    ['relatedid', $image->id],
-                    ['page', 'Service'],
-                ])->first();
-                if (!empty($alttagdetails)) {
-                    $allimages['Service'][$k]['id'] = $alttagdetails->id;
-                    $allimages['Service'][$k]['page'] = $alttagdetails->page;
-                    $allimages['Service'][$k]['alttag'] = $alttagdetails->alttag;
-                    $allimages['Service'][$k]['title'] = $alttagdetails->title;
-                } else {
-                    $allimages['Service'][$k]['id'] = "";
-                    $allimages['Service'][$k]['page'] = "Service";
-                    $allimages['Service'][$k]['alttag'] = "";
-                    $allimages['Service'][$k]['title'] = "";
+
+        if (!empty($serviceimage)) {
+            $k = 0;
+            foreach ($serviceimage as $image) {
+                if ($image->Image != null) {
+                    $alttagdetails = alttag::where([
+                        ['relatedid', $image->id],
+                        ['page', 'Service'],
+                    ])->first();
+                    if (!empty($alttagdetails)) {
+                        $allimages['Service'][$k]['id'] = $alttagdetails->id;
+                        $allimages['Service'][$k]['page'] = $alttagdetails->page;
+                        $allimages['Service'][$k]['alttag'] = $alttagdetails->alttag;
+                        $allimages['Service'][$k]['title'] = $alttagdetails->title;
+                    } else {
+                        $allimages['Service'][$k]['id'] = "";
+                        $allimages['Service'][$k]['page'] = "Service";
+                        $allimages['Service'][$k]['alttag'] = "";
+                        $allimages['Service'][$k]['title'] = "";
+                    }
+                    $allimages['Service'][$k]['image'] = $image->Image;
+                    $allimages['Service'][$k]['relatedid'] = $image->id;
+                    $k++;
                 }
-                $allimages['Service'][$k]['image'] = $image->Image;
-                $allimages['Service'][$k]['relatedid'] = $image->id;
-                $k++;
             }
+        } else {
+            $allimages['Service'] = '';
         }
-        $l = 0;
-        foreach ($blog as $image) {
-            if ($image->image != null) {
-                $alttagdetails = alttag::where([
-                    ['relatedid', $image->id],
-                    ['page', 'blog'],
-                ])->first();
-                if (!empty($alttagdetails)) {
-                    $allimages['blog'][$l]['id'] = $alttagdetails->id;
-                    $allimages['blog'][$l]['page'] = $alttagdetails->page;
-                    $allimages['blog'][$l]['alttag'] = $alttagdetails->alttag;
-                    $allimages['blog'][$l]['title'] = $alttagdetails->title;
-                } else {
-                    $allimages['blog'][$l]['id'] = "";
-                    $allimages['blog'][$l]['page'] = "blog";
-                    $allimages['blog'][$l]['alttag'] = "";
-                    $allimages['blog'][$l]['title'] = "";
+
+        if (!empty($blogimage)) {
+            $l = 0;
+            foreach ($blogimage as $image) {
+                if ($image->image != null) {
+                    $alttagdetails = alttag::where([
+                        ['relatedid', $image->id],
+                        ['page', 'blog'],
+                    ])->first();
+                    if (!empty($alttagdetails)) {
+                        $allimages['blog'][$l]['id'] = $alttagdetails->id;
+                        $allimages['blog'][$l]['page'] = $alttagdetails->page;
+                        $allimages['blog'][$l]['alttag'] = $alttagdetails->alttag;
+                        $allimages['blog'][$l]['title'] = $alttagdetails->title;
+                    } else {
+                        $allimages['blog'][$l]['id'] = "";
+                        $allimages['blog'][$l]['page'] = "blog";
+                        $allimages['blog'][$l]['alttag'] = "";
+                        $allimages['blog'][$l]['title'] = "";
+                    }
+                    $allimages['blog'][$l]['image'] = $image->image;
+                    $allimages['blog'][$l]['relatedid'] = $image->id;
+                    $l++;
                 }
-                $allimages['blog'][$l]['image'] = $image->image;
-                $allimages['blog'][$l]['relatedid'] = $image->id;
-                $l++;
             }
+        } else {
+            $allimages['blog'] = '';
         }
+
+        //dd($allimages);
 
         return view('admin.alttag', ['page_name' => 'Alt Tag', 'navstatus' => "alttag", 'allimages' => $allimages]);
     }

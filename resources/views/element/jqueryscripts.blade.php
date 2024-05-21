@@ -246,6 +246,7 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 150,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -254,13 +255,14 @@
             convert_urls: false,
         });
 
-        
+
         tinymce.init({
             selector: '#adddescription',
             license_key: 'gpl',
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -275,6 +277,7 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 150,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -289,6 +292,7 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -303,6 +307,7 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -316,7 +321,8 @@
             license_key: 'gpl',
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
-            max_height: 200,
+            max_height: 400,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -331,6 +337,7 @@
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
+            extended_valid_elements: 'b i ',
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
@@ -458,7 +465,7 @@
         });
 
         function scrollFunction() {
-            
+
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 mybutton.style.display = "block";
             } else {

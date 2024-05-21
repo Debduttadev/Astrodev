@@ -10,7 +10,7 @@
   <meta name="author" content="" />
   <!-- Title -->
   <title>{{ env('APP_NAME') }}</title>
-  <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/astroachariyalogo-01-42d8b8ef.png') }}" />
+  <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogo icon-01-01.png') }}" />
 
   <link href="{{ URL::to('admin/css/style.min.css') }}" rel="stylesheet" />
   <link href="{{ URL::to('admin/css/styles.css') }}" rel="stylesheet" />
@@ -101,6 +101,7 @@
 
     <div id="layoutSidenav_content">
       <!-- Main content -->
+      <button id="topbutton" title="Go to top"><i class="fa-solid fa-angle-up"></i></button>
       @yield('content')
       @include('element.adminfooter')
     </div>

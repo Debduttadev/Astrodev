@@ -25,7 +25,11 @@ class HomeController extends Controller
      */
     public function home()
     {
-
-        return view('front.home');
+        $banner_video = banner_video::where([
+            ['thumbnailtype', '0'],
+            ['show', '1'],
+        ])->get();
+        //dd($banner_video);
+        return view('front.home', ['banner_video' => $banner_video]);
     }
 }
