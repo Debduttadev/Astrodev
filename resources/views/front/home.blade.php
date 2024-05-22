@@ -14,17 +14,11 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="...">
-                <div class="carousel-caption">
-                    this is image
-                </div>
             </div>
             @foreach ($banner_video as $key => $thumbnail )
             @if($key != 0)
             <div class="item">
-                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="...">
-                <div class="carousel-caption">
-                    this is image
-                </div>
+                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="..." hight="160" width="90">
             </div>
             @endif
             @endforeach
@@ -42,225 +36,6 @@
     </div>
 
 
-    <!-- Start Service -->
-    <section id="service" class="p-top-80 p-bottom-80">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s"><strong>Service</strong></h2>
-                        <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Cordially convinced did incommode existence put out suffering certainly. Besides another and saw ferrars limited ten say unknown. So mainly it was not that difficult to understand.</em></p>
-                    </div>
-                </div> <!-- /.col -->
-            </div> <!-- /.row -->
-
-
-            <div class="row">
-
-                <!-- Service Item 1 -->
-                <div class="col-md-3 col-sm-6 m-bottom-20">
-                    <div class="service wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <div class="service-icon">
-                            <i class="fa fa-desktop" aria-hidden="true"></i>
-                        </div>
-                        <h4>Web Design</h4>
-                        <div class="service-text">
-                            <p>On at tolerably depending do perceived. Luckily eat joy see own shyness minuter. So before remark at depart Did son unreserved.</p>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-                <!-- Service Item 2 -->
-                <div class="col-md-3 col-sm-6 m-bottom-20">
-                    <div class="service wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <div class="service-icon">
-                            <i class="fa fa-video-camera" aria-hidden="true"></i>
-                        </div>
-                        <h4>Video Production</h4>
-                        <div class="service-text">
-                            <p>Have spot part for his quit may. Enable it is square my an regard. Often merit stuff first oh up hills as his memorey got null in recording.</p>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-                <!-- Service Item 3 -->
-                <div class="col-md-3 col-sm-6 m-bottom-20">
-                    <div class="service wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <div class="service-icon">
-                            <i class="fa fa-modx" aria-hidden="true"></i>
-                        </div>
-                        <h4>Advertising</h4>
-                        <div class="service-text">
-                            <p>There spoke happy for you are out. Fertile how old address did showing because sitting replied six. Luckily eat joy see own shyness minuter.</p>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-                <!-- Service Item 4 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="service wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <div class="service-icon">
-                            <i class="fa fa-briefcase" aria-hidden="true"></i>
-                        </div>
-                        <h4>Branding</h4>
-                        <div class="service-text">
-                            <p>So striking at of to welcomed resolved. Northward by described up household therefore attention. Excellence decisively nay man yet impress.</p>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-            </div> <!-- /.row -->
-
-        </div> <!-- /.container -->
-    </section>
-    <!-- End Service -->
-
-    <!-- Start Portfolio -->
-    <section id="portfolio" class="light-bg p-top-80 p-bottom-80">
-        <div class="container">
-
-            <!-- Section Title -->
-            <div class="section-title text-center m-bottom-30">
-                <h2><strong>Portfolio</strong></h2>
-                <div class="divider-center-small"></div>
-            </div>
-
-            <!-- Portfolio-filter -->
-            <ul class="pf-filter text-center list-inline">
-                <li><a href="#" data-filter="*" class="iso-active iso-button">All</a></li>
-                <li><a href="#" data-filter=".graphic" class="iso-button">Graphic</a></li>
-                <li><a href="#" data-filter=".webdesign" class="iso-button">Web Design</a></li>
-                <li><a href="#" data-filter=".branding" class="iso-button">Branding</a></li>
-                <li><a href="#" data-filter=".video" class="iso-button">Video</a></li>
-            </ul>
-
-            <!-- Portfolio -->
-            <div class="portfolio portfolio-isotope col-3 gutter">
-
-                <!-- Portfolio Item -->
-                <div class="pf-item branding">
-                    <a href="{{ URL::to('frontend/img/portfolio/1.jpg') }}" class="pf-style lightbox-image mfp-image">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/1.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Branding</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-                <!-- Portfolio Item -->
-                <div class="pf-item graphic webdesign">
-                    <a href="{{ URL::to('frontend/img/portfolio/2.jpg') }}" class="pf-style lightbox-image mfp-image">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/2.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Graphic, Web Design</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-                <!-- Portfolio Item -->
-                <div class="pf-item video webdesign">
-                    <a href="https://www.youtube.com/watch?v=6D-A6CL3Pv8" class="pf-style lightbox-video mfp-iframe">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/3.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Video, Web Design</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-                <!-- Portfolio Item -->
-                <div class="pf-item video webdesign">
-                    <a href="https://www.youtube.com/watch?v=6D-A6CL3Pv8" class="pf-style lightbox-video mfp-iframe">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/4.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Video, Web Design</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-                <!-- Portfolio Item -->
-                <div class="pf-item branding graphic">
-                    <a href="img/portfolio/5.jpg" class="pf-style lightbox-image mfp-image">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/5.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Branding, Graphic</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-                <!-- Portfolio Item -->
-                <div class="pf-item branding graphic">
-                    <a href="img/portfolio/6.jpg" class="pf-style lightbox-image mfp-image">
-                        <div class="pf-image">
-                            <img src="{{ URL::to('frontend/img/portfolio/6.jpg') }}" alt="">
-                            <div class="overlay">
-                                <div class="overlay-caption">
-                                    <div class="overlay-content">
-                                        <div class="pf-info white-color">
-                                            <h4 class="pf-title">Project Name</h4>
-                                            <p>Branding, Graphic</p>
-                                        </div> <!-- .pf-info -->
-                                    </div> <!-- .overlay-content -->
-                                </div> <!-- .overlay-caption -->
-                            </div> <!-- .overlay -->
-                        </div> <!-- .pf-image -->
-                    </a> <!-- .pf-style -->
-                </div>
-
-            </div> <!-- Portfolio -->
-
-        </div> <!-- /.container -->
-    </section>
-    <!-- End Portfolio -->
-
-
     <!-- Start Regular Section -->
     <section class="p-top-80 p-bottom-80">
         <div class="container">
@@ -268,25 +43,17 @@
 
                 <div class="col-md-6">
                     <!-- Section Title -->
-                    <div class="m-bottom-30">
-                        <h2 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s">We Help Grow Your Business</h2>
-                        <div class="divider-small wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s"></div>
-                    </div>
-
                     <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <p>Calling observe for who pressed raising his. Can connection instrument astonished unaffected his motionless preference. Announcing say boy precaution unaffected.Do to be agreeable conveying oh assurance. Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening. Park gate sell they west hard for the. Abode stuff noisy manor blush yet the far. </p>
-                        <p>Up colonel so between removed so do. Years use place decay sex worth drift age. Men lasting out end article express fortune demands own charmed. About are are money ask how seven.</p>
+                        {!! html_entity_decode($about_contact->title)!!}
                     </div>
 
-                    <a data-scroll href="#contact" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">Contact Us</a>
-
-
+                    <a data-scroll href="#about" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">Know more</a>
                 </div> <!-- /.col -->
 
-                <div class="col-md-6">
+                <div class="col-md-4 col-md-offset-2">
 
                     <div class="feature-image">
-                        <img src="{{ URL::to('frontend/img/sample1.png') }}" alt="Feature Image" class="img-responsive wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.6s" />
+                        <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle" data-wow-duration="1s" data-wow-delay="0.6s" />
                     </div>
 
                 </div> <!-- /.col -->
@@ -295,140 +62,47 @@
         </div> <!-- /.container -->
     </section>
     <!-- End Regular Section -->
-
-
-    <!-- Start Video Section -->
-    <section class="video-bg overlay-dark" style="background-image:url(img/video-bg.jpg)">
-        <div class="js-height-full container">
-            <!-- video setting -->
-            <div class="video-player" data-property="{videoURL:'https://youtu.be/dwfjayxRvqw',containment:'.video-bg',autoPlay:true, mute:true, loop:true, showControls:false, startAt:0, opacity:1}"></div>
-
-            <div class="vertical-section">
-                <div class="vertical-content">
-                    <div class="video-caption text-center white-color">
-                        <h2 class="p-top-20">Watch Our Video</h2>
-                        <div class="divider-center-small divider-white"></div>
-                        <h6 class="p-bottom-20">Youtube Video Background {Full Height}</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Video Section -->
-
-
+    <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
     <!-- Start Team -->
-    <section id="team" class="p-top-80 p-bottom-50">
+    <section id="service" class="p-top-80 p-bottom-50">
         <div class="container">
 
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Team Members</h2>
+                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Resolution possession discovered surrounded advantages has but few add. Yet walls times spoil put. Be it reserved contempt rendered smallest. Studied to passage it mention calling believe an.</em></p>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through astrology, Vastu, and palmistry. These ancient sciences, when understood and applied, unlock abundance for all.</em></p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
 
             <div class="row">
-
+                @foreach ($servicedata as $servicekey => $services )
                 <!-- === Team Item 1 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-30">
+                <div class="col-md-4 p-30">
                     <div class="team-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.9s">
                         <div class="team-item-image">
                             <div class="team-item-image-overlay">
                                 <div class="team-item-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#">more..</a>
                                 </div>
                             </div>
-                            <img src="{{ URL::to('frontend/img/team/1.jpg') }}" alt="" />
+                            <img src="{{ URL::to('service').'/'.$services->Image }}" alt="" />
                         </div>
                         <div class="team-item-info">
                             <div class="team-item-name">
-                                Stephen Joe
+                                {{$services->name}}
                             </div>
                             <div class="team-item-position">
-                                Director
+                                {!! html_entity_decode($services->shortdescription)!!}
                             </div>
                         </div>
                     </div>
                 </div> <!-- /.col -->
 
-                <!-- === Team Item 2 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-30">
-                    <div class="team-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                        <div class="team-item-image">
-                            <div class="team-item-image-overlay">
-                                <div class="team-item-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <img src="{{ URL::to('frontend/img/team/2.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-info">
-                            <div class="team-item-name">
-                                Laura Doe
-                            </div>
-                            <div class="team-item-position">
-                                Creative Director
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-                <!-- === Team Item 3 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-30">
-                    <div class="team-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                        <div class="team-item-image">
-                            <div class="team-item-image-overlay">
-                                <div class="team-item-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <img src="{{ URL::to('frontend/img/team/3.jpg') }}" alt="" />
-                        </div>
-                        <div class="team-item-info">
-                            <div class="team-item-name">
-                                Andy Doe
-                            </div>
-                            <div class="team-item-position">
-                                Marketing
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
-
-                <!-- === Team Item 4 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-30">
-                    <div class="team-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.9s">
-                        <div class="team-item-image">
-                            <div class="team-item-image-overlay">
-                                <div class="team-item-icons">
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                            <img src="{{ URL::to('frontend/img/team/4.jpg') }}" alt="" />
-                        </div> <!-- /.team-item-image -->
-                        <div class="team-item-info">
-                            <div class="team-item-name">
-                                Inani Joe
-                            </div>
-                            <div class="team-item-position">
-                                Sales
-                            </div>
-                        </div> <!-- /.team-item-info -->
-                    </div> <!-- /.team-item -->
-                </div> <!-- /.col -->
+                @endforeach
 
             </div> <!-- /.row -->
 
@@ -436,199 +110,61 @@
     </section>
     <!-- End Team -->
 
+    <!-- Start blog -->
+    <section id="youtube" class="p-top-80 p-bottom-80">
 
-    <!-- Start Skill/Why Choose Us -->
-    <section class="light-bg p-top-80 p-bottom-40">
-        <div class="container">
+        <div class="container ">
+
             <div class="row">
-
-                <div class="col-md-6 p-bottom-40">
+                <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
-                    <div class="m-bottom-30">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Our Skills</h2>
-                        <div class="divider-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                    <div class="section-title text-center m-bottom-40">
+                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h2>
+                        <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p>
                     </div>
-
-                    <!-- === Progress item 1 === -->
-                    <div class="progress-heading clearfix wow fadeIn">
-                        <h6 class="pull-left">Coding</h6>
-                        <p class="pull-right">80%</p>
-                    </div>
-                    <div class="progress progress-thin">
-                        <div class="progress-bar wow zoomIn" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" data-wow-delay="0.3s"></div>
-                    </div>
-
-                    <!-- === Progress item 2 === -->
-                    <div class="progress-heading clearfix wow fadeIn">
-                        <h6 class="pull-left">Design</h6>
-                        <p class="pull-right">90%</p>
-                    </div>
-                    <div class="progress progress-thin">
-                        <div class="progress-bar wow zoomIn" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;" data-wow-delay="0.3s"></div>
-                    </div>
-
-                    <!-- === Progress item 3 === -->
-                    <div class="progress-heading clearfix wow fadeIn">
-                        <h6 class="pull-left">Branding</h6>
-                        <p class="pull-right">60%</p>
-                    </div>
-                    <div class="progress progress-thin">
-                        <div class="progress-bar wow zoomIn" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;" data-wow-delay="0.3s"></div>
-                    </div>
-
-                    <!-- === Progress item 4 === -->
-                    <div class="progress-heading clearfix wow fadeIn">
-                        <h6 class="pull-left">Marketing</h6>
-                        <p class="pull-right">73%</p>
-                    </div>
-                    <div class="progress progress-thin">
-                        <div class="progress-bar wow zoomIn" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;" data-wow-delay="0.3s"></div>
-                    </div>
-
-                    <!-- === Progress item 5 === -->
-                    <div class="progress-heading clearfix wow fadeIn">
-                        <h6 class="pull-left">Consultancy</h6>
-                        <p class="pull-right">75%</p>
-                    </div>
-                    <div class="progress progress-thin">
-                        <div class="progress-bar wow zoomIn" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-wow-delay="0.3s">
-                        </div>
-                    </div>
-
                 </div> <!-- /.col -->
-
-                <div class="col-md-6 p-bottom-40">
-
-                    <!-- Section Title Right -->
-                    <div class="m-bottom-30">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Why Choose Us</h2>
-                        <div class="divider-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                    </div>
-
-                    <!-- === Accordion === -->
-                    <div id="accordion" class="panel-group wow fadeIn" data-wow-delay="0.6s">
-
-                        <!-- === Accordion item 1 === -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Necessary ye contented newspaper zealously</a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <p>Fat new smallness few supposing suspicion two. Course sir people worthy horses add entire suffer. How one dull get busy dare far. At principle perfectly by sweetness do.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- === Accordion item 2 === -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Add you viewing ten equally believe put</a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Connection too unaffected expression led son possession. New smiling friends and her another. Leaf she does none love high yet. Snug love will up bore as be.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- === Accordion item 3 === -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Believing neglected so allowance</a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Do am he horrible distance marriage so although. Afraid assure square so happen mr an before. His many same been well can high that. Forfeited did law eagerness allowance improving assurance bed.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> <!-- /.panel-group -->
-
-                </div> <!-- /.col -->
-
             </div> <!-- /.row -->
-        </div> <!-- /.container -->
-    </section>
-    <!-- End Skill/Why Choose Us -->
 
-
-    <!-- Start Stat -->
-    <section id="stat" class="p-top-80 p-bottom-40">
-        <div class="container">
             <div class="row">
+                <!-- === blog === -->
+                <div id="owl-youtube" class="owl-carousel owl-theme">
 
-                <!-- === Stats Item 1 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-40">
-                    <div class="stat-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <div class="stat-item-icon">
-                            <i class="fa fa-briefcase"></i>
-                        </div>
-                        <div class="stat-item-number">
-                            177
-                        </div>
-                        <div class="stat-item-text">
-                            Projects<br>Done
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
+                    <!-- === Blog item 1 === -->
+                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                        <div class="blog-media">
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b1.jpg') }}" alt=""></a>
+                        </div><!--post media-->
+                    </div> <!-- /.blog -->
 
-                <!-- === Stats Item 2 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-40">
-                    <div class="stat-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <div class="stat-item-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <div class="stat-item-number">
-                            123
-                        </div>
-                        <div class="stat-item-text">
-                            Happy<br>Clients
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
+                    <!-- === Blog item 2 === -->
+                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                        <div class="blog-media">
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b2.jpg') }}" alt=""></a>
+                        </div><!--post media-->
+                    </div> <!-- /.blog -->
 
-                <!-- === Stats Item 3 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-40">
-                    <div class="stat-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="stat-item-icon">
-                            <i class="fa fa-thumbs-up"></i>
-                        </div>
-                        <div class="stat-item-number">
-                            999
-                        </div>
-                        <div class="stat-item-text">
-                            Likes<br>Gained
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
+                    <!-- === Blog item 3 === -->
+                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                        <div class="blog-media">
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b3.jpg') }}" alt=""></a>
+                        </div><!--post media-->
+                    </div> <!-- /.blog -->
 
-                <!-- === Stats Item 4 === -->
-                <div class="col-md-3 col-sm-6 col-xs-6 p-bottom-40">
-                    <div class="stat-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <div class="stat-item-icon">
-                            <i class="fa fa-trophy"></i>
-                        </div>
-                        <div class="stat-item-number">
-                            101
-                        </div>
-                        <div class="stat-item-text">
-                            Awards<br>Received
-                        </div>
-                    </div>
-                </div> <!-- /.col -->
+                    <!-- === Blog item 4 === -->
+                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                        <div class="blog-media">
+                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b4.jpg') }}" alt=""></a>
+                        </div><!--post media-->
+                    </div> <!-- /.blog -->
+
+                </div><!-- /#owl-testimonials -->
 
             </div> <!-- /.row -->
+
         </div> <!-- /.container -->
+
     </section>
-    <!-- End Stat -->
 
 
     <!-- Start Testimonial -->
@@ -775,66 +311,6 @@
         </div> <!-- /.container -->
 
     </section>
-
-
-    <!-- Start client -->
-    <section id="client" class="light-bg p-top-80 p-bottom-80">
-
-        <!-- Section Title -->
-        <div class="section-title text-center m-bottom-40">
-            <h2>Our Clients</h2>
-            <div class="divider-center-small"></div>
-        </div>
-
-        <!-- === Clients === -->
-        <div class="container ">
-            <div class="row">
-
-                <div id="owl-clients" class="owl-carousel owl-theme client text-center">
-
-                    <!-- === Client 1 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/1.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 2 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/2.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 3 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/3.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 4 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/4.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 5 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/5.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 6 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/6.png') }}" alt="">
-                    </div>
-
-                    <!-- === Client 7 === -->
-                    <div class="client-item text-center">
-                        <img class="img-responsive" src="{{ URL::to('frontend/img/client/7.png') }}" alt="">
-                    </div>
-
-                </div><!-- /#owl-testimonials -->
-
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
-
-    </section>
-    <!-- End client -->
-
 
     <!-- Start Contact -->
     <section id="contact" class="p-top-80 p-bottom-50">

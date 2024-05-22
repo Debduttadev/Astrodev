@@ -38,6 +38,9 @@
     @stack('style')
 
     <style type="text/css">
+        .blog-post-body {
+            color: #241b1b;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -68,8 +71,6 @@
     <script src="{{ URL::to('frontend/js/retina.min.js') }}"></script>
     <script src="{{ URL::to('frontend/js/wow.min.js') }}"></script>
     <script src="{{ URL::to('frontend/inc/owlcarousel/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/inc/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/inc/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
 
     <!-- Contact Form -->
     <script src="{{ URL::to('frontend/js/contact.js') }}"></script>

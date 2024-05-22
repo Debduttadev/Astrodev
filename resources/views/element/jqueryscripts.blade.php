@@ -394,7 +394,7 @@
                 reader.onload = function() {
                     $("#showaboutimage").attr("src", reader.result);
                 }
-
+                //alert('sffsdf');
                 reader.readAsDataURL(file);
             }
         });

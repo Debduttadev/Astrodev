@@ -29,10 +29,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    background: #fff;
+    background: #504646;
     font-size: 14px;
     font-family: "Lato", sans-serif;
-    color: #767676;
+    color: #e7e0e0;
 }
 a {
     color: #b57805;
@@ -86,7 +86,7 @@ section {
     background-color: #f8f8f8;
 }
 .dark-bg {
-    background-color: #434343;
+    background-color: #fff;
 }
 .overlay-light,
 overlay-light .YTPOverlay {
@@ -372,13 +372,13 @@ overlay-light .YTPOverlay:before {
     02. Custom Button 
 ---------------------------------------------------*/
 .btn-main {
-    background-color: #434343;
+    background-color: #b57805;
     padding: 10px 18px;
-    border: 1px solid #434343;
+    border: 1px solid #fff;
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
     text-transform: uppercase;
-    color: #fff;
+    color: #f8f8f7;
     border-radius: 0;
     box-shadow: inset 0 0 0 0 #000;
     -webkit-box-shadow: inset 0 0 0 0 #000;
@@ -420,7 +420,7 @@ overlay-light .YTPOverlay:before {
     border: 1px solid #fff;
     box-shadow: inset 0 0 0 0 #d9d9d9;
     -webkit-box-shadow: inset 0 0 0 0 #d9d9d9;
-    color: #434343;
+    color: #fff;
 }
 .btn-main.btn-white:hover,
 .btn-main.btn-white:focus,
@@ -429,7 +429,7 @@ overlay-light .YTPOverlay:before {
     box-shadow: inset 0 100px 0 0 #d9d9d9;
     -webkit-box-shadow: inset 0 100px 0 0 #d9d9d9;
     border: 1px solid #d9d9d9;
-    color: #434343;
+    color: #fff;
 }
 .btn-main.btn-theme {
     background-color: #b57805;
@@ -484,7 +484,7 @@ h4,
 h5,
 h6 {
     font-family: "Montserrat", sans-serif;
-    color: #434343;
+    color: #fff;
     text-transform: uppercase;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -531,7 +531,7 @@ p {
 .white-color h6,
 .white-color p,
 .white-color li {
-    color: #fff !important;
+    color: #b3b1af !important;
 }
 .black-color,
 .black-color h1,
@@ -556,25 +556,25 @@ p {
     color: #b57805 !important;
 }
 .divider {
-    background-color: #434343;
+    background-color: #fff;
     height: 1px;
     width: 60px;
     margin: 20px 0;
 }
 .divider-small {
-    background-color: #434343;
+    background-color: #fff;
     height: 1px;
     width: 30px;
     margin: 15px 0;
 }
 .divider-center {
-    background-color: #434343;
+    background-color: #fff;
     height: 1px;
-    width: 60px;
+    width: 40%;
     margin: 20px auto;
 }
 .divider-center-small {
-    background-color: #434343;
+    background-color: #fff;
     height: 1px;
     width: 30px;
     margin: 15px auto;
@@ -664,6 +664,9 @@ blockquote {
 .p-bottom-140 {
     padding-bottom: 140px;
 }
+.p-30 {
+    padding: 30px;
+}
 .m-top-10 {
     margin-top: 10px;
 }
@@ -717,6 +720,10 @@ blockquote {
 }
 .m-bottom-140 {
     margin-bottom: 140px;
+}
+
+.m-right-40 {
+    margin-right: 40px;
 }
 /*--------------------------------------------------
     06. Page Preloader
@@ -793,7 +800,7 @@ blockquote {
     z-index: 999;
 }
 .navbar .navigation {
-    background-color: #2a2929;
+    background-color: #160707;
 }
 .navbar .container-fluid {
     padding: 0 50px;
@@ -831,7 +838,7 @@ blockquote {
     transition: all 0.3s ease-in-out;
 }
 .navbar-nav {
-    margin: 0;
+    margin: 15px;
     float: none;
     display: inline-block;
 }
@@ -923,6 +930,7 @@ blockquote {
 @media (max-width: 991px) {
     .navbar .nav-wrap {
         width: 100%;
+        height: 100%;
         padding: 0;
         min-height: 0;
     }
@@ -1023,7 +1031,7 @@ blockquote {
     width: 18px;
 }
 .nav-solid .navbar-toggle .icon-bar {
-    background-color: #434343;
+    background-color: #fff;
 }
 .nav-transparent .navbar-toggle:focus .icon-bar,
 .nav-transparent .navbar-toggle:hover .icon-bar {
@@ -1214,8 +1222,8 @@ blockquote {
     margin-bottom: 30px;
 }
 .pf-filter li .iso-button {
-    background-color: #fff;
-    color: #434343;
+    background-color: #504646;
+    color: #fff;
     padding: 10px 15px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -1234,7 +1242,7 @@ blockquote {
 }
 .pf-filter.pf-filter-gray .iso-button {
     background-color: #f8f8f8;
-    color: #434343;
+    color: #fff;
 }
 .pf-filter.pf-filter-gray .iso-button:hover {
     color: #b57805;
@@ -1272,6 +1280,8 @@ blockquote {
 .team-item-image {
     position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
 .team-item-image-overlay {
     position: absolute;
@@ -1297,13 +1307,13 @@ blockquote {
     font-size: 15px;
 }
 .team-item-icons a {
-    color: #fff;
+    color: #0f0d0d;
     margin: 0 10px;
 }
 .team-item-icons a i {
     width: 30px;
     height: 30px;
-    border: 1px solid #fff;
+    border: 1px solid #130d0d;
     font-size: 15px;
     line-height: 30px;
     -webkit-transition: all 0.3s ease-in-out;
@@ -1311,22 +1321,25 @@ blockquote {
     transition: all 0.3s ease-in-out;
 }
 .team-item-icons a i:hover {
-    background: #fff;
-    color: #b57805;
+    background: #f1f1f1;
+    color: #2b2823;
 }
 .team-item-info {
-    background: #fafafa;
+    background: #1d1414;
     -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
 }
 .team-item-name {
     font-family: "Montserrat", sans-serif;
     font-size: 15px;
 }
 .team-item-position {
-    font-size: 11px;
-    color: #aaaaaa;
+    height: 100%;
+    font-size: 12px;
+    color: #8b8989;
+    display: block;
+    width: 100%;
+    height: 70px;
 }
 .team-item:hover .team-item-image-overlay {
     top: 0;
@@ -1417,7 +1430,7 @@ blockquote {
 }
 .panel-title a.collapsed {
     background-color: transparent;
-    color: #434343;
+    color: #fff;
     border-top: none;
 }
 .panel-title a.collapsed:before {
@@ -1507,7 +1520,7 @@ blockquote {
     padding: 0 20px;
 }
 .testimonial-desc {
-    font-size: 1.2em;
+    font-size: 1em;
     font-style: italic;
     letter-spacing: 1px;
 }
@@ -1677,7 +1690,7 @@ blockquote {
     display: inline-block;
 }
 .comments .author a {
-    color: #434343;
+    color: #fff;
 }
 .comments .replys {
     margin-left: 40px;
@@ -1689,7 +1702,7 @@ blockquote {
     float: right;
 }
 .comments .reply-btn a {
-    color: #434343;
+    color: #fff;
     display: inline-block;
     font-size: 13px;
     font-weight: 600;
@@ -1701,7 +1714,7 @@ blockquote {
 .respond .replyForm textarea {
     background: #f8f8f8;
     border: 0 none;
-    color: #434343;
+    color: #fff;
     font-family: inherit;
     font-size: 13px;
     margin: 0 0 28px;
@@ -1735,7 +1748,7 @@ blockquote {
     background: #f8f8f8;
     border: 0 none;
     outline: 0;
-    color: #434343;
+    color: #fff;
     border: 1px solid #f8f8f8;
 }
 .widget .search-form .submit-search {
@@ -1747,7 +1760,7 @@ blockquote {
     padding: 12px 15px;
     font-weight: 600;
     color: #fff;
-    background: #434343;
+    background: #fff;
 }
 .widget .search-form .submit-search:hover {
     background: #b57805;
@@ -1806,7 +1819,7 @@ blockquote {
     border-bottom: medium none;
 }
 .widget .meta abbr {
-    border-bottom: 1px dotted #434343;
+    border-bottom: 1px dotted #fff;
     cursor: help;
 }
 .widget.widget-bottom {
@@ -2069,7 +2082,7 @@ blockquote {
     padding: 6px 20px 5px;
     text-decoration: none;
     background-color: #f8f8f8;
-    color: #434343;
+    color: #fff;
     border-radius: 0;
 }
 .nav-tabs li.active a,
@@ -2145,7 +2158,7 @@ blockquote {
 .owl-theme .owl-dots .owl-dot span {
     background: transparent;
     border-radius: 0;
-    border: 1px solid #434343;
+    border: 1px solid #fff;
     width: 12px;
     height: 12px;
     -webkit-transition: all 0.3s ease-in-out;
@@ -2153,7 +2166,7 @@ blockquote {
     transition: all 0.3s ease-in-out;
 }
 .owl-theme .owl-dots .owl-dot.active span {
-    background: #434343;
+    background: #fff;
 }
 .owl-theme .owl-dots .owl-dot:hover span {
     background: #b57805;
@@ -2178,7 +2191,7 @@ blockquote {
     line-height: 28px;
     text-align: center;
     color: #909090;
-    background: #434343;
+    background: #fff;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -2209,7 +2222,7 @@ blockquote {
 }
 .owl-theme.white-color .owl-nav [class*="owl-"] i {
     color: #909090;
-    background: #fff;
+    background: #504646;
 }
 .owl-theme.white-color .owl-nav [class*="owl-"] i:hover {
     background: #b57805;

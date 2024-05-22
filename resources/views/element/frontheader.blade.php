@@ -34,7 +34,7 @@
                                 <li><a data-scroll href="#service">Service</a></li>
                                 <li><a data-scroll href="#contact">Appointment</a></li>
                                 <li><a data-scroll href="#blog">Blog</a></li>
-                                <li><a data-scroll href="#blog">About</a></li>
+                                <li><a data-scroll href="#about">About</a></li>
                                 <li><a data-scroll href="#contact">Contact us</a></li>
                             </ul>
                         </div>

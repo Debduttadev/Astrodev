@@ -84,13 +84,13 @@
                          <div class="mt-4">
                              <label class="control-label">Short Description</label>
                              limit <span class="limit">0</span>/200
-                             <textarea name="shortdescription" class="form-control form-control-user" id="addshortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="200" ></textarea>
+                             <textarea name="shortdescription" class="form-control form-control-user" id="addshortdescription" aria-describedby="shortdescription" placeholder="Enter Short Service description for Home page..." value="" maxlength="200"></textarea>
                          </div>
 
                          <div class="mt-4">
                              <label class="control-label">Description</label>
                              limit <span class="limit">0</span>/2000
-                             <textarea name="description" class="form-control form-control-user" id="adddescription" aria-describedby="description5" placeholder="Enter Service description..." value="" maxlength="2000" rows="10" cols="50" ></textarea>
+                             <textarea name="description" class="form-control form-control-user" id="adddescription" aria-describedby="description5" placeholder="Enter Service description..." value="" maxlength="2000" rows="10" cols="50"></textarea>
                          </div>
 
                          <div class="mt-4">
@@ -475,7 +475,7 @@
 
                          <div class="mt-4">
                              @if(!empty($aboutimage))
-                             <img src="{{ URL::to('about')."/".$aboutimage }}" class="rounded img-fluid" id="showimage" alt="no old image" hight=10% width=10%>
+                             <img src="{{ URL::to('about')."/".$aboutimage }}" class="rounded img-fluid" id="showaboutimage" alt="no old image" hight=10% width=10%>
                              @else
                              <img src="{{ URL::to('about')."/default.jpg" }}" class="rounded img-fluid" id="showaboutimage" alt="no old image" hight=10% width=10%>
                              @endif
