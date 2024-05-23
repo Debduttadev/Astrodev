@@ -54,10 +54,10 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a data-scroll href="#home">Home</a></li>
                                 <li><a data-scroll href="#service">Service</a></li>
-                                <li><a data-scroll href="#appoinment">Appointment</a></li>
+                                <li><a href="#appoinment">Appointment</a></li>
                                 <li><a data-scroll href="#blog">Blog</a></li>
-                                <li><a data-scroll href="#chefsdf">Chamber</a></li>
-                                <li><a data-scroll href="{{ URL::to('about') }}">About</a></li>
+                                <li><a href="#chefsdf">Chamber</a></li>
+                                <li><a href="{{ URL::to('/about') }}">About</a></li>
                                 <li><a data-scroll href="#contact">Contact us</a></li>
                             </ul>
                         </div>

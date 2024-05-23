@@ -19,7 +19,7 @@ use App\Http\Controllers\HomeController;
 
 //frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/about', [AboutContactController::class, 'about'])->name('about');
+Route::get('/about', [AboutContactController::class, 'frontabout']);
 Route::get('/service', [ServiceController::class, 'service'])->name('service');
 Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
 Route::get('/chamber', [ChamberController::class, 'chamber'])->name('chamber');

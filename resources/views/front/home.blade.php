@@ -177,7 +177,7 @@
 
 
     <!-- Start Testimonial -->
-    <section id="testimonials" class="parallax-bg overlay-dark p-top-80 p-bottom-80" style="background-image:url(img/testimonial-bg.jpg)" data-stellar-background-ratio="0.5">
+    <section id="testimonials" class="parallax-bg overlay-dark p-top-80 p-bottom-80" data-stellar-background-ratio="0.5">
 
         <!-- Section Title -->
         <div class="section-title text-center white-color m-bottom-40">

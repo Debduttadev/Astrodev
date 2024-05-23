@@ -88,7 +88,7 @@ class AboutContactController extends Controller
     /**
      * About details for frontend.
      */
-    public function about()
+    public function frontabout()
     {
         // about me details
         $aboutcontactus = about_contact::first();
