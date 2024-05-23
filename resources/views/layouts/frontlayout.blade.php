@@ -41,6 +41,15 @@
         .blog-post-body {
             color: #241b1b;
         }
+
+        .social {
+            font-size: 20px;
+            color: #000;
+        }
+
+        .twitter {
+            filter: sepia(100%);
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -77,6 +86,8 @@
 
     <!-- Custom Plugin -->
     <script src="{{ URL::to('frontend/js/custom.js') }}"></script>
+    @stack('scripts')
+    @include('element.frontjquery')
 
 </body>
 

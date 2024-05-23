@@ -86,10 +86,14 @@ class AboutContactController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * About details for frontend.
      */
-    public function destroy(about_contact $about_contact)
+    public function about()
     {
-        //
+        // about me details
+        $aboutcontactus = about_contact::first();
+
+        dd($aboutcontactus);
+        return view('front.about', ['aboutcontactus' => $aboutcontactus]);
     }
 }

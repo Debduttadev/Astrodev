@@ -6,8 +6,19 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            @php
+            $i="2";
+            $item=1;
+            @endphp
+            @foreach ($banner_video as $key => $thumbnail )
+            @if($i <= count($banner_video)) <li data-target="#carousel-example-generic" data-slide-to="{{$item}}">
+                </li>
+                @php
+                $item++;
+                $i++;
+                @endphp
+                @endif
+                @endforeach
         </ol>
 
         <!-- Wrapper for slides -->
@@ -15,11 +26,17 @@
             <div class="item active">
                 <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="...">
             </div>
+            @php
+            $item=1;
+            @endphp
             @foreach ($banner_video as $key => $thumbnail )
             @if($key != 0)
             <div class="item">
                 <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="..." hight="160" width="90">
             </div>
+            @php
+            $item++;
+            @endphp
             @endif
             @endforeach
         </div>
@@ -37,17 +54,17 @@
 
 
     <!-- Start Regular Section -->
-    <section class="p-top-80 p-bottom-80">
+    <section id="about" class="p-top-80 p-bottom-80 ">
         <div class="container">
             <div class="row">
 
                 <div class="col-md-6">
                     <!-- Section Title -->
-                    <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
+                    <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                         {!! html_entity_decode($about_contact->title)!!}
                     </div>
 
-                    <a data-scroll href="#about" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">Know more</a>
+                    <a data-scroll href="{{ URL::to('about') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
                 </div> <!-- /.col -->
 
                 <div class="col-md-4 col-md-offset-2">
@@ -73,7 +90,7 @@
                     <div class="section-title text-center m-bottom-40">
                         <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through astrology, Vastu, and palmistry. These ancient sciences, when understood and applied, unlock abundance for all.</em></p>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all.</em></p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -95,7 +112,7 @@
                             <div class="team-item-name">
                                 {{$services->name}}
                             </div>
-                            <div class="team-item-position">
+                            <div class="team-item-position p-10">
                                 {!! html_entity_decode($services->shortdescription)!!}
                             </div>
                         </div>
@@ -109,6 +126,21 @@
         </div> <!-- /.container -->
     </section>
     <!-- End Team -->
+    <section id="myjourney" class="p-top-80 p-bottom-80">
+        <div>
+            <div class="text-center mt-20">
+                <h1 class=" text-2xl md:text-3xl lg:text-4xl m-3 font-philosopher">MY JOURNEY</h1>
+                <h3 class="font-dancing text-xl text-slate-800" style="font-family:Garamond;"><small>...what you seek, seeks you</small></h3>
+                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans">
+                    <p>Embarking on a spiritual odyssey in childhood, </p>
+                    <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>
+                    <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey where spirituality meets practical wisdom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Regular Section -->
+    <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start blog -->
     <section id="youtube" class="p-top-80 p-bottom-80">
@@ -119,9 +151,8 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h2>
+                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Featured Videos</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -129,35 +160,13 @@
             <div class="row">
                 <!-- === blog === -->
                 <div id="owl-youtube" class="owl-carousel owl-theme">
-
-                    <!-- === Blog item 1 === -->
+                    @foreach ($youtube_video as $youtubedata)
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b1.jpg') }}" alt=""></a>
+                            <a href="{{$youtubedata->videolink}}"><img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt=""></a>
                         </div><!--post media-->
                     </div> <!-- /.blog -->
-
-                    <!-- === Blog item 2 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b2.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-                    </div> <!-- /.blog -->
-
-                    <!-- === Blog item 3 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b3.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-                    </div> <!-- /.blog -->
-
-                    <!-- === Blog item 4 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b4.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-                    </div> <!-- /.blog -->
-
+                    @endforeach
                 </div><!-- /#owl-testimonials -->
 
             </div> <!-- /.row -->
@@ -172,7 +181,7 @@
 
         <!-- Section Title -->
         <div class="section-title text-center white-color m-bottom-40">
-            <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Testimonials</h2>
+            <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Happy Client Testimonials</h2>
             <div class="divider-center-small divider-white wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
         </div>
 
@@ -223,7 +232,7 @@
                     <div class="section-title text-center m-bottom-40">
                         <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p>
+                        <!-- <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p> -->
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -231,79 +240,27 @@
             <div class="row">
                 <!-- === blog === -->
                 <div id="owl-blog" class="owl-carousel owl-theme">
-
+                    @foreach ($blogitems as $blog)
                     <!-- === Blog item 1 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b1.jpg') }}" alt=""></a>
+                            <a href="#"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt=""></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
-                            <span class="time"><i class="fa fa-calendar"></i> 12 January 2017</span>
-                            <span class="comments"><a href="#"><i class="fa fa-comments"></i> 4 Comments</a></span>
+                            <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
                         </div><!--post info-->
 
                         <div class="blog-post-body">
                             <h4><a class="title" href="#">Working in Cool Head</a></h4>
-                            <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
+                            @php
+                            $small = substr( strip_tags($blog['description']), 0, 200);
+                            @endphp
+                            <p class="p-bottom-20">{!! $small !!}</p>
                             <a href="#" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
-
-                    <!-- === Blog item 2 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b2.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-
-                        <div class="blog-post-info clearfix">
-                            <span class="time"><i class="fa fa-calendar"></i> 06 January 2017</span>
-                            <span class="comments"><a href="#"><i class="fa fa-comments"></i> 2 Comments</a></span>
-                        </div><!--post info-->
-
-                        <div class="blog-post-body">
-                            <h4><a class="title" href="#">Sing me to sleep</a></h4>
-                            <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="#" class="read-more">Read More >></a>
-                        </div><!--post body-->
-                    </div> <!-- /.blog -->
-
-                    <!-- === Blog item 3 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b3.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-
-                        <div class="blog-post-info clearfix">
-                            <span class="time"><i class="fa fa-calendar"></i> 02 January 2017</span>
-                            <span class="comments"><a href="#"><i class="fa fa-comments"></i> 4 Comments</a></span>
-                        </div><!--post info-->
-
-                        <div class="blog-post-body">
-                            <h4><a class="title" href="#">Hold Me Tight</a></h4>
-                            <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="#" class="read-more">Read More >></a>
-                        </div><!--post body-->
-                    </div> <!-- /.blog -->
-
-                    <!-- === Blog item 4 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('frontend/img/blog/b4.jpg') }}" alt=""></a>
-                        </div><!--post media-->
-
-                        <div class="blog-post-info clearfix">
-                            <span class="time"><i class="fa fa-calendar"></i> 01 January 2017</span>
-                            <span class="comments"><a href="#"><i class="fa fa-comments"></i> 7 Comments</a></span>
-                        </div><!--post info-->
-
-                        <div class="blog-post-body">
-                            <h4><a class="title" href="#">Only I can do it</a></h4>
-                            <p class="p-bottom-20">Impossible alteration devonshire to is interested stimulated dissimilar. To matter esteem polite do if. Those an equal point no years do. Depend warmth fat but her but played.</p>
-                            <a href="#" class="read-more">Read More >></a>
-                        </div><!--post body-->
-                    </div> <!-- /.blog -->
-
+                    @endforeach
                 </div><!-- /#owl-testimonials -->
 
             </div> <!-- /.row -->
@@ -322,7 +279,6 @@
                     <div class="section-title text-center m-bottom-40">
                         <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Contact</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Lose away off why half led have near bed. At engage simple father of period others except. My giving do summer time dance hero of though narrow marked at.</em></p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -335,16 +291,27 @@
 
                         <form name="ajax-form" id="ajax-form" action="contact.php" method="post">
                             <div class="col-sm-6 contact-form-item wow zoomIn">
-                                <input name="name" id="name" type="text" placeholder="Your Name: *" />
+                                <input name="name" id="name" type="text" placeholder="Your Name: *" required />
                                 <span class="error" id="err-name">please enter name</span>
                             </div>
                             <div class="col-sm-6 contact-form-item wow zoomIn">
-                                <input name="email" id="email" type="text" placeholder="E-Mail: *" />
+                                <input name="email" id="email" type="text" placeholder="E-Mail: *" required />
                                 <span class="error" id="err-email">please enter e-mail</span>
                                 <span class="error" id="err-emailvld">e-mail is not a valid format</span>
                             </div>
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">+91</span>
+                                    <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <span class="error" id="err-phone">please enter phone number</span>
+                                    <span class="error" id="err-emailvld">please enter numbers</span>
+
+                                </div>
+                                <span class="error" id="err-email">please enter e-mail</span>
+                                <span class="error" id="err-emailvld">e-mail is not a valid format</span>
+                            </div>
+                            <div class="col-sm-12 contact-form-item wow zoomIn">
+                                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                             </div>
                             <div class="col-sm-12 contact-form-item">
                                 <button class="send_message btn btn-main btn-theme wow fadeInUp" id="send" data-lang="en">submit</button>
@@ -366,8 +333,6 @@
                 <div class="col-md-5 col-sm-5 p-bottom-30">
                     <address class="contact-info">
 
-                        <p class="m-bottom-30 wow slideInRight">Spring formal no county ye waited. My whether cheered at regular it of promise blushes perhaps.</p>
-
                         <!-- === Location === -->
                         <div class="m-top-20 wow slideInRight">
                             <div class="contact-info-icon">
@@ -377,7 +342,7 @@
                                 Address:
                             </div>
                             <div class="contact-info-text">
-                                149 Null Street, New York, NY 098
+                                {{ $about_contact->address }}
                             </div>
                         </div>
 
@@ -390,7 +355,20 @@
                                 Phone number:
                             </div>
                             <div class="contact-info-text">
-                                +1-000-1111-3333
+                                {{ $about_contact->phone }}
+                            </div>
+                        </div>
+
+                        <!-- === Whatsapp === -->
+                        <div class="m-top-20 wow slideInRight">
+                            <div class="contact-info-icon">
+                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-info-title">
+                                WhatsApp:
+                            </div>
+                            <div class="contact-info-text">
+                                {{ $about_contact->email }}
                             </div>
                         </div>
 
@@ -403,7 +381,7 @@
                                 Email:
                             </div>
                             <div class="contact-info-text">
-                                support@tabthemes.com
+                                {{ $about_contact->email }}
                             </div>
                         </div>
 

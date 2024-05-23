@@ -16,7 +16,15 @@ use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
 
+
+//frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/about', [AboutContactController::class, 'about'])->name('about');
+Route::get('/service', [ServiceController::class, 'service'])->name('service');
+Route::get('/blog', [BlogController::class, 'blog'])->name('blog');
+Route::get('/chamber', [ChamberController::class, 'chamber'])->name('chamber');
+Route::get('/appoinment', [AppointmentController::class, 'appoinment'])->name('appoinment');
+
 
 
 // admin roots

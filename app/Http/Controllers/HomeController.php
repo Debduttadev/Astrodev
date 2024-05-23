@@ -25,6 +25,25 @@ class HomeController extends Controller
      */
     public function home()
     {
+
+        //social media link
+        $social = Social::where('visibility', '1')->get();
+
+        $socialdata = [];
+        $i = 0;
+        foreach ($social as $icon) {
+            // echo "<pre>";
+            // echo $icon;
+            // echo "</pre>";
+            $socialdata[$i]['id'] = $icon->id;
+            $socialdata[$i]['name'] = $icon->name;
+            $socialdata[$i]['icon'] = $icon->icon;
+            $socialdata[$i]['url'] = $icon->url;
+            $socialdata[$i]['visibility'] = $icon->visibility;
+
+            $i++;
+        }
+
         // banner details
         $banner_video = banner_video::where([
             ['thumbnailtype', '0'],
@@ -36,12 +55,21 @@ class HomeController extends Controller
 
         //  services details
         $services = Service::get();
+        $allservices = '';
         $servicedata = [];
+        $i = 0;
+        $servicecount = count($services);
         foreach ($services as $data) {
-            // $adminuser = $data->name;
+
             $serviceid = $data->id;
 
             $servicedata[$serviceid] = $data;
+            $i++;
+            if ($i === $servicecount) {
+                $allservices .= $data->name;
+            } else {
+                $allservices .= $data->name . ', ';
+            }
         }
 
         // youtube video details
@@ -49,24 +77,6 @@ class HomeController extends Controller
             ['thumbnailtype', '1'],
             ['show', '1'],
         ])->get();
-
-        //social media link
-        $social = Social::get();
-
-        $socialdata = [];
-        $i = 0;
-        foreach ($social as $icon) {
-            // echo "<pre>";
-            // echo $icon;
-            // echo "</pre>";
-            $socialdata[$i]['id'] = $icon->id;
-            $socialdata[$i]['name'] = $icon->name;
-            $socialdata[$i][$icon->name] = $icon->icon;
-            $socialdata[$i]['url'] = $icon->url;
-            $socialdata[$i]['visibility'] = $icon->visibility;
-
-            $i++;
-        }
 
         // blog details
         $blogs = blog::get();
@@ -100,28 +110,16 @@ class HomeController extends Controller
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
-            $blogitems[$blogdata->id]['image'] = $blogdata->image;
-        }
-        //dd($blogitems);
-        $alltags = tag::select('id', 'tag')->get();
-        $alltag = [];
-        foreach ($alltags as $tag) {
-            $alltag[$tag->id] = $tag->tag;
-        }
-
-        $allkeywords = keyword::select('id', 'keyword')->get();
-        $allkeyword = [];
-        foreach ($allkeywords as $keyword) {
-            $allkeyword[$keyword->id] = $keyword->keyword;
+            if (!empty($blogdata->image)) {
+                $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            } else {
+                $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
+            }
+            $createdat = $blogdata->created_at;
+            $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
         }
 
-        $allcategories = category::select('id', 'category')->get();
-        $allcategory = [];
-        foreach ($allcategories as $category) {
-            $allcategory[$category->id] = $category->category;
-        }
-
-        //dd($servicedata);
-        return view('front.home', ['banner_video' => $banner_video, 'about_contact' => $about_contact, 'servicedata' => $servicedata, 'youtube_video' => $youtube_video, 'socialdata' => $socialdata, 'blogitems' => $blogitems]);
+        //dd($about_contact);
+        return view('front.home', ['banner_video' => $banner_video, 'about_contact' => $about_contact, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'socialdata' => $socialdata, 'blogitems' => $blogitems]);
     }
 }

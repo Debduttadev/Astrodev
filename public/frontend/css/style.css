@@ -667,6 +667,9 @@ blockquote {
 .p-30 {
     padding: 30px;
 }
+.p-10 {
+    padding: 10px;
+}
 .m-top-10 {
     margin-top: 10px;
 }
@@ -724,6 +727,9 @@ blockquote {
 
 .m-right-40 {
     margin-right: 40px;
+}
+.m-10 {
+    margin: 10px;
 }
 /*--------------------------------------------------
     06. Page Preloader
@@ -786,6 +792,7 @@ blockquote {
         transform: rotate(359deg);
     }
 }
+
 /*--------------------------------------------------
     07. Navigation 
 ---------------------------------------------------*/
@@ -838,7 +845,6 @@ blockquote {
     transition: all 0.3s ease-in-out;
 }
 .navbar-nav {
-    margin: 15px;
     float: none;
     display: inline-block;
 }
