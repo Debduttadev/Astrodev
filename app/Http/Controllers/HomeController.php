@@ -26,24 +26,6 @@ class HomeController extends Controller
     public function home()
     {
 
-        //social media link
-        $social = Social::where('visibility', '1')->get();
-
-        $socialdata = [];
-        $i = 0;
-        foreach ($social as $icon) {
-            // echo "<pre>";
-            // echo $icon;
-            // echo "</pre>";
-            $socialdata[$i]['id'] = $icon->id;
-            $socialdata[$i]['name'] = $icon->name;
-            $socialdata[$i]['icon'] = $icon->icon;
-            $socialdata[$i]['url'] = $icon->url;
-            $socialdata[$i]['visibility'] = $icon->visibility;
-
-            $i++;
-        }
-
         // banner details
         $banner_video = banner_video::where([
             ['thumbnailtype', '0'],
@@ -120,6 +102,6 @@ class HomeController extends Controller
         }
 
         //dd($about_contact);
-        return view('front.home', ['banner_video' => $banner_video, 'about_contact' => $about_contact, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'socialdata' => $socialdata, 'blogitems' => $blogitems]);
+        return view('front.home', ['banner_video' => $banner_video, 'about_contact' => $about_contact, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
     }
 }

@@ -42,13 +42,39 @@
             color: #241b1b;
         }
 
+        .servicecss {
+            background-color: #e3dbce;
+            font-size: 16px;
+            color: #483120;
+        }
+
         .social {
             font-size: 20px;
-            color: #000;
+            color: #ecd1a3;
         }
 
         .twitter {
             filter: sepia(100%);
+        }
+
+        .parent {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .image1 {
+            position: relative;
+            top: 0;
+            left: 0;
+            animation: spin;
+        }
+
+        .image2 {
+            position: absolute;
+            width: 67%;
+            top: 17%;
+            left: 17%;
         }
     </style>
     @include('element.frontheader')

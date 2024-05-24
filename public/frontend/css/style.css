@@ -29,7 +29,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    background: #504646;
+    background: #483120;
     font-size: 14px;
     font-family: "Lato", sans-serif;
     color: #e7e0e0;
@@ -2247,4 +2247,7 @@ blockquote {
     .btn-main {
         font-size: 8px;
     }
+}
+.aboutcss {
+    background-color: #643f06;
 }

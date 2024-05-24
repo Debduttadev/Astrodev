@@ -79,11 +79,14 @@ class ServiceController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * show the resource in user interphase.
      */
-    public function store(StoreServiceRequest $request)
+    public function servicedetails($name, $id)
     {
-        //
+        $id = base64_decode($id);
+        $servicedata = Service::where('id', $id)->first();
+        // dd($servicedata);
+        return view('front.servicedetail', ['servicedata' => $servicedata]);
     }
 
     /**

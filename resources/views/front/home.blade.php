@@ -64,13 +64,14 @@
                         {!! html_entity_decode($about_contact->title)!!}
                     </div>
 
-                    <a data-scroll href="{{ URL::to('about') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
+                    <a href="{{ URL::to('/aboutus') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
                 </div> <!-- /.col -->
 
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md-5 col-md-offset-1">
 
-                    <div class="feature-image">
-                        <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle" data-wow-duration="1s" data-wow-delay="0.6s" />
+                    <div class="feature-image parent">
+                        <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
+                        <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
                     </div>
 
                 </div> <!-- /.col -->
@@ -90,7 +91,7 @@
                     <div class="section-title text-center m-bottom-40">
                         <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all.</em></p>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all. {{ numberService() }}</em></p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -103,7 +104,13 @@
                         <div class="team-item-image">
                             <div class="team-item-image-overlay">
                                 <div class="team-item-icons">
-                                    <a href="#">more..</a>
+                                    @php
+                                    // strip out all whitespace
+                                    $servicename = preg_replace('/\s*/', '', $services->name);
+                                    // convert the string to all lowercase
+                                    $servicename = strtolower($servicename);
+                                    @endphp
+                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">more..</a>
                                 </div>
                             </div>
                             <img src="{{ URL::to('service').'/'.$services->Image }}" alt="" />
@@ -134,7 +141,7 @@
                 <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans">
                     <p>Embarking on a spiritual odyssey in childhood, </p>
                     <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>
-                    <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey where spirituality meets practical wisdom.</p>
+                    <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey whe b re spirituality meets practical wisdom.</p>
                 </div>
             </div>
         </div>

@@ -3,18 +3,21 @@
 <div class="container">
     <div class="social-icon pull-right">
         <ul class="list-inline">
+            @php
+            $socialdata=scociallinks();
+            @endphp
             @foreach ($socialdata as $social)
             <li>
                 @if($social['name'] == 'Facebook')
-                <a data-scroll href="{{$social['url']}}" title="{{$social['name']}}"><i class="fa fa-facebook social" aria-hidden="true"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-facebook social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Youtube')
-                <a data-scroll href="{{$social['url']}}" title="{{$social['name']}}"><i class="fa fa-youtube-play social" aria-hidden="true"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-youtube-play social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Instagram')
-                <a data-scroll href="{{$social['url']}}" title="{{$social['name']}}"><i class="fa fa-instagram social" aria-hidden="true"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-instagram social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Linkedin')
-                <a data-scroll href="{{$social['url']}}" title="{{$social['name']}}"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Twitter')
-                <a data-scroll href="{{$social['url']}}" title="{{$social['name']}}"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 19px; width: 20px;"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px;"></i></a>
                 @endif
             </li>
             @endforeach
@@ -23,8 +26,6 @@
 </div>
 
 <header class="nav-solid" id="home">
-
-
     <nav class="navbar navbar-fixed-top" id="fixednavbar">
 
         <div class="navigation">
@@ -42,7 +43,7 @@
                         <!-- Logo -->
                         <div class="logo-container">
                             <div class="logo-wrap local-scroll">
-                                <a href="#home">
+                                <a href="{{ URL::to('/') }}">
                                     <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}" alt="logo" data-rjs="2" height="80">
                                 </a>
                             </div>
@@ -52,12 +53,12 @@
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <div class="collapse navbar-collapse" id="navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a data-scroll href="#home">Home</a></li>
-                                <li><a data-scroll href="#service">Service</a></li>
+                                <li><a href="{{ URL::to('/') }}">Home</a></li>
+                                <li><a data-scroll href="#service">Services</a></li>
                                 <li><a href="#appoinment">Appointment</a></li>
                                 <li><a data-scroll href="#blog">Blog</a></li>
                                 <li><a href="#chefsdf">Chamber</a></li>
-                                <li><a href="{{ URL::to('/about') }}">About</a></li>
+                                <li><a href="{{ URL::to('/aboutus') }}">About</a></li>
                                 <li><a data-scroll href="#contact">Contact us</a></li>
                             </ul>
                         </div>

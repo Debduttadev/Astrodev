@@ -93,7 +93,7 @@ class AboutContactController extends Controller
         // about me details
         $aboutcontactus = about_contact::first();
 
-        dd($aboutcontactus);
-        return view('front.about', ['aboutcontactus' => $aboutcontactus]);
+        //dd($aboutcontactus);
+        return view('front.aboutme', ['about_contact' => $aboutcontactus]);
     }
 }
