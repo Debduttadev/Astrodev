@@ -48,6 +48,13 @@
             color: #483120;
         }
 
+        .servicebg {
+            position: relative;
+            width: 50% !important;
+            top: -100%;
+
+        }
+
         .social {
             font-size: 20px;
             color: #ecd1a3;
@@ -76,6 +83,24 @@
             top: 17%;
             left: 17%;
         }
+
+        .chamberlist {
+            color: #160707;
+        }
+
+        .chamberlist h5 {
+            font-size: 20px;
+            color: #160707;
+        }
+
+        .footerlist div.listfooter a {
+            font-size: 16px;
+            line-height: 18px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+            width: 100%;
+            display: block;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -85,6 +110,8 @@
     @yield('content')
     @include('element.frontfooter')
     <!-- Back to top -->
+
+    <a href="#appoinment" id="appoinment" class="btn btn-default btn-lg" title="Back to top">Book an Appoinment</a>
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
     <!-- /Back to top -->
     <!-- jQuery -->

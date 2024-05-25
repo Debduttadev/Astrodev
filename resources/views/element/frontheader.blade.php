@@ -52,12 +52,21 @@
 
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <div class="collapse navbar-collapse" id="navbar-collapse">
+
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ URL::to('/') }}">Home</a></li>
+                                @if($_SERVER['PHP_SELF'] == '/index.php')
                                 <li><a data-scroll href="#service">Services</a></li>
+                                @else
+                                <li><a href="{{ URL::to('/services') }}">Services</a></li>
+                                @endif
                                 <li><a href="#appoinment">Appointment</a></li>
+                                @if($_SERVER['PHP_SELF'] == '/index.php')
                                 <li><a data-scroll href="#blog">Blog</a></li>
-                                <li><a href="#chefsdf">Chamber</a></li>
+                                @else
+                                <li><a href="{{ URL::to('/blogs') }}">Blog</a></li>
+                                @endif
+                                <li><a href="{{ URL::to('/chambers') }}">Chamber</a></li>
                                 <li><a href="{{ URL::to('/aboutus') }}">About</a></li>
                                 <li><a data-scroll href="#contact">Contact us</a></li>
                             </ul>

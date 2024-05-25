@@ -224,7 +224,7 @@ overlay-light .YTPOverlay:before {
 }
 #back-to-top {
     position: fixed;
-    bottom: 20px;
+    bottom: 70px;
     right: 40px;
     z-index: 9999;
     text-align: center;
@@ -249,6 +249,55 @@ overlay-light .YTPOverlay:before {
 }
 #back-to-top.show {
     opacity: 1;
+}
+
+/* booking appoinment  */
+#appoinment {
+    position: fixed;
+    bottom: 10px;
+    right: 40px;
+    z-index: 9999;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    text-decoration: none;
+    opacity: 1;
+    background-color: #b57805;
+}
+#appoinment i {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    font-size: 20px;
+    background: #b57805;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+#appoinment i:hover {
+    background: #8b5b01;
+}
+#appoinment.show {
+    opacity: 1;
+}
+#appoinment {
+    padding: 8px 35px;
+}
+@keyframes blink {
+    0%,
+    100% {
+        background-color: #e2cea9;
+    }
+    50% {
+        background-color: #b57805;
+    }
+}
+
+#appoinment {
+    background-color: #b3832a;
+    color: rgb(32, 9, 9);
+    animation: blink 1s linear infinite;
 }
 /* clear the first in row for any block that has the class "multi-columns-row" */
 .multi-columns-row .col-xs-6:nth-child(2n + 3) {
@@ -513,7 +562,7 @@ p {
     line-height: 1.8em;
 }
 .section-title-bg {
-    background-color: #f8f8f8;
+    background-color: #483120;
     padding: 50px 0;
 }
 .section-subtitle {
@@ -1737,7 +1786,7 @@ blockquote {
 /*Sidebar*/
 .widget {
     margin-bottom: 20px;
-    background-color: #f8f8f8;
+    background-color: #483120;
     padding: 25px 25px 12px;
 }
 .widget h4 {
@@ -1751,7 +1800,7 @@ blockquote {
     padding: 12px 10px;
     font-size: 13px;
     width: 100%;
-    background: #f8f8f8;
+    background: #483120;
     border: 0 none;
     outline: 0;
     color: #fff;
@@ -1766,7 +1815,7 @@ blockquote {
     padding: 12px 15px;
     font-weight: 600;
     color: #fff;
-    background: #fff;
+    background: #b57805;
 }
 .widget .search-form .submit-search:hover {
     background: #b57805;
@@ -1807,8 +1856,8 @@ blockquote {
     margin-right: 1px;
 }
 .widget .tag-list li a {
-    background: #eeeeee;
-    color: #909090;
+    background: #b57805;
+    color: #ffffff;
     font-weight: 600;
     display: inline-block;
     padding: 5px 12px;

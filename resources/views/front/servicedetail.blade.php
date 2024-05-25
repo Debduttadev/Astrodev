@@ -6,6 +6,9 @@
 
     <!--Container-->
     <div class="container clearfix ">
+        <div class="row p-bottom-50 " style="text-align: center; ">
+            <h3 style="color:#483120;"><strong>{{$servicedata->name}}</strong></h3>
+        </div>
         <div class="row p-bottom-50 ">
 
             <div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
@@ -21,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- Section Title -->
-                <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s" >
+                <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     {!! html_entity_decode($servicedata->description)!!}
                 </div>
             </div> <!-- /.col -->

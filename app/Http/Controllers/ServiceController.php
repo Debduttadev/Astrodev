@@ -92,9 +92,27 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $service)
+    public function servicelists(Service $service)
     {
-        //
+        $services = Service::get();
+        $allservices = '';
+        $servicedata = [];
+        $i = 0;
+        $servicecount = count($services);
+        foreach ($services as $data) {
+            // $adminuser = $data->name;
+            $serviceid = $data->id;
+
+            $servicedata[$serviceid] = $data;
+            $i++;
+            if ($i === $servicecount) {
+                $allservices .= $data->name;
+            } else {
+                $allservices .= $data->name . ', ';
+            }
+        }
+
+        return view('front.servicelist', ['servicedata' => $servicedata, 'allservices' => $allservices]);
     }
 
     /**

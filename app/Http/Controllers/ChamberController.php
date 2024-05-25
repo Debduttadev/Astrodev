@@ -88,11 +88,45 @@ class ChamberController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource for user interface.
      */
-    public function show(chamber $chamber)
+    public function chamber(chamber $chamber)
     {
-        //
+        $chambers = chamber::get();
+        $chamberdata = [];
+        foreach ($chambers as $data) {
+
+            $availabledays = $data->availabledays;
+            $daysavailable = json_decode($availabledays);
+            $i = 0;
+            $days = [];
+
+            foreach ($daysavailable as $day) {
+
+                if ($day == "1") {
+                    $days[$i] = "Sunday";
+                } elseif ($day === "2") {
+                    $days[$i] = "Monday";
+                } elseif ($day === "3") {
+                    $days[$i] = "Tuesday";
+                } elseif ($day === "4") {
+                    $days[$i] = "Wednesday";
+                } elseif ($day === "5") {
+                    $days[$i] = "Thursday";
+                } elseif ($day === "6") {
+                    $days[$i] = "Friday";
+                } else {
+                    $days[$i] = "Saturday";
+                }
+                $i++;
+            }
+
+            $data['availabledays'] = implode(',', $days);
+            $chamberid = $data->id;
+            $chamberdata[$chamberid] = $data;
+        }
+        //dd($chamberdata);
+        return view('front.chamberlist', ["chamberdata" => $chamberdata]);
     }
 
     /**

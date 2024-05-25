@@ -110,18 +110,21 @@
                                     // convert the string to all lowercase
                                     $servicename = strtolower($servicename);
                                     @endphp
-                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">more..</a>
+                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('admin/img/astro.webp') }}">
+                                    </a>
                                 </div>
                             </div>
-                            <img src="{{ URL::to('service').'/'.$services->Image }}" alt="" />
+                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
                         </div>
                         <div class="team-item-info">
-                            <div class="team-item-name">
-                                {{$services->name}}
-                            </div>
-                            <div class="team-item-position p-10">
-                                {!! html_entity_decode($services->shortdescription)!!}
-                            </div>
+                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">
+                                <div class="team-item-name">
+                                    {{$services->name}}
+                                </div>
+                                <div class="team-item-position p-10">
+                                    {!! html_entity_decode($services->shortdescription)!!}
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div> <!-- /.col -->

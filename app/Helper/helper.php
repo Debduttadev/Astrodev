@@ -44,3 +44,16 @@ if (!function_exists('scociallinks')) {
         return $socialdata;
     }
 }
+
+if (!function_exists('servicelistfooter')) {
+    function servicelistfooter()
+    {
+        //service link
+        $services = Service::select('id', 'name')->get();
+        $servicedata = [];
+        foreach ($services as $service) {
+            $servicedata[$service->id] = $service->name;
+        }
+        return $servicedata;
+    }
+}
