@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
 
-
+Route::get('/phpinfo', function () {
+    return phpinfo();
+});
 //frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/aboutus', [AboutContactController::class, 'frontabout']);

@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Section Title Blog -->
-<div class="section-title-bg text-center m-bottom-40">
+<div class="section-title-bg text-center m-bottom-20">
     <h2 class="wow fadeInDown no-margin" data-wow-duration="1s" data-wow-delay="0.6s">
         <strong>Our Blog</strong>
     </h2>
@@ -31,74 +31,38 @@
                 <div class="widget">
                     <h4>Categories</h4>
                     <ul class="cat-list">
+                        @foreach ($categorydata as $category )
                         <li>
-                            <a href="#">Research <span class="countCat">(12)</span></a>
+                            <a href="#">{{$category}}</a>
                         </li>
-                        <li>
-                            <a href="#">Wordpress <span class="countCat">(22)</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Html/Css <span class="countCat">(16)</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Branding <span class="countCat">(2)</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Animation <span class="countCat">(7)</span></a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <!--End widget-->
 
                 <!-- Widget 3 -->
                 <div class="widget">
-                    <h4>Popular tags</h4>
+                    <h4>Tags</h4>
                     <ul class="tag-list">
                         @foreach ($tagsdata as $tag )
                         <li><a href="#">{{ $tag }}</a></li>
                         @endforeach
-                        <li><a href="#">Research</a></li>
-                        <li><a href="#">Wordpress</a></li>
-                        <li><a href="#">Html/Css</a></li>
-                        <li><a href="#">Branding</a></li>
-                        <li><a href="#">Animation</a></li>
-                        <li><a href="#">Photoshop</a></li>
-                        <li><a href="#">Marketing</a></li>
-                        <li><a href="#">Socials media</a></li>
-                        <li><a href="#">Photography</a></li>
                     </ul>
                 </div>
                 <!--End widget-->
 
                 <!--Widget 4-->
                 <div class="widget">
-                    <h4>Archives</h4>
+                    <h4>Keywords</h4>
                     <ul class="cat-archives">
-                        <li><a href="#">June 2017</a></li>
-                        <li><a href="#">July 2017</a></li>
-                        <li><a href="#">October 2017</a></li>
-                        <li><a href="#">November 2017</a></li>
-                        <li><a href="#">December 2017</a></li>
+                        @foreach ($keyworddata as $key )
+                        <li><a href="#">{{$key}}</a></li>
+
+                        @endforeach
                     </ul>
                 </div>
                 <!--End widget-->
 
-                <!--Widget 5-->
-                <div class="widget">
-                    <h4>Meta</h4>
-                    <ul class="meta">
-                        <li><a href="#">Log in</a></li>
-                        <li>
-                            <a href="#">Entries <abbr title="">RSS</abbr></a>
-                        </li>
-                        <li>
-                            <a title="#">Comments
-                                <abbr title="Really Simple Syndication">RSS</abbr></a>
-                        </li>
-                        <li><a href="#">WordPress.org</a></li>
-                    </ul>
-                </div>
-                <!--End widget-->
             </div>
             <!-- /.col -->
 

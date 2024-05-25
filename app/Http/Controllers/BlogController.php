@@ -13,6 +13,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+
 
 
 class BlogController extends Controller
@@ -200,13 +202,27 @@ class BlogController extends Controller
             $request->validate([
                 'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
             ]);
-
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Blog' . time() . '.' . $ext;
-            $file->move(public_path('blog'), $filename);
+            $image = Image::read($file);
+            // Resize image
 
-            $newblog->image = $filename;
+            // resize image canvas
+            $image->resizeCanvas(300, 200);
+            $image->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+
+            // $file = $request->file('image');
+            // $ext = $file->getClientOriginalExtension();
+            // $filename = 'Blog' . time() . '.' . $ext;
+            // $file->move(public_path('blog'), $filename);
+            if ($image->save(public_path('blog') . '/' . $filename)) {
+                $newblog->image = $filename;
+                dd($newblog);
+            }
         }
         //dd($newblog);
         if ($newblog->save()) {
@@ -288,7 +304,7 @@ class BlogController extends Controller
         foreach ($allcategories as $category) {
             $allcategory[$category->id] = $category->category;
         }
-        //dd($alltag);
+        // dd($allkeyword);
         return view('front.bloglist', ["blogitems" => $blogitems, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
     }
 
