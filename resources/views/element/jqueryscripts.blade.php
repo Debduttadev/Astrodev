@@ -9,7 +9,7 @@
         }, 3000);
 
         //  delete admin user
-        $('.deleteadmin').on('click', function() {
+        $(document).on('click', '.deleteadmin', function() {
             var obj = $(this);
             var id = $(this).attr('adminid');
             //alert(id);
@@ -36,7 +36,7 @@
         });
 
         // delete service
-        $('.deleteservice').on('click', function() {
+        $(document).on('click', '.deleteservice', function() {
             var obj = $(this);
             var id = $(this).attr('serviceid');
             var serviceimage = $(this).attr('serviceimage');
@@ -101,7 +101,7 @@
 
 
         // delete chamber
-        $('.deletechember').on('click', function() {
+        $(document).on('click', '.deletechember', function() {
             var obj = $(this);
             var id = $(this).attr('chamberid');
 
@@ -129,7 +129,7 @@
 
 
         // delete bannervideo
-        $('.deletebannervideo').on('click', function() {
+        $(document).on('click', '.deletebannervideo', function() {
             var obj = $(this);
             var id = $(this).attr('bannervideoid');
             var bannervideoimage = $(this).attr('bannervideoimage');
@@ -159,7 +159,7 @@
 
 
         // delete Social Link
-        $('.deletesocial').on('click', function() {
+        $(document).on('click', '.deletesocial', function() {
             var obj = $(this);
             var id = $(this).attr('socialid');
 
@@ -186,7 +186,7 @@
         });
 
         // edit Social Link
-        $('.addediturl').on('change', function() {
+        $(document).on('click', '.addediturl', function() {
             var obj = $(this);
             var preva = $(this).prev('.jqueryurl');
             var id = $(this).attr('socialid');
@@ -216,7 +216,7 @@
         });
 
         // Change visibility of Social Link
-        $('.urlradio').on('click', function() {
+        $(document).on('click', '.urlradio', function() {
             var obj = $(this);
             var id = $(this).attr('linkid');
             var radioValue = $('input[name="visibility' + id + '"]:checked').val();
@@ -317,6 +317,21 @@
         });
 
         tinymce.init({
+            selector: '#blogdefault',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 400,
+            extended_valid_elements: 'b i ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
+        tinymce.init({
             selector: '#abouttitle',
             license_key: 'gpl',
             menubar: false,
@@ -356,8 +371,8 @@
             $(document).off('focusin.modal');
         });
 
-
-        $('.deleteblog').on('click', function() {
+        // delete blogs
+        $(document).on('click', '.deleteblog', function() {
             var obj = $(this);
             var id = $(this).attr('blogid');
             var blogimage = $(this).attr('blogimage');
@@ -386,7 +401,7 @@
         });
 
         //show image if edited in update about
-        $('.aboutimage').on('change', function() {
+        $(document).on('click', '.aboutimage', function() {
             var obj = $(this);
             var file = $(".aboutimage").get(0).files[0];
             if (file) {
@@ -399,7 +414,8 @@
             }
         });
 
-        $('#phonenum').on('click', function() {
+
+        $(document).on('click', '#phonenum', function() {
 
             var obj = $(this);
             var key = $(this).attr('key');
@@ -419,8 +435,8 @@
             $(this).parent().remove();
         });
 
+        $(document).on('click', '.deletecontact', function() {
 
-        $('.deletecontact').on('click', function() {
             var obj = $(this);
             var id = $(this).attr('contactid');
 
@@ -474,47 +490,57 @@
         }
 
         // will try to call function
-        $('.aboutalt').on('click', function() {
+        $(document).on('click', '.aboutalt', function() {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $('.bannarvideoalt').on('click', function() {
+
+        $(document).on('click', '.bannarsalt', function() {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $('.servicealt').on('click', function() {
+        $(document).on('click', '.servicealt', function() {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $('.blogalt').on('click', function() {
+        $(document).on('click', '.blogalt', function() {
             var obj = $(this);
             alttagmodaldata(obj);
 
         });
-
 
         function alttagmodaldata(obj) {
             var page = obj.attr('page');
             var relatedid = obj.attr('relatedid');
             var alttag = obj.attr('alttag');
             var title = obj.attr('title');
+            var urlview = obj.attr('urlview');
             //console.log(title);
             $('#relatedid').val(relatedid);
             $('#page').val(page);
             $('#alttitle').val(title);
             $('#alttag').val(alttag);
 
+
             var textstart = "This image belongs to ";
-            var textend = ' page.';
-            textend += '<a href=" # " class="link - warning link - offset - 2 link - underline - opacity - 25 link - underline - opacity - 100 - hover ">Here is the details page link.</a>';
+            var textend = ' ';
+            textend += '<a href="' + urlview + '" target="_blank" class="link - warning link - offset - 2 link - underline - opacity - 25 link - underline - opacity - 100 - hover ">Here is the details page link.</a>';
             //console.log(textend);
             if (page == 'about_contact') {
                 $('#pagetitle').html(textstart + ' About Us ' + textend);
-            } else if (page == 'banner_video') {
-                $('#pagetitle').html(textstart + ' Banner and video thumbnail ' + textend);
+            } else if (page == 'banner') {
+                if (urlview == "#") {
+                    $('#pagetitle').html(textstart + ' Banner thumbnail ');
+                } else {
+                    $('#pagetitle').html(textstart + ' Banner thumbnail ' + textend);
+                }
+                youtube
+            } else if (page == 'youtube') {
+                $('#pagetitle').html(textstart + 'Youtube video thumbnail ' + textend);
+
             } else if (page == 'Service') {
                 $('#pagetitle').html(textstart + ' Service ' + textend);
             } else if (page == 'blog') {

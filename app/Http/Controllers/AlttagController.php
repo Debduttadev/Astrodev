@@ -29,13 +29,16 @@ class AlttagController extends Controller
 
         // about page images
         $aboutimage = about_contact::select('id', 'image')->get();
-        $bannervideos = banner_video::select('id', 'thumbnail')->get();
-        $serviceimage = Service::select('id', 'Image')->get();
+        $banner = banner_video::select('id', 'thumbnail', 'videolink')->where('thumbnailtype', '0')->get();
+        $videos = banner_video::select('id', 'thumbnail', 'videolink')->where('thumbnailtype', '1')->get();
+        //dd($videos);
+        $serviceimage = Service::select('id', 'Image', 'name')->get();
         $blogimage = blog::select('id', 'image')->get();
-
+        //dd($bannervideos);
         $allimages = [];
         $allimages['about_contact'] = [];
-        $allimages['banner_video'] = [];
+        $allimages['banner'] = [];
+        $allimages['videos'] = [];
         $allimages['Service'] = [];
         $allimages['blog'] = [];
 
@@ -70,33 +73,64 @@ class AlttagController extends Controller
             $allimages['about_contact'] = '';
         }
 
-        if (!empty($bannervideos)) {
+        if (!empty($banner)) {
             $j = 0;
-            foreach ($bannervideos as $image) {
+            foreach ($banner as $image) {
                 if ($image->thumbnail != null) {
                     $alttagdetails = alttag::where([
                         ['relatedid', $image->id],
-                        ['page', 'banner_video'],
+                        ['page', 'banner'],
                     ])->first();
                     if (!empty($alttagdetails)) {
-                        $allimages['banner_video'][$j]['id'] = $alttagdetails->id;
-                        $allimages['banner_video'][$j]['page'] = $alttagdetails->page;
-                        $allimages['banner_video'][$j]['alttag'] = $alttagdetails->alttag;
-                        $allimages['banner_video'][$j]['title'] = $alttagdetails->title;
+                        $allimages['banner'][$j]['id'] = $alttagdetails->id;
+                        $allimages['banner'][$j]['page'] = $alttagdetails->page;
+                        $allimages['banner'][$j]['alttag'] = $alttagdetails->alttag;
+                        $allimages['banner'][$j]['title'] = $alttagdetails->title;
                     } else {
-                        $allimages['banner_video'][$j]['id'] = "";
-                        $allimages['banner_video'][$j]['page'] = "banner_video";
-                        $allimages['banner_video'][$j]['alttag'] = "";
-                        $allimages['banner_video'][$j]['title'] = "";
+                        $allimages['banner'][$j]['id'] = "";
+                        $allimages['banner'][$j]['page'] = "banner";
+                        $allimages['banner'][$j]['alttag'] = "";
+                        $allimages['banner'][$j]['title'] = "";
                     }
-                    $allimages['banner_video'][$j]['image'] = $image->thumbnail;
-                    $allimages['banner_video'][$j]['relatedid'] = $image->id;
+                    $allimages['banner'][$j]['image'] = $image->thumbnail;
+                    $allimages['banner'][$j]['videolink'] = $image->videolink;
+                    $allimages['banner'][$j]['relatedid'] = $image->id;
                     $j++;
                 }
             }
         } else {
-            $allimages['banner_video'] = '';
+            $allimages['banner'] = '';
         }
+
+        if (!empty($videos)) {
+            $j = 0;
+            foreach ($videos as $image) {
+                if ($image->thumbnail != null) {
+                    $alttagdetails = alttag::where([
+                        ['relatedid', $image->id],
+                        ['page', 'youtube'],
+                    ])->first();
+                    if (!empty($alttagdetails)) {
+                        $allimages['videos'][$j]['id'] = $alttagdetails->id;
+                        $allimages['videos'][$j]['page'] = $alttagdetails->page;
+                        $allimages['videos'][$j]['alttag'] = $alttagdetails->alttag;
+                        $allimages['videos'][$j]['title'] = $alttagdetails->title;
+                    } else {
+                        $allimages['videos'][$j]['id'] = "";
+                        $allimages['videos'][$j]['page'] = "youtube";
+                        $allimages['videos'][$j]['alttag'] = "";
+                        $allimages['videos'][$j]['title'] = "";
+                    }
+                    $allimages['videos'][$j]['image'] = $image->thumbnail;
+                    $allimages['videos'][$j]['videolink'] = $image->videolink;
+                    $allimages['videos'][$j]['relatedid'] = $image->id;
+                    $j++;
+                }
+            }
+        } else {
+            $allimages['videos'] = '';
+        }
+
 
         if (!empty($serviceimage)) {
             $k = 0;
@@ -119,6 +153,7 @@ class AlttagController extends Controller
                     }
                     $allimages['Service'][$k]['image'] = $image->Image;
                     $allimages['Service'][$k]['relatedid'] = $image->id;
+                    $allimages['Service'][$k]['name'] = $image->name;
                     $k++;
                 }
             }

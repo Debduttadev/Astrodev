@@ -11,8 +11,8 @@ URL:            http://www.tabthemes.com/
 02. Custom Button
 03. Typography
 04. Block Spacing
-
-
+#564231
+#483120;
 -------------------------------------------------------------------*/
 /*--------------------------------------------------
     01. General Styles 
@@ -29,7 +29,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    background: #483120;
+    background: #564231;
     font-size: 14px;
     font-family: "Lato", sans-serif;
     color: #e7e0e0;
@@ -562,7 +562,7 @@ p {
     line-height: 1.8em;
 }
 .section-title-bg {
-    background-color: #483120;
+    background-color: #564231;
     padding: 50px 0;
 }
 .section-subtitle {
@@ -1786,7 +1786,7 @@ blockquote {
 /*Sidebar*/
 .widget {
     margin-bottom: 20px;
-    background-color: #483120;
+    background-color: #564231;
     padding: 25px 25px 12px;
 }
 .widget h4 {
@@ -1800,7 +1800,7 @@ blockquote {
     padding: 12px 10px;
     font-size: 13px;
     width: 100%;
-    background: #483120;
+    background: #564231;
     border: 0 none;
     outline: 0;
     color: #fff;

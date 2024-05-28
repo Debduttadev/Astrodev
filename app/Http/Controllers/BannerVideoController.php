@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class BannerVideoController extends Controller
 {
@@ -34,34 +35,82 @@ class BannerVideoController extends Controller
         ]);
 
         $data = $request->except('_token');
+        //dd($data);
+        if ($data['thumbnailtype'] == "1") {
+            if ($data['videolink'] != null) {
+                if ($request->hasFile('fileToUpload')) {
+                    //dd($data);
+                    $request->validate([
+                        'image' => ['required|image|mimes:jpeg,png,jpg,gif,svg']
+                    ]);
+                    $newBannerVideo = new banner_video;
+                    $file = $request->file('fileToUpload');
+                    $ext = $file->getClientOriginalExtension();
+                    $filename = 'Banner' . time() . '.' . $ext;
+                    $image = Image::read($file);
+                    // Resize image
 
-        if ($request->hasFile('fileToUpload')) {
-            //dd($data);
-            $request->validate([
-                'image' => ['required|image|mimes:jpeg,png,jpg,gif,svg']
-            ]);
+                    // resize image canvas
+                    //$image->resizeCanvas(550, 550);
+                    $image->resize(1920, 1080, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    if ($image->save(public_path('bannervideo') . '/' . $filename)) {
+                        $newBannerVideo->thumbnail = $filename;
+                        $newBannerVideo->videolink = $data['videolink'];
+                        $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
+                        $newBannerVideo->show = $data['show'];
+                        //dd($newBannerVideo);
 
-            $file = $request->file('fileToUpload');
-            $ext = $file->getClientOriginalExtension();
-            $filename = 'Banner' . time() . '.' . $ext;
-            $file->move(public_path('bannervideo'), $filename);
-
-            $newBannerVideo = new banner_video;
-            $newBannerVideo->videolink = $data['videolink'];
-            $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
-            $newBannerVideo->show = $data['show'];
-            $newBannerVideo->thumbnail = $filename;
-            //dd($newBannerVideo);
-
-            if ($newBannerVideo->save()) {
-                session(['status' => "1", 'msg' => 'File Add is successful']);
+                        if ($newBannerVideo->save()) {
+                            session(['status' => "1", 'msg' => 'File Add is successful']);
+                        } else {
+                            session(['status' => "0", 'msg' => 'File data is not Added']);
+                        }
+                    } else {
+                        session(['status' => "0", 'msg' => 'File not uploaded']);
+                    }
+                } else {
+                    session(['status' => "0", 'msg' => 'File not uploaded']);
+                }
             } else {
-                session(['status' => "0", 'msg' => 'File data is not Added']);
+                session(['status' => "0", 'msg' => 'Video Link not Added']);
             }
         } else {
-            session(['status' => "0", 'msg' => 'File not uploaded']);
-        }
+            if ($request->hasFile('fileToUpload')) {
+                //dd($data);
+                $request->validate([
+                    'image' => ['required|image|mimes:jpeg,png,jpg,gif,svg']
+                ]);
+                $newBannerVideo = new banner_video;
+                $file = $request->file('fileToUpload');
+                $ext = $file->getClientOriginalExtension();
+                $filename = 'Banner' . time() . '.' . $ext;
+                $image = Image::read($file);
+                // Resize image
 
+                // resize image canvas
+                //$image->resizeCanvas(550, 550);
+                $image->resize(1920, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                if ($image->save(public_path('bannervideo') . '/' . $filename)) {
+                    $newBannerVideo->thumbnail = $filename;
+                    $newBannerVideo->videolink = $data['videolink'];
+                    $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
+                    $newBannerVideo->show = $data['show'];
+                    //dd($newBannerVideo);
+
+                    if ($newBannerVideo->save()) {
+                        session(['status' => "1", 'msg' => 'File Add is successful']);
+                    } else {
+                        session(['status' => "0", 'msg' => 'File data is not Added']);
+                    }
+                } else {
+                    session(['status' => "0", 'msg' => 'File not uploaded']);
+                }
+            }
+        }
         return redirect()->back();
     }
 
@@ -100,27 +149,75 @@ class BannerVideoController extends Controller
     {
         $data = $request->except('_token');
         //dd($request);
+
         $updatedata['videolink'] = $request->videolink;
         $updatedata['thumbnailtype'] = $request->thumbnailtype;
         $updatedata['show'] = $request->show;
+        if ($updatedata['thumbnailtype'] == 1) {
+            if ($updatedata['videolink'] != null) {
+                if ($request->hasFile('fileToUpload')) {
 
-        if ($request->hasFile('fileToUpload')) {
+                    $request->validate([
+                        'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
+                    ]);
+                    $image = public_path('bannervideo') . '/' . $request->oldimage;
+                    unlink($image);
 
-            $request->validate([
-                'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
-            ]);
-            $image = public_path('bannervideo') . '/' . $request->oldimage;
-            unlink($image);
-            $file = $request->file('fileToUpload');
-            $ext = $file->getClientOriginalExtension();
-            $filename = 'Banner' . time() . '.' . $ext;
-            $file->move(public_path('bannervideo'), $filename);
-            $updatedata['thumbnail'] = $filename;
+                    $file = $request->file('fileToUpload');
+                    $ext = $file->getClientOriginalExtension();
+                    $filename = 'Banner' . time() . '.' . $ext;
+                    $image = Image::read($file);
+                    // Resize image
+
+                    // resize image canvas
+                    //$image->resizeCanvas(550, 550);
+                    $image->resize(1920, 1080, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                    if ($image->save(public_path('bannervideo') . '/' . $filename)) {
+                        $updatedata['thumbnail'] = $filename;
+                    } else {
+
+                        session(['status' => "0", 'msg' => 'File not uploaded']);
+                        return redirect('/managebannervideo');
+                    }
+                } else {
+                    $updatedata['thumbnail'] = $request->oldimage;
+                }
+            } else {
+                session(['status' => "0", 'msg' => 'Video Link not Added']);
+                return redirect('/managebannervideo');
+            }
         } else {
-            $updatedata['thumbnail'] = $request->oldimage;
+            if ($request->hasFile('fileToUpload')) {
+
+                $request->validate([
+                    'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
+                ]);
+                $image = public_path('bannervideo') . '/' . $request->oldimage;
+                unlink($image);
+
+                $file = $request->file('fileToUpload');
+                $ext = $file->getClientOriginalExtension();
+                $filename = 'Banner' . time() . '.' . $ext;
+                $image = Image::read($file);
+                // Resize image
+
+                // resize image canvas
+                //$image->resizeCanvas(550, 550);
+                $image->resize(1920, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                if ($image->save(public_path('bannervideo') . '/' . $filename)) {
+                    $updatedata['thumbnail'] = $filename;
+                } else {
+                    session(['status' => "0", 'msg' => 'File not uploaded']);
+                    return redirect('/managebannervideo');
+                }
+            } else {
+                $updatedata['thumbnail'] = $request->oldimage;
+            }
         }
-        //echo $request->id;
-        //dd($updatedata);
 
         $update = banner_video::where('id', $request->id)
             ->update($updatedata);

@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ServiceController extends Controller
 {
@@ -51,19 +52,30 @@ class ServiceController extends Controller
                 'image' => ['required|image|mimes:jpeg,png,jpg,gif,svg']
             ]);
 
+            $newService = new Service;
+
             $file = $request->file('fileToUpload');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Service' . time() . '.' . $ext;
-            $file->move(public_path('service'), $filename);
+            $image = Image::read($file);
+            // Resize image
+
+            // resize image canvas
+            //$image->resizeCanvas(1200, 900);
+            $image->resize(1200, 1200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if ($image->save(public_path('service') . '/' . $filename)) {
+                $newService->image = $filename;
+            }
 
             $shortdescription = htmlentities($data['shortdescription']);
             $description = htmlentities($data['description']);
 
-            $newService = new Service;
             $newService->name = $data['name'];
             $newService->shortdescription = $data['shortdescription'];
             $newService->description = $description;
-            $newService->image = $filename;
+
             //dd($newService);
 
             if ($newService->save()) {
@@ -147,13 +159,24 @@ class ServiceController extends Controller
             $request->validate([
                 'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
             ]);
+
             $image = public_path('service') . '/' . $request->oldimage;
             unlink($image);
+
             $file = $request->file('fileToUpload');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Service' . time() . '.' . $ext;
-            $file->move(public_path('service'), $filename);
-            $updatedata['Image'] = $filename;
+            $image = Image::read($file);
+            // Resize image
+
+            // resize image canvas
+            //$image->resizeCanvas(1200, 900);
+            $image->resize(1200, 1200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if ($image->save(public_path('service') . '/' . $filename)) {
+                $updatedata['Image'] = $filename;
+            }
         } else {
 
             $updatedata['Image'] = $request->oldimage;

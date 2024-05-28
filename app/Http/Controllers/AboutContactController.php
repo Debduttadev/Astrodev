@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class AboutContactController extends Controller
 {
@@ -32,7 +33,7 @@ class AboutContactController extends Controller
 
         $updateabout['title'] = htmlentities($request->title);
         $updateabout['description'] = htmlentities($request->description);
-        //dd($ifixtitle);
+
         if ($request->hasFile('image')) {
 
             $request->validate([
@@ -41,10 +42,20 @@ class AboutContactController extends Controller
 
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = 'About' . time() . '.' . $ext;
-            $file->move(public_path('about'), $filename);
+            $filename = 'Blog' . time() . '.' . $ext;
+            $image = Image::read($file);
+            // Resize image
 
-            $updateabout['image'] = $filename;
+            // resize image canvas
+            $image->resizeCanvas(550, 550);
+            $image->resize(550, 550, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if ($image->save(public_path('about') . '/' . $filename)) {
+                $image = public_path('about') . '/' . $request->oldimage;
+                unlink($image);
+                $updateabout['image'] = $filename;
+            }
         } else {
             $updateabout['image'] = $request->oldimage;
         }

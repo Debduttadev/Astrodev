@@ -108,7 +108,7 @@
                             <td>
                                 <a style="font-size: medium;" title="Edit Blog" class="btn btn-warning" href="{{ URL::to('editblog/' .base64_encode($data['id'])) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 
-                                <a title="Delete Chamber" class="btn btn-danger deleteblog" blogid="{{ base64_encode($data['id'])}}" blogimage="{{$data['image']}}"><i class="fas fa-trash"></i></a>
+                                <a title="Delete Blogs" class="btn btn-danger deleteblog" blogid="{{ base64_encode($data['id'])}}" blogimage="{{$data['image']}}"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

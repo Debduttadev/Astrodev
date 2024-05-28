@@ -3,10 +3,10 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4">Edit Admin User</h3>
+        <h3 class="mt-4">Edit Blogs</h3>
         <div class="row">
 
-            <form class="user" id="formdatablog" method="POST" action="{{ URL::to('updateblog') }}" enctype="multipart/form-data">
+            <form class="user" id="formdatablogedit" method="POST" action="{{ URL::to('updateblog') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="mt-4">
@@ -22,14 +22,14 @@
                     <label>Upload Image</label>
                     <input type="hidden" name="oldimage" value="{{$blogsdata->image}}">
 
-                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload9" accept="image/png, image/gif, image/jpeg, image/jpg">
+                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload11" accept="image/png, image/gif, image/jpeg, image/jpg">
 
                 </div>
 
                 <div class="mt-4">
                     <label class="control-label">Description</label>
                     limit <span class="limit">0</span>/2000
-                    <textarea name="blogdescription" class="form-control form-control-user" id="default" aria-describedby="description5" placeholder="Enter blog description..." value="{{html_entity_decode($blogsdata->description)}}">{{html_entity_decode($blogsdata->description)}}</textarea>
+                    <textarea name="blogdescription" class="form-control form-control-user" id="blogdefault" aria-describedby="description5" placeholder="Enter blog description..." value="{{html_entity_decode($blogsdata->description)}}">{{html_entity_decode($blogsdata->description)}}</textarea>
                 </div>
                 @php
                 $blogtags = explode(',', $blogsdata->tags);

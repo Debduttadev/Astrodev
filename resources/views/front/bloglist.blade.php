@@ -83,12 +83,12 @@
                             <!--post info-->
 
                             <div class="blog-post-body">
-                                <h4><a class="title" href="#">Working in Cool Head</a></h4>
+                                <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
                                 @php
-                                $small = substr( strip_tags($blog['description']), 0, 200);
+                                $small = substr( strip_tags($blog['description']), 0, 180);
                                 @endphp
                                 <p class="p-bottom-20">{!! $small !!}</p>
-                                <a href="#" class="read-more">Read More >></a>
+                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class="read-more">Read More >></a>
                             </div><!--post body-->
                             <!--post body-->
                         </div>

@@ -6,6 +6,7 @@ use App\Models\blog;
 use App\Models\tag;
 use App\Models\category;
 use App\Models\keyword;
+use App\Models\alttag;
 use App\Http\Requests\StoreblogRequest;
 use App\Http\Requests\UpdateblogRequest;
 use Illuminate\Http\Request;
@@ -209,8 +210,8 @@ class BlogController extends Controller
             // Resize image
 
             // resize image canvas
-            $image->resizeCanvas(300, 200);
-            $image->resize(300, 300, function ($constraint) {
+            // $image->resizeCanvas(1920, 1080);
+            $image->resize(1920, 1080, function ($constraint) {
                 $constraint->aspectRatio();
             });
 
@@ -221,7 +222,7 @@ class BlogController extends Controller
             // $file->move(public_path('blog'), $filename);
             if ($image->save(public_path('blog') . '/' . $filename)) {
                 $newblog->image = $filename;
-                dd($newblog);
+                // dd($newblog);
             }
         }
         //dd($newblog);
@@ -234,11 +235,34 @@ class BlogController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * show only one blog .
      */
-    public function store(StoreblogRequest $request)
+    public function blog($id)
     {
-        //
+        $id = base64_decode($id);
+        //dd($id);
+        $blogs = blog::where('id', $id)->first();
+        //dd($blogs);
+
+        $alltags = tag::select('id', 'tag')->get();
+        $alltag = [];
+        foreach ($alltags as $tag) {
+            $alltag[$tag->id] = $tag->tag;
+        }
+
+        $allkeywords = keyword::select('id', 'keyword')->get();
+        $allkeyword = [];
+        foreach ($allkeywords as $keyword) {
+            $allkeyword[$keyword->id] = $keyword->keyword;
+        }
+
+        $allcategories = category::select('id', 'category')->get();
+        $allcategory = [];
+        foreach ($allcategories as $category) {
+            $allcategory[$category->id] = $category->category;
+        }
+        //dd($alltag);
+        return view('front.soloblog', ["blogsdata" => $blogs, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
     }
 
     /**
@@ -451,9 +475,19 @@ class BlogController extends Controller
             $file = $request->file('newimage');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Blog' . time() . '.' . $ext;
-            $file->move(public_path('blog'), $filename);
+            $image = Image::read($file);
+            // Resize image
 
-            $updateblog['image'] = $filename;
+            // resize image canvas
+            // $image->resizeCanvas(1920, 1080);
+            $image->resize(1920, 1080, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if ($image->save(public_path('blog') . '/' . $filename)) {
+                $image = public_path('about') . '/' . $request->oldimage;
+                unlink($image);
+                $updateblog['image'] = $filename;
+            }
         } else {
             $updateblog['image'] = $request->oldimage;
         }
@@ -481,10 +515,12 @@ class BlogController extends Controller
 
         //echo json_encode(array('status' => 1, 'msg' => $id));
         $blog = blog::where('id', $id)->delete();
+        $altblog = alttag::where([['relatedid', $id], ['page', 'blog']])->delete();
         if ($blog) {
             if (isset($image)) {
                 unlink($image);
             }
+
             echo json_encode(array('status' => 1, 'msg' => "true"));
         } else {
             echo json_encode(array('status' => 0, 'msg' => "false"));

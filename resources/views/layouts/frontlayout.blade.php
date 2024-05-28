@@ -51,7 +51,7 @@
         .servicebg {
             position: relative;
             width: 50% !important;
-            top: -100%;
+            top: -200%;
 
         }
 

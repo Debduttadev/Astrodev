@@ -173,7 +173,7 @@
                     @foreach ($youtube_video as $youtubedata)
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="{{$youtubedata->videolink}}"><img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt=""></a>
+                            <a href="{{$youtubedata->videolink}}" target="_blank"><img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt=""></a>
                         </div><!--post media-->
                     </div> <!-- /.blog -->
                     @endforeach
@@ -262,19 +262,19 @@
                         </div><!--post info-->
 
                         <div class="blog-post-body">
-                            <h4><a class="title" href="#">Working in Cool Head</a></h4>
+                            <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
                             @php
                             $small = substr( strip_tags($blog['description']), 0, 200);
                             @endphp
                             <p class="p-bottom-20">{!! $small !!}</p>
-                            <a href="#" class="read-more">Read More >></a>
+                            <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class=" read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
                     @endforeach
                 </div><!-- /#owl-testimonials -->
 
             </div> <!-- /.row -->
-
+            <a href="{{ URL::to('/blogs') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
         </div> <!-- /.container -->
 
     </section>
