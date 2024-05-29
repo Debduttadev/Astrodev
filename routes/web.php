@@ -22,14 +22,20 @@ Route::get('/phpinfo', function () {
 //frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
+
+
 Route::get('/services', [ServiceController::class, 'servicelists']);
 Route::get('/service/{name}/{id}', [ServiceController::class, 'servicedetails'])->name('service');
+
+
 Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');
+Route::get('/blogs/{page}', [BlogController::class, 'bloglistpagination'])->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'blog'])->name('blog');
+Route::get('/searchblog', [BlogController::class, 'searchblog']);
+
 Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers');
+
 Route::get('/appoinment', [AppointmentController::class, 'appoinment'])->name('appoinment');
-
-
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

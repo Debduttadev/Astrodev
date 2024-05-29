@@ -57,3 +57,35 @@ if (!function_exists('servicelistfooter')) {
         return $servicedata;
     }
 }
+
+
+if (!function_exists('blogfilters')) {
+    function blogfilters()
+    {
+        $blogfilters = [];
+
+        $alltags = tag::select('id', 'tag')->get();
+        $alltag = [];
+        foreach ($alltags as $tag) {
+            $alltag[$tag->id] = $tag->tag;
+        }
+        $blogfilters['alltag'] = $alltag;
+
+        $allkeywords = keyword::select('id', 'keyword')->get();
+        $allkeyword = [];
+        foreach ($allkeywords as $keyword) {
+            $allkeyword[$keyword->id] = $keyword->keyword;
+        }
+        $blogfilters['allkeyword'] = $allkeyword;
+
+        $allcategories = category::select('id', 'category')->get();
+        $allcategory = [];
+        foreach ($allcategories as $category) {
+            $allcategory[$category->id] = $category->category;
+        }
+        $blogfilters['allcategory'] = $allcategory;
+
+
+        return $blogfilters;
+    }
+}

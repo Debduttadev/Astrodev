@@ -70,8 +70,10 @@
                 <div class="col-md-5 col-md-offset-1">
 
                     <div class="feature-image parent">
-                        <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
-                        <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                        <a href="{{ URL::to('/aboutus') }}">
+                            <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
+                            <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                        </a>
                     </div>
 
                 </div> <!-- /.col -->
@@ -140,7 +142,7 @@
         <div>
             <div class="text-center mt-20">
                 <h1 class=" text-2xl md:text-3xl lg:text-4xl m-3 font-philosopher">MY JOURNEY</h1>
-                <h3 class="font-dancing text-xl text-slate-800" style="font-family:Garamond;"><small>...what you seek, seeks you</small></h3>
+                <h3 class="font-dancing text-xl myjourneyfont" style="font-family:Garamond;">...what you seek, seeks you</h3>
                 <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans">
                     <p>Embarking on a spiritual odyssey in childhood, </p>
                     <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>

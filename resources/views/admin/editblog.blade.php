@@ -5,7 +5,14 @@
     <div class="container-fluid px-4">
         <h3 class="mt-4">Edit Blogs</h3>
         <div class="row">
+            @php
 
+            $blogfilters=blogfilters();
+            $categorydata=$blogfilters['allcategory'];
+            $tagsdata=$blogfilters['alltag'];
+            $keyworddata=$blogfilters['allkeyword'];
+
+            @endphp
             <form class="user" id="formdatablogedit" method="POST" action="{{ URL::to('updateblog') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 

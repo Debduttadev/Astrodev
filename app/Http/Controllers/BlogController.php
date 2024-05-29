@@ -59,25 +59,8 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['image'] = $blogdata->image;
         }
         //dd($blogitems);
-        $alltags = tag::select('id', 'tag')->get();
-        $alltag = [];
-        foreach ($alltags as $tag) {
-            $alltag[$tag->id] = $tag->tag;
-        }
 
-        $allkeywords = keyword::select('id', 'keyword')->get();
-        $allkeyword = [];
-        foreach ($allkeywords as $keyword) {
-            $allkeyword[$keyword->id] = $keyword->keyword;
-        }
-
-        $allcategories = category::select('id', 'category')->get();
-        $allcategory = [];
-        foreach ($allcategories as $category) {
-            $allcategory[$category->id] = $category->category;
-        }
-
-        return view('admin.manageblog', ['page_name' => 'manageblog', 'navstatus' => "manageblog", "blogsdata" => $blogitems, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
+        return view('admin.manageblog', ['page_name' => 'manageblog', 'navstatus' => "manageblog", "blogsdata" => $blogitems]);
     }
 
     /**
@@ -242,27 +225,59 @@ class BlogController extends Controller
         $id = base64_decode($id);
         //dd($id);
         $blogs = blog::where('id', $id)->first();
+
+        $category = explode(',', $blogs->category);
+        $similarblog = [];
+
+        foreach ($category as $cat) {
+            $similarblog = blog::where(
+                'category',
+                'like',
+                '%' . $cat . '%'
+            )->inRandomOrder()->limit(4)->get();
+        }
+        //dd($similarblog);
+
+        $blogitems = [];
+        foreach ($similarblog as $blogdata) {
+
+            $cataegoryid = explode(",", $blogdata->category);
+            $categories = [];
+            foreach ($cataegoryid as $id) {
+                $category = category::where('id', $id)->first();
+                $categories[$id] = $category->category;
+            }
+            $blogitems[$blogdata->id]['category'] = $categories;
+
+            $keywordid = explode(",", $blogdata->keyword);
+            $keywords = [];
+            foreach ($keywordid as $id) {
+                $keyword = keyword::where('id', $id)->first();
+                $keywords[$id] = $keyword->keyword;
+            }
+            $blogitems[$blogdata->id]['keyword'] = $keywords;
+
+            $tagid = explode(",", $blogdata->tags);
+            $tags = [];
+            foreach ($tagid as $id) {
+                $tag = tag::where('id', $id)->first();
+                $tags[$id] = $tag->tag;
+            }
+            $blogitems[$blogdata->id]['tag'] = $tags;
+
+            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
+            $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['id'] = $blogdata->id;
+            if (!empty($blogdata->image)) {
+                $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            } else {
+                $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
+            }
+            $createdat = $blogdata->created_at;
+            $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
+        }
         //dd($blogs);
-
-        $alltags = tag::select('id', 'tag')->get();
-        $alltag = [];
-        foreach ($alltags as $tag) {
-            $alltag[$tag->id] = $tag->tag;
-        }
-
-        $allkeywords = keyword::select('id', 'keyword')->get();
-        $allkeyword = [];
-        foreach ($allkeywords as $keyword) {
-            $allkeyword[$keyword->id] = $keyword->keyword;
-        }
-
-        $allcategories = category::select('id', 'category')->get();
-        $allcategory = [];
-        foreach ($allcategories as $category) {
-            $allcategory[$category->id] = $category->category;
-        }
-        //dd($alltag);
-        return view('front.soloblog', ["blogsdata" => $blogs, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
+        return view('front.soloblog', ["blogsdata" => $blogs, 'blogitems' => $blogitems]);
     }
 
     /**
@@ -271,7 +286,12 @@ class BlogController extends Controller
     public function bloglist(blog $blog)
     {
         // blog details
-        $blogs = blog::get();
+        $limit = 6;
+        $blogs = blog::limit($limit)->get();
+        $blogcount = blog::count();
+        $pagination = $blogcount / $limit;
+        $pagination = ceil($pagination);
+        //dd($pagination);
         $blogitems = [];
         foreach ($blogs as $blogdata) {
 
@@ -311,25 +331,128 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
         }
 
-        $alltags = tag::select('id', 'tag')->get();
-        $alltag = [];
-        foreach ($alltags as $tag) {
-            $alltag[$tag->id] = $tag->tag;
+        //dd($blogitems);
+        return view('front.bloglist', ["blogitems" => $blogitems, 'pagination' => $pagination, 'page' => 1]);
+    }
+
+
+    public function bloglistpagination($page)
+    {
+        // blog details
+        $limit = 6;
+        $countpage = $page - 1;
+        $offset = $limit * $countpage;
+
+        $blogs = blog::offset($offset)->limit($limit)->get();
+        $blogcount = blog::count();
+        $pagination = $blogcount / $limit;
+        $pagination = ceil($pagination);
+
+
+        //dd($pagination);
+        $blogitems = [];
+        foreach ($blogs as $blogdata) {
+
+            $cataegoryid = explode(",", $blogdata->category);
+            $categories = [];
+            foreach ($cataegoryid as $id) {
+                $category = category::where('id', $id)->first();
+                $categories[$id] = $category->category;
+            }
+            $blogitems[$blogdata->id]['category'] = $categories;
+
+            $keywordid = explode(",", $blogdata->keyword);
+            $keywords = [];
+            foreach ($keywordid as $id) {
+                $keyword = keyword::where('id', $id)->first();
+                $keywords[$id] = $keyword->keyword;
+            }
+            $blogitems[$blogdata->id]['keyword'] = $keywords;
+
+            $tagid = explode(",", $blogdata->tags);
+            $tags = [];
+            foreach ($tagid as $id) {
+                $tag = tag::where('id', $id)->first();
+                $tags[$id] = $tag->tag;
+            }
+            $blogitems[$blogdata->id]['tag'] = $tags;
+
+            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
+            $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['id'] = $blogdata->id;
+            if (!empty($blogdata->image)) {
+                $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            } else {
+                $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
+            }
+
+            $createdat = $blogdata->created_at;
+            $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
         }
 
-        $allkeywords = keyword::select('id', 'keyword')->get();
-        $allkeyword = [];
-        foreach ($allkeywords as $keyword) {
-            $allkeyword[$keyword->id] = $keyword->keyword;
-        }
-
-        $allcategories = category::select('id', 'category')->get();
-        $allcategory = [];
-        foreach ($allcategories as $category) {
-            $allcategory[$category->id] = $category->category;
-        }
         // dd($allkeyword);
-        return view('front.bloglist', ["blogitems" => $blogitems, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
+        return view('front.bloglist', ["blogitems" => $blogitems, 'pagination' => $pagination, 'page' => $page]);
+    }
+
+    /**
+     * show only one blog .
+     */
+    public function searchblog(Request $request)
+    {
+        $data = $request;
+        $search = $data->search;
+        $type = $data->type;
+        $blogs = blog::where(
+            $type,
+            'like',
+            '%' . $search . '%'
+        )->get();
+
+        $blogitems = [];
+
+        foreach ($blogs as $blogdata) {
+
+            $cataegoryid = explode(",", $blogdata->category);
+            $categories = [];
+            foreach ($cataegoryid as $id) {
+                $category = category::where('id', $id)->first();
+                $categories[$id] = $category->category;
+            }
+            $blogitems[$blogdata->id]['category'] = $categories;
+
+            $keywordid = explode(",", $blogdata->keyword);
+            $keywords = [];
+            foreach ($keywordid as $id) {
+                $keyword = keyword::where('id', $id)->first();
+                $keywords[$id] = $keyword->keyword;
+            }
+            $blogitems[$blogdata->id]['keyword'] = $keywords;
+
+            $tagid = explode(",", $blogdata->tags);
+            $tags = [];
+            foreach ($tagid as $id) {
+                $tag = tag::where('id', $id)->first();
+                $tags[$id] = $tag->tag;
+            }
+            $blogitems[$blogdata->id]['tag'] = $tags;
+
+            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 184);;
+            $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['id'] = $blogdata->id;
+            if (!empty($blogdata->image)) {
+                $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            } else {
+                $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
+            }
+
+            $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
+        }
+
+        if (count($blogitems) != 0) {
+            print_r(json_encode($blogitems));
+        } else {
+            print_r(json_encode("0"));
+        }
     }
 
     /**
@@ -342,25 +465,9 @@ class BlogController extends Controller
         $blogitems = [];
         //dd($blogs);
 
-        $alltags = tag::select('id', 'tag')->get();
-        $alltag = [];
-        foreach ($alltags as $tag) {
-            $alltag[$tag->id] = $tag->tag;
-        }
 
-        $allkeywords = keyword::select('id', 'keyword')->get();
-        $allkeyword = [];
-        foreach ($allkeywords as $keyword) {
-            $allkeyword[$keyword->id] = $keyword->keyword;
-        }
-
-        $allcategories = category::select('id', 'category')->get();
-        $allcategory = [];
-        foreach ($allcategories as $category) {
-            $allcategory[$category->id] = $category->category;
-        }
         //dd($allcategory);
-        return view('admin.editblog', ['page_name' => 'manageblog', 'navstatus' => "manageblog", "blogsdata" => $blogs, "tagsdata" => $alltag, "categorydata" => $allcategory, "keyworddata" => $allkeyword]);
+        return view('admin.editblog', ['page_name' => 'manageblog', 'navstatus' => "manageblog", "blogsdata" => $blogs]);
     }
 
     /**

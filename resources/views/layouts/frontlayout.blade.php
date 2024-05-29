@@ -101,6 +101,16 @@
             width: 100%;
             display: block;
         }
+
+        .aboutcss {
+            background-color: #40362e;
+        }
+
+        .myjourneyfont {
+            font-family: cursive;
+            font-size: smaller;
+            color: burlywood;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->

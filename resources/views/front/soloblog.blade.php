@@ -1,6 +1,12 @@
 @extends('layouts.frontlayout')
 @section('content')
-
+<div class="section-title-bg text-center m-bottom-20">
+    <h2 class="wow fadeInDown no-margin" data-wow-duration="1s" data-wow-delay="0.6s">
+        <strong>Blog Details</strong>
+    </h2>
+    <!-- End Regular Section -->
+    <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+</div>
 <!--BLog single section-->
 <section id="blog-single" class="p-top-80 p-bottom-80">
 
@@ -8,59 +14,28 @@
     <div class="container clearfix">
         <div class="row">
 
-            <div class="col-md-4 sidebar">
+            <div class="col-md-2 sidebar">
+                <a href="{{ URL::to('/blogs') }}">
+                    <ol class="breadcrumb">
+                        <li>All Blogs</li>
+                    </ol>
+                </a>
                 <!-- Widget 1 -->
-                <div class="widget widget-search">
-                    <form action="#" class="search-form">
-                        <input type="text" onfocus="if(this.value == 'Search') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search'; }" value="Search" />
-                        <input type="submit" class="submit-search" value="Ok" />
-                    </form>
-                </div>
-                <!--End widget-->
+                @php
+                $blogfilters=blogfilters();
 
-                <!-- Widget 2 -->
-                <div class="widget">
-                    <h4>Categories</h4>
-                    <ul class="cat-list">
-                        @foreach ($categorydata as $category )
-                        <li>
-                            <a href="#">{{$category}}</a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <!--End widget-->
+                $categorydata=$blogfilters['allcategory'];
+                $tagsdata=$blogfilters['alltag'];
+                $keyworddata=$blogfilters['allkeyword'];
 
-                <!-- Widget 3 -->
-                <div class="widget">
-                    <h4>Tags</h4>
-                    <ul class="tag-list">
-                        @foreach ($tagsdata as $tag )
-                        <li><a href="#">{{ $tag }}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-                <!--End widget-->
-
-                <!--Widget 4-->
-                <div class="widget">
-                    <h4>Keywords</h4>
-                    <ul class="cat-archives">
-                        @foreach ($keyworddata as $key )
-                        <li><a href="#">{{$key}}</a></li>
-
-                        @endforeach
-                    </ul>
-                </div>
-                <!--End widget-->
+                @endphp
 
             </div>
             <!-- /.col -->
 
-
-            <div class="col-sm-8">
+            <div class=" col-sm-8">
                 <!--Post Single-->
-                <div class="postSingle">
+                <div class="postSingle blogsearchdetails">
 
                     <div class="postMedia">
                         <img alt="" src="{{ URL::to('blog').'/'.$blogsdata['image'] }}">
@@ -71,12 +46,12 @@
 
                         </div>
                         <div class="postMeta-date">
-                            <span class="metaDate"><i class="fa fa-calendar"></i> <a href="#">{{ $blogsdata['createdat']}}</a></span>
+                            <span class="metaDate"><i class="fa fa-calendar"></i> <a href="#">{{ date_format($blogsdata['created_at'],"d F, Y")}}</a></span>
                         </div>
                     </div><!--Post meta-->
 
                     <div class="postTitle">
-                        <h1>{{ $blogsdata['title']}}</h1>
+                        <h1>{{ $blogsdata['title'].$blogsdata['createdat']}}</h1>
                         <div class="divider-small"></div>
                     </div> <!--Post title-->
 
@@ -121,6 +96,51 @@
             </div> <!-- /.col -->
 
         </div> <!-- /.row -->
+        <!-- End Regular Section -->
+        <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+        <!-- Start blog -->
+        <section id="blog" class="p-top-80 p-bottom-80">
+
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <!-- Section Title -->
+                        <div class="section-title text-center m-bottom-40">
+                            <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Similar Category Blogs </h2>
+                        </div>
+                    </div> <!-- /.col -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <!-- === blog === -->
+                    <div id="owl-blog" class="owl-carousel owl-theme">
+                        @foreach ($blogitems as $blog)
+                        <!-- === Blog item 1 === -->
+                        <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                            <div class="blog-media">
+                                <a href="#"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt=""></a>
+                            </div><!--post media-->
+
+                            <div class="blog-post-info clearfix">
+                                <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
+                            </div><!--post info-->
+
+                            <div class="blog-post-body">
+                                <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
+                                @php
+                                $small = substr( strip_tags($blog['description']), 0, 200);
+                                @endphp
+                                <p class="p-bottom-20">{!! $small !!}</p>
+                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class=" read-more">Read More >></a>
+                            </div><!--post body-->
+                        </div> <!-- /.blog -->
+                        @endforeach
+                    </div><!-- /#owl-testimonials -->
+
+                </div> <!-- /.row -->
+                <a href="{{ URL::to('/blogs') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
+            </div> <!-- /.container -->
+
+        </section>
     </div> <!-- /.container -->
 
 </section><!--End blog single section-->

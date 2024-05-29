@@ -29,7 +29,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 body {
-    background: #564231;
+    background: #5c554d;
     font-size: 14px;
     font-family: "Lato", sans-serif;
     color: #e7e0e0;
@@ -562,7 +562,7 @@ p {
     line-height: 1.8em;
 }
 .section-title-bg {
-    background-color: #564231;
+    background-color: #5c554d;
     padding: 50px 0;
 }
 .section-subtitle {
@@ -1786,7 +1786,7 @@ blockquote {
 /*Sidebar*/
 .widget {
     margin-bottom: 20px;
-    background-color: #564231;
+    background-color: #5c554d;
     padding: 25px 25px 12px;
 }
 .widget h4 {
@@ -1800,7 +1800,19 @@ blockquote {
     padding: 12px 10px;
     font-size: 13px;
     width: 100%;
-    background: #564231;
+    background: #5c554d;
+    border: 0 none;
+    outline: 0;
+    color: #fff;
+    border: 1px solid #f8f8f8;
+}
+
+.widget .search-form input[type="date"] {
+    border: none;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 75%;
+    background: #5c554d;
     border: 0 none;
     outline: 0;
     color: #fff;
@@ -1815,7 +1827,7 @@ blockquote {
     padding: 12px 15px;
     font-weight: 600;
     color: #fff;
-    background: #b57805;
+    background: #776249;
 }
 .widget .search-form .submit-search:hover {
     background: #b57805;
@@ -1856,7 +1868,7 @@ blockquote {
     margin-right: 1px;
 }
 .widget .tag-list li a {
-    background: #b57805;
+    background: #83705ae1;
     color: #ffffff;
     font-weight: 600;
     display: inline-block;
@@ -1866,7 +1878,7 @@ blockquote {
     transition: all 0.3s ease-in-out;
 }
 .widget .tag-list li a:hover {
-    background: #b57805;
+    background: #1b1710;
     color: #fff;
 }
 .widget .cat-list li:last-child,
@@ -2296,7 +2308,4 @@ blockquote {
     .btn-main {
         font-size: 8px;
     }
-}
-.aboutcss {
-    background-color: #643f06;
 }

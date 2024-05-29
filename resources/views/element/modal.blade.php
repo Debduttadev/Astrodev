@@ -351,7 +351,14 @@
                              limit <span class="limit">0</span>/2000
                              <textarea name="blogdescription" class="form-control form-control-user" id="default" aria-describedby="description5" placeholder="Enter blog description..." value=""></textarea>
                          </div>
+                         @php
 
+                         $blogfilters=blogfilters();
+                         $categorydata=$blogfilters['allcategory'];
+                         $tagsdata=$blogfilters['alltag'];
+                         $keyworddata=$blogfilters['allkeyword'];
+
+                         @endphp
 
                          <div class="row g-3">
                              <div style="width: 40%;">
