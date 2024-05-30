@@ -34,12 +34,20 @@
                 @php
 
                 $blogfilters=blogfilters();
-
                 $categorydata=$blogfilters['allcategory'];
                 $tagsdata=$blogfilters['alltag'];
                 $keyworddata=$blogfilters['allkeyword'];
 
                 @endphp
+
+                <!--Widget 4-->
+                <div class="widget">
+                    <h4>Month wise Blogs</h4>
+                    <input type="text" class="span2 dateblog" typeblog="created_at" search="" value="05-2024" id="dp1">
+                    <input type="submit" class="submit-search searchdate" value="Ok" />
+                </div>
+                <!--End widget-->
+
                 <!-- Widget 2 -->
                 <div class="widget">
                     <h4>Categories</h4>
@@ -72,16 +80,6 @@
                         <li><a class="keysearch" typeblog="keyword" search="{{$key}}">{{$keys}}</a></li>
                         @endforeach
                     </ul>
-                </div>
-                <!--End widget-->
-
-                <!--Widget 4-->
-                <div class="widget">
-                    <h4>Date</h4>
-                    <form class="search-form" action="/">
-                        <input type="date" id="birthday" name="birthday">
-                        <input type="submit" class="submit-search">
-                    </form>
                 </div>
                 <!--End widget-->
 
@@ -149,7 +147,6 @@
                                 $i++;
                                 @endphp
                                 @endwhile
-
                                 @if($i-$page==1)
                                 <li class="disabled">
                                     <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>

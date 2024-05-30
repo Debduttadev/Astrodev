@@ -27,7 +27,6 @@ Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
 Route::get('/services', [ServiceController::class, 'servicelists']);
 Route::get('/service/{name}/{id}', [ServiceController::class, 'servicedetails'])->name('service');
 
-
 Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');
 Route::get('/blogs/{page}', [BlogController::class, 'bloglistpagination'])->name('blogs');
 Route::get('/blog/{id}', [BlogController::class, 'blog'])->name('blog');

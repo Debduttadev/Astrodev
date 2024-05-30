@@ -52,7 +52,6 @@
 
                     <div class="col-md-8 col-xs-12 nav-wrap">
                         <div class="collapse navbar-collapse" id="navbar-collapse">
-
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ URL::to('/') }}">Home</a></li>
                                 @if($_SERVER['PHP_SELF'] == '/index.php')
@@ -60,7 +59,7 @@
                                 @else
                                 <li><a href="{{ URL::to('/services') }}">Services</a></li>
                                 @endif
-                                <li><a href="#appoinment">Appointment</a></li>
+                                <li><a href="{{ URL::to('/appoinment') }}">Appointment</a></li>
                                 @if($_SERVER['PHP_SELF'] == '/index.php')
                                 <li><a data-scroll href="#blog">Blog</a></li>
                                 @else

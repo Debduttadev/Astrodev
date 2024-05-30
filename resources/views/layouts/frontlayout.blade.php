@@ -22,10 +22,15 @@
     <link href="{{ URL::to('frontend/css/YTPlayer.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.theme.default.min.css') }}" rel="stylesheet" />
-
+    <link href="{{ URL::to('frontend/css/datepicker.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{ URL::to('frontend/css/style.css') }}" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="{{ URL::to('frontend/js/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ URL::to('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
+   
 </head>
 
 <body class="homepage_slider" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="100">
@@ -111,6 +116,18 @@
             font-size: smaller;
             color: burlywood;
         }
+
+        .datepicker .datepicker-months table {
+            background-color: #393b42;
+        }
+
+        .datepicker td span.active {
+            background-image: linear-gradient(to bottom, #849aa5, #565960);
+        }
+
+        .datepicker-years .table-condensed {
+            background-color: #393b42;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -123,12 +140,7 @@
 
     <a href="#appoinment" id="appoinment" class="btn btn-default btn-lg" title="Back to top">Book an Appoinment</a>
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
-    <!-- /Back to top -->
-    <!-- jQuery -->
-    <script src="{{ URL::to('frontend/js/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap -->
-    <script src="{{ URL::to('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Components Plugin -->
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
@@ -143,7 +155,7 @@
     <script src="{{ URL::to('frontend/js/retina.min.js') }}"></script>
     <script src="{{ URL::to('frontend/js/wow.min.js') }}"></script>
     <script src="{{ URL::to('frontend/inc/owlcarousel/js/owl.carousel.min.js') }}"></script>
-
+    <script src="{{ URL::to('frontend/js/bootstrap-datepicker.js') }}"></script>
     <!-- Contact Form -->
     <script src="{{ URL::to('frontend/js/contact.js') }}"></script>
 

@@ -400,13 +400,30 @@ class BlogController extends Controller
     public function searchblog(Request $request)
     {
         $data = $request;
+
+        //dd($data->search);
         $search = $data->search;
         $type = $data->type;
-        $blogs = blog::where(
-            $type,
-            'like',
-            '%' . $search . '%'
-        )->get();
+
+        if ($type == 'created_at') {
+
+            $year = [];
+            $year = explode('-', $search);
+            $year = array_reverse($year);
+            $yearmonth = implode('-', $year);
+            $blogs = blog::where(
+                'created_at',
+                'like',
+                '%' . $yearmonth . '%'
+            )->get();
+        } else {
+            $blogs = blog::where(
+                $type,
+                'like',
+                '%' . $search . '%'
+            )->get();
+        }
+
 
         $blogitems = [];
 

@@ -19,9 +19,9 @@ class AppointmentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function appoinment()
     {
-        //
+        return view('front.appoinment', ['page_name' => 'Appointment', 'navstatus' => "adminappointment"]);
     }
 
     /**
