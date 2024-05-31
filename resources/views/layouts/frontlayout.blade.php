@@ -30,7 +30,10 @@
     <script src="{{ URL::to('frontend/js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ URL::to('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
-   
+    <link type="text/css" href="{{ URL::to('frontend/css/timepicker.less') }}" />
+
+    <script type="text/javascript" src="{{ URL::to('frontend/js/bootstrap-timepicker.min.js') }}"></script>
+
 </head>
 
 <body class="homepage_slider" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="100">
@@ -127,6 +130,32 @@
 
         .datepicker-years .table-condensed {
             background-color: #393b42;
+        }
+
+        select.booking option {
+            height: 50px;
+        }
+
+        .appoinmentcss {
+
+            background-color: #857a7a;
+        }
+
+        .appoinmentsubmit {
+            background-color: #3e3b38;
+            color: #fff;
+            padding-left: 46%;
+            padding-right: 46%;
+        }
+
+        form.formdata3 {
+            font-size: 18px;
+        }
+
+        form div label {
+            font-size: 16px;
+            font-weight: 10;
+            color: #fff;
         }
     </style>
     @include('element.frontheader')

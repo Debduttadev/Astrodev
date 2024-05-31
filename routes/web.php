@@ -34,7 +34,9 @@ Route::get('/searchblog', [BlogController::class, 'searchblog']);
 
 Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers');
 
-Route::get('/appoinment', [AppointmentController::class, 'appoinment'])->name('appoinment');
+Route::get('/appointment', [AppointmentController::class, 'appointment']);
+Route::post('addappointment', [AppointmentController::class, 'addappointment']);
+
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

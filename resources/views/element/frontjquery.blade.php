@@ -38,19 +38,40 @@
             var searchobj = $(".titleinput");
             alttagmodaldata(searchobj)
         });
-
+        // blog filter month picker
         $("#dp1").datepicker({
             format: "mm-yyyy",
             viewMode: "months",
             minViewMode: "months",
         }).on('changeDate', dateChanged);
 
-
+        // date of birth datepicker
         $("#dp2").datepicker({
             format: "dd-mm-yyyy",
             viewMode: "date",
             minViewMode: "date",
-        }).on('changeDate', dateChanged);
+        });
+
+        //date for booking datepicker
+        $("#dp3").datepicker({
+            format: "mm-yyyy",
+            viewMode: "months",
+            minViewMode: "months",
+        });
+
+
+        $('#timepicker1').timepicker();
+
+
+        $('.appointmentType').change(function() {
+
+            var type = $(this).val();
+            if (type == 'off') {
+                $('.chamberselect').show();
+            } else {
+                $('.chamberselect').hide();
+            }
+        });
 
     });
 

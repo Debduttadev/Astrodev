@@ -1,13 +1,19 @@
 @extends('layouts.frontlayout')
 @section('content')
 <!-- Begin Page Content -->
-<!--BLog single section-->
-<section id="blog-single" class="p-top-80 p-bottom-80 aboutcss">
 
+<!--BLog single section-->
+<section id="blog-single" class="p-top-80 p-bottom-80 appoinmentcss">
+    <div class="section-title-bg text-center m-bottom-20">
+        <h2 class="wow fadeInDown no-margin" data-wow-duration="1s" data-wow-delay="0.6s">
+            <strong>Appointment Form</strong>
+        </h2>
+        <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+    </div>
     <!--Container-->
     <div class="container clearfix ">
         <div class="row p-bottom-50 ">
-            <div class="col-md-5 col-md-offset-1 ">
+            <div class="col-md-4 p-top-140" style="text-align: center;">
                 <div class="feature-image parent ">
                     <h2 class="text-2xl md:text-3xl lg:text-4xl mt-7 font-semibold mb-4 font-philosopher text-center">Book an Appointment</h2>
                     <h3>Unlock Solutions, Embrace Serenity.</h3>
@@ -18,16 +24,17 @@
                 </div>
             </div> <!-- /.col -->
 
-            <div class="col-md-5">
+            <div class="col-md-offset-2 col-md-6">
                 <!-- Section Title -->
                 <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <div class="contact-form row">
 
-                        <form name="ajax-form" id="ajax-form" action="contact.php" method="post">
+                        <form class="user" id="formdata3" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <label for="name">Full Name</label>
-                                <input name="name" id="name" type="text" placeholder="Full Name: *" required />
+                                <label for="name">Full Name*</label>
+                                <input name="name" id="name" type="text" placeholder="Full Name*" required />
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
@@ -42,73 +49,107 @@
                                 <label for="phonenumber">Phone Number</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" id="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phoneNumber" aria-describedby="basic-addon1" id="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
                                     <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
-                                <span class="error" id="err-email">please enter e-mail</span>
-                                <span class="error" id="err-emailvld">e-mail is not a valid format</span>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <label for="dp2">Date of Birth</label>
-                                <input type="text" class="span2 dateblog" typeblog="created_at" search="" value="01-05-2024" id="dp2">
-                                <span class="error" id="err-email">please enter date of birth</span>
-                            </div>
-
-                            <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <div class="input-group bootstrap-timepicker">
-                                    <input id="timepicker1" type="text" class="input-small">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                                <label for="whatsappNumber">Whatsapp Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">+91</span>
+                                    <input type="text" maxlength="10" class="form-control" placeholder="Whatsapp Number: *" name="whatsappNumber" aria-describedby="basic-addon1" id="whatsappNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <span class="error" id="err-phone">please enter phone number</span>
+                                    <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
+                                <label>Gender</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        <input type="radio" name="gender" id="optionsRadios1" value="m" checked>
                                         Male
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" name="gender" id="optionsRadios2" value="f">
                                         Female
                                     </label>
                                 </div>
                                 <div class="radio ">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                        <input type="radio" name="gender" id="optionsRadios3" value="o">
                                         Others
                                     </label>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
+                                <label for="dp2">Date of Birth</label>
+                                <div class="input-group">
+                                    <input type="text" name="dateOfBirth" class="span2 dateblog" typeblog="created_at" search="" value="{{date("d-m-Y")}}" id="dp2" required>
+                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 contact-form-item wow zoomIn">
+                                <label for="timepicker1">Time of Birth</label>
+                                <div class="input-group bootstrap-timepicker timepicker">
+                                    <input id="timepicker1" type="text" class="form-control input-small" name="timeOfBirth" required />
+                                    <div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label for="placecity">Place of Birth City</label>
-                                <input name="name" id="placecity" type="text" placeholder="Full Name: *" required />
+                                <input name="placeOfBirth" id="placecity" type="text" placeholder="Kolkata" required />
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label for="placestate">Place of Birth State</label>
-                                <input name="name" id="placestate" type="text" placeholder="Full Name: *" required />
+                                <input name="stateOfBirth" id="placestate" type="text" placeholder="West bengal" required />
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
-
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                                <label for="bookingdate">Booking schedule</label>
+                                <div class="input-group">
+                                    <input type="text" name="bookingDate" class="span2 datebooking" typeblog="created_at" search="" value="{{date("m-Y")}}" id="dp3">
+                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <span class="error" id="err-name">Please enter full name</span>
                             </div>
+
                             <div class="col-sm-12 contact-form-item">
-                                <button class="send_message btn btn-main btn-theme wow fadeInUp" id="send" data-lang="en">submit</button>
+                                <label for="booking">Booking Method</label>
+                                <select class="form-control booking input-lg appointmentType" name="appointmentType">
+                                    <option disabled selected value> -- Select Booking Method -- </option>
+                                    <option value="on">Online booking</option>
+                                    <option value="off">Offline booking</option>
+                                </select>
                             </div>
+
+                            <div class="col-sm-12 contact-form-item chamberselect" style="display:none">
+                                <label>Select Chamber</label>
+                                @foreach ($allchamber as $chamber )
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="chamber" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
+                                        {{$chamber->locationname}}
+                                    </label>
+                                </div>
+                                @endforeach
+
+                            </div>
+
+                            <button type="submit" class="btn appoinmentsubmit">Submit</button>
                         </form>
-
-                        <div class="clearfix"></div>
-                        <div id="ajaxsuccess">Successfully sent!!</div>
-                        <div class="clear"></div>
-
                     </div> <!-- /.contacts-form & inner row -->
                 </div>
             </div> <!-- /.col -->

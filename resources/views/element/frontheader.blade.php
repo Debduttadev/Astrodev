@@ -59,7 +59,7 @@
                                 @else
                                 <li><a href="{{ URL::to('/services') }}">Services</a></li>
                                 @endif
-                                <li><a href="{{ URL::to('/appoinment') }}">Appointment</a></li>
+                                <li><a href="{{ URL::to('/appointment') }}">Appointment</a></li>
                                 @if($_SERVER['PHP_SELF'] == '/index.php')
                                 <li><a data-scroll href="#blog">Blog</a></li>
                                 @else

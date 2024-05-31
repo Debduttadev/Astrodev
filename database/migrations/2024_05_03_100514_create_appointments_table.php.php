@@ -21,15 +21,13 @@ return new class extends Migration
             )->onUpdate('cascade')->onDelete('cascade');
 
             //foreign key from chambers table id
-            $table->foreignId('chamberId')->constrained(
-                table: 'chambers',
-                indexName: 'appointments_chambers_id'
-            )->onUpdate('cascade')->onDelete('cascade');
-
+            $table->integer('chamberId')->nullable();
             $table->string('phoneNumber')->nullable();
+            $table->string('whatsappNumber')->nullable();
             $table->enum('gender', ['m', 'f', 'o']);
             $table->date('dateOfBirth');
             $table->string('placeOfBirth');
+            $table->string('stateOfBirth');
             $table->time('timeOfBirth');
             $table->date('bookingDate');
             $table->enum('appointmentType', ['o', 'm']);
