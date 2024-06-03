@@ -29,7 +29,7 @@
                 <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <div class="contact-form row">
 
-                        <form class="user" id="formdata3" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
+                        <form class="user" id="appoinmentform" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
@@ -90,9 +90,8 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label for="dp2">Date of Birth</label>
                                 <div class="input-group">
-                                    <input type="text" name="dateOfBirth" class="span2 dateblog" typeblog="created_at" search="" value="{{date("d-m-Y")}}" id="dp2" required>
-                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                    </div>
+                                    <input class="form-control" type="text" id="birthdate" name="dateOfBirth" />
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
 
@@ -116,36 +115,45 @@
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
-                            <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <label for="bookingdate">Booking schedule</label>
-                                <div class="input-group">
-                                    <input type="text" name="bookingDate" class="span2 datebooking" typeblog="created_at" search="" value="{{date("m-Y")}}" id="dp3">
-                                    <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                                <span class="error" id="err-name">Please enter full name</span>
-                            </div>
-
                             <div class="col-sm-12 contact-form-item">
                                 <label for="booking">Booking Method</label>
-                                <select class="form-control booking input-lg appointmentType" name="appointmentType">
+                                <select class="form-control booking appointmentType" name="appointmentType">
                                     <option disabled selected value> -- Select Booking Method -- </option>
-                                    <option value="on">Online booking</option>
-                                    <option value="off">Offline booking</option>
+                                    <option value="o">Online booking</option>
+                                    <option value="m">Offline booking</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-12 contact-form-item chamberselect" style="display:none">
                                 <label>Select Chamber</label>
+                                @php
+                                $i=0;
+                                @endphp
                                 @foreach ($allchamber as $chamber )
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="chamber" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
+                                        @if($i == 0)
+                                        <input type="radio" class="chamberoption" name="chamberId" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
                                         {{$chamber->locationname}}
+                                        @else
+                                        <input type="radio" class="chamberoption" name="chamberId" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
+                                        {{$chamber->locationname}}
+                                        @endif
                                     </label>
                                 </div>
+                                @php
+                                $i++;
+                                @endphp
                                 @endforeach
+                            </div>
 
+                            <div class="col-sm-12 contact-form-item wow zoomIn">
+                                <label for="bookingdate">Booking schedule</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="bookingDate" id="bookingdate" value="" />
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
                             <button type="submit" class="btn appoinmentsubmit">Submit</button>

@@ -38,53 +38,36 @@
             var searchobj = $(".titleinput");
             alttagmodaldata(searchobj)
         });
-        // blog filter month picker
-        $("#dp1").datepicker({
-            format: "mm-yyyy",
-            viewMode: "months",
-            minViewMode: "months",
-        }).on('changeDate', dateChanged);
-
-        // date of birth datepicker
-        $("#dp2").datepicker({
-            format: "dd-mm-yyyy",
-            viewMode: "date",
-            minViewMode: "date",
-        });
-
-        //date for booking datepicker
-        $("#dp3").datepicker({
-            format: "mm-yyyy",
-            viewMode: "months",
-            minViewMode: "months",
-        });
-
-
-        $('#timepicker1').timepicker();
-
 
         $('.appointmentType').change(function() {
 
             var type = $(this).val();
-            if (type == 'off') {
+            if (type == 'm') {
                 $('.chamberselect').show();
             } else {
                 $('.chamberselect').hide();
+                $('.chamberoption').removeAttr('checked');
             }
         });
 
-    });
+        $('#birthdate').datetimepicker({
+            format: 'DD-MM-YYYY',
+            maxDate: new Date(),
+        });
 
-    function dateChanged(ev) {
-        var base_url = "{{ URL::to('/') }}";
-        setTimeout(() => {
-            var value = $("#dp1").val();
-            //alert(value);
-            $("#dp1").attr('search', value)
-            var searchobj = $("#dp1");
-            alttagmodaldata(searchobj)
-        }, "200");
-    }
+
+        $('#timepicker1').datetimepicker({
+            format: 'HH:mm:ss'
+        });
+
+
+        $('#bookingdate').datetimepicker({
+            format: 'DD-MM-YYYY',
+            minDate: new Date(),
+            calendarWeeks: true
+        });
+
+    });
 
     function alttagmodaldata(obj) {
         var base_url = "{{ URL::to('/') }}";
@@ -108,6 +91,7 @@
                 $("#paginationblog").remove();
 
             } else {
+
                 var html = "";
                 for (var x in data) {
                     html += "<div class='col-sm-6 m-bottom-40'>";
@@ -129,7 +113,6 @@
                     html += "</div>";
 
                 }
-
 
                 $("#paginationblog").remove();
                 $(".blogsearchdetails").empty();

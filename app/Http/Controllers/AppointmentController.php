@@ -13,6 +13,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use App\Models\chamber;
+use Illuminate\Support\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -41,16 +42,20 @@ class AppointmentController extends Controller
     public function addappointment(Request $request)
     {
         $data = $request->except('_token');
-        //dd($data);
-        if ($data['appointmentType'] == 'on') {
-            $data['chamber'] = null;
+
+        if ($data['appointmentType'] == 'o') {
+            $data['chamberId'] = null;
         }
+
         $user = User::select('id')->where('email', $data['email'])->first();
+
         $userid = "";
-        //dd($user->id);
-        if ($user->id > 0) {
+
+        if ($user != null && $user->id != null) {
+
             $userid = $user->id;
         } else {
+
             $newuser = new User;
             $newuser->name = ucfirst($data['name']);
             $newuser->email = $data['email'];
@@ -59,41 +64,78 @@ class AppointmentController extends Controller
             $newuser->save();
             $userid = $newuser->id;
         }
-        $dateOfBirth = date_create($data['dateOfBirth']);
-        $bookingDate = date_create('01-' . $data['bookingDate']);
-        $timeOfBirth = strtotime($data['timeOfBirth']);
-        //dd($timeOfBirth);
 
+        $dateOfBirth = date_create($data['dateOfBirth']);
+        $bookingDate = date_create($data['bookingDate']);
+        $timestamp = strtotime($data['timeOfBirth']);
+        $timeOfBirth = Carbon::parse($timestamp)->format('H:i:s');
+        // echo json_encode(array('status' => $dateOfBirth));
         $newappoinment = new Appointment;
-        $newappoinment->userid = $userid;
+        $newappoinment->userId = $userid;
         $newappoinment->phoneNumber = $data['phoneNumber'];
         $newappoinment->whatsappNumber = $data['whatsappNumber'];
         $newappoinment->gender = $data['gender'];
         $newappoinment->dateOfBirth = date_format($dateOfBirth, "Y-m-d H:i:s");
-        $newappoinment->timeOfBirth = date(intval($timeOfBirth), 'H:i:s');
+        $newappoinment->timeOfBirth = $timeOfBirth;
         $newappoinment->placeOfBirth = $data['placeOfBirth'];
         $newappoinment->stateOfBirth = $data['stateOfBirth'];
         $newappoinment->bookingDate = date_format($bookingDate, "Y-m-d H:i:s");
         $newappoinment->appointmentType = $data['appointmentType'];
-        $newappoinment->chamberId = $data['chamber'];
+        $newappoinment->chamberId = $data['chamberId'];
 
-        //set session
+
         if ($newappoinment->save()) {
-            dd($newappoinment->id);
-            session(['status' => "1", 'msg' => 'Appointment Add is successful']);
-        } else {
-            session(['status' => "0", 'msg' => 'Appointment is not Added']);
-        }
+            $allchamber = '';
+            if ($data['appointmentType'] == 'o') {
+                $chambers = chamber::get();
+                $chamberdata = [];
+                foreach ($chambers as $data) {
 
-        return redirect()->back();
+                    $availabledays = $data->availabledays;
+                    $daysavailable = json_decode($availabledays);
+                    $i = 0;
+                    $days = [];
+
+                    foreach ($daysavailable as $day) {
+
+                        if ($day == "1") {
+                            $days[$i] = "Sunday";
+                        } elseif ($day === "2") {
+                            $days[$i] = "Monday";
+                        } elseif ($day === "3") {
+                            $days[$i] = "Tuesday";
+                        } elseif ($day === "4") {
+                            $days[$i] = "Wednesday";
+                        } elseif ($day === "5") {
+                            $days[$i] = "Thursday";
+                        } elseif ($day === "6") {
+                            $days[$i] = "Friday";
+                        } else {
+                            $days[$i] = "Saturday";
+                        }
+                        $i++;
+                    }
+
+                    $data['availabledays'] = implode(',', $days);
+                    $chamberid = $data->id;
+                    $chamberdata[$chamberid] = $data;
+                }
+            } else {
+                $allchamber = null;
+            }
+            return view('front.successapoinment', ['allchamber' => $chamberdata]);
+        } else {
+
+            session(['status' => "0", 'msg' => 'Appoinment is not Added']);
+            return redirect()->back();
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Appointment $appointment)
+    public function successapoinment(Appointment $appointment)
     {
-        //
     }
 
     /**

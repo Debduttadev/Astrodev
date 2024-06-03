@@ -19,6 +19,10 @@ use App\Http\Controllers\HomeController;
 Route::get('/phpinfo', function () {
     return phpinfo();
 });
+
+Route::get('/datepicker', function () {
+    return view("date");
+});
 //frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
@@ -36,7 +40,7 @@ Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers')
 
 Route::get('/appointment', [AppointmentController::class, 'appointment']);
 Route::post('addappointment', [AppointmentController::class, 'addappointment']);
-
+Route::post('successapoinment', [AppointmentController::class, 'successapoinment']);
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

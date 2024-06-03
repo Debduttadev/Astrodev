@@ -14,7 +14,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="{{ URL::to('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js">
+    </script>
     <!-- CSS Files For Plugin -->
     <link href="{{ URL::to('frontend/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
@@ -22,7 +23,7 @@
     <link href="{{ URL::to('frontend/css/YTPlayer.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.theme.default.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::to('frontend/css/datepicker.css') }}" rel="stylesheet" />
+
     <!-- Custom CSS -->
     <link href="{{ URL::to('frontend/css/style.css') }}" rel="stylesheet">
 
@@ -30,9 +31,14 @@
     <script src="{{ URL::to('frontend/js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ URL::to('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
-    <link type="text/css" href="{{ URL::to('frontend/css/timepicker.less') }}" />
 
-    <script type="text/javascript" src="{{ URL::to('frontend/js/bootstrap-timepicker.min.js') }}"></script>
+
+    <!-- date custom -->
+    <link href="{{ URL::to('frontend/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+
+    <script src="{{ URL::to('frontend/js/moment.min.js') }}"></script>
+
+    <script src="{{ URL::to('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 </head>
 
@@ -120,18 +126,6 @@
             color: burlywood;
         }
 
-        .datepicker .datepicker-months table {
-            background-color: #393b42;
-        }
-
-        .datepicker td span.active {
-            background-image: linear-gradient(to bottom, #849aa5, #565960);
-        }
-
-        .datepicker-years .table-condensed {
-            background-color: #393b42;
-        }
-
         select.booking option {
             height: 50px;
         }
@@ -156,6 +150,10 @@
             font-size: 16px;
             font-weight: 10;
             color: #fff;
+        }
+
+        #bookingdate {
+            z-index: 9999 !important;
         }
     </style>
     @include('element.frontheader')
@@ -184,8 +182,7 @@
     <script src="{{ URL::to('frontend/js/retina.min.js') }}"></script>
     <script src="{{ URL::to('frontend/js/wow.min.js') }}"></script>
     <script src="{{ URL::to('frontend/inc/owlcarousel/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/bootstrap-datepicker.js') }}"></script>
-    <!-- Contact Form -->
+
     <script src="{{ URL::to('frontend/js/contact.js') }}"></script>
 
     <!-- Custom Plugin -->
