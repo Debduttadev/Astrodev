@@ -40,7 +40,6 @@ Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers')
 
 Route::get('/appointment', [AppointmentController::class, 'appointment']);
 Route::post('addappointment', [AppointmentController::class, 'addappointment']);
-Route::post('successapoinment', [AppointmentController::class, 'successapoinment']);
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');

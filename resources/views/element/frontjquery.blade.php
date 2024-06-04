@@ -40,7 +40,6 @@
         });
 
         $('.appointmentType').change(function() {
-
             var type = $(this).val();
             if (type == 'm') {
                 $('.chamberselect').show();
@@ -55,11 +54,9 @@
             maxDate: new Date(),
         });
 
-
         $('#timepicker1').datetimepicker({
             format: 'HH:mm:ss'
         });
-
 
         $('#bookingdate').datetimepicker({
             format: 'DD-MM-YYYY',
@@ -67,9 +64,84 @@
             calendarWeeks: true
         });
 
+
+        $("#appoinmentform").submit(function(event) {
+            event.preventDefault(); // avoid to execute the actual submit of the form.
+
+            var form = $(this);
+            var actionUrl = form.attr('action');
+
+            $.ajax({
+                type: "POST",
+                url: actionUrl,
+                data: form.serialize(), // serializes the form's elements.
+                success: function(data) {
+                    console.log(data); // show response from the php script.
+                    var massage = JSON.parse(data);
+
+                    console.log(massage);
+                    if (massage.status == 1) {
+                        var titlehtml = "<strong> Your appointment has been scheduled successfully. </strong>";
+                        $('.appoinmenttitle1').html(titlehtml);
+
+                        var titlehtml2 = "<p>Thank you for your interest. Your appointment is scheduled. Our Team will connect with you and will take care of this appointment and guide you accordingly.</p>";
+                        $('.appoinmenttitle2').html(titlehtml2);
+
+                        var chamber = massage.allchamber;
+
+                        if (massage.allchamber != null) {
+
+                            var chamberhtml = "<p>These are Chambers we have where you can have one-on-one consultations offline. Please contact us using the helpline number our team will guide you with every detail.</p>";
+
+                            chamberhtml += "<div class='col-md-2'></div>";
+                            var i = 1;
+                            for (var x in chamber) {
+                                console.log(chamber[x]);
+                                chamberhtml += "<div class='col-md-4 col-sm-4 p-bottom-30' style='word-wrap:break-word;' > ";
+                                chamberhtml += "<div>";
+                                chamberhtml += "<div>";
+                                chamberhtml += "<h4 class='darkcolorfont'> Chamber " + i + " Details </h4>";
+                                chamberhtml += "</div>";
+                                chamberhtml += "<ul>";
+                                chamberhtml += "<li>";
+                                chamberhtml += "Location :<h5 class='darkcolorfont'>" + chamber[x].locationname + "</h5></li>";
+                                chamberhtml += "<li>";
+                                chamberhtml += "Available Days :<h5 class='darkcolorfont'>" + chamber[x].availabledays + "</h5></li>";
+                                chamberhtml += "<li>";
+                                chamberhtml += "Help Line Phone Number :<h5 class='darkcolorfont'>" + chamber[x].description + "</h5></li>";
+                                chamberhtml += "</ul>";
+                                chamberhtml += "</div>";
+                                chamberhtml += "</div>";
+                                i++;
+                            }
+
+                        } else {
+
+                            var chamberhtml = "<div class='col-md-offset-2 col-md-8' style='text-align: center;'>";
+                            chamberhtml += "<div class='feature-image parent'><div>";
+                            chamberhtml += "<p>Thank you for booking the consultation online. We will contact you as soon as possible and proceed with payment. One payment link will be sent to you with payment details. </p>";
+                            chamberhtml += "<p>Once payment is completed, we will schedule your consultation with Astro Achariya Debdutta and guide you accordingly </p>";
+                            chamberhtml += "</div></div></div>";
+                        }
+
+                        $('.appoinmentbody').html(chamberhtml);
+                        $('#appoinmentmodal').modal('show');
+                        form.find("input").val("");
+                        form.find("select").val("");
+                        form.find("input[type=radio]").removeAttr('checked');
+                        $('.chamberselect').hide();
+
+                    } else if (massage.status == 0) {
+
+                    }
+                }
+            });
+
+        });
     });
 
     function alttagmodaldata(obj) {
+
         var base_url = "{{ URL::to('/') }}";
         var search = obj.attr('search');
         var type = obj.attr('typeblog');
@@ -83,6 +155,7 @@
                 'type': type,
             }
         }).done(function(msg) {
+
             var data = JSON.parse(msg);
             if (data == "0") {
 
@@ -111,7 +184,6 @@
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";
-
                 }
 
                 $("#paginationblog").remove();

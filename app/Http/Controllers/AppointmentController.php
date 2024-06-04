@@ -69,7 +69,6 @@ class AppointmentController extends Controller
         $bookingDate = date_create($data['bookingDate']);
         $timestamp = strtotime($data['timeOfBirth']);
         $timeOfBirth = Carbon::parse($timestamp)->format('H:i:s');
-        // echo json_encode(array('status' => $dateOfBirth));
         $newappoinment = new Appointment;
         $newappoinment->userId = $userid;
         $newappoinment->phoneNumber = $data['phoneNumber'];
@@ -85,10 +84,10 @@ class AppointmentController extends Controller
 
 
         if ($newappoinment->save()) {
-            $allchamber = '';
-            if ($data['appointmentType'] == 'o') {
+            $chamberdata = [];
+            if ($data['appointmentType'] == 'm') {
                 $chambers = chamber::get();
-                $chamberdata = [];
+
                 foreach ($chambers as $data) {
 
                     $availabledays = $data->availabledays;
@@ -121,13 +120,13 @@ class AppointmentController extends Controller
                     $chamberdata[$chamberid] = $data;
                 }
             } else {
-                $allchamber = null;
+                $chamberdata = null;
             }
-            return view('front.successapoinment', ['allchamber' => $chamberdata]);
+
+            echo json_encode(array('status' => "1", 'allchamber' => $chamberdata));
         } else {
 
-            session(['status' => "0", 'msg' => 'Appoinment is not Added']);
-            return redirect()->back();
+            echo json_encode(array('status' => "0", 'allchamber' => $chamberdata));
         }
     }
 

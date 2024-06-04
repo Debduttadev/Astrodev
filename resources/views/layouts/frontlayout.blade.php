@@ -131,8 +131,20 @@
         }
 
         .appoinmentcss {
+            background-color: #d7d4d0;
+            color: #160707;
+        }
 
-            background-color: #857a7a;
+        .appoinmentcolor h2 {
+            color: #160707;
+        }
+
+        .appoinmentcolor h3 {
+            color: #160707;
+        }
+
+        .darkcolorfont {
+            color: #160707;
         }
 
         .appoinmentsubmit {
@@ -151,10 +163,6 @@
             font-weight: 10;
             color: #fff;
         }
-
-        #bookingdate {
-            z-index: 9999 !important;
-        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -164,7 +172,7 @@
     @yield('content')
     @include('element.frontfooter')
     <!-- Back to top -->
-
+    @include('element.frontmodal')
     <a href="#appoinment" id="appoinment" class="btn btn-default btn-lg" title="Back to top">Book an Appoinment</a>
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
 
@@ -191,5 +199,7 @@
     @include('element.frontjquery')
 
 </body>
+
+
 
 </html>
