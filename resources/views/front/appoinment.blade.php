@@ -112,6 +112,7 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="placecity">Place of Birth City</label>
                                 <input name="placeOfBirth" id="placecity" type="text" placeholder="Kolkata" required />
+
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 

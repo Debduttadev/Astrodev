@@ -26,9 +26,23 @@ class ContactusController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function addcontactus(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        //dd($data);
+
+        $newContacts = new Contactus;
+        $newContacts->fullname = ucfirst($data['fullname']);
+        $newContacts->email = $data['email'];
+        $newContacts->phone = $data['phone'];
+        $newContacts->message = $data['message'];
+
+        //set session
+        if ($newContacts->save()) {
+            echo json_encode(array('status' => 1, 'msg' => "true"));
+        } else {
+            echo json_encode(array('status' => 0, 'msg' => "false"));
+        }
     }
 
     /**

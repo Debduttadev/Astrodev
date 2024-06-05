@@ -13,7 +13,9 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use App\Models\chamber;
+use App\Models\Invoice;
 use Illuminate\Support\Carbon;
+
 
 class AppointmentController extends Controller
 {
@@ -22,8 +24,41 @@ class AppointmentController extends Controller
      */
     public function adminappointment()
     {
+        $appointments = Appointment::all();
 
-        return view('admin.appointment', ['page_name' => 'Appointment', 'navstatus' => "adminappointment"]);
+        foreach ($appointments as $appointment) {
+
+            // user details related to this appointment
+            $user = User::select('name', 'email')->where('id', $appointment->userId)->first();
+            $appointment->name = $user->name;
+            $appointment->email = $user->email;
+
+            // chamber details related to this appointment
+            if ($appointment->appointmentType == 'm') {
+                $chamber = chamber::select('locationname')->where('id', $appointment->chamberId)->first();
+                $appointment->locationname = $chamber->locationname;
+            } else {
+
+                $appointment->locationname = null;
+            }
+
+            // invoice details related to this appointment
+            $invoice = Invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
+            if (!empty($invoice)) {
+                $appointment->invoiceId = $invoice->id;
+                $appointment->invoicestatus = $invoice->status;
+            } else {
+                $appointment->invoiceId = null;
+            }
+
+            $timestamp1 = strtotime($appointment->dateOfBirth);
+            $appointment->dateOfBirth = Carbon::parse($timestamp1)->format('d F, Y');
+
+            $timestamp2 = strtotime($appointment->bookingDate);
+            $appointment->bookingDate = Carbon::parse($timestamp2)->format('d F, Y');
+        }
+        //dd($appointments);
+        return view('admin.appointment', ['page_name' => 'Appointment', 'navstatus' => "adminappointment", 'appointments' => $appointments]);
     }
 
     /**
@@ -82,50 +117,46 @@ class AppointmentController extends Controller
         $newappoinment->appointmentType = $data['appointmentType'];
         $newappoinment->chamberId = $data['chamberId'];
 
-
         if ($newappoinment->save()) {
             $chamberdata = [];
             if ($data['appointmentType'] == 'm') {
-                $chambers = chamber::get();
+                $chambers = chamber::where('id', $data['chamberId'])->first();
 
-                foreach ($chambers as $data) {
+                $availabledays = $chambers->availabledays;
+                $daysavailable = json_decode($availabledays);
+                $i = 0;
+                $days = [];
 
-                    $availabledays = $data->availabledays;
-                    $daysavailable = json_decode($availabledays);
-                    $i = 0;
-                    $days = [];
+                foreach ($daysavailable as $day) {
 
-                    foreach ($daysavailable as $day) {
-
-                        if ($day == "1") {
-                            $days[$i] = "Sunday";
-                        } elseif ($day === "2") {
-                            $days[$i] = "Monday";
-                        } elseif ($day === "3") {
-                            $days[$i] = "Tuesday";
-                        } elseif ($day === "4") {
-                            $days[$i] = "Wednesday";
-                        } elseif ($day === "5") {
-                            $days[$i] = "Thursday";
-                        } elseif ($day === "6") {
-                            $days[$i] = "Friday";
-                        } else {
-                            $days[$i] = "Saturday";
-                        }
-                        $i++;
+                    if ($day == "1") {
+                        $days[$i] = "Sunday";
+                    } elseif ($day === "2") {
+                        $days[$i] = "Monday";
+                    } elseif ($day === "3") {
+                        $days[$i] = "Tuesday";
+                    } elseif ($day === "4") {
+                        $days[$i] = "Wednesday";
+                    } elseif ($day === "5") {
+                        $days[$i] = "Thursday";
+                    } elseif ($day === "6") {
+                        $days[$i] = "Friday";
+                    } else {
+                        $days[$i] = "Saturday";
                     }
-
-                    $data['availabledays'] = implode(',', $days);
-                    $chamberid = $data->id;
-                    $chamberdata[$chamberid] = $data;
+                    $i++;
                 }
+
+                $chambers->availabledays = implode(',', $days);
             } else {
-                $chamberdata = null;
+
+                $chambers = null;
             }
 
-            echo json_encode(array('status' => "1", 'allchamber' => $chamberdata));
+            echo json_encode(array('status' => "1", 'allchamber' => $chambers));
         } else {
 
+            $chamberdata = null;
             echo json_encode(array('status' => "0", 'allchamber' => $chamberdata));
         }
     }

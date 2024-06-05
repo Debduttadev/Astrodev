@@ -70,7 +70,7 @@
 
             var form = $(this);
             var actionUrl = form.attr('action');
-
+            console.log(form.serialize());
             $.ajax({
                 type: "POST",
                 url: actionUrl,
@@ -95,25 +95,24 @@
 
                             chamberhtml += "<div class='col-md-2'></div>";
                             var i = 1;
-                            for (var x in chamber) {
-                                console.log(chamber[x]);
-                                chamberhtml += "<div class='col-md-4 col-sm-4 p-bottom-30' style='word-wrap:break-word;' > ";
-                                chamberhtml += "<div>";
-                                chamberhtml += "<div>";
-                                chamberhtml += "<h4 class='darkcolorfont'> Chamber " + i + " Details </h4>";
-                                chamberhtml += "</div>";
-                                chamberhtml += "<ul>";
-                                chamberhtml += "<li>";
-                                chamberhtml += "Location :<h5 class='darkcolorfont'>" + chamber[x].locationname + "</h5></li>";
-                                chamberhtml += "<li>";
-                                chamberhtml += "Available Days :<h5 class='darkcolorfont'>" + chamber[x].availabledays + "</h5></li>";
-                                chamberhtml += "<li>";
-                                chamberhtml += "Help Line Phone Number :<h5 class='darkcolorfont'>" + chamber[x].description + "</h5></li>";
-                                chamberhtml += "</ul>";
-                                chamberhtml += "</div>";
-                                chamberhtml += "</div>";
-                                i++;
-                            }
+
+                            console.log(chamber);
+                            chamberhtml += "<div class='col-md-6 col-sm-6 p-bottom-30' style='word-wrap:break-word;' > ";
+                            chamberhtml += "<div>";
+                            chamberhtml += "<div>";
+                            chamberhtml += "<h4 class='darkcolorfont'> Chamber " + i + " Details </h4>";
+                            chamberhtml += "</div>";
+                            chamberhtml += "<ul>";
+                            chamberhtml += "<li>";
+                            chamberhtml += "Location :<h5 class='darkcolorfont'>" + chamber.locationname + "</h5></li>";
+                            chamberhtml += "<li>";
+                            chamberhtml += "Available Days :<h5 class='darkcolorfont'>" + chamber.availabledays + "</h5></li>";
+                            chamberhtml += "<li>";
+                            chamberhtml += "Help Line Phone Number :<h5 class='darkcolorfont'>" + chamber.description + "</h5></li>";
+                            chamberhtml += "</ul>";
+                            chamberhtml += "</div>";
+                            chamberhtml += "</div>";
+                            i++;
 
                         } else {
 
@@ -122,6 +121,7 @@
                             chamberhtml += "<p>Thank you for booking the consultation online. We will contact you as soon as possible and proceed with payment. One payment link will be sent to you with payment details. </p>";
                             chamberhtml += "<p>Once payment is completed, we will schedule your consultation with Astro Achariya Debdutta and guide you accordingly </p>";
                             chamberhtml += "</div></div></div>";
+
                         }
 
                         $('.appoinmentbody').html(chamberhtml);
@@ -130,14 +130,52 @@
                         form.find("select").val("");
                         form.find("input[type=radio]").removeAttr('checked');
                         $('.chamberselect').hide();
+                        $('#optionsRadios1').attr('checked', 'checked');
 
                     } else if (massage.status == 0) {
-
+                        $('#errorappoinment').modal('show');
                     }
                 }
             });
 
         });
+
+        // Contact us forn in home page data stor in database
+        $("#contactusform").submit(function(event) {
+
+            event.preventDefault();
+            // alert("sdgfg");
+            var form = $(this);
+            var actionUrl = form.attr('action');
+            $.ajax({
+
+                type: "POST",
+                url: actionUrl,
+                data: form.serialize(), // serializes the form's elements.
+
+                success: function(data) {
+                    //console.log(data); // show response from the php script.
+                    var massage = JSON.parse(data);
+
+                    if (massage.status == 1 && massage.msg == "true") {
+
+                        form.find("input").val("");
+                        form.find("textarea").val("");
+                        $('#ajaxsuccess').show();
+                        setTimeout(function() {
+                            $('#ajaxsuccess').hide();
+                        }, 4000);
+
+                    } else if (massage.status == 0 && massage.msg == "false") {
+
+                        $('.errorcontact').html("<p>Sorry your massage is not sent, Please try again</p>");
+
+                    }
+                }
+            });
+        });
+
+
     });
 
     function alttagmodaldata(obj) {

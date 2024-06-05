@@ -301,43 +301,46 @@
                 <div class="col-md-7 col-sm-7 p-bottom-30">
                     <div class="contact-form row">
 
-                        <form name="ajax-form" id="ajax-form" action="contact.php" method="post">
+                        <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="col-sm-6 contact-form-item wow zoomIn">
-                                <input name="name" id="name" type="text" placeholder="Your Name: *" required />
+                                <input name="fullname" id="name" type="text" placeholder="Your Name: *" required />
                                 <span class="error" id="err-name">please enter name</span>
                             </div>
+
                             <div class="col-sm-6 contact-form-item wow zoomIn">
                                 <input name="email" id="email" type="text" placeholder="E-Mail: *" required />
                                 <span class="error" id="err-email">please enter e-mail</span>
                                 <span class="error" id="err-emailvld">e-mail is not a valid format</span>
                             </div>
+
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
                                     <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
-                                    <span class="error" id="err-emailvld">please enter numbers</span>
-
+                                    <span class="error" id="err-phone">please enter numbers</span>
                                 </div>
-                                <span class="error" id="err-email">please enter e-mail</span>
-                                <span class="error" id="err-emailvld">e-mail is not a valid format</span>
                             </div>
+
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <textarea name="message" id="message" placeholder="Your Message" required></textarea>
                             </div>
+
                             <div class="col-sm-12 contact-form-item">
-                                <button class="send_message btn btn-main btn-theme wow fadeInUp" id="send" data-lang="en">submit</button>
+                                <button type="submit" class="btn contactsubmit">Submit</button>
                             </div>
-                            <div class="clear"></div>
-                            <div class="error text-align-center" id="err-form">There was a problem validating the form please check!</div>
-                            <div class="error text-align-center" id="err-timedout">The connection to the server timed out!</div>
-                            <div class="error" id="err-state"></div>
+
+                            <div class="error errorcontact" id="err-state"></div>
+
                         </form>
 
                         <div class="clearfix"></div>
-                        <div id="ajaxsuccess">Successfully sent!!</div>
-                        <div class="clear"></div>
-
+                        <div class="panel panel-default" id="ajaxsuccess">
+                            <div class="panel-body">
+                                Thank you for writing to us. We have received your message and will get back to you within as soon as possible.
+                            </div>
+                        </div>
                     </div> <!-- /.contacts-form & inner row -->
                 </div> <!-- /.col -->
 

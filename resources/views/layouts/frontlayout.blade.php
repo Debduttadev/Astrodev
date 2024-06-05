@@ -40,6 +40,10 @@
 
     <script src="{{ URL::to('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <!-- google map place autocomplete -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initMap">
+    </script>
+
 </head>
 
 <body class="homepage_slider" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="100">
@@ -149,6 +153,13 @@
 
         .appoinmentsubmit {
             background-color: #3e3b38;
+            color: #fff;
+            padding-left: 46%;
+            padding-right: 46%;
+        }
+
+        .contactsubmit {
+            background-color: #b57805;
             color: #fff;
             padding-left: 46%;
             padding-right: 46%;

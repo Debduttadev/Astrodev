@@ -11,9 +11,111 @@
             @endif
         </h1>
 
+        <div class="card mb-4">
+            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addblog">Add new Blog</button>
+        </div>
+
+        <!-- to show the session status message -->
+        @php
+        $sessiondata = session()->all();
+
+        @endphp
+        @if(session()->has('status') && session()->has('msg'))
+        @if($sessiondata['status'] === '1')
+        <div class="alert alert-info sessiondata" role="alert">{{ $sessiondata['msg'] }}</div>
+        @else
+        <div class="alert alert-danger sessiondata" role="alert">{{ $sessiondata['msg'] }}</div>
+        @endif
+        @php
+        session()->forget(['status', 'msg']);
+        @endphp
+        @endif
+
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Blogs
+            </div>
+            <div class="card-body">
+
+                @if(count($appointments) === 0)
+                <h5>No Appoinments are available</h5>
+                @else
+                <table id="datatablesSimple" class="servicetable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Whatsapp Number</th>
+                            <th>Appointment Type</th>
+                            <th>Booking Date</th>
+                            <th>Chamber</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Whatsapp Number</th>
+                            <th>Appointment Type</th>
+                            <th>Booking Date</th>
+                            <th>Chamber</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @php
+                        $a=0;
+                        @endphp
+                        @foreach ($appointments as $data)
+                        <tr>
+                            <td>{{$a}}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->phoneNumber }}</td>
+                            <td>{{ $data->whatsappNumber }}</td>
+                            @if($data->appointmentType == "o")
+                            <td>Online <i class="fa fa-video-camera" aria-hidden="true"></i></td>
+                            @else
+                            <td>Offline <i class="fa fa-male" aria-hidden="true"></i></td>
+                            @endif
+                            <td>{{ $data->bookingDate }}</td>
+                            @if($data->appointmentType == "o")
+                            <td>No Chamber</td>
+                            @else
+                            <td>{{ $data->locationname }}</td>
+                            @endif
+                            @if($data->invoiceId == null)
+                            <td>New</td>
+                            @else
+                            <td>{{$data->invoicestatus}}</td>
+                            @endif
+                            <td>
+
+                            </td>
+                        </tr>
+                        @php
+                        $a++;
+                        @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+                @endif
+            </div>
+        </div>
+
         <ol class="breadcrumb mb-4">
             <!-- <li class="breadcrumb-item active">Dashboard</li> -->
         </ol>
+
     </div>
 </main>
 <!-- /.container-fluid -->
