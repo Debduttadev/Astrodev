@@ -40,8 +40,20 @@
 
     <script src="{{ URL::to('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function initialize() {
+            var input = document.getElementById('autocomplete_search');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                // place variable will have all the information you are looking for.
+            });
+        }
+    </script>
     <!-- google map place autocomplete -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initMap">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initialize">
     </script>
 
 </head>
@@ -184,8 +196,13 @@
     @include('element.frontfooter')
     <!-- Back to top -->
     @include('element.frontmodal')
-    <a href="#appoinment" id="appoinment" class="btn btn-default btn-lg" title="Back to top">Book an Appoinment</a>
+    <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg">Book an Appointment</a>
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+    @php
+    $aboutcontact=aboutalldetails();
+    @endphp
+
+    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/WhatsAppButtonWhiteSmall.png') }}" width="20" /></a>
 
 
     <!-- Components Plugin -->

@@ -93,6 +93,10 @@
     #topbutton:hover {
       background-color: #555;
     }
+
+    .p-bottom-20 {
+      padding-bottom: 20px;
+    }
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">

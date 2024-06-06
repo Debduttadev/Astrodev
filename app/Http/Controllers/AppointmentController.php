@@ -71,6 +71,44 @@ class AppointmentController extends Controller
         return view('front.appoinment', ['allchamber' => $allchamber, 'navstatus' => "adminappointment"]);
     }
 
+    public function adminappoinmentdetails($id)
+    {
+        $id = base64_decode($id);
+        $appointment = Appointment::where('id', $id)->first();
+
+        // user details related to this appointment
+        $user = User::select('name', 'email')->where('id', $appointment->userId)->first();
+        $appointment->name = $user->name;
+        $appointment->email = $user->email;
+
+        // chamber details related to this appointment
+        if ($appointment->appointmentType == 'm') {
+            $chamber = chamber::select('locationname')->where('id', $appointment->chamberId)->first();
+            $appointment->locationname = $chamber->locationname;
+        } else {
+
+            $appointment->locationname = null;
+        }
+
+        // invoice details related to this appointment
+        $invoice = Invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
+        if (!empty($invoice)) {
+            $appointment->invoiceId = $invoice->id;
+            $appointment->invoicestatus = $invoice->status;
+        } else {
+            $appointment->invoiceId = null;
+        }
+
+        $timestamp1 = strtotime($appointment->dateOfBirth);
+        $appointment->dateOfBirth = Carbon::parse($timestamp1)->format('d F, Y');
+
+        $timestamp2 = strtotime($appointment->bookingDate);
+        $appointment->bookingDate = Carbon::parse($timestamp2)->format('d F, Y');
+
+        // dd($appointment);
+        return view('admin.soloappointment', ['page_name' => 'Appointment', 'navstatus' => "adminappointment", 'appointment' => $appointment]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */

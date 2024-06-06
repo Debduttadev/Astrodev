@@ -383,7 +383,7 @@
                                 WhatsApp:
                             </div>
                             <div class="contact-info-text">
-                                {{ $about_contact->email }}
+                                <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us" style="color: #fff;">{{ $about_contact->whatsapp }}</a>
                             </div>
                         </div>
 

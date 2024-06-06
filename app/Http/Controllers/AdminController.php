@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\chamber;
+use App\Models\Invoice;
 use App\Models\User;
+use App\Models\Appointment;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -19,7 +23,42 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        return view('admin.dashboard', ['page_name' => 'dashboard', 'navstatus' => "dashboard"]);
+
+        $appointments = Appointment::where('bookingDate', '>=', date("Y-m-d"))->orderBy('bookingDate', 'asc')->get();
+
+        foreach ($appointments as $appointment) {
+
+            // user details related to this appointment
+            $user = User::select('name', 'email')->where('id', $appointment->userId)->first();
+            $appointment->name = $user->name;
+            $appointment->email = $user->email;
+
+            // chamber details related to this appointment
+            if ($appointment->appointmentType == 'm') {
+                $chamber = chamber::select('locationname')->where('id', $appointment->chamberId)->first();
+                $appointment->locationname = $chamber->locationname;
+            } else {
+
+                $appointment->locationname = null;
+            }
+
+            // invoice details related to this appointment
+            $invoice = Invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
+            if (!empty($invoice)) {
+                $appointment->invoiceId = $invoice->id;
+                $appointment->invoicestatus = $invoice->status;
+            } else {
+                $appointment->invoiceId = null;
+            }
+
+            $timestamp1 = strtotime($appointment->dateOfBirth);
+            $appointment->dateOfBirth = Carbon::parse($timestamp1)->format('d F, Y');
+
+            $timestamp2 = strtotime($appointment->bookingDate);
+            $appointment->bookingDate = Carbon::parse($timestamp2)->format('d F, Y');
+        }
+        //dd($appointments);
+        return view('admin.dashboard', ['page_name' => 'dashboard', 'navstatus' => "dashboard", 'appointments' => $appointments]);
     }
 
     public function adminuser()

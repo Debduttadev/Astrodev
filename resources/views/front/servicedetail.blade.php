@@ -29,6 +29,7 @@
                 </div>
             </div> <!-- /.col -->
         </div>
+        <a href="{{ URL::to('/appointment') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Book an Appointment</a>
     </div> <!-- /.container -->
 
 </section><!--End blog single section-->

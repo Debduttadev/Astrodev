@@ -21,6 +21,14 @@ if (!function_exists('numberService')) {
     }
 }
 
+if (!function_exists('aboutalldetails')) {
+    function aboutalldetails()
+    {
+        $aboutcontact = about_contact::first();
+        return $aboutcontact;
+    }
+}
+
 
 if (!function_exists('scociallinks')) {
     function scociallinks()

@@ -116,6 +116,8 @@
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
+                            <!-- <input id="autocomplete_search" name="autocomplete_search" type="text" class="form-control" placeholder="Search" /> -->
+
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="placestate">Place of Birth State</label>
                                 <input name="stateOfBirth" id="placestate" type="text" placeholder="West bengal" required />

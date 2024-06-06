@@ -35,12 +35,12 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Blogs
+                Appointments
             </div>
             <div class="card-body">
 
                 @if(count($appointments) === 0)
-                <h5>No Appoinments are available</h5>
+                <h5>No Appointments are available</h5>
                 @else
                 <table id="datatablesSimple" class="servicetable">
                     <thead>
@@ -81,11 +81,11 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->phoneNumber }}</td>
-                            <td>{{ $data->whatsappNumber }}</td>
+                            <td><a href="https://wa.me/91{{$data->whatsappNumber}}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us">{{ $data->whatsappNumber }}</a></td>
                             @if($data->appointmentType == "o")
-                            <td>Online <i class="fa fa-video-camera" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-video-camera" aria-hidden="true"></i> Online </td>
                             @else
-                            <td>Offline <i class="fa fa-male" aria-hidden="true"></i></td>
+                            <td><i class="fa fa-male" aria-hidden="true"></i> Offline </td>
                             @endif
                             <td>{{ $data->bookingDate }}</td>
                             @if($data->appointmentType == "o")
@@ -99,7 +99,7 @@
                             <td>{{$data->invoicestatus}}</td>
                             @endif
                             <td>
-
+    
                             </td>
                         </tr>
                         @php
