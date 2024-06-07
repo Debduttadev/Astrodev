@@ -31,6 +31,7 @@ return new class extends Migration
             $table->time('timeOfBirth');
             $table->date('bookingDate');
             $table->enum('appointmentType', ['o', 'm']);
+            $table->enum('payment_status', ['n', 'p', 'c'])->default('n');
             $table->timestamps();
         });
     }

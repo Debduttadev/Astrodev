@@ -59,134 +59,7 @@
 </head>
 
 <body class="homepage_slider" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="100">
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="spinner"></div>
-    </div>
-    <!-- End Preloader-->
 
-    @stack('style')
-
-    <style type="text/css">
-        .blog-post-body {
-            color: #241b1b;
-        }
-
-        .servicecss {
-            background-color: #e3dbce;
-            font-size: 16px;
-            color: #483120;
-        }
-
-        .servicebg {
-            position: relative;
-            width: 50% !important;
-            top: -200%;
-
-        }
-
-        .social {
-            font-size: 20px;
-            color: #ecd1a3;
-        }
-
-        .twitter {
-            filter: sepia(100%);
-        }
-
-        .parent {
-            position: relative;
-            top: 0;
-            left: 0;
-        }
-
-        .image1 {
-            position: relative;
-            top: 0;
-            left: 0;
-            animation: spin;
-        }
-
-        .image2 {
-            position: absolute;
-            width: 67%;
-            top: 17%;
-            left: 17%;
-        }
-
-        .chamberlist {
-            color: #160707;
-        }
-
-        .chamberlist h5 {
-            font-size: 20px;
-            color: #160707;
-        }
-
-        .footerlist div.listfooter a {
-            font-size: 16px;
-            line-height: 18px;
-            border-bottom: 1px solid #fff;
-            padding-bottom: 10px;
-            width: 100%;
-            display: block;
-        }
-
-        .aboutcss {
-            background-color: #40362e;
-        }
-
-        .myjourneyfont {
-            font-family: cursive;
-            font-size: smaller;
-            color: burlywood;
-        }
-
-        select.booking option {
-            height: 50px;
-        }
-
-        .appoinmentcss {
-            background-color: #d7d4d0;
-            color: #160707;
-        }
-
-        .appoinmentcolor h2 {
-            color: #160707;
-        }
-
-        .appoinmentcolor h3 {
-            color: #160707;
-        }
-
-        .darkcolorfont {
-            color: #160707;
-        }
-
-        .appoinmentsubmit {
-            background-color: #3e3b38;
-            color: #fff;
-            padding-left: 46%;
-            padding-right: 46%;
-        }
-
-        .contactsubmit {
-            background-color: #b57805;
-            color: #fff;
-            padding-left: 46%;
-            padding-right: 46%;
-        }
-
-        form.formdata3 {
-            font-size: 18px;
-        }
-
-        form div label {
-            font-size: 16px;
-            font-weight: 10;
-            color: #fff;
-        }
-    </style>
     @include('element.frontheader')
     <!-- Start Intro -->
 
@@ -194,16 +67,16 @@
     <!-- Main content -->
     @yield('content')
     @include('element.frontfooter')
-    <!-- Back to top -->
-    @include('element.frontmodal')
+
+    <!-- Book an Appointment -->
     <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg">Book an Appointment</a>
-    <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+
+
+    <!-- whatsapp button -->
     @php
     $aboutcontact=aboutalldetails();
     @endphp
-
-    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/WhatsAppButtonGreenSmall.png') }}" width="20" /></a>
-
+    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/WhatsAppButtonWhiteSmall.png') }}" width="20" /></a>
 
     <!-- Components Plugin -->
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
@@ -221,13 +94,6 @@
 
     <script src="{{ URL::to('frontend/js/contact.js') }}"></script>
 
-    <!-- Custom Plugin -->
-    <script src="{{ URL::to('frontend/js/custom.js') }}"></script>
-    @stack('scripts')
-    @include('element.frontjquery')
-
 </body>
-
-
 
 </html>

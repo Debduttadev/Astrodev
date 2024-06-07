@@ -27,7 +27,7 @@ return new class extends Migration
             )->onUpdate('cascade')->onDelete('cascade');
 
             $table->integer('amount');
-            $table->string('status')->default('pending');
+            $table->enum('status', ['p', 'c'])->default('p');
             $table->softDeletes();
             $table->date('DateOfpayment');
             $table->string('TimeOfpayment');

@@ -49,6 +49,7 @@ class AppointmentController extends Controller
                 $appointment->invoicestatus = $invoice->status;
             } else {
                 $appointment->invoiceId = null;
+                $appointment->invoicestatus =  $appointment->payment_status;
             }
 
             $timestamp1 = strtotime($appointment->dateOfBirth);
@@ -97,6 +98,7 @@ class AppointmentController extends Controller
             $appointment->invoicestatus = $invoice->status;
         } else {
             $appointment->invoiceId = null;
+            $appointment->invoicestatus =  $appointment->payment_status;
         }
 
         $timestamp1 = strtotime($appointment->dateOfBirth);
@@ -105,7 +107,7 @@ class AppointmentController extends Controller
         $timestamp2 = strtotime($appointment->bookingDate);
         $appointment->bookingDate = Carbon::parse($timestamp2)->format('d F, Y');
 
-        // dd($appointment);
+        //dd($appointment);
         return view('admin.soloappointment', ['page_name' => 'Appointment', 'navstatus' => "adminappointment", 'appointment' => $appointment]);
     }
 
@@ -154,6 +156,7 @@ class AppointmentController extends Controller
         $newappoinment->bookingDate = date_format($bookingDate, "Y-m-d H:i:s");
         $newappoinment->appointmentType = $data['appointmentType'];
         $newappoinment->chamberId = $data['chamberId'];
+        $newappoinment->payment_status = "n";
 
         if ($newappoinment->save()) {
             $chamberdata = [];

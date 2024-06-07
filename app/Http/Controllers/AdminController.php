@@ -61,13 +61,12 @@ class AdminController extends Controller
         return view('admin.dashboard', ['page_name' => 'dashboard', 'navstatus' => "dashboard", 'appointments' => $appointments]);
     }
 
+    // Show the admin user to set the restriction
+
     public function adminuser()
     {
-        $adminuser = User::get();
-        // echo "<pre>";
-        // print_r($adminuser);
-        // echo "</pre>";
-        // exit;
+        $adminuser = User::where('usertype', '!=', '3')->get();
+        //dd($adminuser);
         $adminuserdata = [];
         foreach ($adminuser as $data) {
             // $adminuser = $data->name;
@@ -80,11 +79,19 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the client who booked the appointment.
      */
-    public function create()
+    public function adminclient()
     {
-        //
+        $client = User::where('usertype', '3')->get();
+        // dd($adminuser);
+        $clientdata = [];
+        foreach ($client as $data) {
+            // $adminuser = $data->name;
+            $clientid = $data->id;
+            $clientdata[$clientid] = $data;
+            $appointments = Appointment::where('userId', $data->id)->count();
+        }
     }
 
     /**

@@ -44,7 +44,7 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Appointment Count</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -52,7 +52,7 @@
                             <th>Name</th>
                             <th>Status</th>
                             <th>Email</th>
-                            <th>Action</th>
+                            <th>Appointment Count</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -69,13 +69,7 @@
                             <td>{{ $userdata->name }}</td>
                             <td>{{ $usertype }}</td>
                             <td>{{ $userdata->email }}</td>
-                            <td>
-                                @if($userdata->usertype != '0')
-                                <a style="font-size: medium;" title="Edit Admin" class="btn btn-warning" href="{{ URL::to('editadmin/' .base64_encode($userdata->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i>Edit Admin</a>
-
-                                <a title="Delete Admin" class="btn btn-danger deleteadmin" adminid="{{ base64_encode($userdata->id)}}"><i class="fas fa-trash"></i></a>
-                                @endif
-                            </td>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>

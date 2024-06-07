@@ -424,7 +424,6 @@ class BlogController extends Controller
             )->get();
         }
 
-
         $blogitems = [];
 
         foreach ($blogs as $blogdata) {

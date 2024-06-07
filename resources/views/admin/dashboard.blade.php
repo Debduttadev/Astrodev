@@ -12,9 +12,26 @@
 
             <div class="col-xl-3 col-md-6 p-bottom-20">
                 <div class="card text-bg-light">
-                    <a href="{{ URL::to('appoinmentdetails').'/'.base64_encode($appointment->id) }}">
+                    <a href="{{ URL::to('appoinmentdetails').'/'.base64_encode($appointment->id) }}" style="color: #1f70d5;">
                         <div class="card-header">
-                            <h5>{{$appointment->name}}</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>{{$appointment->name}}</h5>
+                                </div>
+                                <div class="col-md-6" style="padding-left: 22%;">
+                                    <span>
+                                        <i class="fa fa-inr" aria-hidden="true"></i>
+
+                                        @if($appointment->payment_status == "n")
+                                        New
+                                        @elseif($appointment->payment_status == "p")
+                                        Pending
+                                        @else
+                                        Clear
+                                        @endif
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </a>
                     <ul class="list-group list-group-flush">

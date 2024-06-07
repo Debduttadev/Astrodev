@@ -24,16 +24,6 @@
   <link rel="stylesheet" href="{{ URL::to('chosen/docsupport/prism.css') }}">
   <link rel="stylesheet" href="{{ URL::to('chosen/chosen.css') }}">
 
-  <!-- Datetime -->
-
-
-  <!-- not needed now -->
-  <!-- Popperjs -->
-  <!-- <script src="{{ URL::to('admin/js/popper.min.js') }}" crossorigin="anonymous"></script> -->
-  <!-- Tempus Dominus JavaScript -->
-  <!-- <script src="{{ URL::to('admin/js/tempus-dominus.min.js') }}" crossorigin="anonymous"></script> -->
-  <!-- Tempus Dominus Styles -->
-  <!-- <link href="{{ URL::to('admin/css/tempus-dominus.min.css') }}" rel="stylesheet" /> -->
 </head>
 
 <body class="sb-nav-fixed">

@@ -11,10 +11,6 @@
             @endif
         </h1>
 
-        <div class="card mb-4">
-            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addblog">Add new Blog</button>
-        </div>
-
         <!-- to show the session status message -->
         @php
         $sessiondata = session()->all();
@@ -93,13 +89,9 @@
                             @else
                             <td>{{ $data->locationname }}</td>
                             @endif
-                            @if($data->invoiceId == null)
-                            <td>New</td>
-                            @else
                             <td>{{$data->invoicestatus}}</td>
-                            @endif
                             <td>
-    
+                                <a href="{{ URL::to('appoinmentdetails').'/'.base64_encode($data->id) }}" class="btn btn-primary" role="button" aria-disabled="true" title="This Appointment Details"><i class="fa fa-exclamation" aria-hidden="true"></i></a>
                             </td>
                         </tr>
                         @php

@@ -70,10 +70,7 @@
                                             @endif
                                         </li>
                                         <li class="list-group-item"> Payment Status :
-                                            @if($appointment->invoiceId != null){{ $appointment->invoicestatus }}
-                                            @else
-                                            Not Initiated
-                                            @endif
+                                            {{ $appointment->invoicestatus }}
                                         </li>
                                     </ul>
                                 </div>
