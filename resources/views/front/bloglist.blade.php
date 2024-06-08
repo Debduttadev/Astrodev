@@ -17,9 +17,9 @@
     <!--Container-->
     <div class="container clearfix">
         <div class="row">
-            <div class="col-md-4 sidebar">
-                <a href="{{ URL::to('/blogs') }}">
-                    <ol class="breadcrumb">
+            <div class="col-md-4 sidebar blogfilter">
+                <a href="{{ URL::to('/blogs') }}" class="allblogsbutton">
+                    <ol class="breadcrumb" style="background-color: #ff3c00;">
                         <li>All Blogs</li>
                     </ol>
                 </a>

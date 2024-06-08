@@ -30,7 +30,7 @@
                                 // convert the string to all lowercase
                                 $servicename = strtolower($servicename);
                                 @endphp
-                                <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('admin/img/astro.webp') }}">
+                                <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
                                 </a>
                             </div>
                         </div>

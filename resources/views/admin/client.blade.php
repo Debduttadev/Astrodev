@@ -42,7 +42,6 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Status</th>
                             <th>Email</th>
                             <th>Appointment Count</th>
                         </tr>
@@ -50,26 +49,16 @@
                     <tfoot>
                         <tr>
                             <th>Name</th>
-                            <th>Status</th>
                             <th>Email</th>
                             <th>Appointment Count</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($adminuserdata as $userdata)
-                        @php
-                        if($userdata->usertype ==='0'){
-                        $usertype = 'Master Admin';
-                        }elseif($userdata->usertype ==='1'){
-                        $usertype = 'Sub Admin';
-                        }elseif($userdata->usertype ==='2'){
-                        $usertype = 'Blogger';}
-                        @endphp
+                        @foreach ($clientdata as $userdata)
                         <tr>
                             <td>{{ $userdata->name }}</td>
-                            <td>{{ $usertype }}</td>
                             <td>{{ $userdata->email }}</td>
-                            <td></td>
+                            <td>{{ $userdata->appointmentcount }}</td>
                         </tr>
                         @endforeach
                     </tbody>

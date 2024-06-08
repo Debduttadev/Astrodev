@@ -67,7 +67,7 @@
                                 @endif
                                 <li><a href="{{ URL::to('/chambers') }}">Chamber</a></li>
                                 <li><a href="{{ URL::to('/aboutus') }}">About</a></li>
-                                <li><a data-scroll href="#contact">Contact us</a></li>
+                                <li><a data-scroll href="{{ URL::to('/') }}/#contact">Contact us</a></li>
                             </ul>
                         </div>
                     </div> <!-- /.col -->

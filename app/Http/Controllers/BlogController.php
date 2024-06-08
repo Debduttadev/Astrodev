@@ -286,7 +286,7 @@ class BlogController extends Controller
     public function bloglist(blog $blog)
     {
         // blog details
-        $limit = 6;
+        $limit = 4;
         $blogs = blog::limit($limit)->get();
         $blogcount = blog::count();
         $pagination = $blogcount / $limit;

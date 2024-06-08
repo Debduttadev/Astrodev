@@ -112,7 +112,7 @@
                                     // convert the string to all lowercase
                                     $servicename = strtolower($servicename);
                                     @endphp
-                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('admin/img/astro.webp') }}">
+                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
                                     </a>
                                 </div>
                             </div>
@@ -142,8 +142,8 @@
         <div>
             <div class="text-center mt-20">
                 <h1 class=" text-2xl md:text-3xl lg:text-4xl m-3 font-philosopher">MY JOURNEY</h1>
-                <h3 class="font-dancing text-xl myjourneyfont" style="font-family:Garamond;">...what you seek, seeks you</h3>
-                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans">
+                <h3 class="font-dancing text-xl myjourneyfont">...what you seek, seeks you</h3>
+                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans;     padding: 0 20px;">
                     <p>Embarking on a spiritual odyssey in childhood, </p>
                     <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>
                     <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey whe b re spirituality meets practical wisdom.</p>
@@ -204,7 +204,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Residence you satisfied and rapturous certainty two. Procured outweigh as outlived so so. On in bringing graceful proposal blessing of marriage outlived. Son rent face our loud near.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/1.jpg') }}" alt="">
+                    <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <h5 class="testimonial-author">Jenny Doe - Star Inc</h5>
             </div>
@@ -213,7 +213,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Excellent so to no sincerity smallness. Removal request delight if on he we. Unaffected in we by apartments astonished to decisively themselves. Offended ten old consider speaking.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/2.jpg') }}" alt="">
+                    <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <h5 class="testimonial-author">Kathy Doe - Service Corp</h5>
             </div>
@@ -222,7 +222,7 @@
             <div class="testimonial-item text-center">
                 <p class="testimonial-desc">Advanced and procured civility not absolute put continue. Overcame breeding or my concerns removing desirous so absolute. My melancholy unpleasing imprudence considered in advantages.</p>
                 <div class="testimonial-thumb">
-                    <img class="img-responsive" src="{{ URL::to('frontend/img/testimonial/3.jpg') }}" alt="">
+                    <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
                 <h5 class="testimonial-author">Jack Doe - Inka Design</h5>
             </div>
@@ -280,6 +280,8 @@
         </div> <!-- /.container -->
 
     </section>
+
+    <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start Contact -->
     <section id="contact" class="p-top-80 p-bottom-50">

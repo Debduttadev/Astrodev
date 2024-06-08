@@ -89,9 +89,13 @@ class AdminController extends Controller
         foreach ($client as $data) {
             // $adminuser = $data->name;
             $clientid = $data->id;
+            // count of new appoinment by this user
+            $appointments = Appointment::where([['userId', $data->id], ['payment_status', 'n']])->count();
             $clientdata[$clientid] = $data;
-            $appointments = Appointment::where('userId', $data->id)->count();
+            $clientdata[$clientid]['appointmentcount'] = $appointments;
         }
+        //dd($clientdata);
+        return view('admin.client', ['page_name' => 'Client', 'clientdata' => $clientdata, 'navstatus' => "adminclient"]);
     }
 
     /**

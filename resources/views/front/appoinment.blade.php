@@ -6,9 +6,9 @@
 <section id="blog-single" class="p-top-80 p-bottom-80 appoinmentcss">
     <div class="section-title-bg text-center m-bottom-20">
         <h2 class="wow fadeInDown no-margin" data-wow-duration="1s" data-wow-delay="0.6s">
-            <strong class="darkcolorfont">Appointment Details Form</strong>
+            <strong>Appointment Details Form</strong>
         </h2>
-        <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+        <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
     </div>
     <!--Container-->
     <div class="container clearfix ">
@@ -33,7 +33,7 @@
             <div class="col-md-offset-2 col-md-6">
                 <!-- Section Title -->
                 <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                    <div class="contact-form row">
+                    <div class="contact-form appointmentform row">
 
                         <form class="user" id="appoinmentform" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -165,7 +165,7 @@
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
-                            <button type="submit" class="btn appoinmentsubmit">Submit</button>
+                            <button type="submit" class="btn appoinmentsubmit btn-lg">Submit</button>
                         </form>
                     </div> <!-- /.contacts-form & inner row -->
                 </div>

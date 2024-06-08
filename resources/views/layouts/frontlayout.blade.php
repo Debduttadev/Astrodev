@@ -69,25 +69,33 @@
 
     <style type="text/css">
         .blog-post-body {
-            color: #241b1b;
+            color: #fff5f5;
+            background-color: #0c0808;
+        }
+
+        .blog-post-body a {
+            color: #fff5f5;
+        }
+
+        .blog-post-body a:hover {
+            color: #fff5f5;
         }
 
         .servicecss {
-            background-color: #e3dbce;
+            background-color: #ffffff;
             font-size: 16px;
             color: #483120;
         }
 
         .servicebg {
             position: relative;
-            width: 50% !important;
-            top: -200%;
-
+            width: 100% !important;
+            bottom: 125px;
         }
 
         .social {
             font-size: 20px;
-            color: #ecd1a3;
+            color: #000;
         }
 
         .twitter {
@@ -133,13 +141,13 @@
         }
 
         .aboutcss {
-            background-color: #40362e;
+            background-color: #ffffff;
         }
 
         .myjourneyfont {
             font-family: cursive;
             font-size: smaller;
-            color: burlywood;
+            color: #ff0000;
         }
 
         select.booking option {
@@ -147,7 +155,7 @@
         }
 
         .appoinmentcss {
-            background-color: #d7d4d0;
+            background-color: #fff;
             color: #160707;
         }
 
@@ -160,22 +168,33 @@
         }
 
         .darkcolorfont {
-            color: #160707;
+            /* color: #160707; */
+            color: #fff;
         }
 
         .appoinmentsubmit {
-            background-color: #3e3b38;
+            background-color: #ff0000;
             color: #fff;
+            padding-left: 45%;
+            padding-right: 45%;
+        }
+
+        .allblogsbutton {
+            background-color: #ff0000;
+        }
+
+        .blogfilter {
+            background-color: #ffe4ce;
+        }
+
+        .contactsubmit {
+            background-color: #ffffff;
+            color: #f00 !important;
+            font-weight: 600;
             padding-left: 46%;
             padding-right: 46%;
         }
 
-        .contactsubmit {
-            background-color: #b57805;
-            color: #fff;
-            padding-left: 46%;
-            padding-right: 46%;
-        }
 
         form.formdata3 {
             font-size: 18px;
@@ -185,6 +204,10 @@
             font-size: 16px;
             font-weight: 10;
             color: #fff;
+        }
+
+        #contact {
+            background-color: #fff;
         }
     </style>
     @include('element.frontheader')
