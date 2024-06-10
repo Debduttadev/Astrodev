@@ -1,0 +1,11 @@
+1. Xampp install
+2. composer inatall
+3. vs code install
+4. git install
+5. enter project directory
+6. Laravel install.
+7. composer update.
+8. MySQL database access in .env file
+9. php artisan serve
+10.php artisan make:model Admin -a
+11.php artisan migrate 
