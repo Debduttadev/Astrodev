@@ -17,7 +17,7 @@
                 @elseif($social['name'] == 'Linkedin')
                 <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Twitter')
-                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px;"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('frontend/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px;"></i></a>
                 @endif
             </li>
             @endforeach
@@ -67,7 +67,11 @@
                                 @endif
                                 <li><a href="{{ URL::to('/chambers') }}">Chamber</a></li>
                                 <li><a href="{{ URL::to('/aboutus') }}">About</a></li>
-                                <li><a data-scroll href="{{ URL::to('/') }}/#contact">Contact us</a></li>
+                                @if($_SERVER['PHP_SELF'] == '/index.php')
+                                <li><a data-scroll href="#contact">Contact us</a></li>
+                                @else
+                                <li><a href="{{ URL::to('/contactus') }}">Contact us</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div> <!-- /.col -->

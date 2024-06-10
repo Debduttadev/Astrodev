@@ -54,7 +54,7 @@
                              @elseif($social['name'] == 'Linkedin')
                              <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
                              @elseif($social['name'] == 'Twitter')
-                             <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px;"></i></a>
+                             <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 29px; width: 25px;"></i></a>
                              @endif
                          </li>
                          @endforeach
@@ -62,7 +62,7 @@
                  </div>
              </div>
          </div>
-         <small class="copyright pull-left">Copyrights © 2024 All Rights Reserved By Sumita.</small>
+         <small class="copyright pull-left">Copyrights © 2024 All Rights Reserved By Astroachariyadebdutta.com</small>
          <!-- /social-icon -->
      </div>
      <!-- /container -->

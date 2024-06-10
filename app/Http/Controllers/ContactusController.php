@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contactus;
+use App\Models\about_contact;
 use App\Http\Requests\StorecontactusRequest;
 use App\Http\Requests\UpdatecontactusRequest;
 use Illuminate\Http\Request;
@@ -46,11 +47,12 @@ class ContactusController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * front contact us form view
      */
-    public function store(StorecontactusRequest $request)
+    public function contactus(Request $request)
     {
-        //
+        $about_contact = about_contact::first();
+        return view('front.contactus', ['about_contact' => $about_contact]);
     }
 
     /**

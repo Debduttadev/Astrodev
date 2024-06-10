@@ -11,7 +11,8 @@
         We write quality content regularly. check them out!
     </p>
 </div>
-
+<!-- End Regular Section -->
+<div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 <!--BLog single section-->
 <section class="blog-index">
     <!--Container-->
@@ -43,8 +44,10 @@
                 <!--Widget 4-->
                 <div class="widget">
                     <h4>Month wise Blogs</h4>
-                    <input type="text" class="span2 dateblog" typeblog="created_at" search="" value="05-2024" id="dp1">
-                    <input type="submit" class="submit-search searchdate" value="Ok" />
+                    <div class="input-group">
+                        <input class="form-control dateblog" type="text" typeblog="created_at" search="" value="05-2024" id="dp1" />
+                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    </div>
                 </div>
                 <!--End widget-->
 

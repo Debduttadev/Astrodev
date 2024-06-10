@@ -54,6 +54,19 @@
             maxDate: new Date(),
         });
 
+        $('#dp1').datetimepicker({
+            format: 'MM-YYYY',
+            maxDate: new Date(),
+        });
+
+        $("#dp1").on("dp.change", function(e) {
+            var obj = $(this);
+            var value = $(this).val();
+            // console.log(value);
+            var searchval = $(this).attr('search', value);
+            alttagmodaldata(obj)
+        });
+
         $('#timepicker1').datetimepicker({
             format: 'HH:mm:ss'
         });
@@ -63,7 +76,6 @@
             minDate: new Date(),
             calendarWeeks: true
         });
-
 
         $("#appoinmentform").submit(function(event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
@@ -174,8 +186,6 @@
                 }
             });
         });
-
-
     });
 
     function alttagmodaldata(obj) {

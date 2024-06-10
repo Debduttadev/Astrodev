@@ -224,8 +224,8 @@ overlay-light .YTPOverlay:before {
 }
 #back-to-top {
     position: fixed;
-    bottom: 75px;
-    right: 40px;
+    bottom: 87px;
+    right: 47px;
     z-index: 9999;
     text-align: center;
     cursor: pointer;
@@ -288,16 +288,18 @@ overlay-light .YTPOverlay:before {
 
 #whatsappbtn {
     position: fixed;
-    bottom: 20px;
-    right: -1%;
+    bottom: 0px;
+    right: -173px;
     z-index: 9999;
     text-align: center;
     cursor: pointer;
+    border: 0;
+    text-decoration: none;
     opacity: 1;
 }
 
 #whatsappbtn img {
-    width: 65% !important;
+    width: 17%;
 }
 
 #errortohome {
@@ -1429,6 +1431,7 @@ blockquote {
     width: 100%;
     height: auto;
     padding-bottom: 8%;
+    font-family: sans-serif;
 }
 .team-item:hover .team-item-image-overlay {
     top: 0;
@@ -1642,7 +1645,7 @@ blockquote {
 .blog-post-info {
     border-bottom: 1px solid #ff0000;
     padding: 10px 25px;
-    color: #999999;
+    color: #000000;
     font-size: 0.8em;
     font-style: italic;
 }
@@ -1841,11 +1844,11 @@ blockquote {
     border: 1px solid #f8f8f8;
 }
 
-.widget .dateblog {
+.widget .input-group .dateblog {
     border: none;
-    padding: 10px 10px;
+    padding: 11px 10px;
     font-size: 13px;
-    width: 75%;
+    width: 100%;
     background: #ffffff;
     border: 0 none;
     outline: 0;

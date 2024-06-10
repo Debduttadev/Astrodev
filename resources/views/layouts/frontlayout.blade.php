@@ -40,21 +40,22 @@
 
     <script src="{{ URL::to('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+    <!-- Google api integration -->
     <script>
-        google.maps.event.addDomListener(window, 'load', initialize);
+        // google.maps.event.addDomListener(window, 'load', initialize);
 
-        function initialize() {
-            var input = document.getElementById('autocomplete_search');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                // place variable will have all the information you are looking for.
-            });
-        }
+        // function initialize() {
+        //     var input = document.getElementById('autocomplete_search');
+        //     var autocomplete = new google.maps.places.Autocomplete(input);
+        //     autocomplete.addListener('place_changed', function() {
+        //         var place = autocomplete.getPlace();
+        //         // place variable will have all the information you are looking for.
+        //     });
+        // }
     </script>
     <!-- google map place autocomplete -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initialize">
-    </script>
+    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initialize">
+    </script> -->
 
 </head>
 
@@ -98,9 +99,9 @@
             color: #000;
         }
 
-        .twitter {
+        /* .twitter {
             filter: sepia(100%);
-        }
+        } */
 
         .parent {
             position: relative;
@@ -145,7 +146,7 @@
         }
 
         .myjourneyfont {
-            font-family: cursive;
+            font-family: monospace;
             font-size: smaller;
             color: #ff0000;
         }
@@ -225,8 +226,7 @@
     $aboutcontact=aboutalldetails();
     @endphp
 
-    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/WhatsAppButtonGreenSmall.png') }}" width="20" /></a>
-
+    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/whatsappIcon.png') }}" width="20" title="Please visit us on whatsapp" /></a>
 
     <!-- Components Plugin -->
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
