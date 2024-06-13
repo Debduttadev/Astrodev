@@ -1,5 +1,5 @@
 1. Xampp install
-2. composer inatall
+2. composer install
 3. vs code install
 4. git install
 5. enter project directory
@@ -9,3 +9,107 @@
 9. php artisan serve
 10.php artisan make:model Admin -a
 11.php artisan migrate 
+
+sudo apt install php8.3 -y
+
+sudo apt install php8.1 php8.1-curl libapache2-mod-php8.1 php8.1-bcmath php8.1-zip php8.1-mbstring php8.1-mysql php8.1-gd php8.1-xml php8.1-tokenizer php-common php-json
+
+sudo apt install php8.3 php8.3-curl libapache2-mod-php8.3 php8.3-bcmath php8.3-zip php8.3-mbstring php8.3-mysql php8.3-gd php8.3-xml php8.3-tokenizer php-common php-json
+
+wget https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
+
+sudo apt update
+sudo apt install php-cli unzip
+
+sudo git clone https://github.com/Debduttadev/Astrodev.git
+cd Astrodev
+git pull origin main
+
+git config --global user.name Debduttadev
+git config --global user.email Kaupia@yahoo.com
+
+sudo chown -R www-data:www-data Astrodev
+sudo chmod -R 755 Astrodev
+sudo mv Astrodev /var/www/html
+cd astroachariyadebdutta.com
+rm -rf Astrodev
+
+
+to delete everything
+sudo rm -R /var/www/wordpress/wp-content/themes/myFolder/*
+
+sudo cp 000-default.conf astroachariya.conf
+sudo nano astroachariya.conf
+sudo a2ensite astroachariya.conf
+
+<VirtualHost *:80>
+    ServerAdmin admin@astroachariyadebdutta.com
+    ServerName astroachariyadebdutta.com
+    DocumentRoot /var/www/html/Astrodev/public/
+     
+    <Directory /var/www/html/Astrodev/public/>
+            AllowOverride All
+            Require all granted
+            Allow from all
+    </Directory>
+     
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+sudo a2ensite astroachariya.conf
+
+sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mysql_root_password';"
+
+sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED  WITH caching_sha2_password BY 'Astro#achariya1235';"
+
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Astro#achariya1235';
+FLUSH PRIVILEGES;
+
+CREATE DATABASE astrodeb
+http://43.205.231.33/
+
+oldhttp://3.110.187.108/
+
+sudo chown www-data:www-data /var/www/html/Astrodev/storage/logs/laravel.log
+
+sudo chmod 755 /var/www/html/Astrodev/storage/logs/laravel.log
+
+
+sudo chmod 777 -R /var/www/html/Astrodev
+sudo chown -R www-data storage
+sudo chown -R www-data storage/framework
+sudo chmod g+w -R storage
+sudo chmod g+w -R storage/framework
+sudo chmod g+w -R storage/framework/sessions/
+sudo chmod g+w -R storage/logs/
+
+
+35.154.60.132 alocaded ip
+
+Redirect / https://www.astroachariyadebdutta.com
+
+
+NameVirtualHost *:80
+<VirtualHost *:80>
+   ServerName astroachariyadebdutta.com
+   Redirect permanent / https://www.astroachariyadebdutta.com
+</VirtualHost>
+
+<VirtualHost _default_:443>
+   ServerName astroachariyadebdutta.com
+  DocumentRoot /var/www/html/Astrodev/public/
+  SSLEngine On
+ # etc...
+</VirtualHost>
+
+<VirtualHost *:80>
+   ServerName www.astroachariyadebdutta.com
+   Redirect / https://www.astroachariyadebdutta.com
+</VirtualHost>
+<VirtualHost _default_:443>
+   ServerName www.astroachariyadebdutta.com
+   DocumentRoot /usr/local/apache2/htdocs
+   SSLEngine On
+   # Configuration Continues...
+</VirtualHost>
