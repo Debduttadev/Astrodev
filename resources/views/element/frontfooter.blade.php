@@ -21,20 +21,12 @@
              <div class="col-md-4 pull-left listfooter">
                  <h2>Quick Link</h2>
                  <a href="{{ URL::to('/') }}">Home</a><br>
-                 @if($_SERVER['PHP_SELF'] == '/index.php')
-                 <a data-scroll href="#service">Services</a><br>
-                 @else
                  <a href="{{ URL::to('/services') }}">Services</a><br>
-                 @endif
-                 <a href="#appoinment">Appointment</a><br>
-                 @if($_SERVER['PHP_SELF'] == '/index.php')
-                 <a data-scroll href="#blog">Blog</a><br>
-                 @else
+                 <a href="{{ URL::to('/appointment') }}">Appointment</a><br>
                  <a href="{{ URL::to('/blogs') }}">Blog</a><br>
-                 @endif
                  <a href="{{ URL::to('/chambers') }}">Chamber</a><br>
                  <a href="{{ URL::to('/aboutus') }}">About</a><br>
-                 <a data-scroll href="#contact">Contact us</a><br>
+                 <a href="{{ URL::to('/contactus') }}">Contact us</a><br>
              </div>
 
              <div class="col-md-4 pull-right">

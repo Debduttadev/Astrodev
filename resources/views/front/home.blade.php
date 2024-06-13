@@ -93,7 +93,7 @@
                     <div class="section-title text-center m-bottom-40">
                         <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all. {{ numberService() }}</em></p>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all. {{ numberService() }}</p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -143,7 +143,7 @@
             <div class="text-center mt-20">
                 <h1 class=" text-2xl md:text-3xl lg:text-4xl m-3 font-philosopher">MY JOURNEY</h1>
                 <h3 class="font-dancing text-xl myjourneyfont">...what you seek, seeks you</h3>
-                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Lucida Sans;     padding: 0 20px;">
+                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Poppins;     padding: 0 20px;">
                     <p>Embarking on a spiritual odyssey in childhood, </p>
                     <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>
                     <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey whe b re spirituality meets practical wisdom.</p>

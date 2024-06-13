@@ -44,7 +44,7 @@
                         <div class="logo-container">
                             <div class="logo-wrap local-scroll">
                                 <a href="{{ URL::to('/') }}">
-                                    <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}" alt="logo" data-rjs="2" height="80">
+                                    <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}" alt="logo" data-rjs="2">
                                 </a>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ body {
 body {
     background: #ffffff;
     font-size: 16px;
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins";
     color: #000000;
 }
 a {
@@ -448,7 +448,7 @@ overlay-light .YTPOverlay:before {
     background-color: orangered;
     padding: 10px 18px;
     border: 1px solid #fff;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins";
     font-size: 12px;
     text-transform: uppercase;
     color: #f8f8f7;
@@ -556,7 +556,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: orangered;
     text-transform: uppercase;
     margin-top: 10px;
@@ -666,7 +666,7 @@ p {
 blockquote {
     margin: 20px 0;
     padding: 10px 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.1em;
     font-weight: 600;
     font-style: italic;
@@ -902,7 +902,6 @@ blockquote {
 .navbar-header .logo-container .logo-wrap a {
     display: table-cell;
     vertical-align: middle;
-    height: 70px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -910,9 +909,10 @@ blockquote {
 
 .navbar-header .logo-container .logo-wrap a img.logo {
     width: auto;
+    height: 68px;
 }
 .navbar-header .logo-container .logo-wrap.shrink a {
-    height: 70px;
+    padding: 8px 0px;
 }
 .navbar-header .logo-container .logo-wrap img {
     -webkit-transition: all 0.3s ease-in-out;
@@ -922,14 +922,13 @@ blockquote {
 .navbar-nav {
     float: none;
     display: inline-block;
+    padding-top: 8px;
 }
 .navbar-nav li a {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+    font-family: "Poppins", sans-serif;
     padding: 0 17px;
-    line-height: 70px;
     color: #fff;
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -950,7 +949,7 @@ blockquote {
     overflow-x: hidden;
 }
 .nav-solid {
-    height: 70px;
+    height: 55px;
     -webkit-transition: height 0.3s ease-in-out;
     -o-transition: height 0.3s ease-in-out;
     transition: height 0.3s ease-in-out;
@@ -1129,16 +1128,16 @@ blockquote {
 ---------------------------------------------------*/
 /* Slides */
 .rev_slider .tp-caption.NotGeneric-Title {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
     text-transform: uppercase;
     font-weight: 700;
 }
 .rev_slider .tp-caption.NotGeneric-SubTitle {
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
     text-transform: uppercase;
 }
 .rev_slider .tp-caption.NotGeneric-Text {
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
 }
 .uranus.tparrows {
@@ -1348,7 +1347,7 @@ blockquote {
     12. Video  Section
 ---------------------------------------------------*/
 .video-caption h6 {
-    font-family: "Lato", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 300;
     letter-spacing: 2px;
 }
@@ -1417,7 +1416,7 @@ blockquote {
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
 }
 .team-item-name {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 20px;
     font-weight: 700;
     padding-top: 20px;
@@ -1431,7 +1430,7 @@ blockquote {
     width: 100%;
     height: auto;
     padding-bottom: 8%;
-    font-family: sans-serif;
+    font-family: "Poppins";
 }
 .team-item:hover .team-item-image-overlay {
     top: 0;
@@ -1586,7 +1585,7 @@ blockquote {
     font-size: 44px;
     margin-right: 0;
     padding-top: 30px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins";
     font-weight: 400;
 }
 .stat-item.stat-item-type-2 .stat-item-text {
@@ -1629,7 +1628,7 @@ blockquote {
 }
 .testimonial-author {
     padding: 10px 10px;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins";
     font-size: 11px;
     letter-spacing: 1px;
 }
@@ -2253,7 +2252,7 @@ blockquote {
 .price-item-price .big {
     font-size: 56px;
     line-height: 1em;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Poppins";
     margin-bottom: 0;
     color: #ff3c00;
 }
