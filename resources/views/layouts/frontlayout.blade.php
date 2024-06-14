@@ -210,6 +210,65 @@
         #contact {
             background-color: #fff;
         }
+
+        .carousel-caption {
+            top: 25%;
+            bottom: auto;
+            right: auto;
+            left: 10%;
+        }
+
+        .carousel-caption h1 {
+            color: #fff;
+        }
+
+        @media (min-width: 576px) {
+
+            /* Small devices (landscape phones, 576px and up) */
+            .carousel-caption h1 {
+                font-size: 1.3em;
+            }
+
+            .carousel-caption p {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            /* Medium devices (tablets, 768px and up) */
+            .carousel-caption h1 {
+                font-size: 1.4em;
+            }
+
+            .carousel-caption p {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (min-width: 992px) {
+
+            /* Large devices (desktops, 992px and up) */
+            .carousel-caption h1 {
+                font-size: 1.5em;
+            }
+
+            .carousel-caption p {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            /* Extra large devices (large desktops, 1200px and up) */
+            .carousel-caption h1 {
+                font-size: 2.0em;
+            }
+
+            .carousel-caption p {
+                font-size: 1.4em;
+            }
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->

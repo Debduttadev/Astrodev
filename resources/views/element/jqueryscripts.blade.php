@@ -250,7 +250,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -266,7 +266,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -281,7 +281,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -296,7 +296,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -311,7 +311,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -326,7 +326,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -341,7 +341,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: '8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
             link_default_target: '_blank',
             convert_urls: false,
         });
@@ -356,7 +356,7 @@
             toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
-            fontsize_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
             link_default_target: '_blank',
             convert_urls: false,
         });

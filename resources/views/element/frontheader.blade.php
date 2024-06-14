@@ -44,14 +44,14 @@
                         <div class="logo-container">
                             <div class="logo-wrap local-scroll">
                                 <a href="{{ URL::to('/') }}">
-                                    <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}" alt="logo" data-rjs="2">
+                                    <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}" alt="logo" data-rjs="2" height="80">
                                 </a>
                             </div>
                         </div>
                     </div> <!-- end navbar-header -->
 
                     <div class="col-md-8 col-xs-12 nav-wrap">
-                        <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <div class="collapse navbar-collapse" id="navbar-collapse" style="max-height: 169px;">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ URL::to('/') }}">Home</a></li>
                                 @if($_SERVER['PHP_SELF'] == '/index.php')
@@ -81,4 +81,3 @@
     </nav> <!-- /.navbar -->
 
 </header>
-<!-- End Navigation -->

@@ -25,14 +25,28 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="...">
+                <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
+                    <h1>Astro Achariya Debdutta</h1>
+                    <p> Globally Acclaimed Astrologer</p>
+                    <p> Vastu Influencer,</p>
+                    <p>Life Coach, Success Guru</p>
+                    <a type="button" href="{{ URL::to('/services') }}" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                </div>
             </div>
             @php
             $item=1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail )
             @if($key != 0)
-            <div class="item">
-                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="..." hight="160" width="90">
+            <div class="item ">
+                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="...">
+                <div class="carousel-caption wow fadeInLeft p-3" data-wow-duration="0.7s" data-wow-delay="0.5s">
+                    <h1>Astro Achariya Debdutta</h1>
+                    <p> Globally Acclaimed Astrologer</p>
+                    <p> Vastu Influencer,</p>
+                    <p>Life Coach, Success Guru</p>
+                    <a type="button" href="{{ URL::to('/services') }}" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                </div>
             </div>
             @php
             $item++;
@@ -91,7 +105,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                         <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all. {{ numberService() }}</p>
                     </div>
@@ -99,7 +113,7 @@
             </div> <!-- /.row -->
 
             <div class="row">
-                @foreach ($servicedata as $servicekey => $services )
+                @foreach ( $servicedata as $servicekey => $services )
                 <!-- === Team Item 1 === -->
                 <div class="col-md-4 p-30">
                     <div class="team-item wow zoomIn" data-wow-duration="1s" data-wow-delay="0.9s">
@@ -163,7 +177,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Featured Videos</h2>
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Featured Videos</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>
                 </div> <!-- /.col -->
@@ -242,7 +256,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h2>
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                         <!-- <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p> -->
                     </div>
@@ -291,7 +305,7 @@
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
-                        <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Contact</h2>
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Contact</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>
                 </div> <!-- /.col -->

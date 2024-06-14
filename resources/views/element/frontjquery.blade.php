@@ -4,7 +4,7 @@
         var currentScrollPos = window.pageYOffset;
 
         if (prevScrollpos >= currentScrollPos) {
-            if (currentScrollPos <= 50) {
+            if (currentScrollPos <= 48) {
                 document.getElementById("fixednavbar").style.top = "30px";
             }
         } else {

@@ -52,9 +52,9 @@ class BannerVideoController extends Controller
 
                     // resize image canvas
                     //$image->resizeCanvas(550, 550);
-                    $image->resize(1920, 1080, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
+                    // $image->resize(836, 1080, function ($constraint) {
+                    //     $constraint->aspectRatio();
+                    // });
                     if ($image->save(public_path('bannervideo') . '/' . $filename)) {
                         $newBannerVideo->thumbnail = $filename;
                         $newBannerVideo->videolink = $data['videolink'];
@@ -91,9 +91,9 @@ class BannerVideoController extends Controller
 
                 // resize image canvas
                 //$image->resizeCanvas(550, 550);
-                $image->resize(1920, 1080, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                // $image->resize(836, 1080, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // });
                 if ($image->save(public_path('bannervideo') . '/' . $filename)) {
                     $newBannerVideo->thumbnail = $filename;
                     $newBannerVideo->videolink = $data['videolink'];
@@ -171,9 +171,9 @@ class BannerVideoController extends Controller
 
                     // resize image canvas
                     //$image->resizeCanvas(550, 550);
-                    $image->resize(1920, 1080, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
+                    // $image->resize(836, 1080, function ($constraint) {
+                    //     $constraint->aspectRatio();
+                    // });
                     if ($image->save(public_path('bannervideo') . '/' . $filename)) {
                         $updatedata['thumbnail'] = $filename;
                     } else {
@@ -205,9 +205,9 @@ class BannerVideoController extends Controller
 
                 // resize image canvas
                 //$image->resizeCanvas(550, 550);
-                $image->resize(1920, 1080, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                // $image->resize(836, 1080, function ($constraint) {
+                //     $constraint->aspectRatio();
+                // });
                 if ($image->save(public_path('bannervideo') . '/' . $filename)) {
                     $updatedata['thumbnail'] = $filename;
                 } else {

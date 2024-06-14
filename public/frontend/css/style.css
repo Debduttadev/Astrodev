@@ -299,7 +299,7 @@ overlay-light .YTPOverlay:before {
 }
 
 #whatsappbtn img {
-    width: 17%;
+    width: 15%;
 }
 
 #errortohome {
@@ -448,7 +448,7 @@ overlay-light .YTPOverlay:before {
     background-color: orangered;
     padding: 10px 18px;
     border: 1px solid #fff;
-    font-family: "Poppins";
+    font-family: "Calibri (Body)";
     font-size: 12px;
     text-transform: uppercase;
     color: #f8f8f7;
@@ -493,14 +493,14 @@ overlay-light .YTPOverlay:before {
     border: 1px solid #fff;
     box-shadow: inset 0 0 0 0 #d9d9d9;
     -webkit-box-shadow: inset 0 0 0 0 #d9d9d9;
-    color: #fff;
+    color: #000000;
 }
 .btn-main.btn-white:hover,
 .btn-main.btn-white:focus,
 .btn-main.btn-white:active,
 .btn-main.btn-white .active {
-    box-shadow: inset 0 100px 0 0 #d9d9d9;
-    -webkit-box-shadow: inset 0 100px 0 0 #d9d9d9;
+    box-shadow: inset 0 100px 0 0 #000000;
+    -webkit-box-shadow: inset 0 100px 0 0 #000000;
     border: 1px solid #d9d9d9;
     color: #fff;
 }
@@ -556,7 +556,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     color: orangered;
     text-transform: uppercase;
     margin-top: 10px;
@@ -666,7 +666,7 @@ p {
 blockquote {
     margin: 20px 0;
     padding: 10px 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     font-size: 1.1em;
     font-weight: 600;
     font-style: italic;
@@ -902,6 +902,7 @@ blockquote {
 .navbar-header .logo-container .logo-wrap a {
     display: table-cell;
     vertical-align: middle;
+    height: 70px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -909,10 +910,10 @@ blockquote {
 
 .navbar-header .logo-container .logo-wrap a img.logo {
     width: auto;
-    height: 68px;
+    padding: 5px 0px;
 }
 .navbar-header .logo-container .logo-wrap.shrink a {
-    padding: 8px 0px;
+    height: 70px;
 }
 .navbar-header .logo-container .logo-wrap img {
     -webkit-transition: all 0.3s ease-in-out;
@@ -922,13 +923,14 @@ blockquote {
 .navbar-nav {
     float: none;
     display: inline-block;
-    padding-top: 8px;
 }
 .navbar-nav li a {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
+    font-weight: 600;
     padding: 0 17px;
+    line-height: 70px;
     color: #fff;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -949,7 +951,7 @@ blockquote {
     overflow-x: hidden;
 }
 .nav-solid {
-    height: 55px;
+    height: 70px;
     -webkit-transition: height 0.3s ease-in-out;
     -o-transition: height 0.3s ease-in-out;
     transition: height 0.3s ease-in-out;
@@ -1128,16 +1130,16 @@ blockquote {
 ---------------------------------------------------*/
 /* Slides */
 .rev_slider .tp-caption.NotGeneric-Title {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     text-transform: uppercase;
     font-weight: 700;
 }
 .rev_slider .tp-caption.NotGeneric-SubTitle {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     text-transform: uppercase;
 }
 .rev_slider .tp-caption.NotGeneric-Text {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     font-weight: 400;
 }
 .uranus.tparrows {
@@ -1347,7 +1349,7 @@ blockquote {
     12. Video  Section
 ---------------------------------------------------*/
 .video-caption h6 {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     font-weight: 300;
     letter-spacing: 2px;
 }
@@ -1416,7 +1418,7 @@ blockquote {
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
 }
 .team-item-name {
-    font-family: "Poppins", sans-serif;
+    font-family: "Calibri (Body)";
     font-size: 20px;
     font-weight: 700;
     padding-top: 20px;
@@ -1430,7 +1432,7 @@ blockquote {
     width: 100%;
     height: auto;
     padding-bottom: 8%;
-    font-family: "Poppins";
+    font-family: "Calibri (Body)";
 }
 .team-item:hover .team-item-image-overlay {
     top: 0;
@@ -1585,9 +1587,10 @@ blockquote {
     font-size: 44px;
     margin-right: 0;
     padding-top: 30px;
-    font-family: "Poppins";
+    font-family: "Calibri (Body)";
     font-weight: 400;
 }
+
 .stat-item.stat-item-type-2 .stat-item-text {
     padding-top: 10px;
     padding-left: 0;
@@ -1628,7 +1631,7 @@ blockquote {
 }
 .testimonial-author {
     padding: 10px 10px;
-    font-family: "Poppins";
+    font-family: "Calibri (Body)";
     font-size: 11px;
     letter-spacing: 1px;
 }
