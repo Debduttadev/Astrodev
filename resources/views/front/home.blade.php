@@ -107,7 +107,7 @@
                     <div class="section-title text-center m-bottom-40">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all. {{ numberService() }}</p>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all.</p>
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
@@ -420,6 +420,7 @@
                 </div> <!-- /.col -->
 
             </div> <!-- /.row -->
+            
         </div> <!-- /.container -->
     </section>
     <!-- End Contact -->

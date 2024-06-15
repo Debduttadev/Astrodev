@@ -91,7 +91,8 @@
         .servicebg {
             position: relative;
             width: 100% !important;
-            bottom: 125px;
+            bottom: auto;
+            top: -145px;
         }
 
         .social {
@@ -232,6 +233,13 @@
             .carousel-caption p {
                 font-size: 1.1em;
             }
+
+            .servicebg {
+                position: relative;
+                width: 60% !important;
+                bottom: auto;
+                top: -145px;
+            }
         }
 
         @media (min-width: 768px) {
@@ -243,6 +251,13 @@
 
             .carousel-caption p {
                 font-size: 1.2em;
+            }
+
+            .servicebg {
+                position: relative;
+                width: 60% !important;
+                bottom: auto;
+                top: -145px;
             }
         }
 
