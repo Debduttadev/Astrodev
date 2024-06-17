@@ -237,6 +237,19 @@
                 top: 0%;
             }
 
+            .carousel-caption h1 {
+                font-size: 16px;
+            }
+
+            .carousel-caption p {
+                font-size: 12px;
+                line-height: 0.8em;
+            }
+
+            .carousel-caption a {
+                font-size: 12px;
+            }
+
             .servicebg {
                 position: relative;
                 width: 60% !important;
@@ -249,6 +262,10 @@
 
             .carousel-caption {
                 top: 0%;
+            }
+
+            .carousel-caption h1 {
+                font-size: 24px;
             }
 
             .servicebg {
