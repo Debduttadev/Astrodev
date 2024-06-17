@@ -27,7 +27,7 @@ git pull origin main
 
 git config --global user.name Debduttadev
 git config --global user.email Kaupia@yahoo.com
-
+cd..
 sudo chown -R www-data:www-data Astrodev
 sudo chmod -R 755 Astrodev
 sudo mv Astrodev /var/www/html

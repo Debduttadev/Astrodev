@@ -223,15 +223,32 @@
             color: #fff;
         }
 
-        @media (min-width: 576px) {
+        .aboutcss a {
+            color: #ff0909
+        }
 
-            /* Small devices (landscape phones, 576px and up) */
-            .carousel-caption h1 {
-                font-size: 1.3em;
+        .aboutcss a:hover {
+            color: #ff6b3b
+        }
+
+        @media (min-width:320px) {
+
+            .carousel-caption {
+                top: 0%;
             }
 
-            .carousel-caption p {
-                font-size: 1.1em;
+            .servicebg {
+                position: relative;
+                width: 60% !important;
+                bottom: auto;
+                top: -145px;
+            }
+        }
+
+        @media (min-width: 576px) {
+
+            .carousel-caption {
+                top: 0%;
             }
 
             .servicebg {
@@ -243,19 +260,13 @@
         }
 
         @media (min-width: 768px) {
-
-            /* Medium devices (tablets, 768px and up) */
-            .carousel-caption h1 {
-                font-size: 1.4em;
-            }
-
-            .carousel-caption p {
-                font-size: 1.2em;
+            .carousel-caption {
+                top: 25%;
             }
 
             .servicebg {
                 position: relative;
-                width: 60% !important;
+                width: 80% !important;
                 bottom: auto;
                 top: -145px;
             }
@@ -263,25 +274,15 @@
 
         @media (min-width: 992px) {
 
-            /* Large devices (desktops, 992px and up) */
-            .carousel-caption h1 {
-                font-size: 1.5em;
-            }
-
-            .carousel-caption p {
-                font-size: 1.3em;
+            .servicebg {
+                width: 100%;
             }
         }
 
         @media (min-width: 1200px) {
 
-            /* Extra large devices (large desktops, 1200px and up) */
-            .carousel-caption h1 {
-                font-size: 2.0em;
-            }
-
-            .carousel-caption p {
-                font-size: 1.4em;
+            .servicebg {
+                width: 100%;
             }
         }
     </style>

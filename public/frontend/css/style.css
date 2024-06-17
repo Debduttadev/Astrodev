@@ -591,8 +591,8 @@ p {
 }
 .section-subtitle {
     color: #000000;
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 100;
+    font-size: 18px;
 }
 .bigger-font {
     font-size: 50px;
@@ -926,11 +926,10 @@ blockquote {
 }
 .navbar-nav li a {
     font-family: "Calibri Light";
-    font-weight: 600;
     padding: 0 17px;
     line-height: 70px;
     color: #fff;
-    font-size: 13px;
+    font-size: 20px;
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -1419,19 +1418,18 @@ blockquote {
 }
 .team-item-name {
     font-family: "Calibri Light";
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 200;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #ff3c00;
 }
 .team-item-position {
-    font-size: 15px;
+    font-size: 18px;
     color: #ffffff;
     display: block;
     width: 100%;
-    height: auto;
-    padding-bottom: 8%;
+    height: 192px;
     font-family: "Calibri Light";
 }
 .team-item:hover .team-item-image-overlay {
@@ -1447,10 +1445,24 @@ blockquote {
     #team .team-item-icons {
         font-size: 24px;
     }
+
+    #service .team-item-position {
+        height: auto;
+    }
 }
 @media screen and (max-width: 360px) {
     #team .team-item-icons {
         font-size: 15px;
+    }
+
+    #service .team-item-position {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #service .team-item-position {
+        height: auto;
     }
 }
 /*--------------------------------------------------

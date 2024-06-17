@@ -30,7 +30,7 @@
                     <p> Globally Acclaimed Astrologer</p>
                     <p> Vastu Influencer,</p>
                     <p>Life Coach, Success Guru</p>
-                    <a type="button" href="{{ URL::to('/services') }}" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
                 </div>
             </div>
             @php
@@ -45,7 +45,7 @@
                     <p> Globally Acclaimed Astrologer</p>
                     <p> Vastu Influencer,</p>
                     <p>Life Coach, Success Guru</p>
-                    <a type="button" href="{{ URL::to('/services') }}" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
                 </div>
             </div>
             @php
@@ -420,7 +420,7 @@
                 </div> <!-- /.col -->
 
             </div> <!-- /.row -->
-            
+
         </div> <!-- /.container -->
     </section>
     <!-- End Contact -->
