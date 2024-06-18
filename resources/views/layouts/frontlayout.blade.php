@@ -72,6 +72,7 @@
         .blog-post-body {
             color: #fff5f5;
             background-color: #0c0808;
+            height: 280px;
         }
 
         .blog-post-body a {
@@ -134,7 +135,7 @@
         }
 
         .footerlist div.listfooter a {
-            font-size: 16px;
+            font-size: 20px;
             line-height: 18px;
             border-bottom: 1px solid #fff;
             padding-bottom: 10px;
@@ -171,7 +172,7 @@
 
         .darkcolorfont {
             /* color: #160707; */
-            color: #fff;
+            color: #000;
         }
 
         .appoinmentsubmit {
@@ -190,11 +191,17 @@
         }
 
         .contactsubmit {
-            background-color: #ffffff;
-            color: #f00 !important;
+            background-color: #100e0e;
+            color: #ff3c00;
+            font-size: larger;
             font-weight: 600;
             padding-left: 46%;
             padding-right: 46%;
+        }
+
+        .contactsubmit:focus {
+            background-color: #100e0e;
+            color: #ffffff !important;
         }
 
 
@@ -281,6 +288,19 @@
                 top: 25%;
             }
 
+            .carousel-caption h1 {
+                font-size: 26px;
+            }
+
+            .carousel-caption p {
+                font-size: 16px;
+                line-height: 0.8em;
+            }
+
+            .carousel-caption a {
+                font-size: 24px;
+            }
+
             .servicebg {
                 position: relative;
                 width: 80% !important;
@@ -294,12 +314,38 @@
             .servicebg {
                 width: 100%;
             }
+
+            .carousel-caption h1 {
+                font-size: 26px;
+            }
+
+            .carousel-caption p {
+                font-size: 16px;
+                line-height: 0.8em;
+            }
+
+            .carousel-caption a {
+                font-size: 24px;
+            }
         }
 
         @media (min-width: 1200px) {
 
             .servicebg {
                 width: 100%;
+            }
+
+            .carousel-caption h1 {
+                font-size: 28px;
+            }
+
+            .carousel-caption p {
+                font-size: 18px;
+                line-height: 0.8em;
+            }
+
+            .carousel-caption a {
+                font-size: 24px;
             }
         }
     </style>
@@ -312,13 +358,13 @@
     @include('element.frontfooter')
     <!-- Back to top -->
     @include('element.frontmodal')
-    <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg">Book an Appointment</a>
+    <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg pull-right">Book an Appointment</a>
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
     @php
     $aboutcontact=aboutalldetails();
     @endphp
 
-    <a aria-label="Chat on WhatsApp" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/whatsappIcon.png') }}" width="20" title="Please visit us on whatsapp" /></a>
+    <a aria-label="Chat on WhatsApp" class="btn pull-right" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/whatsappIcon.png') }}" title="Please visit us on whatsapp" /></a>
 
     <!-- Components Plugin -->
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>

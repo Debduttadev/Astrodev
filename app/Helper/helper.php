@@ -25,6 +25,10 @@ if (!function_exists('aboutalldetails')) {
     function aboutalldetails()
     {
         $aboutcontact = about_contact::first();
+
+        $phonearray = explode(',', $aboutcontact->phone);
+        $aboutcontact->phone = $phonearray;
+        //dd($aboutcontact->phone);
         return $aboutcontact;
     }
 }

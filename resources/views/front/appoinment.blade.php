@@ -55,7 +55,7 @@
                                 <label class="darkcolorfont" for="phonenumber">Phone Number</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phoneNumber" aria-describedby="basic-addon1" id="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <input type="text" maxlength="10" placeholder="Phone Number: *" name="phoneNumber" aria-describedby="basic-addon1" id="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
                                     <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
@@ -65,7 +65,7 @@
                                 <label class="darkcolorfont" for="whatsappNumber">Whatsapp Number</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" class="form-control" placeholder="Whatsapp Number: *" name="whatsappNumber" aria-describedby="basic-addon1" id="whatsappNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <input type="text" maxlength="10" placeholder="Whatsapp Number: *" name="whatsappNumber" aria-describedby="basic-addon1" id="whatsappNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
                                     <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
@@ -96,21 +96,21 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="dp2">Date of Birth</label>
                                 <div class="input-group">
-                                    <input class="form-control" type="text" id="birthdate" name="dateOfBirth" />
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" id="birthdate" name="dateOfBirth" value="" />
+                                    <div class="input-group-addon"><i class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="timepicker1">Time of Birth</label>
                                 <div class="input-group bootstrap-timepicker timepicker">
-                                    <input id="timepicker1" type="text" class="form-control input-small" name="timeOfBirth" required />
-                                    <div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
+                                    <input id="timepicker1" type="text" name="timeOfBirth" required />
+                                    <div class="input-group-addon"><i class="darkcolorfont glyphicon glyphicon-time"></i></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <label class="darkcolorfont" for="placecity">Place of Birth City</label>
+                                <label class="darkcolorfont" for="placecity">City of Birth</label>
                                 <input name="placeOfBirth" id="placecity" type="text" placeholder="Kolkata" required />
 
                                 <span class="error" id="err-name">Please enter full name</span>
@@ -119,7 +119,7 @@
                             <!-- <input id="autocomplete_search" name="autocomplete_search" type="text" class="form-control" placeholder="Search" /> -->
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <label class="darkcolorfont" for="placestate">Place of Birth State</label>
+                                <label class="darkcolorfont" for="placestate">State of Birth</label>
                                 <input name="stateOfBirth" id="placestate" type="text" placeholder="West bengal" required />
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
@@ -128,8 +128,8 @@
                                 <label class="darkcolorfont" for="booking">Consultation type</label>
                                 <select class="form-control booking appointmentType" name="appointmentType">
                                     <option disabled selected value> -- Select Consultation type -- </option>
-                                    <option value="o" class="darkcolorfont">Online Consultation</option>
-                                    <option value="m" class="darkcolorfont">Offline Consultation</option>
+                                    <option value="o" style="color: black;">Online Consultation</option>
+                                    <option value="m" style="color: black;">Offline Consultation</option>
                                 </select>
                             </div>
 
@@ -159,10 +159,10 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="bookingdate">Booking schedule</label>
                                 <div class="input-group">
-                                    <input class="form-control" type="text" name="bookingDate" id="bookingdate" value="" />
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" name="bookingDate" id="bookingdate" value="" />
+                                    <div class="input-group-addon"><i class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
-                                <span class="error" id="err-name">Please enter full name</span>
+                                <span class="error" id="err-name">Please enter booking schedule</span>
                             </div>
 
                             <button type="submit" class="btn appoinmentsubmit btn-lg">Submit</button>

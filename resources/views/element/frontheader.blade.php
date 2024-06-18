@@ -54,20 +54,20 @@
                         <div class="collapse navbar-collapse" id="navbar-collapse" style="max-height: 169px;">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{{ URL::to('/') }}">Home</a></li>
-                                @if($_SERVER['PHP_SELF'] == '/index.php')
+                                @if(Request::is('/'))
                                 <li><a data-scroll href="#service">Services</a></li>
                                 @else
                                 <li><a href="{{ URL::to('/services') }}">Services</a></li>
                                 @endif
                                 <li><a href="{{ URL::to('/appointment') }}">Appointment</a></li>
-                                @if($_SERVER['PHP_SELF'] == '/index.php')
+                                @if(Request::is('/'))
                                 <li><a data-scroll href="#blog">Blog</a></li>
                                 @else
                                 <li><a href="{{ URL::to('/blogs') }}">Blog</a></li>
                                 @endif
                                 <li><a href="{{ URL::to('/chambers') }}">Chamber</a></li>
                                 <li><a href="{{ URL::to('/aboutus') }}">About</a></li>
-                                @if($_SERVER['PHP_SELF'] == '/index.php')
+                                @if(Request::is('/'))
                                 <li><a data-scroll href="#contact">Contact us</a></li>
                                 @else
                                 <li><a href="{{ URL::to('/contactus') }}">Contact us</a></li>

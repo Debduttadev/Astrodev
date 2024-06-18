@@ -224,8 +224,8 @@ overlay-light .YTPOverlay:before {
 }
 #back-to-top {
     position: fixed;
-    bottom: 87px;
-    right: 47px;
+    bottom: 84px;
+    right: 30px;
     z-index: 9999;
     text-align: center;
     cursor: pointer;
@@ -234,8 +234,8 @@ overlay-light .YTPOverlay:before {
     opacity: 0;
 }
 #back-to-top i {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     line-height: 32px;
     color: #fff;
     font-size: 20px;
@@ -253,6 +253,7 @@ overlay-light .YTPOverlay:before {
 
 /* booking appoinment  */
 #appoinment {
+    display: inline-block;
     position: fixed;
     bottom: 20px;
     right: 42%;
@@ -287,19 +288,17 @@ overlay-light .YTPOverlay:before {
 }
 
 #whatsappbtn {
+    display: inline-block;
     position: fixed;
-    bottom: 0px;
-    right: -173px;
+    bottom: 2px;
+    right: 0px;
+    width: 95px;
     z-index: 9999;
     text-align: center;
     cursor: pointer;
     border: 0;
     text-decoration: none;
     opacity: 1;
-}
-
-#whatsappbtn img {
-    width: 15%;
 }
 
 #errortohome {
@@ -929,7 +928,7 @@ blockquote {
     padding: 0 17px;
     line-height: 70px;
     color: #fff;
-    font-size: 20px;
+    font-size: 19px;
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -950,7 +949,7 @@ blockquote {
     overflow-x: hidden;
 }
 .nav-solid {
-    height: 70px;
+    height: 65px;
     -webkit-transition: height 0.3s ease-in-out;
     -o-transition: height 0.3s ease-in-out;
     transition: height 0.3s ease-in-out;
@@ -1692,6 +1691,8 @@ blockquote {
 }
 .blog-post-body a.read-more {
     font-weight: 700;
+    position: absolute;
+    bottom: 15px;
 }
 .postSingle .postTitle {
     padding-bottom: 10px;
@@ -2048,13 +2049,12 @@ blockquote {
 ---------------------------------------------------*/
 .contact-form {
     padding-top: 10px;
-    background-color: #ff8d00;
 }
 
 .appointmentform {
     padding-top: 10px;
-    background-color: #000000;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .contact-form .error {
@@ -2075,41 +2075,57 @@ blockquote {
 .contact-form-item {
     margin-bottom: 20px;
 }
+
 .contact-form-item input[type="text"],
-.contact-form-item input[type="password"],
+.contact-form-item .input-group input[type="text"],
+.contact-form-item input[type="email"],
 .contact-form-item textarea {
-    background: #f5f5f5;
-    border: none;
-    color: #000;
-    font-size: 0.9em;
     width: 100%;
-    padding: 10px 15px;
-}
-.contact-form-item input[type="text"]:focus,
-.contact-form-item input[type="password"]:focus,
-.contact-form-item textarea:focus {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #000000;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
     outline: none;
+    border-radius: 4px;
+}
+
+.contact-form-item input[type="text"]:focus,
+.contact-form-item .input-group input[type="text"]:focus,
+.contact-form-item input[type="email"]:focus,
+.contact-form-item textarea:focus {
+    border: 3px solid #f75a2a;
+    border-radius: 4px;
 }
 .contact-form-item textarea {
     height: 160px;
+    border: 3px solid #000000;
+    border-radius: 4px;
 }
+
+.contact-form-item .input-group .input-group-addon {
+    background-color: white;
+    border: 1px solid #fff;
+}
+
 .contact-form-item ::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
-    color: #b3b3b3;
+    color: #000000;
 }
 .contact-form-item :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: #b3b3b3;
+    color: #000000;
     opacity: 1;
 }
 .contact-form-item ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: #b3b3b3;
+    color: #000000;
     opacity: 1;
 }
 .contact-form-item :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: #b3b3b3;
+    color: #000000;
 }
 .contact-form-button {
     margin-bottom: 0;
@@ -2138,15 +2154,30 @@ blockquote {
 .contact-info-icon i {
     color: #ffffff;
 }
-.contact-info-title {
+.footercontact .contact-info-title {
     font-weight: 700;
     font-size: 16px;
     line-height: 1.2em;
+    color: #fff;
 }
+
 .contact-info-text {
     font-size: 0.9em;
     padding-top: 5px;
     padding-left: 58px;
+}
+
+.footercontact .contact-info-text {
+    font-size: 0.9em;
+    padding-top: 5px;
+    padding-left: 58px;
+    color: #fff;
+}
+
+.footercontact .contact-info-text a {
+    font-size: 0.9em;
+    padding-top: 5px;
+    color: #fff;
 }
 @media screen and (max-width: 768px) {
     .contact-info {
@@ -2384,4 +2415,8 @@ blockquote {
     .btn-main {
         font-size: 8px;
     }
+}
+
+.social-icon ul li {
+    padding-top: 5px;
 }

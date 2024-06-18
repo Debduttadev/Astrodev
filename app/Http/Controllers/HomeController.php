@@ -32,9 +32,6 @@ class HomeController extends Controller
             ['show', '1'],
         ])->get();
 
-        // about me details
-        $about_contact = about_contact::first();
-
         //  services details
         $services = Service::get();
         $allservices = '';
@@ -102,6 +99,6 @@ class HomeController extends Controller
         }
 
         //dd($about_contact);
-        return view('front.home', ['banner_video' => $banner_video, 'about_contact' => $about_contact, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
+        return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
     }
 }
