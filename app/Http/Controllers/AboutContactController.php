@@ -30,7 +30,7 @@ class AboutContactController extends Controller
     public function updateaboutus(Request $request)
     {
         $data = $request->except('_token');
-
+        dd($data);
         $updateabout['title'] = htmlentities($request->title);
         $updateabout['description'] = htmlentities($request->description);
 
