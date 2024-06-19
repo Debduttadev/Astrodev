@@ -17,7 +17,6 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8 appoinmentbody darkcolorfont" style="text-align: center;">
-                            <!-- here goes the online detail or chamber details -->
                         </div>
                     </div>
                 </div>
