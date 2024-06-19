@@ -49,14 +49,15 @@ class AboutContactController extends Controller
 
             // resize image canvas
             //$image->resizeCanvas(550, 550);
-            // $image->resize(550, 550, function ($constraint) {
-            //     $constraint->aspectRatio();
-            // });
-
-            if ($image->save(public_path('about') . '/' . $filename)) {
-                $image = public_path('about') . '/' . $request->oldimage;
-                unlink($image);
-                $updateabout['image'] = $filename;
+            $image->resize(550, 550, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if ($request->oldimage != null) {
+                if ($image->save(public_path('about') . '/' . $filename)) {
+                    $image = public_path('about') . '/' . $request->oldimage;
+                    unlink($image);
+                    $updateabout['image'] = $filename;
+                }
             }
         } else {
 
