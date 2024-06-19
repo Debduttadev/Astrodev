@@ -30,7 +30,7 @@ class AboutContactController extends Controller
     public function updateaboutus(Request $request)
     {
         $data = $request->except('_token');
-        dd($data);
+        //dd($data);
         $updateabout['title'] = htmlentities($request->title);
         $updateabout['description'] = htmlentities($request->description);
 
@@ -40,6 +40,7 @@ class AboutContactController extends Controller
                 'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
             ]);
 
+            $data['oldimage'] = "default.jpg";
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = 'Blog' . time() . '.' . $ext;
@@ -48,9 +49,9 @@ class AboutContactController extends Controller
 
             // resize image canvas
             //$image->resizeCanvas(550, 550);
-            $image->resize(550, 550, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            // $image->resize(550, 550, function ($constraint) {
+            //     $constraint->aspectRatio();
+            // });
 
             if ($image->save(public_path('about') . '/' . $filename)) {
                 $image = public_path('about') . '/' . $request->oldimage;
@@ -58,6 +59,7 @@ class AboutContactController extends Controller
                 $updateabout['image'] = $filename;
             }
         } else {
+
             $updateabout['image'] = $request->oldimage;
         }
         //dd($updateabout);
