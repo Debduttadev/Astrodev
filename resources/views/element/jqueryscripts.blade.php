@@ -186,7 +186,7 @@
         });
 
         // edit Social Link
-        $(document).on('click', '.addediturl', function() {
+        $(document).on('change', '.addediturl', function() {
             var obj = $(this);
             var preva = $(this).prev('.jqueryurl');
             var id = $(this).attr('socialid');
@@ -401,7 +401,7 @@
         });
 
         //show image if edited in update about
-        $(document).on('click', '.aboutimage', function() {
+        $(document).on('change', '.aboutimage', function() {
             var obj = $(this);
             var file = $(".aboutimage").get(0).files[0];
             if (file) {

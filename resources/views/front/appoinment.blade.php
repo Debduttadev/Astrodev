@@ -126,7 +126,7 @@
 
                             <div class="col-sm-12 contact-form-item">
                                 <label class="darkcolorfont" for="booking">Consultation type</label>
-                                <select class="form-control booking appointmentType" name="appointmentType">
+                                <select class="booking appointmentType" name="appointmentType">
                                     <option disabled selected value> -- Select Consultation type -- </option>
                                     <option value="o" style="color: black;">Online Consultation</option>
                                     <option value="m" style="color: black;">Offline Consultation</option>
@@ -174,6 +174,5 @@
         </div> <!-- /.row -->
 
     </div> <!-- /.container -->
-
 </section><!--End blog single section-->
 @endsection

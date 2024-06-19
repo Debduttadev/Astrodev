@@ -72,7 +72,7 @@ class ServiceController extends Controller
             $shortdescription = htmlentities($data['shortdescription']);
             $description = htmlentities($data['description']);
 
-            $newService->name = $data['name'];
+            $newService->name = ucwords($data['name']);
             $newService->shortdescription = $data['shortdescription'];
             $newService->description = $description;
 
@@ -150,7 +150,7 @@ class ServiceController extends Controller
         $shortdescription = htmlentities($data['shortdescription']);
         $description = htmlentities($data['description']);
 
-        $updatedata['name'] = $request->name;
+        $updatedata['name'] = ucwords($request->name);
         $updatedata['shortdescription'] = $request->shortdescription;
         $updatedata['description'] = $request->description;
 
