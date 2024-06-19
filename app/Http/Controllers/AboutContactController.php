@@ -52,12 +52,13 @@ class AboutContactController extends Controller
             $image->resize(550, 550, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            if ($request->oldimage != null) {
-                if ($image->save(public_path('about') . '/' . $filename)) {
+
+            if ($image->save(public_path('about') . '/' . $filename)) {
+                if ($request->oldimage != null) {
                     $image = public_path('about') . '/' . $request->oldimage;
                     unlink($image);
-                    $updateabout['image'] = $filename;
                 }
+                $updateabout['image'] = $filename;
             }
         } else {
 
