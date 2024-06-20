@@ -19,7 +19,7 @@
                 @elseif($social['name'] == 'Linkedin')
                 <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Twitter')
-                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('frontend/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px;"></i></a>
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('frontend/img/twitter1.png') }}" class="twitter" style="height: 25px; width: 25px; position: relative; bottom: 3px;"></i></a>
                 @endif
             </li>
             @endforeach
