@@ -12,6 +12,8 @@
                 <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-facebook social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Youtube')
                 <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-youtube-play social" aria-hidden="true"></i></a>
+                @elseif($social['name'] == 'WhatsApp')
+                <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-whatsapp social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Instagram')
                 <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-instagram social" aria-hidden="true"></i></a>
                 @elseif($social['name'] == 'Linkedin')
