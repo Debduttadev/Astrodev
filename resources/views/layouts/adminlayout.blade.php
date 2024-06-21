@@ -10,7 +10,7 @@
   <meta name="author" content="" />
   <!-- Title -->
   <title>{{ env('APP_NAME') }}</title>
-  <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogo icon-01-01.png') }}" />
+  <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogoicon-01-01.png') }}" />
 
   <link href="{{ URL::to('admin/css/style.min.css') }}" rel="stylesheet" />
   <link href="{{ URL::to('admin/css/styles.css') }}" rel="stylesheet" />

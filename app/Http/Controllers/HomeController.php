@@ -101,4 +101,36 @@ class HomeController extends Controller
         //dd($about_contact);
         return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
     }
+
+    /**
+     * Show page for terms and condition
+     */
+    public function terms_conditions()
+    {
+        return view('front.terms_conditions');
+    }
+
+    /**
+     * Show page for terms and condition
+     */
+    public function privacy_policy()
+    {
+        return view('front.privacy_policy');
+    }
+
+    /**
+     * Show page for terms and condition
+     */
+    public function refund_policy()
+    {
+        return view('front.refund_policy');
+    }
+
+    /**
+     * Show page for shipping
+     */
+    public function shipping()
+    {
+        return view('front.shipping');
+    }
 }

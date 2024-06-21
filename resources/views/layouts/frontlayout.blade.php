@@ -10,7 +10,7 @@
     <meta name="author" content="" />
     <!-- Title -->
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogo icon-01-01.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogoicon-01-01.png') }}" />
 
     <!-- Bootstrap CSS -->
     <link href="{{ URL::to('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -99,6 +99,13 @@
         .social {
             font-size: 20px;
             color: #000;
+        }
+
+        .twitter {
+            height: 25px;
+            width: 25px;
+            position: relative;
+            bottom: 3px;
         }
 
         /* .twitter {
