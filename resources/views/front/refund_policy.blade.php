@@ -14,8 +14,8 @@
 
             <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;">No cancellations & Refunds are entertained.</span></p>
 
-            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;"><strong>Refunds:</strong> We do not offer refund if you cancel your consultation appointment . If you face any issue your requests must be submitted in writing to us in achariyadebdutta@gmail.com within 24 hours.</span></p>
-            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;"><strong>Returns:</strong> Due to the nature of astrological consultations, we do not accept returns once the consultation session has been conducted. However, if you are dissatisfied with the consultation experience, please contact us to discuss your concerns and explore potential resolutions.</span></p>
+            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;"><strong>Refunds:</strong> We do not offer refund if you cancel your consultation appointment . If you face any technical issue your requests must be submitted in writing to us in achariyadebdutta@gmail.com within 24 hours.</span></p>
+            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;"><strong>Returns:</strong> Due to the nature of astrological consultations, we do not accept returns once the consultation session has been conducted.</span></p>
 
             <h3 class="font-sans italic font-bold text-xl">&nbsp;</h3>
 

@@ -13,15 +13,15 @@
             <p class="updated-date"><span>Last updated on {{$firstday}}</span></p>
 
 
-            <p class="content-text"><span>This privacy policy sets out how Achariya Debdutta uses and protects any information that you give Achariya Debdutta when you visit their website and/or agree to purchase from them.</span></p>
+            <p class="content-text"><span>This privacy policy sets out how Astro Achariya Debdutta uses and protects any information that you give Astro Achariya Debdutta when you visit their website and/or agree to purchase from them.</span></p>
 
 
 
-            <p class="content-text"><span>Achariya Debdutta is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, and then you can be assured that it will only be used in accordance with this privacy statement.</span></p>
+            <p class="content-text"><span>Astro Achariya Debdutta is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, and then you can be assured that it will only be used in accordance with this privacy statement.</span></p>
 
 
 
-            <p class="content-text"><span>Achariya Debdutta may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you adhere to these changes.</span></p>
+            <p class="content-text"><span>Astro Achariya Debdutta may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you adhere to these changes.</span></p>
 
 
             <p class="content-text"><span><strong>We may collect the following information:</strong></span></p>

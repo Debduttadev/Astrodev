@@ -13,7 +13,7 @@
             <p class="updated-date"><span>Last updated on {{$firstday}}</span></p>
 
 
-            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;">Shipping is not applicable for business.</span></p>
+            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;">Shipping is not applicable for this business.</span></p>
 
             <h3 class="font-sans italic font-bold text-xl">&nbsp;</h3>
         </div>
