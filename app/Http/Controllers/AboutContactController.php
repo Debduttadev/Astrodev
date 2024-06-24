@@ -21,7 +21,7 @@ class AboutContactController extends Controller
     {
         $aboutcontactus = about_contact::first();
         //dd(($aboutcontactus));
-        return view('admin.magageaboutcontactus', ['page_name' => 'Mange  About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
+        return view('admin.magageaboutcontactus', ['page_name' => 'Manage About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
     }
 
     /**

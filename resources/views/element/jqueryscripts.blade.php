@@ -512,6 +512,13 @@
 
         });
 
+        $(".dailyhoroscopesubmit").click(function() {
+            var $fileUpload = $(".dailyhoroscopefile");
+            if (parseInt($fileUpload.get(0).files.length) > 13) {
+                alert("You are only allowed to upload a maximum of 12 files");
+            }
+        });
+
         function alttagmodaldata(obj) {
             var page = obj.attr('page');
             var relatedid = obj.attr('relatedid');
@@ -537,7 +544,6 @@
                 } else {
                     $('#pagetitle').html(textstart + ' Banner thumbnail ' + textend);
                 }
-                youtube
             } else if (page == 'youtube') {
                 $('#pagetitle').html(textstart + 'Youtube video thumbnail ' + textend);
 

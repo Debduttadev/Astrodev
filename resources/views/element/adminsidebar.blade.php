@@ -9,6 +9,7 @@
                 $adminuser = "";
                 $adminappointment = "";
                 $adminservice = "";
+                $adminhoroscope = "";
                 $adminchember = "";
                 $adminclient = "";
                 $managebannervideo = "";
@@ -17,6 +18,7 @@
                 $magageaboutcontactus = "";
                 $managecontactus = "";
                 $seodetails = "";
+                $seodetailsubmenu = "";
                 $alltag="";
 
                 if ($navstatus == "adminuser"){
@@ -25,6 +27,8 @@
                 $adminappointment = "active";
                 }elseif ($navstatus == "adminservice"){
                 $adminservice = "active";
+                }elseif ($navstatus == "horoscope"){
+                $adminhoroscope = "active";
                 }elseif ($navstatus == "adminchember"){
                 $adminchember = "active";
                 }elseif ($navstatus == "adminclient"){
@@ -41,6 +45,7 @@
                 $managecontactus = "active";
                 }elseif ($navstatus == "seodetails"){
                 $seodetails = "active";
+                $seodetailsubmenu = "show";
                 }elseif ($navstatus == "alttag"){
                 $seodetails = "active";
                 }else{
@@ -67,6 +72,11 @@
                     Service
                 </a>
 
+                <a class="nav-link {{ $adminhoroscope }}" href="{{ URL::to('adminhoroscope') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-half-stroke" {{ $adminhoroscope }}"></i></div>
+                    Horoscopes
+                </a>
+
                 <a class="nav-link {{ $adminchember }}" href="{{ URL::to('adminchember') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-location-dot {{ $adminchember }}"></i></div>
                     Chamber details
@@ -79,7 +89,9 @@
                 @php
                 if($seodetails==="active"){
                 $aria_expanded=true;
+                $seodetailsubmenu = "show";
                 }else{
+                $seodetailsubmenu = "";
                 $aria_expanded=false;
                 }
                 @endphp
@@ -93,7 +105,7 @@
                         <i class="fas fa-angle-down"></i>
                     </div>
                 </a>
-                <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse {{$seodetailsubmenu}}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ $seodetails }}" href="{{ URL::to('alttag') }}">Alt Tag for Images</a>
                         <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">Seo Form for Pages</a>

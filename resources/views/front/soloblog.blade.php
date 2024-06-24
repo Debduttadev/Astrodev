@@ -36,9 +36,13 @@
             <div class=" col-sm-8">
                 <!--Post Single-->
                 <div class="postSingle blogsearchdetails">
-
+                    @php
+                    $alttagforimages = alttagforimages();
+                    $alttag=$alttagforimages['blog'][$blogsdata['id']]['alttag'];
+                    $title=$alttagforimages['blog'][$blogsdata['id']]['title'];
+                    @endphp
                     <div class="postMedia">
-                        <img alt="" src="{{ URL::to('blog').'/'.$blogsdata['image'] }}">
+                        <img alt="{{$alttag}}" src="{{ URL::to('blog').'/'.$blogsdata['image'] }}" title="{{$title}}">
                     </div><!--Post image-->
 
                     <div class="postMeta clearfix">

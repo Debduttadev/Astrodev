@@ -23,11 +23,16 @@ $about_contact=aboutalldetails();
                 @endif
                 @endforeach
         </ol>
-
+        @php
+        $alttagforimages =alttagforimages();
+        $alttag1=$alttagforimages['banner'][$banner_video[0]->id]['alttag'];
+        $title1=$alttagforimages['banner'][$banner_video[0]->id]['title'];
+        @endphp
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="...">
+                <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="{{$alttag1}}" title="{{ $title1 }}">
+
                 <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <h1>Astro Achariya Debdutta</h1>
                     <p> Globally Acclaimed Astrologer</p>
@@ -41,8 +46,12 @@ $about_contact=aboutalldetails();
             @endphp
             @foreach ($banner_video as $key => $thumbnail )
             @if($key != 0)
+            @php
+            $alttag=$alttagforimages['banner'][$thumbnail->id]['alttag'];
+            $title=$alttagforimages['banner'][$thumbnail->id]['title'];
+            @endphp
             <div class="item ">
-                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="...">
+                <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="{{$alttag}}" title="{{$title}}">
                 <div class="carousel-caption wow fadeInLeft p-3" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <h1>Astro Achariya Debdutta</h1>
                     <p> Globally Acclaimed Astrologer</p>
@@ -132,7 +141,11 @@ $about_contact=aboutalldetails();
                                     </a>
                                 </div>
                             </div>
-                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
+                            @php
+                            $alttag=$alttagforimages['Service'][$services->id]['alttag'];
+                            $title=$alttagforimages['Service'][$services->id]['title'];
+                            @endphp
+                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="{{$alttag}}" title="{{ $title }}" /></a>
                         </div>
                         <div class="team-item-info">
                             <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">
@@ -189,9 +202,15 @@ $about_contact=aboutalldetails();
                 <!-- === blog === -->
                 <div id="owl-youtube" class="owl-carousel owl-theme">
                     @foreach ($youtube_video as $youtubedata)
+                    @php
+                    $alttag2=$alttagforimages['videos'][$youtubedata->id]['alttag'];
+                    $title2=$alttagforimages['videos'][$youtubedata->id]['title'];
+                    @endphp
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="{{$youtubedata->videolink}}" target="_blank"><img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt=""></a>
+                            <a href="{{$youtubedata->videolink}}" target="_blank">
+                                <img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt="{{$alttag2}}" title="{{$title2}}">
+                            </a>
                         </div><!--post media-->
                     </div> <!-- /.blog -->
                     @endforeach
@@ -269,10 +288,14 @@ $about_contact=aboutalldetails();
                 <!-- === blog === -->
                 <div id="owl-blog" class="owl-carousel owl-theme">
                     @foreach ($blogitems as $blog)
+                    @php
+                    $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
+                    $title=$alttagforimages['blog'][$blog['id']]['title'];
+                    @endphp
                     <!-- === Blog item 1 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="#"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt=""></a>
+                            <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">

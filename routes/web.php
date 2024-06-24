@@ -11,6 +11,7 @@ use App\Http\Controllers\AboutContactController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AlttagController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HoroscopesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 // frontend controller
@@ -31,7 +32,7 @@ Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
 
 
 Route::get('/services', [ServiceController::class, 'servicelists']);
-Route::get('/service/{name}/{id}', [ServiceController::class, 'servicedetails'])->name('service');
+Route::get('/service/{id}/{name}', [ServiceController::class, 'servicedetails'])->name('service');
 
 
 Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');
@@ -49,6 +50,9 @@ Route::post('addappointment', [AppointmentController::class, 'addappointment']);
 
 Route::get('contactus', [ContactusController::class, 'contactus']);
 Route::post('addcontactus', [ContactusController::class, 'addcontactus']);
+
+
+Route::get('/dailyhoroscope', [HomeController::class, 'shipping'])->name('dailyhoroscope');
 
 //pages for
 Route::get('/terms_conditions', [HomeController::class, 'terms_conditions'])->name('terms-conditions');
@@ -127,11 +131,15 @@ Route::middleware('auth')->group(function () {
     Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
     Route::get('/seodetails', [AlttagController::class, 'seodetails']);
 
-
+    //appoinment 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
 
     Route::get('/adminclient', [AdminController::class, 'adminclient']);
+
+    //horoscope
+    Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
+    Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
 });
 
 require __DIR__ . '/auth.php';

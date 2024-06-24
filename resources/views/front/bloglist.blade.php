@@ -91,12 +91,20 @@
 
             <div class="col-md-8">
                 <div class="row multi-columns-row blogsearchdetails">
+                    @php
+                    $alttagforimages =alttagforimages();
+                    @endphp
+
                     @foreach ($blogitems as $blog)
+                    @php
+                    $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
+                    $title=$alttagforimages['blog'][$blog['id']]['title'];
+                    @endphp
                     <!-- === Blog item 1 === -->
                     <div class="col-sm-6 m-bottom-40">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
                             <div class="blog-media">
-                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="" /></a>
+                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
                             </div>
                             <!--post media-->
 
@@ -111,7 +119,14 @@
                                 $small = substr( strip_tags($blog['description']), 0, 180);
                                 @endphp
                                 <p class="p-bottom-20">{!! $small !!}</p>
-                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class="read-more">Read More >></a>
+
+                                @php
+                                // strip out all whitespace
+                                $blogname = preg_replace('/\s*/', '', $blog['title']);
+                                // convert the string to all lowercase
+                                $blogname = strtolower($blogname);
+                                @endphp
+                                <a href="{{ URL::to('service').'/'.base64_encode($blog['id']).'/'.$blogname }}"></a>
                             </div><!--post body-->
                             <!--post body-->
                         </div>

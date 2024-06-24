@@ -14,11 +14,15 @@
                     {!! html_entity_decode($about_contact->title)!!}
                 </div>
             </div> <!-- /.col -->
-
+            @php
+            $alttagforimages =alttagforimages();
+            $alttag=$alttagforimages['about_contact'][$about_contact->id]['alttag'];
+            $title=$alttagforimages['about_contact'][$about_contact->id]['title'];
+            @endphp
             <div class="col-md-5 col-md-offset-1 ">
                 <div class="feature-image parent ">
                     <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
-                    <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                    <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="{{$alttag}}" title={{$title}} class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
                 </div>
 
             </div> <!-- /.col -->

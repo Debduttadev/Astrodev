@@ -10,11 +10,15 @@
             <h3 style="color:#483120;"><strong>{{$servicedata->name}}</strong></h3>
         </div>
         <div class="row p-bottom-50 ">
-
+            @php
+            $alttagforimages =alttagforimages();
+            $alttag=$alttagforimages['Service'][$servicedata->id]['alttag'];
+            $title=$alttagforimages['Service'][$servicedata->id]['title'];
+            @endphp
             <div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
                 <div class="feature-image parent ">
                     <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
-                    <img src="{{ URL::to('service/'.$servicedata->Image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                    <img src="{{ URL::to('service/'.$servicedata->Image) }}" alt="{{$alttag}}" title="{{$title}}" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
                 </div>
 
             </div> <!-- /.col -->
