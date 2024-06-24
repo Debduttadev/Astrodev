@@ -97,7 +97,7 @@ class ServiceController extends Controller
     {
         $id = base64_decode($id);
         $servicedata = Service::where('id', $id)->first();
-        // dd($servicedata);
+        //dd($servicedata);
         return view('front.servicedetail', ['servicedata' => $servicedata]);
     }
 

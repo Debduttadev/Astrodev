@@ -137,7 +137,7 @@ $about_contact=aboutalldetails();
                                     // convert the string to all lowercase
                                     $servicename = strtolower($servicename);
                                     @endphp
-                                    <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
+                                    <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
                                     </a>
                                 </div>
                             </div>
@@ -145,10 +145,10 @@ $about_contact=aboutalldetails();
                             $alttag=$alttagforimages['Service'][$services->id]['alttag'];
                             $title=$alttagforimages['Service'][$services->id]['title'];
                             @endphp
-                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="{{$alttag}}" title="{{ $title }}" /></a>
+                            <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="{{$alttag}}" title="{{ $title }}" /></a>
                         </div>
                         <div class="team-item-info">
-                            <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">
+                            <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}">
                                 <div class="team-item-name">
                                     {{$services->name}}
                                 </div>

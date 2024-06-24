@@ -34,10 +34,10 @@
                                 </a>
                             </div>
                         </div>
-                        <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
+                        <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
                     </div>
                     <div class="team-item-info">
-                        <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($services->id) }}">
+                        <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}">
                             <div class="team-item-name">
                                 {{$services->name}}
                             </div>
