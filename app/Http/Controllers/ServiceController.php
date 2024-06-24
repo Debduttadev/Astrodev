@@ -93,7 +93,7 @@ class ServiceController extends Controller
     /**
      * show the resource in user interphase.
      */
-    public function servicedetails($name, $id)
+    public function servicedetails($id, $name)
     {
         $id = base64_decode($id);
         $servicedata = Service::where('id', $id)->first();

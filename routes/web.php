@@ -32,7 +32,7 @@ Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
 
 
 Route::get('/services', [ServiceController::class, 'servicelists']);
-Route::get('/service/{id}/{name}', [ServiceController::class, 'servicedetails'])->name('service');
+Route::get('/service/{name}/{id}', [ServiceController::class, 'servicedetails'])->name('service');
 
 
 Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');

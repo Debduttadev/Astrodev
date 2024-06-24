@@ -35,7 +35,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Banner and Videos
+                Banners
             </div>
             <div class="card-body">
 
@@ -89,7 +89,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Banner and Videos
+                Videos
             </div>
             <div class="card-body">
 
