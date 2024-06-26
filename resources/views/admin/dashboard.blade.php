@@ -10,30 +10,28 @@
         <div class="row">
             @foreach ( $appointments as $appointment )
 
-            <div class="col-xl-3 col-md-6 p-bottom-20">
+            <div class="col-xl-4 col-md-6 p-bottom-20">
                 <div class="card text-bg-light">
-                    <a href="{{ URL::to('appoinmentdetails').'/'.base64_encode($appointment->id) }}" style="color: #1f70d5;">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-6">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ URL::to('appoinmentdetails').'/'.base64_encode($appointment->id) }}" style="color: #1f70d5;">
                                     <h5>{{$appointment->name}}</h5>
-                                </div>
-                                <div class="col-md-6" style="padding-left: 22%;">
-                                    <span>
-                                        <i class="fa fa-inr" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                @if($appointment->payment_status == "n")
+                                <button class="btn btn-primary btn-xs paymentamout" data-bs-toggle="modal" data-bs-target="#paymentmodal" name="{{$appointment->name}}" email="{{$appointment->email}}" phone="{{$appointment->phoneNumber}}" bookingdate="{{ $appointment->bookingDate }}">Payment Link</button>
+                                @elseif($appointment->payment_status == "p")
+                                Pending
+                                @else
+                                Clear
+                                @endif
 
-                                        @if($appointment->payment_status == "n")
-                                        New
-                                        @elseif($appointment->payment_status == "p")
-                                        Pending
-                                        @else
-                                        Clear
-                                        @endif
-                                    </span>
-                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
+
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{ $appointment->email }}</li>
                         <li class="list-group-item">{{ $appointment->phoneNumber }}</li>

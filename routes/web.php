@@ -134,6 +134,8 @@ Route::middleware('auth')->group(function () {
     //appoinment 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
     Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
+    // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
+
 
     Route::get('/adminclient', [AdminController::class, 'adminclient']);
 

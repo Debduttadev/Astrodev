@@ -102,6 +102,7 @@
   </div>
   <!-- End of Main Content -->
   @include('element.modal')
+  @include('element.paymentmodal')
 
   <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
 

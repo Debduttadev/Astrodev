@@ -25,7 +25,7 @@ class AppointmentController extends Controller
     public function adminappointment()
     {
         $appointments = Appointment::all();
-
+        //dd($appointments);
         foreach ($appointments as $appointment) {
 
             // user details related to this appointment
@@ -203,10 +203,19 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * creating payment link for customer and taking amount
      */
-    public function successapoinment(Appointment $appointment)
+    public function paymentlinkcreateform($id)
     {
+        $id = base64_decode($id);
+        // dd($id);
+        $appointment = Appointment::select('userId', 'phoneNumber')->where('id', $id)->first();
+
+        // user details related to this appointment
+        $user = User::select('name', 'email')->where('id', $appointment->userId)->first();
+        $appointment->name = $user->name;
+        $appointment->email = $user->email;
+        //dd($appointment);
     }
 
     /**

@@ -519,6 +519,23 @@
             }
         });
 
+        $('.paymentamout').click(function() {
+
+            var obj = $(this);
+            var name = obj.attr('name');
+            var email = obj.attr('email');
+            var phone = obj.attr('phone');
+            var bookingdate = obj.attr('bookingdate');
+
+            $('.paymentlinkname').text("Name : " + name);
+            $('.paymentlinkemail').text("Email : " + email);
+            $('.paymentlinkphonenumber').text("Phone : " + phone);
+            $('.paymentlinkbookingdate').text("Booking Date : " + bookingdate);
+            $('.paymentformname').val(name);
+            $('.paymentformemail').val(email);
+            $('.paymentformphone').val(phone);
+        })
+
         function alttagmodaldata(obj) {
             var page = obj.attr('page');
             var relatedid = obj.attr('relatedid');

@@ -156,7 +156,7 @@
         $("#contactusform").submit(function(event) {
 
             event.preventDefault();
-            // alert("sdgfg");
+            alert("sdgfg");
             var form = $(this);
             var actionUrl = form.attr('action');
             $.ajax({
@@ -166,7 +166,7 @@
                 data: form.serialize(), // serializes the form's elements.
 
                 success: function(data) {
-                    //console.log(data); // show response from the php script.
+                    console.log(data); // show response from the php script.
                     var massage = JSON.parse(data);
 
                     if (massage.status == 1 && massage.msg == "true") {
