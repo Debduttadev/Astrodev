@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contactus;
+use App\Models\contactus;
 use App\Models\about_contact;
 use App\Http\Requests\StorecontactusRequest;
 use App\Http\Requests\UpdatecontactusRequest;
@@ -19,7 +19,7 @@ class ContactusController extends Controller
      */
     public function managecontactus()
     {
-        $contactus = Contactus::get();
+        $contactus = contactus::get();
 
         return view('admin.managecontactus', ['page_name' => 'Mange Contact us page', 'navstatus' => "managecontactus", 'contactus' => $contactus]);
     }
@@ -30,9 +30,8 @@ class ContactusController extends Controller
     public function addcontactus(Request $request)
     {
         $data = $request->except('_token');
-        //dd($data);
 
-        $newContacts = new Contactus;
+        $newContacts = new contactus;
         $newContacts->fullname = ucfirst($data['fullname']);
         $newContacts->email = $data['email'];
         $newContacts->phone = $data['phone'];
@@ -86,7 +85,7 @@ class ContactusController extends Controller
     {
         $id = base64_decode($request->id);
         // echo json_encode(array('status' => 1, 'msg' => $id));
-        $contact = Contactus::where('id', $id)->delete();
+        $contact = contactus::where('id', $id)->delete();
 
         if ($contact) {
             echo json_encode(array('status' => 1, 'msg' => "true"));
