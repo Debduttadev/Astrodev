@@ -113,3 +113,7 @@ NameVirtualHost *:80
    SSLEngine On
    # Configuration Continues...
 </VirtualHost>
+
+php artisan make:migration add_nameurl_to_services_table --table=services
+
+php artisan make:migration add_nameurl_to_blogs_table --table=blogs

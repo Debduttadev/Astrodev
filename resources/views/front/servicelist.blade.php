@@ -30,14 +30,14 @@
                                 // convert the string to all lowercase
                                 $servicename = strtolower($servicename);
                                 @endphp
-                                <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
+                                <a href="{{ URL::to('service').'/'.$services->nameurl }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
                                 </a>
                             </div>
                         </div>
-                        <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
+                        <a href="{{ URL::to('service').'/'.$services->nameurl }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="" /></a>
                     </div>
                     <div class="team-item-info">
-                        <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}">
+                        <a href="{{ URL::to('service').'/'.$services->nameurl }}">
                             <div class="team-item-name">
                                 {{$services->name}}
                             </div>

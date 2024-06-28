@@ -137,7 +137,7 @@ $about_contact=aboutalldetails();
                                     // convert the string to all lowercase
                                     $servicename = strtolower($servicename);
                                     @endphp
-                                    <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
+                                    <a href="{{ URL::to('service').'/'.$services->nameurl }}"><img class="servicebg" src="{{ URL::to('frontend/img/astrosignorange.png') }}">
                                     </a>
                                 </div>
                             </div>
@@ -145,10 +145,10 @@ $about_contact=aboutalldetails();
                             $alttag=$alttagforimages['Service'][$services->id]['alttag'];
                             $title=$alttagforimages['Service'][$services->id]['title'];
                             @endphp
-                            <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="{{$alttag}}" title="{{ $title }}" /></a>
+                            <a href="{{ URL::to('service').'/'.$services->nameurl }}"><img src="{{ URL::to('service').'/'.$services->Image }}" alt="{{$alttag}}" title="{{ $title }}" /></a>
                         </div>
                         <div class="team-item-info">
-                            <a href="{{ URL::to('service').'/'.base64_encode($services->id).'/'.$servicename }}">
+                            <a href="{{ URL::to('service').'/'.$services->nameurl }}">
                                 <div class="team-item-name">
                                     {{$services->name}}
                                 </div>
@@ -295,7 +295,7 @@ $about_contact=aboutalldetails();
                     <!-- === Blog item 1 === -->
                     <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                         <div class="blog-media">
-                            <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
+                            <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
                         </div><!--post media-->
 
                         <div class="blog-post-info clearfix">
@@ -308,7 +308,7 @@ $about_contact=aboutalldetails();
                             $small = substr( strip_tags($blog['description']), 0, 200);
                             @endphp
                             <p class="p-bottom-10">{!! $small !!}.....</p>
-                            <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class="read-more">Read More >></a>
+                            <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class="read-more">Read More >></a>
                         </div><!--post body-->
                     </div> <!-- /.blog -->
                     @endforeach

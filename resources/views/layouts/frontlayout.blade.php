@@ -61,9 +61,9 @@
 
 <body class="homepage_slider" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="100">
     <!-- Preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div id="spinner"></div>
-    </div>
+    </div> -->
     <!-- End Preloader-->
 
     @stack('style')

@@ -88,6 +88,7 @@ class HomeController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -98,7 +99,7 @@ class HomeController extends Controller
             $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
         }
 
-        //dd($about_contact);
+        //dd($blogitems);
         return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
     }
 

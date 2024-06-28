@@ -62,10 +62,11 @@ if (!function_exists('servicelistfooter')) {
     function servicelistfooter()
     {
         //service link
-        $services = Service::select('id', 'name')->get();
+        $services = Service::select('id', 'name', 'nameurl')->get();
         $servicedata = [];
         foreach ($services as $service) {
-            $servicedata[$service->id] = $service->name;
+            $servicedata[$service->id]['name'] = $service->name;
+            $servicedata[$service->id]['nameurl'] = $service->nameurl;
         }
         return $servicedata;
     }

@@ -93,10 +93,9 @@ class ServiceController extends Controller
     /**
      * show the resource in user interphase.
      */
-    public function servicedetails($id, $name)
+    public function servicedetails($nameurl)
     {
-        $id = base64_decode($id);
-        $servicedata = Service::where('id', $id)->first();
+        $servicedata = Service::where('nameurl', $nameurl)->first();
         //dd($servicedata);
         return view('front.servicedetail', ['servicedata' => $servicedata]);
     }
@@ -146,11 +145,11 @@ class ServiceController extends Controller
     {
         $data = $request->except('_token');
 
-
         $shortdescription = htmlentities($data['shortdescription']);
         $description = htmlentities($data['description']);
 
         $updatedata['name'] = ucwords($request->name);
+        $updatedata['nameurl'] = str_replace(" ", "-", strtolower(trim($request->name)));
         $updatedata['shortdescription'] = $request->shortdescription;
         $updatedata['description'] = $request->description;
 

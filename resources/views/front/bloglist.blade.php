@@ -104,7 +104,7 @@
                     <div class="col-sm-6 m-bottom-40">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
                             <div class="blog-media">
-                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
                             </div>
                             <!--post media-->
 
@@ -118,15 +118,15 @@
                                 @php
                                 $small = substr( strip_tags($blog['description']), 0, 180);
                                 @endphp
-                                <p class="p-bottom-20">{!! $small !!}</p>
-
+                                <p class="p-bottom-20">{!! $small !!}.....</p>
                                 @php
                                 // strip out all whitespace
                                 $blogname = preg_replace('/\s*/', '', $blog['title']);
                                 // convert the string to all lowercase
                                 $blogname = strtolower($blogname);
                                 @endphp
-                                <a href="{{ URL::to('service').'/'.base64_encode($blog['id']).'/'.$blogname }}"></a>
+
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class="read-more">Read More >></a>
                             </div><!--post body-->
                             <!--post body-->
                         </div>

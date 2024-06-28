@@ -117,11 +117,18 @@
                 <div class="row">
                     <!-- === blog === -->
                     <div id="owl-blog" class="owl-carousel owl-theme">
+                        @php
+                        $alttagforimages =alttagforimages();
+                        @endphp
                         @foreach ($blogitems as $blog)
                         <!-- === Blog item 1 === -->
                         <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                            @php
+                            $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
+                            $title=$alttagforimages['blog'][$blog['id']]['title'];
+                            @endphp
                             <div class="blog-media">
-                                <a href="#"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt=""></a>
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
                             </div><!--post media-->
 
                             <div class="blog-post-info clearfix">
@@ -134,7 +141,7 @@
                                 $small = substr( strip_tags($blog['description']), 0, 200);
                                 @endphp
                                 <p class="p-bottom-20">{!! $small !!}</p>
-                                <a href="{{ URL::to('/blog').'/'.base64_encode($blog['id']) }}" class=" read-more">Read More >></a>
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class=" read-more">Read More >></a>
                             </div><!--post body-->
                         </div> <!-- /.blog -->
                         @endforeach

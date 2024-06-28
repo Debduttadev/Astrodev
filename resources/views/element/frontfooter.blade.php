@@ -10,11 +10,11 @@
                 @foreach ($servicelistfooter as $key => $service)
                 @php
                 // strip out all whitespace
-                $servicename = preg_replace('/\s*/', '', $service);
+                $servicename = preg_replace('/\s*/', '', $service['name']);
                 // convert the string to all lowercase
                 $servicename = strtolower($servicename);
                 @endphp
-                <a href="{{ URL::to('service').'/'.base64_encode($key).'/'.$servicename }}">{{$service}}</a><br>
+                <a href="{{ URL::to('service').'/'.$service['nameurl'] }}">{{$service['name']}}</a><br>
                 @endforeach
             </div>
 

@@ -55,6 +55,7 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             $blogitems[$blogdata->id]['image'] = $blogdata->image;
         }
@@ -220,23 +221,25 @@ class BlogController extends Controller
     /**
      * show only one blog .
      */
-    public function blog($id)
+    public function blog($nameurl)
     {
-        $id = base64_decode($id);
         //dd($id);
-        $blogs = blog::where('id', $id)->first();
+        $blogs = blog::where('nameurl', $nameurl)->first();
 
         $category = explode(',', $blogs->category);
         $similarblog = [];
-
+        $i = 1;
         foreach ($category as $cat) {
-            $similarblog = blog::where(
+            $catblog = blog::where(
                 'category',
                 'like',
                 '%' . $cat . '%'
             )->inRandomOrder()->limit(4)->get();
+            foreach ($catblog as $similar) {
+                $similarblog[$i] = $similar;
+                $i++;
+            }
         }
-        //dd($similarblog);
 
         $blogitems = [];
         foreach ($similarblog as $blogdata) {
@@ -251,6 +254,7 @@ class BlogController extends Controller
 
             $keywordid = explode(",", $blogdata->keyword);
             $keywords = [];
+
             foreach ($keywordid as $id) {
                 $keyword = keyword::where('id', $id)->first();
                 $keywords[$id] = $keyword->keyword;
@@ -259,14 +263,16 @@ class BlogController extends Controller
 
             $tagid = explode(",", $blogdata->tags);
             $tags = [];
+
             foreach ($tagid as $id) {
                 $tag = tag::where('id', $id)->first();
                 $tags[$id] = $tag->tag;
             }
-            $blogitems[$blogdata->id]['tag'] = $tags;
 
+            $blogitems[$blogdata->id]['tag'] = $tags;
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -321,6 +327,7 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -379,6 +386,7 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -454,6 +462,7 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 184);;
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -583,12 +592,9 @@ class BlogController extends Controller
         $updateblog['keyword'] = $keywordid;
         $updateblog['category'] = $categoryid;
         $updateblog['title'] = $request->name;
+        $updateblog['nameurl'] = str_replace(" ", "-", strtolower(trim($request->name)));
         $updateblog['description'] = htmlentities($request->blogdescription);
-        // dd($updateblog['description']);
-        // echo "<pre>";
-        // print_r($updateblog);
-        // echo "</pre>";
-        // exit;
+
         if ($request->hasFile('newimage')) {
 
             $request->validate([
