@@ -14,7 +14,7 @@
                 // convert the string to all lowercase
                 $servicename = strtolower($servicename);
                 @endphp
-                <a href="{{ URL::to('service').'/'.$servicename.'/'.base64_encode($key) }}">{{$service}}</a><br>
+                <a href="{{ URL::to('service').'/'.base64_encode($key).'/'.$servicename }}">{{$service}}</a><br>
                 @endforeach
             </div>
 

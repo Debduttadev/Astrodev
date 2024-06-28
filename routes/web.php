@@ -13,6 +13,7 @@ use App\Http\Controllers\AlttagController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HoroscopesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
@@ -46,6 +47,8 @@ Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers')
 
 Route::get('/appointment', [AppointmentController::class, 'appointment']);
 Route::post('addappointment', [AppointmentController::class, 'addappointment']);
+Route::post('paymentlinkcreate', [InvoiceController::class, 'paymentlinkcreate']);
+
 
 
 Route::get('contactus', [ContactusController::class, 'contactus']);
@@ -62,7 +65,6 @@ Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('
 Route::get('/refund_policy', [HomeController::class, 'refund_policy'])->name('refund_policy');
 
 Route::get('/shipping', [HomeController::class, 'shipping'])->name('shipping');
-
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
