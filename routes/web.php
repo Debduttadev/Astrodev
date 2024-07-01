@@ -10,6 +10,7 @@ use App\Http\Controllers\SocialController;
 use App\Http\Controllers\AboutContactController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\AlttagController;
+use App\Http\Controllers\SeodetailsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HoroscopesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -130,7 +131,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/alttag', [AlttagController::class, 'alttag']);
     // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
     Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
-    Route::get('/seodetails', [AlttagController::class, 'seodetails']);
+    //seo detail page.
+    Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
 
     //appoinment 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

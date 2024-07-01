@@ -835,6 +835,7 @@ blockquote {
     -o-animation: rotation 0.75s infinite linear;
     animation: rotation 0.75s infinite linear;
 }
+
 #preloader #spinner:before {
     content: "";
     display: block;
@@ -843,12 +844,13 @@ blockquote {
     top: -2px;
     height: 100%;
     width: 100%;
-    border-top: 2px solid #0f0f0f;
-    border-left: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    border-right: 2px solid transparent;
+    border-top: 2px dotted #ff3300;
+    border-left: 2px dotted transparent;
+    border-bottom: 2px dotted transparent;
+    border-right: 2px dotted transparent;
     border-radius: 100%;
 }
+
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
