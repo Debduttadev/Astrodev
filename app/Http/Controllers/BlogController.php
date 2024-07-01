@@ -16,8 +16,6 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 
-
-
 class BlogController extends Controller
 {
     /**
@@ -171,49 +169,57 @@ class BlogController extends Controller
             return redirect()->back();
         }
 
-        $tagid = implode(",", $tagid);
-        $keywordid = implode(",", $keywordid);
-        $categoryid = implode(",", $categoryid);
+        $nameurl = str_replace(" ", "-", strtolower(trim($request->name)));
 
-        $newblog = new blog;
-        $newblog->tags = $tagid;
-        $newblog->keyword = $keywordid;
-        $newblog->category = $categoryid;
-        $newblog->title = $request->name;
-        $newblog->description = htmlentities($request->blogdescription);
+        if (blog::where('nameurl', '=', $nameurl)->exists()) {
 
-        if ($request->hasFile('image')) {
-
-            $request->validate([
-                'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
-            ]);
-            $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = 'Blog' . time() . '.' . $ext;
-            $image = Image::read($file);
-            // Resize image
-
-            // resize image canvas
-            // $image->resizeCanvas(1920, 1080);
-            $image->resize(1920, 1080, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-
-            // $file = $request->file('image');
-            // $ext = $file->getClientOriginalExtension();
-            // $filename = 'Blog' . time() . '.' . $ext;
-            // $file->move(public_path('blog'), $filename);
-            if ($image->save(public_path('blog') . '/' . $filename)) {
-                $newblog->image = $filename;
-                // dd($newblog);
-            }
-        }
-        //dd($newblog);
-        if ($newblog->save()) {
-            session(['status' => "1", 'msg' => 'Blog Add is successful']);
+            session(['status' => "0", 'msg' => 'Blog name already exists']);
         } else {
-            session(['status' => "0", 'msg' => 'Blog data is not Added']);
+
+            $tagid = implode(",", $tagid);
+            $keywordid = implode(",", $keywordid);
+            $categoryid = implode(",", $categoryid);
+
+            $newblog = new blog;
+            $newblog->tags = $tagid;
+            $newblog->keyword = $keywordid;
+            $newblog->category = $categoryid;
+            $newblog->title = $request->name;
+            $newblog->nameurl = $nameurl;
+            $newblog->description = htmlentities($request->blogdescription);
+
+            if ($request->hasFile('image')) {
+
+                $request->validate([
+                    'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+                ]);
+                $file = $request->file('image');
+                $ext = $file->getClientOriginalExtension();
+                $filename = 'Blog' . time() . '.' . $ext;
+                $image = Image::read($file);
+                // Resize image
+
+                // resize image canvas
+                // $image->resizeCanvas(1920, 1080);
+                $image->resize(1920, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+                // $file = $request->file('image');
+                // $ext = $file->getClientOriginalExtension();
+                // $filename = 'Blog' . time() . '.' . $ext;
+                // $file->move(public_path('blog'), $filename);
+                if ($image->save(public_path('blog') . '/' . $filename)) {
+                    $newblog->image = $filename;
+                    // dd($newblog);
+                }
+            }
+            //dd($newblog);
+            if ($newblog->save()) {
+                session(['status' => "1", 'msg' => 'Blog Add is successful']);
+            } else {
+                session(['status' => "0", 'msg' => 'Blog data is not Added']);
+            }
         }
         return redirect()->back();
     }
@@ -583,51 +589,60 @@ class BlogController extends Controller
                 $c++;
             }
         }
-        //dd($categoryid);
-        $tagid = implode(",", $tagid);
-        $keywordid = implode(",", $keywordid);
-        $categoryid = implode(",", $categoryid);
 
-        $updateblog['tags'] = $tagid;
-        $updateblog['keyword'] = $keywordid;
-        $updateblog['category'] = $categoryid;
-        $updateblog['title'] = $request->name;
-        $updateblog['nameurl'] = str_replace(" ", "-", strtolower(trim($request->name)));
-        $updateblog['description'] = htmlentities($request->blogdescription);
+        $nameurl = str_replace(" ", "-", strtolower(trim($request->name)));
+        if (blog::where([['nameurl', '=', $nameurl], ['id', '!=', $request->id]])->exists()) {
+            // data found
+            session(['status' => "0", 'msg' => 'Blog name already exists']);
+        } else {
+            // data not found
 
-        if ($request->hasFile('newimage')) {
+            //dd($categoryid);
+            $tagid = implode(",", $tagid);
+            $keywordid = implode(",", $keywordid);
+            $categoryid = implode(",", $categoryid);
 
-            $request->validate([
-                'newimage' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
-            ]);
+            $updateblog['tags'] = $tagid;
+            $updateblog['keyword'] = $keywordid;
+            $updateblog['category'] = $categoryid;
+            $updateblog['title'] = $request->name;
+            $updateblog['nameurl'] = $nameurl;
+            $updateblog['description'] = htmlentities($request->blogdescription);
 
-            $file = $request->file('newimage');
-            $ext = $file->getClientOriginalExtension();
-            $filename = 'Blog' . time() . '.' . $ext;
-            $image = Image::read($file);
-            // Resize image
+            if ($request->hasFile('newimage')) {
 
-            // resize image canvas
-            // $image->resizeCanvas(1920, 1080);
-            $image->resize(1920, 1080, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            if ($image->save(public_path('blog') . '/' . $filename)) {
-                $image = public_path('about') . '/' . $request->oldimage;
-                unlink($image);
-                $updateblog['image'] = $filename;
+                $request->validate([
+                    'newimage' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+                ]);
+
+                $file = $request->file('newimage');
+                $ext = $file->getClientOriginalExtension();
+                $filename = 'Blog' . time() . '.' . $ext;
+                $image = Image::read($file);
+                // Resize image
+
+                // resize image canvas
+                // $image->resizeCanvas(1920, 1080);
+                $image->resize(1920, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                if ($image->save(public_path('blog') . '/' . $filename)) {
+                    $image = public_path('about') . '/' . $request->oldimage;
+                    unlink($image);
+                    $updateblog['image'] = $filename;
+                }
+            } else {
+                $updateblog['image'] = $request->oldimage;
             }
-        } else {
-            $updateblog['image'] = $request->oldimage;
-        }
-        //dd($updateblog);
-        $update = blog::where('id', $request->id)
-            ->update($updateblog);
+            //dd($updateblog);
+            $update = blog::where('id', $request->id)
+                ->update($updateblog);
 
-        if ($update) {
-            session(['status' => "1", 'msg' => 'Blog update is successful']);
-        } else {
-            session(['status' => "0", 'msg' => 'Blog data is not Updated']);
+            if ($update) {
+                session(['status' => "1", 'msg' => 'Blog update is successful']);
+            } else {
+                session(['status' => "0", 'msg' => 'Blog data is not Updated']);
+            }
         }
         return redirect('/manageblog');
     }
