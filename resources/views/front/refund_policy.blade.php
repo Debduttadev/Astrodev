@@ -19,7 +19,7 @@
 
             <h3 class="font-sans italic font-bold text-xl">&nbsp;</h3>
 
-            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;">For Shipping Policy details <a href="{{ URL::to('/shipping') }}">Shipping Policy</a></span></p>
+            <p class="content-text" style="text-align: left;"><span style="font-size: 14pt;">For Shipping Policy details <a href="{{ URL::to('/shipping_policy') }}">Shipping Policy</a></span></p>
         </div>
     </div>
 </section><!--End blog single section-->

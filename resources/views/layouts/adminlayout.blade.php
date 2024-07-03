@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,6 +85,16 @@
 
     .p-bottom-20 {
       padding-bottom: 20px;
+    }
+
+    .code {
+      color: aquamarine;
+      background-color: black;
+    }
+
+    .code:focus {
+      color: aquamarine;
+      background-color: black;
     }
   </style>
   @include('element.adminheader')

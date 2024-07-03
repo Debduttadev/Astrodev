@@ -64,7 +64,7 @@ Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('
 
 Route::get('/refund_policy', [HomeController::class, 'refund_policy'])->name('refund_policy');
 
-Route::get('/shipping', [HomeController::class, 'shipping'])->name('shipping');
+Route::get('/shipping_policy', [HomeController::class, 'shipping'])->name('shipping');
 
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -133,6 +133,8 @@ Route::middleware('auth')->group(function () {
     Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
     //seo detail page.
     Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
+    Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
+    Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
 
     //appoinment 
     Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);

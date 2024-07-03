@@ -414,7 +414,6 @@
             }
         });
 
-
         $(document).on('click', '#phonenum', function() {
 
             var obj = $(this);
@@ -431,6 +430,24 @@
         });
 
         $(document).on('click', '.phonenumminus', function() {
+            //alert("sdasdsadsad");
+            $(this).parent().remove();
+        });
+
+        $(document).on('click', '#seotext', function() {
+
+            var obj = $(this);
+            var key = $(this).attr('key');
+            var html = '<div class="input-group mt-3 ">';
+            html += '<span class="input-group-text"><i class="fa-solid fa-code"></i></span>';
+            html += '<textarea type="text"  class="form-control form-control-user code" name="metadata[]" required /></textarea>';
+            html += '<spann class="input-group-text seominus" key=' + key + ' ><i class="fa-solid fa-minus"></i></spann>';
+            html += '</div>';
+
+            obj.parent().append(html);
+        });
+
+        $(document).on('click', '.seominus', function() {
             //alert("sdasdsadsad");
             $(this).parent().remove();
         });
