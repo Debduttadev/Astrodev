@@ -2,7 +2,7 @@
 <html lang="en">
 @php
 $fullurl= Request::url();
-$appurl=Url::to('/');
+$appurl=URL::to('/');
 
 if($fullurl == $appurl){
 
