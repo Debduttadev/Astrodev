@@ -25,7 +25,7 @@
                         <p><strong>
                                 Please note that the appointment will be scheduled based on the availability of the slot.</strong>
                         </p>
-                        <p>Our Team will connect with you and will take all guide you accordingly.</p>
+                        <p>Our team will contact you and guide you accordingly.</p>
                     </div>
                 </div>
             </div> <!-- /.col -->
