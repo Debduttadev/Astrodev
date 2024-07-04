@@ -441,7 +441,7 @@
             var html = '<div class="input-group mt-3 ">';
             html += '<span class="input-group-text"><i class="fa-solid fa-code"></i></span>';
             html += '<textarea type="text"  class="form-control form-control-user code" name="metadata[]" required /></textarea>';
-            html += '<spann class="input-group-text seominus" key=' + key + ' ><i class="fa-solid fa-minus"></i></spann>';
+            html += '<span class="input-group-text seominus" key=' + key + ' ><i class="fa-solid fa-minus"></i></span>';
             html += '</div>';
 
             obj.parent().append(html);

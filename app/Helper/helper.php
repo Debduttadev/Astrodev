@@ -13,6 +13,7 @@ use App\Models\Contactus;
 use App\Models\Invoice;
 use App\Models\Social;
 use App\Models\alttag;
+use App\Models\seodetails;
 
 if (!function_exists('numberService')) {
     function numberService()
@@ -267,5 +268,31 @@ if (!function_exists('alttagforimages')) {
             $allimages['blog'] = '';
         }
         return $allimages;
+    }
+}
+
+
+if (!function_exists('seodetailsperpage')) {
+    function seodetailsperpage($page)
+    {
+        //seo detail
+        $seodata = [];
+        $seodetails = seodetails::where('page', '=', $page)->first();
+        if (!empty($seodetails) && $seodetails != null) {
+            $seodata['page'] = $seodetails->page;
+            $seodata['title'] = $seodetails->title;
+            $seodata['description'] = $seodetails->description;
+            $seodata['keyword'] = $seodetails->keyword;
+            $seodata['metadata'] = json_decode($seodetails->metadata);
+        } else {
+            $seodefault = seodetails::where('page', '=', 'home')->first();
+            $seodata['page'] = $page;
+            $seodata['title'] = $seodefault->title;
+            $seodata['description'] = $seodefault->description;
+            $seodata['keyword'] = $seodefault->keyword;
+            $seodata['metadata'] = json_decode($seodefault->metadata);
+        }
+
+        return $seodata;
     }
 }

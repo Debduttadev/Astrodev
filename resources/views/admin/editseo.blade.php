@@ -36,23 +36,27 @@
                     <label for="exampleFormControlInput3" class="form-label">Title</label>
                     <input type="text" class="form-control code" name="title" value="{{$seodata['title']}}" id="exampleFormControlInput3">
                 </div>
+                
                 <input type="hidden" value="{{$seodata['page']}}" name="page">
                 <input type="hidden" value="{{$seodata['relatedid']}}" name="relatedid">
                 <input type="hidden" value="{{$seodata['pagetype']}}" name="pagetype">
+
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Keywords</label>
                     <input type="text" class="form-control code" value="{{$seodata['keywords']}}" name="keyword" id="exampleFormControlInput1">
                 </div>
+
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Description</label>
                     <textarea type="text" class="form-control code" name="description" id="exampleFormControlInput2">{{$seodata['description']}}</textarea>
                 </div>
 
-                <h3 class="mt-10">Seo metadata</h3>
+                <h3 class="mt-10">Seo metadata Or script</h3>
+                <p class="fw-lighter">Please enter the data with meta tag or script tag</p>
                 @if(count($seodata['metadata']) == 0)
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-code"></i></span>
-                    <textarea type="text" id="metadata" class="form-control form-control-user code" name="metadata[]" required /></textarea>
+                    <textarea type="text" id="metadata" class="form-control form-control-user code" name="metadata[]" placeholder='<meta property="og:url" content="https://astroachariyadebdutta.com/" />' required /></textarea>
                     <span class="input-group-text" id="seotext"><i class="fa-solid fa-plus"></i></span>
                 </div>
                 @else

@@ -2,19 +2,16 @@
 @section('content')
 <!-- Begin Page Content -->
 <main>
+
     <div class="container-fluid px-4">
+
         <h1 class="mt-4">
             @if ($page_name === null)
             client
             @else
-            {{ $page_name}}
+            {{ $page_name }}
             @endif
         </h1>
-
-        <div class="card mb-4">
-            <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addadminuser">Add new admin</button>
-        </div>
-
         <!-- to show the session status message -->
         @php
         $sessiondata = session()->all();
@@ -35,7 +32,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Admin User table
+                Seo url list
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">

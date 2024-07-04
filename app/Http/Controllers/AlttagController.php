@@ -32,8 +32,8 @@ class AlttagController extends Controller
         $banner = banner_video::select('id', 'thumbnail', 'videolink')->where('thumbnailtype', '0')->get();
         $videos = banner_video::select('id', 'thumbnail', 'videolink')->where('thumbnailtype', '1')->get();
         //dd($videos);
-        $serviceimage = Service::select('id', 'Image', 'name')->get();
-        $blogimage = blog::select('id', 'image')->get();
+        $serviceimage = Service::select('id', 'Image', 'nameurl')->get();
+        $blogimage = blog::select('id', 'image', 'nameurl')->get();
         //dd($bannervideos);
         $allimages = [];
         $allimages['about_contact'] = [];
@@ -153,7 +153,7 @@ class AlttagController extends Controller
                     }
                     $allimages['Service'][$k]['image'] = $image->Image;
                     $allimages['Service'][$k]['relatedid'] = $image->id;
-                    $allimages['Service'][$k]['name'] = $image->name;
+                    $allimages['Service'][$k]['nameurl'] = $image->nameurl;
                     $k++;
                 }
             }
@@ -182,6 +182,7 @@ class AlttagController extends Controller
                     }
                     $allimages['blog'][$l]['image'] = $image->image;
                     $allimages['blog'][$l]['relatedid'] = $image->id;
+                    $allimages['blog'][$l]['nameurl'] = $image->nameurl;
                     $l++;
                 }
             }

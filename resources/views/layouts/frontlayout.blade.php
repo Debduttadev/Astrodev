@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+$fullurl= Request::url();
+$appurl=Url::to('/');
 
+if($fullurl == $appurl){
+
+$seodetailsperpage = seodetailsperpage('home');
+
+}else{
+
+$page=str_replace($appurl,"",$fullurl);
+$urlname=explode("/",$page);
+$seodetailsperpage = seodetailsperpage(end($urlname));
+
+}
+//dd($seodetailsperpage['metadata']);
+@endphp
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="{{ $seodetailsperpage['description']}}" />
+    <meta name="keywords" content="{{ $seodetailsperpage['keyword']}}" />
+    <meta name="author" content="Astro Achariya Debdutta|Sumita Das" />
     <!-- Title -->
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ $seodetailsperpage['title'] }}</title>
     <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogoicon-01-01.png') }}" />
+
+    @foreach ($seodetailsperpage['metadata'] as $metaseo )
+    {!! $metaseo !!}
+    @endforeach
 
     <!-- Bootstrap CSS -->
     <link href="{{ URL::to('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -39,23 +60,6 @@
     <script src="{{ URL::to('frontend/js/moment.min.js') }}"></script>
 
     <script src="{{ URL::to('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
-
-    <!-- Google api integration -->
-    <script>
-        // google.maps.event.addDomListener(window, 'load', initialize);
-
-        // function initialize() {
-        //     var input = document.getElementById('autocomplete_search');
-        //     var autocomplete = new google.maps.places.Autocomplete(input);
-        //     autocomplete.addListener('place_changed', function() {
-        //         var place = autocomplete.getPlace();
-        //         // place variable will have all the information you are looking for.
-        //     });
-        // }
-    </script>
-    <!-- google map place autocomplete -->
-    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI&loading=async&libraries=places&callback=initialize">
-    </script> -->
 
 </head>
 

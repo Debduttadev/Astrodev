@@ -96,6 +96,11 @@
       color: aquamarine;
       background-color: black;
     }
+
+    ul li{
+      list-style: none !important;
+    }
+    
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">

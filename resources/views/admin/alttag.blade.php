@@ -195,8 +195,7 @@
 
                         <p><span class="fw-bold">Title : </span>{{$title}}</p>
                         <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
-
-                        <button type="button" class="btn btn-outline-secondary servicealt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$servicedata['page']}}" relatedid="{{$servicedata['relatedid']}}" alttag="{{$servicedata['alttag']}}" title="{{$servicedata['title']}}" urlview="{{ URL::to('service').'/'.base64_encode($servicedata['relatedid']).'/'.$servicedata['name'] }}">
+                        <button type="button" class="btn btn-outline-secondary servicealt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$servicedata['page']}}" relatedid="{{$servicedata['relatedid']}}" alttag="{{$servicedata['alttag']}}" title="{{$servicedata['title']}}" urlview="{{ URL::to('service').'/'.$servicedata['nameurl'] }}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
@@ -233,7 +232,7 @@
                         <p><span class="fw-bold">Title : </span>{{$title}}</p>
                         <p><span class="fw-bold">AltTag details : </span>{{$alttag}}</p>
 
-                        <button type="button" class="btn btn-outline-secondary blogalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$blogdata['page']}}" relatedid="{{$blogdata['relatedid']}}" alttag="{{$blogdata['alttag']}}" title="{{$blogdata['title']}}" urlview="{{ URL::to('/blog').'/'.base64_encode($blogdata['relatedid']) }}">
+                        <button type="button" class="btn btn-outline-secondary blogalt" data-bs-toggle="modal" data-bs-target="#addalttag" page="{{$blogdata['page']}}" relatedid="{{$blogdata['relatedid']}}" alttag="{{$blogdata['alttag']}}" title="{{$blogdata['title']}}" urlview="{{ URL::to('/blog').'/'.$blogdata['nameurl'] }}">
                             Edit Alt Tag and Title
                         </button>
                     </div>
