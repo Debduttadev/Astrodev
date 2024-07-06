@@ -107,8 +107,16 @@
                 </a>
                 <div class="collapse {{$seodetailsubmenu}}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('alttag') }}">Alt Tag for Images</a>
-                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">Seo Form for Pages</a>
+                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('alttag') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa-regular fa-image {{ $seodetails }}"></i>
+                            </div> Alt Tag for Images
+                        </a>
+                        <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa-regular fa-image {{ $seodetails }}"></i>
+                            </div> Seo Form for Pages
+                        </a>
                     </nav>
                 </div>
 

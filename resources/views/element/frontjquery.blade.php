@@ -217,7 +217,7 @@
                     html += "<div class='col-sm-6 m-bottom-40'>";
                     html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                     html += "<div class='blog-media'>"
-                    html += "<a href='" + base_url + "/blog/" + btoa(data[x].id) + "'>"
+                    html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
                     html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
                     html += "</div>";
 
@@ -227,7 +227,7 @@
                     html += "<div class='blog-post-body'>";
                     html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
                     html += "<p class='p-bottom-20'>" + data[x].description + "</p>";
-                    html += "<a href='" + base_url + "/blog/" + btoa(data[x].id) + "' class='read-more'>Read More >></a>";
+                    html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";

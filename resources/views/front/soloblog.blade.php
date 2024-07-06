@@ -16,7 +16,7 @@
 
             <div class="col-md-2 sidebar">
                 <a href="{{ URL::to('/blogs') }}">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb" style="background-color: #000000;">
                         <li>All Blogs</li>
                     </ol>
                 </a>

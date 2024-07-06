@@ -352,7 +352,7 @@ class BlogController extends Controller
     public function bloglistpagination($page)
     {
         // blog details
-        $limit = 6;
+        $limit = 4;
         $countpage = $page - 1;
         $offset = $limit * $countpage;
 

@@ -18,7 +18,7 @@
     <!--Container-->
     <div class="container clearfix">
         <div class="row">
-            <div class="col-md-4 sidebar blogfilter">
+            <div class="col-md-3 sidebar blogfilter">
                 <a href="{{ URL::to('/blogs') }}" class="allblogsbutton">
                     <ol class="breadcrumb" style="background-color: #ff3c00;">
                         <li>All Blogs</li>
@@ -89,7 +89,7 @@
             </div>
             <!-- /.col -->
 
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="row multi-columns-row blogsearchdetails">
                     @php
                     $alttagforimages =alttagforimages();
@@ -101,7 +101,7 @@
                     $title=$alttagforimages['blog'][$blog['id']]['title'];
                     @endphp
                     <!-- === Blog item 1 === -->
-                    <div class="col-sm-6 m-bottom-40">
+                    <div class="col-sm-4 m-bottom-50">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
                             <div class="blog-media">
                                 <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
@@ -116,7 +116,7 @@
                             <div class="blog-post-body">
                                 <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
                                 @php
-                                $small = substr( strip_tags($blog['description']), 0, 180);
+                                $small = substr( strip_tags($blog['description']), 0, 120);
                                 @endphp
                                 <p class="p-bottom-20">{!! $small !!}.....</p>
                                 @php
