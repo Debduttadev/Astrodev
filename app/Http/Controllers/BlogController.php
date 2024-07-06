@@ -466,7 +466,7 @@ class BlogController extends Controller
             }
             $blogitems[$blogdata->id]['tag'] = $tags;
 
-            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 184);;
+            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);;
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;

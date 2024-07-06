@@ -214,13 +214,12 @@
 
                 var html = "";
                 for (var x in data) {
-                    html += "<div class='col-sm-6 m-bottom-40'>";
+                    html += "<div class='col-sm-4 m-bottom-50'>";
                     html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                     html += "<div class='blog-media'>"
                     html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
                     html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
                     html += "</div>";
-
                     html += "<div class='blog-post-info clearfix'>";
                     html += "<span class='time'><i class='fa fa-calendar'></i>" + data[x].createdate + "</span>";
                     html += "</div>";
