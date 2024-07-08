@@ -298,7 +298,7 @@ class BlogController extends Controller
     public function bloglist(blog $blog)
     {
         // blog details
-        $limit = 4;
+        $limit = 6;
         $blogs = blog::limit($limit)->get();
         $blogcount = blog::count();
         $pagination = $blogcount / $limit;
@@ -352,7 +352,7 @@ class BlogController extends Controller
     public function bloglistpagination($page)
     {
         // blog details
-        $limit = 4;
+        $limit = 6;
         $countpage = $page - 1;
         $offset = $limit * $countpage;
 
@@ -360,7 +360,6 @@ class BlogController extends Controller
         $blogcount = blog::count();
         $pagination = $blogcount / $limit;
         $pagination = ceil($pagination);
-
 
         //dd($pagination);
         $blogitems = [];
@@ -390,7 +389,7 @@ class BlogController extends Controller
             }
             $blogitems[$blogdata->id]['tag'] = $tags;
 
-            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
+            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
@@ -401,11 +400,10 @@ class BlogController extends Controller
             }
 
             $createdat = $blogdata->created_at;
-            $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
+            $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
         }
 
-        // dd($allkeyword);
-        return view('front.bloglist', ["blogitems" => $blogitems, 'pagination' => $pagination, 'page' => $page]);
+        print_r(json_encode(["blogitems" => $blogitems, 'pagination' => $pagination, 'page' => $page]));
     }
 
     /**
@@ -459,14 +457,17 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['keyword'] = $keywords;
 
             $tagid = explode(",", $blogdata->tags);
+
             $tags = [];
+
             foreach ($tagid as $id) {
                 $tag = tag::where('id', $id)->first();
                 $tags[$id] = $tag->tag;
             }
+
             $blogitems[$blogdata->id]['tag'] = $tags;
 
-            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);;
+            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;

@@ -103,6 +103,7 @@
                     <!-- === Blog item 1 === -->
                     <div class="col-sm-4 m-bottom-50">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
+
                             <div class="blog-media">
                                 <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
                             </div>
@@ -136,11 +137,14 @@
                     @endforeach
                 </div>
                 <!-- /.inner-row -->
+            </div>
+            <div class="col-md-9">
                 @if($pagination>1)
                 <!-- blog pagination -->
                 <div class="blog-pagination" id="paginationblog">
+
                     <nav aria-label="Page navigation">
-                        <ul class="pagination">
+                        <ul class="pagination paginationpage">
                             @php
                             $i = 1;
                             $prevpage=$page-1;
@@ -150,7 +154,8 @@
                                 <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
                                 @else
                             <li>
-                                <a href="{{ URL::to('/blogs') }}/{{$prevpage}}" aria-label="Previous">
+                                <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$prevpage}}" aria-label="Previous">
+
                                     <span aria-hidden="false"><i class="fa fa-angle-left"></i></span>
                                 </a>
                                 @endif
@@ -159,7 +164,7 @@
                                 <span>{{$i}} <span class="sr-only">(current)</span></span>
                                 </li>
                                 @else
-                                <li><a href="{{ URL::to('/blogs') }}/{{$i}}">{{$i}}</a></li>
+                                <li><a class="blogpage" href="{{ URL::to('/blogs') }}/{{$i}}">{{$i}}</a></li>
                                 @endif
                                 @php
                                 $i++;
@@ -169,13 +174,15 @@
                                 <li class="disabled">
                                     <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
                                     @else
-                                <li> <a href="{{ URL::to('/blogs') }}/{{$page++}}" aria-label="Next">
+
+                                <li> <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page+1}}" aria-label="Next">
                                         <span aria-hidden="false"><i class="fa fa-angle-right"></i></span>
                                     </a>
                                     @endif
                                 </li>
                         </ul>
                     </nav>
+
                 </div>
                 <!-- /.blog-pagination -->
                 @endif

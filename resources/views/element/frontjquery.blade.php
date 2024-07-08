@@ -185,6 +185,93 @@
                 }
             });
         });
+        $(document).on('click', '.blogpage', function(e) {
+            e.preventDefault();
+
+            var actionUrl = $(this).attr('href');
+            $.ajax({
+                url: actionUrl,
+                method: "get",
+                data: {
+                    'search': "blog",
+                }
+            }).done(function(msg) {
+
+                var alldata = JSON.parse(msg);
+                console.log(alldata);
+
+                if (alldata == "0") {
+
+                    $(".blogsearchdetails").empty();
+                    $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
+                    $("#paginationblog").remove();
+
+                } else {
+
+                    var html = "";
+                    var data = alldata.blogitems;
+                    for (var x in data) {
+                        html += "<div class='col-sm-4 m-bottom-50'>";
+                        html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
+                        html += "<div class='blog-media'>"
+                        html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
+                        html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
+                        html += "</div>";
+                        html += "<div class='blog-post-info clearfix'>";
+                        html += "<span class='time'><i class='fa fa-calendar'></i>" + data[x].createdate + "</span>";
+                        html += "</div>";
+                        html += "<div class='blog-post-body'>";
+                        html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
+                        html += "<p class='p-bottom-20'>" + data[x].description + "</p>";
+                        html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                    }
+
+                    $(".blogsearchdetails").empty();
+                    $(".blogsearchdetails").html(html);
+                    var page = alldata.page;
+                    var varpage = '';
+                    var i = 1;
+                    var prevpage = page - 1;
+                    if (page == 1) {
+                        varpage += '<li class="disabled">';
+                        varpage += '<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>';
+                    } else {
+                        varpage += '<li>';
+                        varpage += '<a class="blogpage" href="' + base_url + '/blogs/' + prevpage + '" aria-label="Previous">';
+                        varpage += '<span aria-hidden="false"><i class="fa fa-angle-left"></i></span></a>';
+                    }
+                    varpage += '</li>';
+                    while (i <= alldata.pagination) {
+                        if (i == page) {
+                            varpage += '<li class="active">';
+                            varpage += '<span>' + i + '<span class="sr-only">(current)</span></span>';
+                            varpage += '</li>';
+                        } else {
+                            varpage += '<li><a class="blogpage" href="' + base_url + '/blogs/' + i + '">' + i + '</a></li>';
+                        }
+                        i = i + 1;
+                    }
+                    if (i - page == 1) {
+
+                        varpage += '<li class = "disabled" >';
+                        varpage += '<span aria-hidden="true" > <i class="fa fa-angle-right"></i></span>'
+                    } else {
+                        var nextpage = page + 1;
+                        varpage += '<li><a class = "blogpage" href ="' + base_url + '/blogs/' + nextpage + '" aria-label="Next" >';
+                        varpage += '<span aria-hidden="false"><i class="fa fa-angle-right"></i></span>';
+                        varpage += '</a>';
+                    }
+                    varpage += '</li></ul>';
+
+                    $(".paginationpage").empty();
+                    $(".paginationpage").html(varpage);
+                }
+            })
+
+        });
     });
 
     function alttagmodaldata(obj) {
