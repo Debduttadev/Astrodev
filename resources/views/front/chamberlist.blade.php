@@ -36,7 +36,7 @@
                             <h5>Help Line Phone Number :</h5> {{ $chamber->description}}
                         </li>
                     </ul>
-                    <a href="#" class="btn btn-main btn-theme">Book Now {{$i}}</a>
+                    <a href="#" class="btn btn-main btn-theme">Book Now</a>
                 </div>
             </div> <!-- /.col -->
             @if($i%2 == 0)
