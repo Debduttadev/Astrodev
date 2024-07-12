@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Section Title Blog -->
-<div class="section-title-bg text-center m-bottom-20">
+<div class="section-title-bg text-center m-bottom-20 m-top-80">
     <h2 class="wow fadeInDown no-margin" data-wow-duration="1s" data-wow-delay="0.6s">
         <strong>Our Blogs</strong>
     </h2>

@@ -51,41 +51,58 @@
                 }else{
                 $dashboard = "active";
                 }
+                $user = userdetails();
                 @endphp
 
                 <a class="nav-link {{ $dashboard }}" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-table-columns {{ $dashboard }}"></i></div>
                     Dashboard
                 </a>
+
+                @if($user['usertype'] == 0)
                 <a class="nav-link {{ $adminuser }}" href="{{ URL::to('adminuser') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie {{ $adminuser }}"></i></div>
                     Admin Management
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 4)
                 <a class="nav-link {{ $adminappointment }}" href="{{ URL::to('adminappointment') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar-check {{ $adminappointment }}"></i></div>
                     Appointment
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5 )
                 <a class="nav-link {{ $adminservice }}" href="{{ URL::to('adminservice') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-hand-sparkles {{ $adminservice }}"></i></div>
                     Service
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $adminhoroscope }}" href="{{ URL::to('adminhoroscope') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-half-stroke" {{ $adminhoroscope }}"></i></div>
                     Horoscopes
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $adminchember }}" href="{{ URL::to('adminchember') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-location-dot {{ $adminchember }}"></i></div>
                     Chamber details
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $adminclient }}" href="{{ URL::to('adminclient') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-users {{ $adminclient }}"></i></div>
                     Client
                 </a>
+                @endif
+
+
+                @if($user['usertype'] == 0 || $user['usertype'] == 2)
                 @php
                 if($seodetails==="active"){
                 $aria_expanded=true;
@@ -105,6 +122,7 @@
                         <i class="fas fa-angle-down"></i>
                     </div>
                 </a>
+
                 <div class="collapse {{$seodetailsubmenu}}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ $seodetails }}" href="{{ URL::to('alttag') }}">
@@ -119,35 +137,46 @@
                         </a>
                     </nav>
                 </div>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1)
                 <a class="nav-link {{ $managebannervideo }}" href="{{ URL::to('managebannervideo') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-images {{ $managebannervideo }}"></i></div>
                     Manage Banner and Video
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 2)
                 <a class="nav-link {{ $adminsocial }}" href="{{ URL::to('adminsocial') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-hashtag {{ $adminsocial }}"></i></div>
                     Social media link
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
                 <a class="nav-link {{ $manageblog }}" href="{{ URL::to('manageblog') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard {{ $manageblog }}"></i></div>
                     Manage Blog
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
                 <a class="nav-link {{ $magageaboutcontactus }}" href="{{ URL::to('magageaboutcontactus') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-address-card {{ $magageaboutcontactus }}"></i></div>
                     About and Contact details
                 </a>
+                @endif
 
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
                 <a class="nav-link {{ $managecontactus }}" href="managecontactus">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-message {{ $managecontactus }}"></i></div>
                     Contact us
                 </a>
+                @endif
             </div>
         </div>
         <div class="sb-sidenav-footer">
-            <div class="small">Logged in as:</div>
+            <div class="small">Logged in as: {{ $user['name'] }}</div>
 
         </div>
     </nav>

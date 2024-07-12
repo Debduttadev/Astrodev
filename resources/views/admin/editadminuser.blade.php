@@ -22,11 +22,16 @@
                             Sub Admin
                         </option>
                         <option value="2" @if($admin->usertype === "2") selected @endif>
-                            Blogger
+                            Seo management
+                        </option>
+                        <option value="3" @if($admin->usertype === "4") selected @endif>
+                            Appointment Management
+                        </option>
+                        <option value="4" @if($admin->usertype === "5") selected @endif>
+                            Blog Management
                         </option>
                     </select>
                 </div>
-
 
                 <!-- Email Address  -->
                 <div class="mt-4">

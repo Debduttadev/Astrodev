@@ -18,7 +18,6 @@
         <!-- to show the session status message -->
         @php
         $sessiondata = session()->all();
-
         @endphp
         @if(session()->has('status') && session()->has('msg'))
         @if($sessiondata['status'] === '1')
@@ -28,6 +27,7 @@
         @endif
         @php
         session()->forget(['status', 'msg']);
+
         @endphp
         @endif
 
@@ -63,7 +63,17 @@
                         }elseif($userdata->usertype ==='1'){
                         $usertype = 'Sub Admin';
                         }elseif($userdata->usertype ==='2'){
-                        $usertype = 'Blogger';}
+                        $usertype = 'Seo management';
+                        }elseif($userdata->usertype ==='3'){
+                        $usertype = 'Guest';
+                        }elseif($userdata->usertype ==='4'){
+                        $usertype = 'Appointment Management';
+                        }elseif($userdata->usertype ==='5'){
+                        $usertype = 'Blog Management';
+                        }else{
+                        $usertype = 'Others';
+                        }
+
                         @endphp
                         <tr>
                             <td>{{ $userdata->name }}</td>

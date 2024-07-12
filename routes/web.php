@@ -19,15 +19,12 @@ use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
 
-Route::get('/phpinfo', function () {
-    return phpinfo();
-});
-
-//abort(404);
-
-Route::get('/datepicker', function () {
-    return view("date");
-});
+// Route::get('/phpinfo', function () {
+//     return phpinfo();
+// });
+// Route::get('/datepicker', function () {
+//     return view("date");
+// });
 //frontend roots
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
@@ -50,7 +47,6 @@ Route::post('addappointment', [AppointmentController::class, 'addappointment']);
 Route::post('paymentlinkcreate', [InvoiceController::class, 'paymentlinkcreate']);
 
 
-
 Route::get('contactus', [ContactusController::class, 'contactus']);
 Route::post('addcontactus', [ContactusController::class, 'addcontactus']);
 
@@ -71,82 +67,206 @@ Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['au
 
 Route::middleware('auth')->group(function () {
     //  profile edit
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // usertype = 0 , admin
+    Route::middleware(['admin'])->group(function () {
 
-    // Admin Sidenavbar
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        //Admin user management
+        Route::get('/adminuser', [AdminController::class, 'adminuser']);
+        Route::post('registeradmin', [RegisteredUserController::class, 'store']);
+        Route::get('/deleteadmin', [AdminController::class, 'deleteadmin']);
+        Route::get('editadmin/{id}', [AdminController::class, 'editadmin']);
+        Route::post('updateadminuser', [AdminController::class, 'updateadminuser']);
 
-    //Admin user management
-    Route::get('/adminuser', [AdminController::class, 'adminuser']);
-    Route::post('registeradmin', [RegisteredUserController::class, 'store']);
-    Route::get('/deleteadmin', [AdminController::class, 'deleteadmin']);
-    Route::get('editadmin/{id}', [AdminController::class, 'editadmin']);
-    Route::post('updateadminuser', [AdminController::class, 'updateadminuser']);
+        //Admin service management
+        Route::get('/adminservice', [ServiceController::class, 'adminservice']);
+        Route::post('addservice', [ServiceController::class, 'addservice']);
+        Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
+        Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
+        Route::post('updateservice', [ServiceController::class, 'updateservice']);
 
-    //Admin service management
-    Route::get('/adminservice', [ServiceController::class, 'adminservice']);
-    Route::post('addservice', [ServiceController::class, 'addservice']);
-    Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
-    Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
-    Route::post('updateservice', [ServiceController::class, 'updateservice']);
+        //Admin chamber management
+        Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
+        Route::post('addchamber', [ChamberController::class, 'addchamber']);
+        Route::get('/deletechamber', [ChamberController::class, 'deletechamber']);
+        Route::get('editchamber/{id}', [ChamberController::class, 'editchamber']);
+        Route::post('updatechamber', [ChamberController::class, 'updatechamber']);
 
-    //Admin chamber management
-    Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
-    Route::post('addchamber', [ChamberController::class, 'addchamber']);
-    Route::get('/deletechamber', [ChamberController::class, 'deletechamber']);
-    Route::get('editchamber/{id}', [ChamberController::class, 'editchamber']);
-    Route::post('updatechamber', [ChamberController::class, 'updatechamber']);
+        // Manage banner and videos
+        Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
+        Route::post('addbannervideo', [BannerVideoController::class, 'addbannervideo']);
+        Route::get('/deletebannervideo', [BannerVideoController::class, 'deletebannervideo']);
+        Route::get('editbannervideo/{id}', [BannerVideoController::class, 'editbannervideo']);
+        Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
 
-    // Manage banner and videos
-    Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
-    Route::post('addbannervideo', [BannerVideoController::class, 'addbannervideo']);
-    Route::get('/deletebannervideo', [BannerVideoController::class, 'deletebannervideo']);
-    Route::get('editbannervideo/{id}', [BannerVideoController::class, 'editbannervideo']);
-    Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
+        //Manage Social Links
+        Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+        Route::post('addsociallink', [SocialController::class, 'addsociallink']);
+        Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
+        Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
 
-    //Manage Social Links
-    Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
-    Route::post('addsociallink', [SocialController::class, 'addsociallink']);
-    Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
-    Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
+        //manage blog
+        Route::get('/manageblog', [BlogController::class, 'manageblog']);
+        Route::post('addblog', [BlogController::class, 'addblog']);
+        Route::get('/deleteblog', [BlogController::class, 'deleteblog']);
+        Route::get('editblog/{id}', [BlogController::class, 'editblog']);
+        Route::post('updateblog', [BlogController::class, 'updateblog']);
 
-    //manage blog
-    Route::get('/manageblog', [BlogController::class, 'manageblog']);
-    Route::post('addblog', [BlogController::class, 'addblog']);
-    Route::get('/deleteblog', [BlogController::class, 'deleteblog']);
-    Route::get('editblog/{id}', [BlogController::class, 'editblog']);
-    Route::post('updateblog', [BlogController::class, 'updateblog']);
+        //manage about us and contact us details
+        Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
+        Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
+        Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
 
-    //manage about us and contact us details
-    Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
-    Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
-    Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
+        //manage contact us page form details
+        Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
+        Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
 
-    //manage contact us page form details
-    Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
-    Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
+        // seo details and alt tag for every image
+        Route::get('/alttag', [AlttagController::class, 'alttag']);
+        // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
+        Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
+        //seo detail page.
+        Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
+        Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
+        Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
 
-    // seo details and alt tag for every image
-    Route::get('/alttag', [AlttagController::class, 'alttag']);
-    // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
-    Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
-    //seo detail page.
-    Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
-    Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
-    Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
-
-    //appoinment 
-    Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
-    Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
-    // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
+        //appoinment 
+        Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
+        Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
+        // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
 
 
-    Route::get('/adminclient', [AdminController::class, 'adminclient']);
+        Route::get('/adminclient', [AdminController::class, 'adminclient']);
 
-    //horoscope
-    Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
-    Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
+        //horoscope
+        Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
+        Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
+    });
+
+    // usertype = 1 , subadmin
+    Route::middleware(['subadmin'])->group(function () {
+
+        //Admin service management
+        Route::get('/adminservice', [ServiceController::class, 'adminservice']);
+        Route::post('addservice', [ServiceController::class, 'addservice']);
+        Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
+        Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
+        Route::post('updateservice', [ServiceController::class, 'updateservice']);
+
+        //Admin chamber management
+        Route::get('/adminchember', [ChamberController::class, 'adminchamber']);
+        Route::post('addchamber', [ChamberController::class, 'addchamber']);
+        Route::get('/deletechamber', [ChamberController::class, 'deletechamber']);
+        Route::get('editchamber/{id}', [ChamberController::class, 'editchamber']);
+        Route::post('updatechamber', [ChamberController::class, 'updatechamber']);
+
+        // Manage banner and videos
+        Route::get('/managebannervideo', [BannerVideoController::class, 'managebannervideo']);
+        Route::post('addbannervideo', [BannerVideoController::class, 'addbannervideo']);
+        Route::get('/deletebannervideo', [BannerVideoController::class, 'deletebannervideo']);
+        Route::get('editbannervideo/{id}', [BannerVideoController::class, 'editbannervideo']);
+        Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
+
+        //Manage Social Links
+        Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+        Route::post('addsociallink', [SocialController::class, 'addsociallink']);
+        Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
+        Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
+
+        //manage blog
+        Route::get('/manageblog', [BlogController::class, 'manageblog']);
+        Route::post('addblog', [BlogController::class, 'addblog']);
+        Route::get('/deleteblog', [BlogController::class, 'deleteblog']);
+        Route::get('editblog/{id}', [BlogController::class, 'editblog']);
+        Route::post('updateblog', [BlogController::class, 'updateblog']);
+
+        //manage about us and contact us details
+        Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
+        Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
+        Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
+
+        //manage contact us page form details
+        Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
+        Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
+
+        // seo details and alt tag for every image
+        Route::get('/alttag', [AlttagController::class, 'alttag']);
+        // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
+        Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
+        //seo detail page.
+        Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
+        Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
+        Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
+
+        //appoinment 
+        Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
+        Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
+        // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
+
+
+        Route::get('/adminclient', [AdminController::class, 'adminclient']);
+
+        //horoscope
+        Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
+        Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
+    });
+
+    // usertype = 2 , seo
+    Route::middleware(['seo'])->group(function () {
+
+        // seo details and alt tag for every image
+        Route::get('/alttag', [AlttagController::class, 'alttag']);
+        // add edit alt tag for every images of the website mainly service ,blog ,banner video thumbnail, about us page
+        Route::post('updatealttag', [AlttagController::class, 'updatealttag']);
+        //seo detail page.
+        Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
+        Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
+        Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
+
+        //Manage Social Links
+        Route::get('/adminsocial', [SocialController::class, 'adminsocial']);
+        Route::post('addsociallink', [SocialController::class, 'addsociallink']);
+        Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
+        Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
+    });
+
+    // usertype = 4 , appointment
+    Route::middleware(['appointment'])->group(function () {
+        //appoinment 
+        Route::get('/adminappointment', [AppointmentController::class, 'adminappointment']);
+        Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
+        // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
+        Route::get('/adminclient', [AdminController::class, 'adminclient']);
+    });
+
+    // usertype = 5 , blog
+    Route::middleware(['blog'])->group(function () {
+
+        //manage blog
+        Route::get('/manageblog', [BlogController::class, 'manageblog']);
+        Route::post('addblog', [BlogController::class, 'addblog']);
+        Route::get('/deleteblog', [BlogController::class, 'deleteblog']);
+        Route::get('editblog/{id}', [BlogController::class, 'editblog']);
+        Route::post('updateblog', [BlogController::class, 'updateblog']);
+
+        //manage about us and contact us details
+        Route::get('/magageaboutcontactus', [AboutContactController::class, 'magageaboutcontactus']);
+        Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
+        Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
+
+        //manage contact us page form details
+        Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
+        Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
+
+        //Admin service management
+        Route::get('/adminservice', [ServiceController::class, 'adminservice']);
+        Route::post('addservice', [ServiceController::class, 'addservice']);
+        Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
+        Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
+        Route::post('updateservice', [ServiceController::class, 'updateservice']);
+    });
 });
 
 require __DIR__ . '/auth.php';

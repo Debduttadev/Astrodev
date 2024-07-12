@@ -14,6 +14,7 @@ use App\Models\Invoice;
 use App\Models\Social;
 use App\Models\alttag;
 use App\Models\seodetails;
+use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('numberService')) {
     function numberService()
@@ -294,5 +295,13 @@ if (!function_exists('seodetailsperpage')) {
         }
 
         return $seodata;
+    }
+}
+
+if (!function_exists('userdetails')) {
+    function userdetails()
+    {
+        $user = Auth::user();
+        return $user;
     }
 }

@@ -23,7 +23,9 @@
                              <label for="exampleFormControlSelect1">User type</label><select class="form-control form-control-solid" name="usertype" id="exampleFormControlSelect1">
                                  <option value="0">Master Admin</option>
                                  <option value="1">Sub Admin</option>
-                                 <option value="2">Blogger</option>
+                                 <option value="2">Seo management</option>
+                                 <option value="4">Appointment Management</option>
+                                 <option value="5">Blog Management</option>
                              </select>
                          </div>
 

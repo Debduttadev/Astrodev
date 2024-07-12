@@ -19,9 +19,15 @@ class AboutContactController extends Controller
      */
     public function magageaboutcontactus()
     {
-        $aboutcontactus = about_contact::first();
-        //dd(($aboutcontactus));
-        return view('admin.magageaboutcontactus', ['page_name' => 'Manage About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
+        $user = userdetails();
+        // dd($user);
+        if ($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5) {
+            $aboutcontactus = about_contact::first();
+            //dd(($aboutcontactus));
+            return view('admin.magageaboutcontactus', ['page_name' => 'Manage About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
