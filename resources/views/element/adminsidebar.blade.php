@@ -167,7 +167,7 @@
                 </a>
                 @endif
 
-                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $managecontactus }}" href="managecontactus">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-message {{ $managecontactus }}"></i></div>
                     Contact us
