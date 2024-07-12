@@ -256,10 +256,6 @@ Route::middleware('auth')->group(function () {
         Route::post('updateaboutus', [AboutContactController::class, 'updateaboutus']);
         Route::post('updatecontactus', [AboutContactController::class, 'updatecontactus']);
 
-        //manage contact us page form details
-        Route::get('/managecontactus', [ContactusController::class, 'managecontactus']);
-        Route::get('/deletecontactdetails', [ContactusController::class, 'deletecontactdetails']);
-
         //Admin service management
         Route::get('/adminservice', [ServiceController::class, 'adminservice']);
         Route::post('addservice', [ServiceController::class, 'addservice']);
