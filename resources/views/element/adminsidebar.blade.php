@@ -102,7 +102,7 @@
                 @endif
 
 
-                @if($user['usertype'] == 0 || $user['usertype'] == 2)
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 2)
                 @php
                 if($seodetails==="active"){
                 $aria_expanded=true;
