@@ -19,17 +19,17 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('admin', [
             Admincheck::class
         ]);
+        $middleware->appendToGroup('subadmin', [
+            Subadmincheck::class
+        ]);
+        $middleware->appendToGroup('seo', [
+            Seocheck::class
+        ]);
         $middleware->appendToGroup('appointment', [
             Appointmentcheck::class
         ]);
         $middleware->appendToGroup('blog', [
             Blogcheck::class
-        ]);
-        $middleware->appendToGroup('seo', [
-            Seocheck::class
-        ]);
-        $middleware->appendToGroup('subadmin', [
-            Subadmincheck::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

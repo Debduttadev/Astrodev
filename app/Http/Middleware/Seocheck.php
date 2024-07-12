@@ -18,7 +18,7 @@ class Seocheck
     {
         if (auth()->check()) {
             $user = Auth::user();
-            if ($user['usertype'] == 2) {
+            if ($user['usertype'] == 2 || $user['usertype'] == 1 || $user['usertype'] == 0) {
                 return $next($request);
             }
             return redirect()->route('dashboard')->with('error', 'Unauthorized Access');

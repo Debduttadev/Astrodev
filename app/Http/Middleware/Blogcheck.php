@@ -18,7 +18,7 @@ class Blogcheck
     {
         if (auth()->check()) {
             $user = Auth::user();
-            if ($user['usertype'] == 5) {
+            if ($user['usertype'] == 5 || $user['usertype'] == 1 || $user['usertype'] == 0) {
                 return $next($request);
             }
             return redirect()->route('dashboard')->with('error', 'Unauthorized Access');
