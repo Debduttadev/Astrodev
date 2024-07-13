@@ -234,34 +234,16 @@ $about_contact=aboutalldetails();
 
         <!-- === Testimonials === -->
         <div id="owl-testimonials" class="owl-carousel owl-theme testimonial text-center white-color">
-
+            @foreach ( $reviews as $review)
             <!-- === Testimonial item 1 === -->
             <div class="testimonial-item text-center">
-                <p class="testimonial-desc"><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> He is the best advisor for life. Not just an astrologer a person who resolves any sort of problem within a minute. He gave me certain remedies and I use that properly and all of my problems get resolved.I am extremely overwhelmed to meet him and take his blessings for any guidance. Absolutely accurate prediction in each and every step. I will highly recommend him . He is not just an astrologer but a part of family member as well. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                <p class="testimonial-desc"><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> {{ $review->review}}<i class="fa fa-quote-right" aria-hidden="true"></i></p>
                 <div class="testimonial-thumb">
                     <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
-                <h5 class="testimonial-author">Kajal Sarkar</h5>
+                <h5 class="testimonial-author">{{ $review->user_name}}</h5>
             </div>
-
-            <!-- === Testimonial item 2 === -->
-            <div class="testimonial-item text-center">
-                <p class="testimonial-desc"><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> If you are worried and tensed about your future, then surely contact Achariya Debdutta. In my bad times, when I was suffering and not getting a single way out, he was the one who deducted my tension and anxiety, and guided me, which gave an excellent result. His astrological predictions and remedies are very very accurate to me. Even my family is also very pleased to meet him and come under his guidance. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                <div class="testimonial-thumb">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <h5 class="testimonial-author">Swapan Bhattacharyya</h5>
-            </div>
-
-            <!-- === Testimonial item 3 === -->
-            <div class="testimonial-item text-center">
-                <p class="testimonial-desc"><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> I've consulted with several astrologers, but Achariya debdutta stands out for his deep understanding and precise predictions.He doesn't just make general comments or give bad advice. Instead, he carefully thinks about each client's unique situation before giving them personalized advice. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                <div class="testimonial-thumb">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <h5 class="testimonial-author">Ajay Saha</h5>
-            </div>
-
+            @endforeach
         </div> <!-- /#owl-testimonials -->
 
     </section>

@@ -20,6 +20,7 @@
                 $seodetails = "";
                 $seodetailsubmenu = "";
                 $alltag="";
+                $adminreview = "";
 
                 if ($navstatus == "adminuser"){
                 $adminuser = "active";
@@ -48,6 +49,9 @@
                 $seodetailsubmenu = "show";
                 }elseif ($navstatus == "alttag"){
                 $seodetails = "active";
+                $seodetailsubmenu = "show";
+                }elseif ($navstatus == "reviews"){
+                $adminreview = "active";
                 }else{
                 $dashboard = "active";
                 }
@@ -166,6 +170,15 @@
                     About and Contact details
                 </a>
                 @endif
+
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
+                <a class="nav-link {{ $adminreview }}" href="{{ URL::to('adminreviewmanage') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-regular fa-comments {{ $adminreview }}"></i></div>
+                    Manage customer review
+                </a>
+                @endif
+
+
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $managecontactus }}" href="managecontactus">

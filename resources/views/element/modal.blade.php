@@ -663,3 +663,34 @@
          </div>
      </div>
  </div>
+
+ <!-- review modal to add customer review -->
+ <div class="modal fade" id="addcustomerreview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title">Add Customer Review</h5>
+                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <div class="container">
+                     <form method="POST" action="{{ URL::to('addcustomerreview') }}">
+                         @csrf
+                         <div class="mb-4">
+                             <label for="username" class="form-label">Customer name</label>
+                             <input type="text" name="user_name" class="form-control" id="username" placeholder="">
+                         </div>
+
+                         <div class="mb-4">
+                             <label for="exampleFormControlTextarea1" class="form-label">Customer Review</label>
+                             <textarea class="form-control" name="review" id="exampleFormControlTextarea1" rows="3"></textarea>
+                         </div>
+                         <button type="submit" class="btn btn-secondary">Add Review</button>
+
+                     </form>
+                 </div>
+             </div>
+             <div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+         </div>
+     </div>
+ </div>

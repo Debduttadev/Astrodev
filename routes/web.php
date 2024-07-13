@@ -15,6 +15,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HoroscopesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReviewsectionController;
 use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
@@ -156,6 +157,13 @@ Route::middleware('auth')->group(function () {
         Route::get('editservice/{id}', [ServiceController::class, 'editservice']);
         Route::get('/deleteservice', [ServiceController::class, 'deleteservice']);
         Route::post('updateservice', [ServiceController::class, 'updateservice']);
+
+        //review managements
+        Route::get('/adminreviewmanage', [ReviewsectionController::class, 'index']);
+        Route::post('addcustomerreview', [ReviewsectionController::class, 'addcustomerreview']);
+        Route::get('editreview/{id}', [ReviewsectionController::class, 'editreview']);
+        Route::post('updatereview', [ReviewsectionController::class, 'updatereview']);
+        Route::get('/deletereview', [ReviewsectionController::class, 'destroy']);
     });
 });
 

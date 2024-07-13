@@ -11,6 +11,7 @@ use App\Models\category;
 use App\Models\keyword;
 use App\Models\seodetails;
 use Illuminate\Http\Request;
+use App\Models\reviewsection;
 
 class HomeController extends Controller
 {
@@ -93,8 +94,9 @@ class HomeController extends Controller
             $blogitems[$blogdata->id]['createdat'] = $blogdata->created_at->format('d F, Y');
         }
 
-        //dd($blogitems);
-        return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems]);
+        $reviews = reviewsection::all();
+        //dd($reviews);
+        return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems, 'reviews' => $reviews]);
     }
 
     /**

@@ -36,7 +36,7 @@
                     <label for="exampleFormControlInput3" class="form-label">Title</label>
                     <input type="text" class="form-control code" name="title" value="{{$seodata['title']}}" id="exampleFormControlInput3">
                 </div>
-                
+
                 <input type="hidden" value="{{$seodata['page']}}" name="page">
                 <input type="hidden" value="{{$seodata['relatedid']}}" name="relatedid">
                 <input type="hidden" value="{{$seodata['pagetype']}}" name="pagetype">

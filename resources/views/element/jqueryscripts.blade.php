@@ -553,6 +553,34 @@
             $('.paymentformphone').val(phone);
         })
 
+        //delete review
+        $(document).on('click', '.deletereview', function() {
+
+            var obj = $(this);
+            var id = $(this).attr('reviewid');
+
+            bootbox.confirm("Are you sure to delete this Review?", function(result) {
+                if (result) {
+                    $.ajax({
+                        url: base_url + '/deletereview',
+                        method: "get",
+                        data: {
+                            'id': id
+                        }
+                    }).done(function(msg) {
+                        var massage = JSON.parse(msg);
+                        //console.log(massage);
+                        if (massage.status == 1 && massage.msg == "true") {
+                            bootbox.alert("Review Deleted Successful")
+                            obj.parent().parent().remove();
+                        } else if (massage.status == 0 && massage.msg == "false") {
+                            bootbox.alert("Sorry Review Not Deleted")
+                        }
+                    })
+                } else {}
+            });
+        });
+
         function alttagmodaldata(obj) {
             var page = obj.attr('page');
             var relatedid = obj.attr('relatedid');
