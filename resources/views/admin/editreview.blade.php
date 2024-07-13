@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h2 class="mt-4"><a href="{{ URL::to('seodetails') }}">Seo details page</a> / Edit Seo Details</h2>
+        <h2 class="mt-4"><a href="{{ URL::to('adminreviewmanage') }}">Reviews</a> / Edit Reviews</h2>
         <!-- to show the session status message -->
         @php
         $sessiondata = session()->all();
