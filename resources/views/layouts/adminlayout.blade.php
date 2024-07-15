@@ -50,6 +50,12 @@
       width: 20%;
     }
 
+    table.datatablereview thead tr th:last-child {
+      word-break: break-word !important;
+      vertical-align: top !important;
+      width: 20%;
+    }
+
 
     table.servicetable tbody td a {
       margin: 10px !important;
@@ -97,10 +103,9 @@
       background-color: black;
     }
 
-    ul li{
+    ul li {
       list-style: none !important;
     }
-    
   </style>
   @include('element.adminheader')
   <div id="layoutSidenav">
@@ -123,7 +128,6 @@
   <script src="{{ URL::to('admin/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
   <script src="{{ URL::to('admin/js/scripts.js') }}"></script>
   <script src="{{ URL::to('admin/js/simple-datatables.min.js') }}" crossorigin="anonymous"></script>
-  <script src="{{ URL::to('admin/js/datatables-simple-demo.js') }}"></script>
   <script src="{{ URL::to('admin/js/datatables-simple-demo.js') }}"></script>
   <script src="{{ URL::to('admin/js/bootbox.min.js') }}"></script>
   <script src="{{ URL::to('admin/js/bootbox.js') }}"></script>

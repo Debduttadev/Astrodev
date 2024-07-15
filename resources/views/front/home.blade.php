@@ -249,7 +249,6 @@ $about_contact=aboutalldetails();
     </section>
     <!-- End Testimonial -->
 
-
     <!-- Start blog -->
     <section id="blog" class="p-top-80 p-bottom-80">
 

@@ -38,12 +38,12 @@
                 Admin Review table
             </div>
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table id="datatablereview" class="table datatablereview">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Review</th>
+                            <th class="review">Review</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -51,7 +51,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Review</th>
+                            <th class="review">Review</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -63,10 +63,10 @@
                         <tr>
                             <td>{{ $i  }}</td>
                             <td>{{ $data->user_name }}</td>
-                            <td>{{ $data->review }}</td>
+                            <td class="review">{{ $data->review }}</td>
                             <td>
+                                <a style="font-size: medium; margin-right:20px;" title="Edit Banner Video" class="btn btn-warning" href="{{ URL::to('editreview/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
 
-                                <a style="font-size: medium;" title="Edit Banner Video" class="btn btn-warning" href="{{ URL::to('editreview/' .base64_encode($data->id)) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
                                 <a title="Delete Review" class="btn btn-danger deletereview" reviewid="{{ base64_encode($data['id'])}}"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>

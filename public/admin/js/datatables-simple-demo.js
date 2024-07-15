@@ -10,8 +10,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
     if (bannerdatatable) {
         new simpleDatatables.DataTable(bannerdatatable);
     }
+
     const youtubedatatable = document.getElementById("youtubedatatable");
     if (youtubedatatable) {
         new simpleDatatables.DataTable(youtubedatatable);
+    }
+
+    const datatablereview = document.getElementById("datatablereview");
+    if (datatablereview) {
+        new simpleDatatables.DataTable(datatablereview, {
+            fixedColumns: true,
+            data: { class: "my-class", style: "width: 20%" },
+        });
     }
 });
