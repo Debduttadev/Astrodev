@@ -18,9 +18,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     const datatablereview = document.getElementById("datatablereview");
     if (datatablereview) {
-        new simpleDatatables.DataTable(datatablereview, {
-            fixedColumns: true,
-            data: { class: "my-class", style: "width: 20%" },
-        });
+        new simpleDatatables.DataTable(datatablereview);
     }
 });
