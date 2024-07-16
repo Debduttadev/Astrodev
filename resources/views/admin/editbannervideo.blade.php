@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4">Edit Admin User</h3>
+        <h2 class="mt-4">Edit Admin User</h2>
         <div class="row">
 
             <form class="user" id="formdata7" method="POST" action="{{ URL::to('updatebannervideo') }}" enctype="multipart/form-data">
@@ -31,7 +31,7 @@
                     <input type="url" pattern="https://.*" class="form-control form-control-user" placeholder="{{$placehoslder}}" name="videolink" value="{{$bannervideodata->videolink}}" autofocus>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4 bannertextsection">
                     <label class="control-label">File Type</label>
 
                     <div class="form-check">
@@ -45,24 +45,31 @@
                         @if($bannervideodata->thumbnailtype == 0)
                         @php
                         $banner="checked";
+                        $textareadisplay='style="display: block;"';
                         @endphp
                         @else
                         @php
                         $video="checked";
+                        $textareadisplay='style="display: none;"';
                         @endphp
                         @endif
 
-                        <input class="form-check-input" type="radio" name="thumbnailtype" id="editflexRadioDefault1" value="0" {{$banner}}>
+                        <input class="form-check-input filetypebannervideo" type="radio" name="thumbnailtype" id="editflexRadioDefault1" value="0" {{$banner}}>
                         <label class="form-check-label" for="flexRadioDefault1">
                             Banner
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="thumbnailtype" id="editflexRadioDefault2" value="1" {{$video}}>
+                        <input class="form-check-input filetypebannervideo" type="radio" name="thumbnailtype" id="editflexRadioDefault2" value="1" {{$video}}>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Video panel
                         </label>
                     </div>
+                </div>
+
+                <div class="mt-4 bannertextshow" {!! $textareadisplay !!} maxlength="50">
+                    <label class="control-label">Banner Text </label>
+                    <textarea class="form-control form-control-user" id="textareabanneredit" name="bannertext" rows="3">{{$bannervideodata->bannertext}}</textarea>
                 </div>
 
                 <div class="mt-4">

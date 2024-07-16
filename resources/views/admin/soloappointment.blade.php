@@ -3,14 +3,14 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4"><strong>
+        <h2 class="mt-4"><strong>
                 @if ($page_name === null)
                 client
                 @else
                 {{ $page_name}}
                 @endif
             </strong>
-        </h1>
+        </h2>
 
         <!-- to show the session status message -->
         <div class="card mb-4">

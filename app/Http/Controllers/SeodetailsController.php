@@ -7,12 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\blog;
 use App\Http\Requests\StoreseodetailsRequest;
-use App\Http\Requests\UpdateseodetailsRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
+
 
 class SeodetailsController extends Controller
 {
@@ -28,8 +24,10 @@ class SeodetailsController extends Controller
             $seodetails[$key]['page'] = $data->page;
             $seodetails[$key]['pagetype'] = "static";
             $seodetails[$key]['relatedid'] = $data->relatedid;
+            $seodetails[$key]['status'] = 1;
         }
         //dd($seodetails);
+
         $i = 0;
         $newseo = [];
         $services = Service::select('id', 'nameurl')->get();
@@ -37,16 +35,26 @@ class SeodetailsController extends Controller
             $newseo[$i]['page'] = "service/" . $service->nameurl;
             $newseo[$i]['pagetype'] = "service";
             $newseo[$i]['relatedid'] = $service->id;
-
+            $seostatus = seodetails::where([['relatedid', '=', $service->id], ['page', '=', 'service']])->first();
+            if ($seostatus) {
+                $newseo[$i]['status'] = 1;
+            } else {
+                $newseo[$i]['status'] = 0;
+            }
             $i++;
         }
 
         $blogs = blog::select('id', 'nameurl')->get();
         foreach ($blogs as $blog) {
             $newseo[$i]['page'] = "blog/" . $blog->nameurl;
-            $newseo[$i]['pagetype'] = "blog";
+            $newseo[$i]['pagetype'] = "relatedid";
             $newseo[$i]['relatedid'] = $blog->id;
-
+            $seostatus = seodetails::where([['relatedid', '=', $blog->id], ['page', '=', 'blog']])->first();
+            if ($seostatus) {
+                $newseo[$i]['status'] = 1;
+            } else {
+                $newseo[$i]['status'] = 0;
+            }
             $i++;
         }
         //dd($newseo);
@@ -56,9 +64,29 @@ class SeodetailsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function xmlupload(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        //dd($data);
+
+        if ($request->hasFile('sitemap')) {
+            //dd($data);
+            $file = $request->file('sitemap');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'sitemap' . '.' . $ext;
+
+            $image = public_path('sitemap') . '/' . $filename;
+            if (file_exists($image)) {
+                unlink($image);
+            }
+
+            if ($file->move(public_path('sitemap'), $filename)) {
+                session(['status' => "1", 'msg' => 'Sitemap Uploaded Successfully']);
+            } else {
+                session(['status' => "0", 'msg' => 'Sitemap Uploaded not done']);
+            }
+            return redirect()->back();
+        }
     }
 
     /**
@@ -83,7 +111,7 @@ class SeodetailsController extends Controller
     public function editseo($pagetype, $nameulr)
     {
         $seodata = [];
-        $seodetails = seodetails::where('page', '=', $nameulr)->first();
+        $seodetails = seodetails::where('page', '=', $pagetype)->first();
 
         if (!empty($seodetails) && $seodetails != null) {
             $seodata['page'] = $seodetails->page;
@@ -123,24 +151,24 @@ class SeodetailsController extends Controller
     {
         $data = $request->except('_token');
         //dd($data);
-        if (seodetails::where([['page', '=', $request->page], ['relatedid', '=', $request->relatedid]])->exists()) {
+        if (seodetails::where([['page', '=', $request->pagetype], ['relatedid', '=', $request->relatedid]])->exists()) {
             // page found
             $updateseo['title'] = $data['title'];
             $updateseo['keyword'] = $data['keyword'];
             $updateseo['description'] = $data['description'];
             $updateseo['metadata'] = json_encode($data['metadata']);
 
-            $update = seodetails::where([['page', '=', $request->page], ['relatedid', '=', $request->relatedid]])->update($updateseo);
+            $update = seodetails::where([['page', '=', $request->pagetype], ['relatedid', '=', $request->relatedid]])->update($updateseo);
 
             if ($update) {
-                session(['status' => "1", 'msg' => 'Seo Updated is successfully']);
+                session(['status' => "1", 'msg' => 'Seo Updated successfully']);
             } else {
-                session(['status' => "0", 'msg' => 'Seo Updated is not done']);
+                session(['status' => "0", 'msg' => 'Seo Updated not done']);
             }
         } else {
             //page not found
             $newseo = new seodetails;
-            $newseo->page = $data['page'];
+            $newseo->page = $data['pagetype'];
             $newseo->relatedid = $data['relatedid'];
             $newseo->title = $data['title'];
             $newseo->keyword = $data['keyword'];

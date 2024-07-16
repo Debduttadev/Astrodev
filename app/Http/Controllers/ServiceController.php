@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Models\seodetails;
 
 class ServiceController extends Controller
 {
@@ -229,6 +230,7 @@ class ServiceController extends Controller
         $image = public_path('service') . '/' . $request->serviceimage;
         //echo json_encode(array('status' => 1, 'msg' => $image));
         $service = Service::where('id', $id)->delete();
+        $seoblog = seodetails::where([['relatedid', $id], ['page', 'service']])->delete();
         if ($service) {
             unlink($image);
             echo json_encode(array('status' => 1, 'msg' => "true"));

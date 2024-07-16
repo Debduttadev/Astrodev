@@ -3,13 +3,13 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">
+        <h2 class="mt-4">
             @if ($page_name === null)
             client
             @else
             {{ $page_name}}
             @endif
-        </h1>
+        </h2>
 
         <div class="card mb-4">
             <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#addbannervideo">Add new Banner or Videos</button>
@@ -47,6 +47,7 @@
                         <tr>
                             <th>Thumbnail</th>
                             <th>File Type</th>
+                            <th>Banner Text</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -55,6 +56,7 @@
                         <tr>
                             <th>Thumbnail</th>
                             <th>File Type</th>
+                            <th>Banner Text</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -69,6 +71,9 @@
                             </td>
                             <td>
                                 @if($data->thumbnailtype == 0)Banner Panel @elseif($data->thumbnailtype == 1) Video Panel @endif
+                            </td>
+                            <td>
+                                {{$data->bannertext}}
                             </td>
                             <td>
                                 @if( $data->show == 0)Hide @elseif($data->show == 1) Show @endif

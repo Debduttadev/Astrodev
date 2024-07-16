@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4">Edit Admin User</h3>
+        <h2 class="mt-4">Edit Admin User</h2>
         <div class="row">
 
             <form method="POST" action="{{ URL::to('updateadminuser') }}">

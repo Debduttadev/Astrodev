@@ -286,6 +286,38 @@
             convert_urls: false,
         });
 
+
+        tinymce.init({
+            selector: '#textareabanner',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 150,
+            extended_valid_elements: 'b i ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
+
+        tinymce.init({
+            selector: '#textareabanneredit',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 200,
+            extended_valid_elements: 'b i ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
         tinymce.init({
             selector: '#description',
             license_key: 'gpl',
@@ -483,6 +515,17 @@
             var msg = $(this).attr('descriptiondata');
             bootbox.alert(msg)
         });
+
+        $('.filetypebannervideo').on('change', function() {
+            var type = $(this).val();
+            if (type == 0) {
+                $('.bannertextshow').show();
+            } else {
+                $('.bannertextshow').hide();
+                $('.bannertextshow').removeAttr('checked');
+            }
+        });
+
 
         // Get the button
         let mybutton = document.getElementById("topbutton");

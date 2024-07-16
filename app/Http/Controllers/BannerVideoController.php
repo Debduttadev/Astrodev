@@ -60,6 +60,7 @@ class BannerVideoController extends Controller
                         $newBannerVideo->thumbnail = $filename;
                         $newBannerVideo->videolink = $data['videolink'];
                         $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
+                        $newBannerVideo->bannertext = $data['bannertext'];
                         $newBannerVideo->show = $data['show'];
                         //dd($newBannerVideo);
 
@@ -99,6 +100,7 @@ class BannerVideoController extends Controller
                     $newBannerVideo->thumbnail = $filename;
                     $newBannerVideo->videolink = $data['videolink'];
                     $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
+                    $newBannerVideo->bannertext = $data['bannertext'];
                     $newBannerVideo->show = $data['show'];
                     //dd($newBannerVideo);
 
@@ -152,6 +154,7 @@ class BannerVideoController extends Controller
         //dd($request);
 
         $updatedata['videolink'] = $request->videolink;
+        $updatedata['bannertext'] = $request->bannertext;
         $updatedata['thumbnailtype'] = $request->thumbnailtype;
         $updatedata['show'] = $request->show;
         if ($updatedata['thumbnailtype'] == 1) {

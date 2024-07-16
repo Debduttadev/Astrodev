@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h3 class="mt-4">Edit Service</h3>
+        <h2 class="mt-4">Edit Service</h2>
         <div class="row">
 
             <form class="user" id="formdata" method="POST" action="{{ URL::to('updateservice') }}" enctype="multipart/form-data">

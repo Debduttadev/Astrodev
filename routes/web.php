@@ -115,6 +115,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/seodetails', [SeodetailsController::class, 'seodetails']);
         Route::get('editseo/{pagetype}/{nameurl}', [SeodetailsController::class, 'editseo']);
         Route::post('updateseo', [SeodetailsController::class, 'updateseo']);
+        Route::post('xmlupload', [SeodetailsController::class, 'xmlupload']);
 
         //Manage Social Links
         Route::get('/adminsocial', [SocialController::class, 'adminsocial']);

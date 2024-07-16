@@ -234,21 +234,27 @@
                              <input type="url" pattern="https://.*" class="form-control form-control-user" placeholder="https://www.youtube.com/watch?v=tZJeArQpsrI" name="videolink" value="" autofocus>
                          </div>
 
-                         <div class="mt-4">
+                         <div class="mt-4 bannertextsection">
                              <label class="control-label">File Type</label>
 
                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault1" value="0">
+                                 <input class="form-check-input filetypebannervideo" type="radio" name="thumbnailtype" id="flexRadioDefault1" value="0">
                                  <label class="form-check-label" for="flexRadioDefault1">
                                      Banner
                                  </label>
                              </div>
+
                              <div class="form-check">
-                                 <input class="form-check-input" type="radio" name="thumbnailtype" id="flexRadioDefault2" value="1" checked>
+                                 <input class="form-check-input filetypebannervideo" type="radio" name="thumbnailtype" id="flexRadioDefault2" value="1" checked>
                                  <label class="form-check-label" for="flexRadioDefault2">
                                      Video panel
                                  </label>
                              </div>
+                         </div>
+
+                         <div class="mt-4 bannertextshow" style="display: none;" maxlength="50">
+                             <label class="control-label">Banner Text </label>
+                             <textarea class="form-control form-control-user" id="textareabanner" name="bannertext" rows="3"></textarea>
                          </div>
 
                          <div class="mt-4">

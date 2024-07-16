@@ -41,7 +41,7 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn ">
                                 <label class="darkcolorfont" for="name">Full Name*</label>
                                 <input name="name" id="name" type="text" placeholder="Full Name*" required />
-                                <span class="error" id="err-name">Please enter full name</span>
+                                <span class="error" id="err-name">Please enter Full name</span>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">

@@ -53,11 +53,7 @@ $about_contact=aboutalldetails();
             <div class="item ">
                 <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="{{$alttag}}" title="{{$title}}">
                 <div class="carousel-caption wow fadeInLeft p-3" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                    <h1>Astro Achariya Debdutta</h1>
-                    <p> Globally Acclaimed Astrologer</p>
-                    <p> Vastu Influencer,</p>
-                    <p>Life Coach, Success Guru</p>
-                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                    <h1>{!!$thumbnail->bannertext!!}</h1>
                 </div>
             </div>
             @php
@@ -248,6 +244,7 @@ $about_contact=aboutalldetails();
 
     </section>
     <!-- End Testimonial -->
+
 
     <!-- Start blog -->
     <section id="blog" class="p-top-80 p-bottom-80">

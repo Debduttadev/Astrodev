@@ -82,7 +82,7 @@
 
             var form = $(this);
             var actionUrl = form.attr('action');
-            console.log(form.serialize());
+            //#appoinmentformconsole.log(form.serialize());
             $.ajax({
                 type: "POST",
                 url: actionUrl,

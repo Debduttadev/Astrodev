@@ -15,6 +15,7 @@ use Illuminate\View\View;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use App\Models\seodetails;
 
 class BlogController extends Controller
 {
@@ -661,6 +662,7 @@ class BlogController extends Controller
         //echo json_encode(array('status' => 1, 'msg' => $id));
         $blog = blog::where('id', $id)->delete();
         $altblog = alttag::where([['relatedid', $id], ['page', 'blog']])->delete();
+        $seoblog = seodetails::where([['relatedid', $id], ['page', 'blog']])->delete();
         if ($blog) {
             if (isset($image)) {
                 unlink($image);

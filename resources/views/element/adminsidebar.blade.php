@@ -137,7 +137,7 @@
                         <a class="nav-link {{ $seodetails }}" href="{{ URL::to('seodetails') }}">
                             <div class="sb-nav-link-icon">
                                 <i class="fa-regular fa-image {{ $seodetails }}"></i>
-                            </div> Seo Form for Pages
+                            </div> Manage Seo for Pages
                         </a>
                     </nav>
                 </div>

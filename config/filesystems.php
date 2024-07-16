@@ -76,6 +76,7 @@ return [
         public_path('blog') => storage_path('app/public/blog'),
         public_path('about') => storage_path('app/public/about'),
         public_path('horoscope') => storage_path('app/public/horoscope'),
+        public_path('sitemap') => storage_path('app/public/sitemap'),
     ],
 
 ];
