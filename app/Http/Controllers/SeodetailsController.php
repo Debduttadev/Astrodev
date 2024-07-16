@@ -73,14 +73,14 @@ class SeodetailsController extends Controller
             //dd($data);
             $file = $request->file('sitemap');
             $ext = $file->getClientOriginalExtension();
-            $filename = 'sitemap' . '.' . $ext;
+            $filename = $file->getClientOriginalName();
 
-            $image = public_path('sitemap') . '/' . $filename;
+            $image = public_path('/') . '/' . $filename;
             if (file_exists($image)) {
                 unlink($image);
             }
 
-            if ($file->move(public_path('sitemap'), $filename)) {
+            if ($file->move(public_path('/'), $filename)) {
                 session(['status' => "1", 'msg' => 'Sitemap Uploaded Successfully']);
             } else {
                 session(['status' => "0", 'msg' => 'Sitemap Uploaded not done']);

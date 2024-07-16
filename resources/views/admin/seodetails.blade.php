@@ -17,9 +17,9 @@
         <div class="mt-5 mb-4">
             <h1>Add XML Sitemap</h1>
             @php
-            $sitemap=URL::to('sitemap').'/'.'sitemap.xml';
+            $sitemap=URL::to('/').'/'.'sitemap.xml';
             @endphp
-            @if (file_exists(public_path('sitemap') . '/' . 'sitemap.xml'))
+            @if (file_exists(public_path('/') . '/' . 'sitemap.xml'))
             <a href="{{ $sitemap }}" class="btn btn-primary mt-4 mb-4" target="_blank">See website Sitemap</a>
             @endif
             <form id="xmlform" method="post" action="{{ URL::to('xmlupload') }}" enctype="multipart/form-data">
