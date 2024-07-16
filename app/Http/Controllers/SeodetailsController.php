@@ -111,10 +111,22 @@ class SeodetailsController extends Controller
     public function editseo($pagetype, $nameulr)
     {
         $seodata = [];
-        $seodetails = seodetails::where('page', '=', $pagetype)->first();
+        if ($pagetype == 'static') {
+            $seodetails = seodetails::where('page', '=', $nameulr)->first();
+            $relatedid = 0;
+        } elseif ($pagetype == 'service') {
+            $service = Service::select('id')->where('nameurl', $nameulr)->first();
+            $relatedid = $service->id;
+            $seodetails = seodetails::where([['page', '=', $pagetype], ['relatedid', '=', $relatedid]])->first();
+        } elseif ($pagetype == 'blog') {
+            $blog = blog::select('id')->where('nameurl', $nameulr)->first();
+            $relatedid = $blog->id;
+            $seodetails = seodetails::where([['page', '=', $pagetype], ['relatedid', '=', $relatedid]])->first();
+        }
+
 
         if (!empty($seodetails) && $seodetails != null) {
-            $seodata['page'] = $seodetails->page;
+            $seodata['page'] = $nameulr;
             $seodata['pagetype'] = $pagetype;
             $seodata['relatedid'] = $seodetails->relatedid;
             $seodata['title'] = $seodetails->title;
@@ -122,16 +134,6 @@ class SeodetailsController extends Controller
             $seodata['description'] = $seodetails->description;
             $seodata['metadata'] = json_decode($seodetails->metadata);
         } else {
-            if ($pagetype == 'service') {
-                $service = Service::select('id')->where('nameurl', $nameulr)->first();
-                $relatedid = $service->id;
-            } elseif ($pagetype == 'blog') {
-                $blog = blog::select('id')->where('nameurl', $nameulr)->first();
-                $relatedid = $blog->id;
-            } else {
-                $relatedid = 0;
-            }
-
             $seodata['page'] = $nameulr;
             $seodata['pagetype'] = $pagetype;
             $seodata['relatedid'] = $relatedid;

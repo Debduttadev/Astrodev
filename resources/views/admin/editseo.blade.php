@@ -22,12 +22,12 @@
         <div class="row">
             @if($seodata['pagetype'] == "static")
             @if($seodata['page'] == 'home')
-            <h3 class="mb-3">{{URL::to('/')}}</h3>
+            <h3 class="mb-3"><a href="{{URL::to('/')}}" target="_blank">{{URL::to('/')}}</a></h3>
             @else
-            <h3 class="mb-3">{{URL::to('/').'/'.$seodata['page']}}</h3>
+            <h3 class="mb-3"><a href="{{URL::to('/').'/'.$seodata['page']}}" target="_blank">{{URL::to('/').'/'.$seodata['page']}}</a></h3>
             @endif
             @else
-            <h3 class="mb-3">{{URL::to('/').'/'.$seodata['pagetype'].'/'.$seodata['page']}}</h3>
+            <h3 class="mb-3"><a href="{{URL::to('/').'/'.$seodata['pagetype'].'/'.$seodata['page']}}" target="_blank">{{URL::to('/').'/'.$seodata['pagetype'].'/'.$seodata['page']}}</a></h3>
             @endif
 
             <form method="POST" action="{{ URL::to('updateseo') }}">
