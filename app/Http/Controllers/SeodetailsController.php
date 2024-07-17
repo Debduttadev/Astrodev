@@ -81,10 +81,11 @@ class SeodetailsController extends Controller
             }
 
             if ($file->move(public_path('/'), $filename)) {
-                session(['status' => "1", 'msg' => 'Sitemap Uploaded Successfully']);
+                session(['status' => "1", 'msg' => 'File Uploaded Successfully']);
             } else {
-                session(['status' => "0", 'msg' => 'Sitemap Uploaded not done']);
+                session(['status' => "0", 'msg' => 'File Uploaded not done']);
             }
+
             return redirect()->back();
         }
     }
