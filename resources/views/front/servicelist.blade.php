@@ -6,7 +6,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-12">
                 <!-- Section Title -->
                 <div class="section-title text-center m-bottom-40">
                     <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h2>

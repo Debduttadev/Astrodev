@@ -34,11 +34,11 @@ $about_contact=aboutalldetails();
                 <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="{{$alttag1}}" title="{{ $title1 }}">
 
                 <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                    <h1>Astro Achariya Debdutta</h1>
-                    <p> Globally Acclaimed Astrologer</p>
-                    <p> Vastu Influencer,</p>
-                    <p>Life Coach, Success Guru</p>
-                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main">Your Journey Begins Here</a>
+                    <h1 style="font-size: 28px !important;">Astro Achariya Debdutta</h1>
+                    <p style="font-size: 20px !important;"> Globally Acclaimed Astrologer</p>
+                    <p style="font-size: 20px !important;"> Vastu Influencer,</p>
+                    <p style="font-size: 20px !important;">Life Coach, Success Guru</p>
+                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main roundbtn">Your Journey Begins Here</a>
                 </div>
             </div>
             @php
@@ -53,7 +53,7 @@ $about_contact=aboutalldetails();
             <div class="item ">
                 <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="{{$alttag}}" title="{{$title}}">
                 <div class="carousel-caption wow fadeInLeft p-3" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                    <h1>{!!$thumbnail->bannertext!!}</h1>
+                    {!!$thumbnail->bannertext!!}
                 </div>
             </div>
             @php
@@ -64,40 +64,41 @@ $about_contact=aboutalldetails();
         </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <a class="left carousel-control roundbtn" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control roundbtn" href="#carousel-example-generic" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
 
     <!-- Start Regular Section -->
-    <section id="about" class="p-top-80 p-bottom-80 ">
+    <section id="about" class="p-top-60 p-bottom-60 ">
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <!-- Section Title -->
+                        <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
+                            {!! html_entity_decode($about_contact->title)!!}
+                        </div>
 
-                <div class="col-md-6">
-                    <!-- Section Title -->
-                    <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                        {!! html_entity_decode($about_contact->title)!!}
-                    </div>
+                        <a href="{{ URL::to('/aboutus') }}" class="m-top-30 m-bottom-30 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
+                    </div> <!-- /.col -->
 
-                    <a href="{{ URL::to('/aboutus') }}" class="m-top-30 m-bottom-30 btn btn-main wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
-                </div> <!-- /.col -->
+                    <div class="col-md-5 col-md-offset-1">
 
-                <div class="col-md-5 col-md-offset-1">
+                        <div class="feature-image parent">
+                            <a href="{{ URL::to('/aboutus') }}">
+                                <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
+                                <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                            </a>
+                        </div>
 
-                    <div class="feature-image parent">
-                        <a href="{{ URL::to('/aboutus') }}">
-                            <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
-                            <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="Feature Image" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
-                        </a>
-                    </div>
-
-                </div> <!-- /.col -->
+                    </div> <!-- /.col -->
+                </div>
 
             </div> <!-- /.row -->
         </div> <!-- /.container -->
@@ -105,11 +106,10 @@ $about_contact=aboutalldetails();
     <!-- End Regular Section -->
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
     <!-- Start Team -->
-    <section id="service" class="p-top-80 p-bottom-50">
+    <section id="service" class="p-top-60 p-bottom-60">
         <div class="container">
-
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h1>
@@ -118,7 +118,8 @@ $about_contact=aboutalldetails();
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
-
+        </div>
+        <div class="container">
             <div class="row">
                 @foreach ( $servicedata as $servicekey => $services )
                 <!-- === Team Item 1 === -->
@@ -163,29 +164,28 @@ $about_contact=aboutalldetails();
         </div> <!-- /.container -->
     </section>
     <!-- End Team -->
-    <section id="myjourney" class="p-top-80 p-bottom-80">
-        <div>
-            <div class="text-center mt-20">
-                <h1 class=" text-2xl md:text-3xl lg:text-4xl m-3 font-philosopher">MY JOURNEY</h1>
-                <h3 class="font-dancing text-xl myjourneyfont">...what you seek, seeks you</h3>
-                <div class="m-auto px-3 text-slate-600 font-sans w-[90%] md:w-[70%] lg:w-[50%] mt-3" style="font-family:Poppins;     padding: 0 20px;">
-                    <p>Embarking on a spiritual odyssey in childhood, </p>
-                    <p>I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu.</p>
-                    <p>Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey whe b re spirituality meets practical wisdom.</p>
-                </div>
-            </div>
+    <section id="myjourney" class="p-top-60 p-bottom-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Section Title -->
+                    <div class="section-title text-center m-bottom-40">
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">MY JOURNEY</h1>
+                        <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                        <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">Embarking on a spiritual odyssey in childhood, I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu. Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey where spirituality meets practical wisdom.</p>
+                    </div>
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
         </div>
     </section>
     <!-- End Regular Section -->
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start blog -->
-    <section id="youtube" class="p-top-80 p-bottom-80">
-
+    <section id="youtube" class="p-top-60 p-bottom-60">
         <div class="container ">
-
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12">
                     <!-- Section Title -->
                     <div class="section-title text-center m-bottom-40">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Featured Videos</h1>
@@ -193,118 +193,130 @@ $about_contact=aboutalldetails();
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
-
+        </div>
+        <div class="container ">
             <div class="row">
-                <!-- === blog === -->
-                <div id="owl-youtube" class="owl-carousel owl-theme">
-                    @foreach ($youtube_video as $youtubedata)
-                    @php
-                    $alttag2=$alttagforimages['videos'][$youtubedata->id]['alttag'];
-                    $title2=$alttagforimages['videos'][$youtubedata->id]['title'];
-                    @endphp
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="{{$youtubedata->videolink}}" target="_blank">
-                                <img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt="{{$alttag2}}" title="{{$title2}}">
-                            </a>
-                        </div><!--post media-->
-                    </div> <!-- /.blog -->
-                    @endforeach
-                </div><!-- /#owl-testimonials -->
-
+                <div class="col-md-12">
+                    <!-- === blog === -->
+                    <div id="owl-youtube" class="owl-carousel owl-theme col-md-4">
+                        @foreach ($youtube_video as $youtubedata)
+                        @php
+                        $alttag2=$alttagforimages['videos'][$youtubedata->id]['alttag'];
+                        $title2=$alttagforimages['videos'][$youtubedata->id]['title'];
+                        @endphp
+                        <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                            <div class="blog-media">
+                                <a href="{{$youtubedata->videolink}}" target="_blank">
+                                    <img src="{{ URL::to('bannervideo').'/'.$youtubedata->thumbnail }}" alt="{{$alttag2}}" title="{{$title2}}">
+                                </a>
+                            </div><!--post media-->
+                        </div> <!-- /.blog -->
+                        @endforeach
+                    </div><!-- /#owl-testimonials -->
+                </div>
             </div> <!-- /.row -->
-
         </div> <!-- /.container -->
-
     </section>
 
 
     <!-- Start Testimonial -->
-    <section id="testimonials" class="parallax-bg overlay-dark p-top-80 p-bottom-80" data-stellar-background-ratio="0.5">
+    <section id="testimonials" class="parallax-bg overlay-dark p-top-20 p-bottom-20" data-stellar-background-ratio="0.5">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Section Title -->
+                    <div class="section-title text-center white-color m-bottom-40">
+                        <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Happy Client Testimonials</h1>
+                        <div class="divider-center-small divider-white wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                    </div>
 
-        <!-- Section Title -->
-        <div class="section-title text-center white-color m-bottom-40">
-            <h2 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Happy Client Testimonials</h2>
-            <div class="divider-center-small divider-white wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-        </div>
-
-        <!-- === Testimonials === -->
-        <div id="owl-testimonials" class="owl-carousel owl-theme testimonial text-center white-color">
-            @foreach ( $reviews as $review)
-            <!-- === Testimonial item 1 === -->
-            <div class="testimonial-item text-center">
-                <p class="testimonial-desc"><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> {{ $review->review}}<i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                <div class="testimonial-thumb">
-                    <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
-                <h5 class="testimonial-author">{{ $review->user_name}}</h5>
             </div>
-            @endforeach
-        </div> <!-- /#owl-testimonials -->
+        </div>
+        <!-- === Testimonials === -->
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="owl-testimonials" class="owl-carousel owl-theme testimonial text-center white-color ">
+                        @foreach ( $reviews as $review)
+                        <!-- === Testimonial item 1 === -->
+                        <div class="testimonial-item text-center">
+                            <p class="testimonial-desc "><i class="fa fa-quote-right fa-flip-horizontal" aria-hidden="true"></i> {{ $review->review}}<i class="fa fa-quote-right" aria-hidden="true"></i></p>
 
+                            <h5 class="testimonial-author"><i class="fa fa-user" aria-hidden="true"></i>
+                                {{ $review->user_name}}
+                            </h5>
+                        </div>
+                        @endforeach
+                    </div> <!-- /#owl-testimonials -->
+                </div>
+            </div>
+        </div>
     </section>
     <!-- End Testimonial -->
 
 
     <!-- Start blog -->
-    <section id="blog" class="p-top-80 p-bottom-80">
-
+    <section id="blog" class="p-top-60 p-bottom-60">
         <div class="container ">
-
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
+                    <div class="section-title text-center m-bottom-40 ">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
-                        <!-- <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s"><em>Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of.</em></p> -->
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
-
-            <div class="row">
-                <!-- === blog === -->
-                <div id="owl-blog" class="owl-carousel owl-theme">
-                    @foreach ($blogitems as $blog)
-                    @php
-                    $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
-                    $title=$alttagforimages['blog'][$blog['id']]['title'];
-                    @endphp
-                    <!-- === Blog item 1 === -->
-                    <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                        <div class="blog-media">
-                            <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
-                        </div><!--post media-->
-
-                        <div class="blog-post-info clearfix">
-                            <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
-                        </div><!--post info-->
-
-                        <div class="blog-post-body">
-                            <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
-                            @php
-                            $small = substr( strip_tags($blog['description']), 0, 200);
-                            @endphp
-                            <p class="p-bottom-10">{!! $small !!}.....</p>
-                            <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class="read-more">Read More >></a>
-                        </div><!--post body-->
-                    </div> <!-- /.blog -->
-                    @endforeach
-                </div><!-- /#owl-testimonials -->
-
-            </div> <!-- /.row -->
-        </div> <!-- /.container -->
-        <div class="container">
-            <a href="{{ URL::to('/blogs') }}" class="pull-left m-top-30 m-bottom-30 btn btn-main wow fadeInUp" style="margin-left: -15px;" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
         </div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- === blog === -->
+                    <div id="owl-blog" class="owl-carousel owl-theme col-md-4">
+                        @foreach ($blogitems as $blog)
+                        @php
+                        $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
+                        $title=$alttagforimages['blog'][$blog['id']]['title'];
+                        @endphp
+                        <!-- === Blog item 1 === -->
+                        <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                            <div class="blog-media">
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}"></a>
+                            </div><!--post media-->
+
+                            <div class="blog-post-info clearfix">
+                                <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
+                            </div><!--post info-->
+
+                            <div class="blog-post-body">
+                                <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
+                                @php
+                                $small = substr( strip_tags($blog['description']), 0, 120);
+                                @endphp
+                                <p class="p-bottom-10">{!! $small !!}.....</p>
+                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class="read-more">Read More >></a>
+                            </div><!--post body-->
+                        </div> <!-- /.blog -->
+                        @endforeach
+                    </div><!-- /#owl-testimonials -->
+
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ URL::to('/blogs') }}" class="pull-left m-top-30 m-bottom-30 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
+                    </div><!-- /.col-md-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
     </section>
 
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start Contact -->
-    <section id="contact" class="p-top-80 p-bottom-50">
+    <section id="contact" class="p-top-60 p-bottom-60">
         <div class="container">
-
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
@@ -314,117 +326,124 @@ $about_contact=aboutalldetails();
                     </div>
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
-
+        </div>
+        <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <!-- === Contact Form === -->
+                    <div class="col-md-7 col-sm-7 p-bottom-30">
+                        <div class="contact-form">
 
-                <!-- === Contact Form === -->
-                <div class="col-md-7 col-sm-7 p-bottom-30">
-                    <div class="contact-form row">
+                            <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="row">
 
-                        <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <div class="col-sm-6 contact-form-item wow zoomIn">
-                                <input name="fullname" id="name" type="text" placeholder="Your Name: *" required />
-                                <span class="error" id="err-name">please enter name</span>
+                                    <div class="col-md-6 contact-form-item wow zoomIn">
+                                        <input name="fullname" id="name" type="text" placeholder="Your Name: *" required />
+                                        <span class="error" id="err-name">please enter name</span>
+                                    </div>
+
+                                    <div class="col-md-6 contact-form-item wow zoomIn">
+                                        <input name="email" id="email" type="email" placeholder="E-Mail: *" required />
+                                        <span class="error" id="err-email">please enter e-mail</span>
+                                        <span class="error" id="err-emailvld">e-mail is not a valid format</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 contact-form-item wow zoomIn">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" id="basic-addon1">+91</div>
+                                            <input type="text" maxlength="10" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" aria-describedby="basic-addon1" required>
+                                            <span class="error" id="err-phone">please enter phone number</span>
+                                            <span class="error" id="err-phone">please enter numbers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 contact-form-item wow zoomIn">
+                                        <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 contact-form-item">
+                                        <button type="submit" class="btn contactsubmit roundbtn">Submit</button>
+                                    </div>
+                                </div>
+                                <div class="error errorcontact" id="err-state"></div>
+                            </form>
+
+                            <div class="clearfix"></div>
+                            <div class="panel panel-default" id="ajaxsuccess">
+                                <div class="panel-body">
+                                    Thank you for writing to us. We have received your message and will get back to you within as soon as possible.
+                                </div>
                             </div>
+                        </div> <!-- /.contacts-form & inner row -->
+                    </div> <!-- /.col -->
 
-                            <div class="col-sm-6 contact-form-item wow zoomIn">
-                                <input name="email" id="email" type="email" placeholder="E-Mail: *" required />
-                                <span class="error" id="err-email">please enter e-mail</span>
-                                <span class="error" id="err-emailvld">e-mail is not a valid format</span>
-                            </div>
+                    <!-- === Contact Information === -->
+                    <div class="col-md-5 col-sm-5 p-bottom-30">
+                        <div class="contact-info">
 
-                            <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
-                                    <span class="error" id="err-phone">please enter phone number</span>
-                                    <span class="error" id="err-phone">please enter numbers</span>
+                            <!-- === Location === -->
+                            <div class="m-top-20 wow slideInRight">
+                                <div class="contact-info-icon roundbtn">
+                                    <i class="fa fa-location-arrow"></i>
+                                </div>
+                                <div class="contact-info-title">
+                                    Address:
+                                </div>
+                                <div class="contact-info-text">
+                                    {{ $about_contact->address }}
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 contact-form-item wow zoomIn">
-                                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                            <!-- === Phone === -->
+                            <div class="m-top-20 wow slideInRight">
+                                <div class="contact-info-icon roundbtn">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="contact-info-title">
+                                    Phone number:
+                                </div>
+                                <div class="contact-info-text">
+
+                                    @foreach ($about_contact->phone as $phone )
+                                    <a href="tel:+91{{$phone}}" style="color: black;">+91{{$phone}}</a><br />
+                                    @endforeach
+                                </div>
                             </div>
 
-                            <div class="col-sm-12 contact-form-item">
-                                <button type="submit" class="btn contactsubmit">Submit</button>
+                            <!-- === Whatsapp === -->
+                            <div class="m-top-20 wow slideInRight">
+                                <div class="contact-info-icon roundbtn">
+                                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                                </div>
+                                <div class="contact-info-title">
+                                    WhatsApp:
+                                </div>
+                                <div class="contact-info-text">
+                                    <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us" style="color: #000;">{{ $about_contact->whatsapp }}</a>
+                                </div>
                             </div>
 
-                            <div class="error errorcontact" id="err-state"></div>
-
-                        </form>
-
-                        <div class="clearfix"></div>
-                        <div class="panel panel-default" id="ajaxsuccess">
-                            <div class="panel-body">
-                                Thank you for writing to us. We have received your message and will get back to you within as soon as possible.
+                            <!-- === Mail === -->
+                            <div class="m-top-20 wow slideInRight">
+                                <div class="contact-info-icon roundbtn">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="contact-info-title">
+                                    Email:
+                                </div>
+                                <div class="contact-info-text">
+                                    {{ $about_contact->email }}
+                                </div>
                             </div>
+
                         </div>
-                    </div> <!-- /.contacts-form & inner row -->
-                </div> <!-- /.col -->
-
-                <!-- === Contact Information === -->
-                <div class="col-md-5 col-sm-5 p-bottom-30">
-                    <address class="contact-info">
-
-                        <!-- === Location === -->
-                        <div class="m-top-20 wow slideInRight">
-                            <div class="contact-info-icon">
-                                <i class="fa fa-location-arrow"></i>
-                            </div>
-                            <div class="contact-info-title">
-                                Address:
-                            </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->address }}
-                            </div>
-                        </div>
-
-                        <!-- === Phone === -->
-                        <div class="m-top-20 wow slideInRight">
-                            <div class="contact-info-icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="contact-info-title">
-                                Phone number:
-                            </div>
-                            <div class="contact-info-text">
-
-                                @foreach ($about_contact->phone as $phone )
-                                <a href="tel:+91{{$phone}}" style="color: black;">+91{{$phone}}</a><br />
-                                @endforeach
-                            </div>
-                        </div>
-
-                        <!-- === Whatsapp === -->
-                        <div class="m-top-20 wow slideInRight">
-                            <div class="contact-info-icon">
-                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-info-title">
-                                WhatsApp:
-                            </div>
-                            <div class="contact-info-text">
-                                <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us" style="color: #000;">{{ $about_contact->whatsapp }}</a>
-                            </div>
-                        </div>
-
-                        <!-- === Mail === -->
-                        <div class="m-top-20 wow slideInRight">
-                            <div class="contact-info-icon">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                            <div class="contact-info-title">
-                                Email:
-                            </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->email }}
-                            </div>
-                        </div>
-
-                    </address>
-                </div> <!-- /.col -->
+                    </div> <!-- /.col -->
+                </div>
 
             </div> <!-- /.row -->
 

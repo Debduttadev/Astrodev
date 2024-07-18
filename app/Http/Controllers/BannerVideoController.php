@@ -60,9 +60,9 @@ class BannerVideoController extends Controller
                         $newBannerVideo->thumbnail = $filename;
                         $newBannerVideo->videolink = $data['videolink'];
                         $newBannerVideo->thumbnailtype = $data['thumbnailtype'];
-                        $newBannerVideo->bannertext = $data['bannertext'];
+                        $newBannerVideo->bannertext = "";
                         $newBannerVideo->show = $data['show'];
-                        //dd($newBannerVideo);
+                        // dd($newBannerVideo);
 
                         if ($newBannerVideo->save()) {
                             session(['status' => "1", 'msg' => 'File Add is successful']);
@@ -154,7 +154,6 @@ class BannerVideoController extends Controller
         //dd($request);
 
         $updatedata['videolink'] = $request->videolink;
-        $updatedata['bannertext'] = $request->bannertext;
         $updatedata['thumbnailtype'] = $request->thumbnailtype;
         $updatedata['show'] = $request->show;
         if ($updatedata['thumbnailtype'] == 1) {
@@ -180,6 +179,7 @@ class BannerVideoController extends Controller
                     // });
                     if ($image->save(public_path('bannervideo') . '/' . $filename)) {
                         $updatedata['thumbnail'] = $filename;
+                        $updatedata['bannertext'] = "";
                     } else {
 
                         session(['status' => "0", 'msg' => 'File not uploaded']);
@@ -221,6 +221,7 @@ class BannerVideoController extends Controller
             } else {
                 $updatedata['thumbnail'] = $request->oldimage;
             }
+            $updatedata['bannertext'] = $request->bannertext;
         }
 
         $update = banner_video::where('id', $request->id)

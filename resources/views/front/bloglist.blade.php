@@ -119,7 +119,7 @@
                                 @php
                                 $small = substr( strip_tags($blog['description']), 0, 120);
                                 @endphp
-                                <p class="p-bottom-20">{!! $small !!}.....</p>
+                                <p class="p-bottom-20" style="font-size: 15px;">{!! $small !!}.....</p>
                                 @php
                                 // strip out all whitespace
                                 $blogname = preg_replace('/\s*/', '', $blog['title']);

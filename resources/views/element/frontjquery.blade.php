@@ -185,6 +185,7 @@
                 }
             });
         });
+
         $(document).on('click', '.blogpage', function(e) {
             e.preventDefault();
 

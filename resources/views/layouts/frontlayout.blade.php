@@ -76,7 +76,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         .blog-post-body {
             color: #fff5f5;
             background-color: #0c0808;
-            height: 280px;
+            height: 320px;
         }
 
         .blog-post-body a {
@@ -124,15 +124,42 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
         .image1 {
             position: relative;
-            top: 0;
+            top: 82px;
             left: 0;
-            animation: spin;
+            -webkit-animation: spin 15s linear infinite;
+            -moz-animation: spin 15s linear infinite;
+            animation: spin 15s linear infinite;
+        }
+
+        .servicebg {
+            -webkit-animation: spin 14s linear infinite;
+            -moz-animation: spin 14s linear infinite;
+            animation: spin 14s linear infinite;
+        }
+
+        @-moz-keyframes spin {
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
         }
 
         .image2 {
             position: absolute;
             width: 67%;
-            top: 17%;
+            top: 35%;
             left: 17%;
         }
 
@@ -146,7 +173,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         .footerlist div.listfooter a {
-            font-size: 20px;
+            font-size: 19px;
             line-height: 18px;
             border-bottom: 1px solid #fff;
             padding-bottom: 10px;
@@ -159,7 +186,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         .myjourneyfont {
-            font-family: monospace;
+            font-family: "Poppins", sans-serif;
             font-size: smaller;
             color: #ff0000;
         }
@@ -205,7 +232,6 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             background-color: #100e0e;
             color: #ff3c00;
             font-size: larger;
-            font-weight: 600;
             padding-left: 46%;
             padding-right: 46%;
         }
@@ -222,7 +248,6 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
         form div label {
             font-size: 16px;
-            font-weight: 10;
             color: #fff;
         }
 
@@ -370,7 +395,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
     <!-- Back to top -->
     @include('element.frontmodal')
     <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg pull-right">Book an Appointment</a>
-    <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+
+    <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up roundbtn"></i></a>
     @php
     $aboutcontact=aboutalldetails();
     @endphp

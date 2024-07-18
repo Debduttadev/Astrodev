@@ -96,16 +96,16 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="dp2">Date of Birth</label>
                                 <div class="input-group">
-                                    <input type="text" id="birthdate" name="dateOfBirth" value="" />
-                                    <div class="input-group-addon"><i class="darkcolorfont fa fa-calendar"></i></div>
+                                    <input type="text" class="inputstyleright" id="birthdate" name="dateOfBirth" value="" />
+                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="timepicker1">Time of Birth</label>
                                 <div class="input-group bootstrap-timepicker timepicker">
-                                    <input id="timepicker1" type="text" name="timeOfBirth" required />
-                                    <div class="input-group-addon"><i class="darkcolorfont glyphicon glyphicon-time"></i></div>
+                                    <input id="timepicker1" class="inputstyleright" type="text" name="timeOfBirth" required />
+                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont glyphicon glyphicon-time"></i></div>
                                 </div>
                             </div>
 
@@ -159,8 +159,8 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="bookingdate">Booking schedule</label>
                                 <div class="input-group">
-                                    <input type="text" name="bookingDate" id="bookingdate" value="" />
-                                    <div class="input-group-addon"><i class="darkcolorfont fa fa-calendar"></i></div>
+                                    <input type="text" class="inputstyleright" name="bookingDate" id="bookingdate" value="" />
+                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
                                 <span class="error" id="err-name">Please enter booking schedule</span>
                             </div>

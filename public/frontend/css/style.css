@@ -30,8 +30,8 @@ body {
 }
 body {
     background: #ffffff;
-    font-size: 16px;
-    font-family: "Poppins";
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
     color: #000000;
 }
 a {
@@ -239,7 +239,7 @@ overlay-light .YTPOverlay:before {
     height: 34px;
     line-height: 32px;
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
     background: #ff3c00;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -274,7 +274,7 @@ overlay-light .YTPOverlay:before {
     height: 32px;
     line-height: 32px;
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
     background: #ff3c00;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -450,7 +450,7 @@ overlay-light .YTPOverlay:before {
     background-color: orangered;
     padding: 10px 18px;
     border: 1px solid #fff;
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     text-transform: uppercase;
     color: #f8f8f7;
@@ -558,7 +558,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
     color: orangered;
     text-transform: uppercase;
     margin-top: 10px;
@@ -585,7 +585,7 @@ h6 {
     line-height: 1.6;
 }
 p {
-    line-height: 1.8em;
+    line-height: 2.1em;
 }
 .section-title-bg {
     background-color: #ffffff;
@@ -593,8 +593,7 @@ p {
 }
 .section-subtitle {
     color: #000000;
-    font-weight: 100;
-    font-size: 18px;
+    font-size: 19px;
 }
 .bigger-font {
     font-size: 50px;
@@ -668,9 +667,8 @@ p {
 blockquote {
     margin: 20px 0;
     padding: 10px 0;
-    font-family: "Calibri Light";
-    font-size: 1.1em;
-    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
     font-style: italic;
     color: #000;
     border-left: 0;
@@ -1133,17 +1131,15 @@ blockquote {
 ---------------------------------------------------*/
 /* Slides */
 .rev_slider .tp-caption.NotGeneric-Title {
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
     text-transform: uppercase;
-    font-weight: 700;
 }
 .rev_slider .tp-caption.NotGeneric-SubTitle {
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
     text-transform: uppercase;
 }
 .rev_slider .tp-caption.NotGeneric-Text {
-    font-family: "Calibri Light";
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
 }
 .uranus.tparrows {
     background: #000;
@@ -1160,7 +1156,6 @@ blockquote {
 /* Index_2 */
 .intro-content h1 {
     font-size: 42px;
-    font-weight: 700;
 }
 /*--------------------------------------------------
     09. Services Section
@@ -1202,7 +1197,7 @@ blockquote {
     border: 1px solid #ff3c00;
     width: 36px;
     height: 36px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 36px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -1352,8 +1347,7 @@ blockquote {
     12. Video  Section
 ---------------------------------------------------*/
 .video-caption h6 {
-    font-family: "Calibri Light";
-    font-weight: 300;
+    font-family: "Poppins", sans-serif;
     letter-spacing: 2px;
 }
 /*--------------------------------------------------
@@ -1394,7 +1388,7 @@ blockquote {
     width: 100%;
     top: 50%;
     margin-top: -25px;
-    font-size: 15px;
+    font-size: 16px;
 }
 .team-item-icons a {
     color: #0f0d0d;
@@ -1421,9 +1415,8 @@ blockquote {
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
 }
 .team-item-name {
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
     font-size: 24px;
-    font-weight: 200;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #ff3c00;
@@ -1434,7 +1427,7 @@ blockquote {
     display: block;
     width: 100%;
     height: 192px;
-    font-family: "Calibri Light";
+    font-family: "Poppins", sans-serif;
 }
 .team-item:hover .team-item-image-overlay {
     top: 0;
@@ -1456,7 +1449,7 @@ blockquote {
 }
 @media screen and (max-width: 360px) {
     #team .team-item-icons {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     #service .team-item-position {
@@ -1474,7 +1467,7 @@ blockquote {
 ---------------------------------------------------*/
 .progress-heading p {
     margin: 10px 0 0;
-    font-size: 0.8em;
+    font-size: 16px;
 }
 .progress {
     border-radius: 0;
@@ -1564,13 +1557,12 @@ blockquote {
     width: 44px;
     height: 44px;
     text-align: center;
-    font-size: 23px;
+    font-size: 24px;
     line-height: 42px;
     margin-right: 18px;
 }
 .stat-item-number {
     float: left;
-    font-weight: 700;
     font-size: 30px;
     margin-right: 18px;
     line-height: 42px;
@@ -1592,7 +1584,7 @@ blockquote {
     border: 1px solid #fff;
     width: 36px;
     height: 36px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 36px;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -1603,8 +1595,7 @@ blockquote {
     font-size: 44px;
     margin-right: 0;
     padding-top: 30px;
-    font-family: "Calibri Light";
-    font-weight: 400;
+    font-family: "Poppins", sans-serif;
 }
 
 .stat-item.stat-item-type-2 .stat-item-text {
@@ -1628,10 +1619,10 @@ blockquote {
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
+    height: 400px;;
 }
 .testimonial-desc {
-    font-size: 1em;
-    font-style: italic;
+    font-size: 14px;
     letter-spacing: 1px;
 }
 .testimonial-thumb img {
@@ -1647,9 +1638,10 @@ blockquote {
 }
 .testimonial-author {
     padding: 10px 10px;
-    font-family: "Calibri Light";
-    font-size: 11px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
     letter-spacing: 1px;
+    
 }
 /*--------------------------------------------------
     18. Blog
@@ -1664,7 +1656,7 @@ blockquote {
     border-bottom: 1px solid #ff0000;
     padding: 10px 25px;
     color: #000000;
-    font-size: 0.8em;
+    font-size: 16px;
     font-style: italic;
 }
 .blog-post-info .time {
@@ -1695,7 +1687,6 @@ blockquote {
     color: #ff3c00;
 }
 .blog-post-body a.read-more {
-    font-weight: 700;
     position: absolute;
     bottom: 15px;
 }
@@ -1708,7 +1699,7 @@ blockquote {
 }
 .postSingle .postMeta {
     color: #808080;
-    font-size: 0.9em;
+    font-size: 16px;
     font-style: italic;
     padding: 10px 20px;
     margin-bottom: 30px;
@@ -1756,7 +1747,7 @@ blockquote {
     color: #fff;
     display: inline-block;
     padding: 5px 12px;
-    font-size: 11px;
+    font-size: 16px;
     margin-bottom: 10px;
 }
 .entriesContainer {
@@ -1781,13 +1772,13 @@ blockquote {
     margin-left: 50px;
 }
 .entriesContainer .comments-list .commentContent p.expert {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 23px;
     margin-top: 10px;
 }
 .entriesContainer .comments-list .commentContent .date a {
     color: #ff3c00;
-    font-size: 11px;
+    font-size: 16px;
     display: inline-block;
 }
 .comment {
@@ -1816,8 +1807,7 @@ blockquote {
 .comments .reply-btn a {
     color: #fff;
     display: inline-block;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 16px;
     padding: 8px 12px;
 }
 /*Respond*/
@@ -1827,8 +1817,8 @@ blockquote {
     background: #f8f8f8;
     border: 0 none;
     color: #fff;
-    font-family: inherit;
-    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
     margin: 0 0 28px;
     outline: 0 none;
     padding: 12px 10px;
@@ -1855,7 +1845,7 @@ blockquote {
 .widget .search-form input[type="text"] {
     border: none;
     padding: 11px 10px;
-    font-size: 13px;
+    font-size: 16px;
     width: 100%;
     background: #ffffff;
     border: 0 none;
@@ -1867,7 +1857,7 @@ blockquote {
 .widget .input-group .dateblog {
     border: none;
     padding: 11px 10px;
-    font-size: 13px;
+    font-size: 16px;
     width: 100%;
     background: #ffffff;
     border: 0 none;
@@ -1882,7 +1872,6 @@ blockquote {
     right: 0;
     top: 0;
     padding: 10px 15px;
-    font-weight: 600;
     color: #000000;
     background: #ff3c00;
 }
@@ -1894,7 +1883,6 @@ blockquote {
     right: 0;
     top: 0;
     padding: 12px 15px;
-    font-weight: 600;
     color: #fff;
     background: #ff3c00;
 }
@@ -1912,7 +1900,6 @@ blockquote {
 .widget .cat-archives li a,
 .widget .meta li a {
     color: #909090;
-    font-weight: 600;
 }
 .widget .cat-list li a:hover,
 .widget .cat-archives li a:hover,
@@ -1939,7 +1926,6 @@ blockquote {
 .widget .tag-list li a {
     background: #ffffff;
     color: #000000;
-    font-weight: 600;
     display: inline-block;
     padding: 5px 12px;
     -webkit-transition: all 0.3s ease-in-out;
@@ -2063,7 +2049,7 @@ blockquote {
 }
 
 .contact-form .error {
-    font-size: 11px;
+    font-size: 16px;
     color: #ff0000;
     letter-spacing: 1px;
     display: none;
@@ -2082,13 +2068,11 @@ blockquote {
 }
 
 .contact-form-item input[type="text"],
-.contact-form-item .input-group input[type="text"],
 .contact-form-item input[type="email"],
 .contact-form-item select,
 .contact-form-item textarea {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #000000;
     -webkit-transition: 0.5s;
@@ -2098,7 +2082,6 @@ blockquote {
 }
 
 .contact-form-item input[type="text"]:focus,
-.contact-form-item .input-group input[type="text"]:focus,
 .contact-form-item input[type="email"]:focus,
 .contact-form-item select:focus,
 .contact-form-item textarea:focus {
@@ -2111,9 +2094,48 @@ blockquote {
     border-radius: 4px;
 }
 
+.contact-form-item .input-group input[type="text"]{
+    border-style: solid solid solid none;
+    border-color:#000000 ;
+    border-radius: 4px;
+    border-width: 3px;
+}
+
+.contact-form-item .input-group input[type="text"]:focus{
+    border-style: solid solid solid none;
+    border-color:#f75a2a ;
+    border-radius: 4px;
+    border-width: 3px;
+}
+
+.contact-form-item .input-group input[type="text"].inputstyleright{
+    border-style: solid none solid solid ;
+    border-color:#000000 ;
+    border-radius: 4px;
+    border-width: 3px;
+}
+
+.contact-form-item .input-group input[type="text"].inputstyleright:focus{
+    border-style: solid none solid solid ;
+    border-color:#f75a2a ;
+    border-radius: 4px;
+    border-width: 3px;
+}
+
 .contact-form-item .input-group .input-group-addon {
-    background-color: white;
-    border: 1px solid #fff;
+    background-color: rgb(163, 157, 157);
+    color: #000;
+    border-style: solid none solid solid ;
+    border-color:#000000 ;
+    border-width: 3px;
+}
+
+.contact-form-item .input-group .addonstyleright {
+    background-color: rgb(163, 157, 157);
+    color: #000;
+    border-style: solid  solid solid none;
+    border-color:#000000 ;
+    border-width: 3px;
 }
 
 .contact-form-item ::-webkit-input-placeholder {
@@ -2153,7 +2175,7 @@ blockquote {
     width: 40px;
     height: 40px;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 40px;
     margin-right: 18px;
 }
@@ -2162,27 +2184,26 @@ blockquote {
     color: #ffffff;
 }
 .footercontact .contact-info-title {
-    font-weight: 700;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 1.2em;
     color: #fff;
 }
 
 .contact-info-text {
-    font-size: 0.9em;
+    font-size: 16px;
     padding-top: 5px;
     padding-left: 58px;
 }
 
 .footercontact .contact-info-text {
-    font-size: 0.9em;
+    font-size: 16px;
     padding-top: 5px;
     padding-left: 58px;
     color: #fff;
 }
 
 .footercontact .contact-info-text a {
-    font-size: 0.9em;
+    font-size: 16px;
     padding-top: 5px;
     color: #fff;
 }
@@ -2197,11 +2218,14 @@ blockquote {
 .site-footer {
     background-color: #000000;
     padding: 20px 0px;
+    font-family: "Calibri Light";
 }
 .site-footer .copyright {
     color: #ffffff;
     margin: auto;
     margin-top: 15px;
+    <div class="container">
+        <div class="row footerlist">
 }
 .site-footer .copyright a {
     color: #ffffff;
@@ -2249,7 +2273,6 @@ blockquote {
 .nav-tabs {
     display: inline-block;
     font-size: 16px;
-    font-weight: 400;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
@@ -2294,7 +2317,6 @@ blockquote {
 }
 .price-item-header h4 {
     color: #fff;
-    font-weight: 600;
 }
 .price-item-header-alt {
     background-color: #0a0808;
@@ -2305,7 +2327,7 @@ blockquote {
 .price-item-price .big {
     font-size: 56px;
     line-height: 1em;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     margin-bottom: 0;
     color: #ff3c00;
 }
@@ -2316,7 +2338,6 @@ blockquote {
 }
 .price-item-price .small {
     color: #000;
-    font-weight: 600;
 }
 .price-item-features {
     padding: 20px 20px 0;
@@ -2355,7 +2376,7 @@ blockquote {
 }
 .owl-theme .owl-nav,
 .owl-theme .owl-nav.disabled + .owl-dots {
-    margin-top: 40px;
+    margin-top: 5px;
 }
 .owl-theme .owl-nav [class*="owl-"] {
     background: transparent;
@@ -2427,3 +2448,10 @@ blockquote {
 .social-icon ul li {
     padding-top: 5px;
 }
+
+.roundbtn {
+    border-radius: 8px;
+}
+
+
+
