@@ -2095,6 +2095,13 @@ blockquote {
 }
 
 .contact-form-item .input-group input[type="text"]{
+
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
     border-style: solid solid solid none;
     border-color:#000000 ;
     border-radius: 4px;
