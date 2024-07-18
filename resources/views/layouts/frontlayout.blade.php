@@ -124,7 +124,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
         .image1 {
             position: relative;
-            top: 82px;
+            top: 0;
             left: 0;
             -webkit-animation: spin 15s linear infinite;
             -moz-animation: spin 15s linear infinite;
@@ -159,7 +159,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         .image2 {
             position: absolute;
             width: 67%;
-            top: 35%;
+            top: 17%;
             left: 17%;
         }
 
