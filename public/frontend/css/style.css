@@ -894,7 +894,7 @@ blockquote {
     padding-right: 15px;
 }
 .navbar-header .logo-container {
-    padding: 0 15px;
+    padding-left: 15px;
     float: left;
 }
 .navbar-header .logo-container .logo-wrap {

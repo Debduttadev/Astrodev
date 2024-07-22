@@ -10,7 +10,7 @@ $about_contact=aboutalldetails();
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             @php
-            $i="2";
+            $i="1";
             $item=1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail )
@@ -31,35 +31,38 @@ $about_contact=aboutalldetails();
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="{{ URL::to('bannervideo')."/".$banner_video[0]->thumbnail }}" alt="{{$alttag1}}" title="{{ $title1 }}">
+                <img src="{{ URL::to('bannervideo')."/".'default.jpg'}}" alt="{{$alttag1}}" title="{{ $title1 }}">
 
                 <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                    <h1 style="font-size: 28px !important;">Astro Achariya Debdutta</h1>
-                    <p style="font-size: 20px !important;"> Globally Acclaimed Astrologer</p>
-                    <p style="font-size: 20px !important;"> Vastu Influencer,</p>
-                    <p style="font-size: 20px !important;">Life Coach, Success Guru</p>
-                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn" class="btn btn-default btn-white btn-main roundbtn">Your Journey Begins Here</a>
+                    <p class="astro">Astro</p>
+                    <h1><strong>Achariya Debdutta</strong></h1>
+                    </n>
+                    <p> Globally Acclaimed Astrologer</p>
+                    </n>
+                    <p> Vastu Influencer,</p>
+                    </n>
+                    <p class="m-bottom-30">Life Coach, Success Guru</p>
+                    </n>
+                    <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn">Your Journey Begins Here</a>
                 </div>
             </div>
             @php
             $item=1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail )
-            @if($key != 0)
             @php
             $alttag=$alttagforimages['banner'][$thumbnail->id]['alttag'];
             $title=$alttagforimages['banner'][$thumbnail->id]['title'];
             @endphp
             <div class="item ">
                 <img src="{{ URL::to('bannervideo')."/".$thumbnail->thumbnail }}" alt="{{$alttag}}" title="{{$title}}">
-                <div class="carousel-caption wow fadeInLeft p-3" data-wow-duration="0.7s" data-wow-delay="0.5s">
+                <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     {!!$thumbnail->bannertext!!}
                 </div>
             </div>
             @php
             $item++;
             @endphp
-            @endif
             @endforeach
         </div>
 
@@ -103,8 +106,10 @@ $about_contact=aboutalldetails();
             </div> <!-- /.row -->
         </div> <!-- /.container -->
     </section>
+
     <!-- End Regular Section -->
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+
     <!-- Start Team -->
     <section id="service" class="p-top-60 p-bottom-60">
         <div class="container">
@@ -163,6 +168,7 @@ $about_contact=aboutalldetails();
 
         </div> <!-- /.container -->
     </section>
+
     <!-- End Team -->
     <section id="myjourney" class="p-top-60 p-bottom-60">
         <div class="container">
@@ -178,6 +184,7 @@ $about_contact=aboutalldetails();
             </div> <!-- /.row -->
         </div>
     </section>
+
     <!-- End Regular Section -->
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
@@ -218,7 +225,6 @@ $about_contact=aboutalldetails();
         </div> <!-- /.container -->
     </section>
 
-
     <!-- Start Testimonial -->
     <section id="testimonials" class="parallax-bg overlay-dark p-top-20 p-bottom-20" data-stellar-background-ratio="0.5">
         <div class="container ">
@@ -254,7 +260,6 @@ $about_contact=aboutalldetails();
         </div>
     </section>
     <!-- End Testimonial -->
-
 
     <!-- Start blog -->
     <section id="blog" class="p-top-60 p-bottom-60">

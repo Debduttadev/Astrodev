@@ -254,7 +254,7 @@
 
                          <div class="mt-4 bannertextshow" style="display: none;" maxlength="50">
                              <label class="control-label">Banner Text </label>
-                             <textarea class="form-control form-control-user" id="textareabanner" name="bannertext" rows="3"></textarea>
+                             <textarea class="form-control form-control-user" id="textareabanner" name="bannertext"></textarea>
                          </div>
 
                          <div class="mt-4">

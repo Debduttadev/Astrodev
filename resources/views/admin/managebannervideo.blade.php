@@ -17,6 +17,7 @@
 
         <!-- to show the session status message -->
         @php
+
         $sessiondata = session()->all();
 
         @endphp

@@ -256,10 +256,16 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         .carousel-caption {
-            top: 25%;
+            top: 20%;
             bottom: auto;
             right: auto;
-            left: 10%;
+            left: 18%;
+            text-align: left;
+            font-family: Cormorant;
+        }
+
+        .carousel-caption strong {
+            font-family: Cormorant !important;
         }
 
         .carousel-caption h1 {
@@ -280,17 +286,18 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
                 top: 0%;
             }
 
-            .carousel-caption h1 {
-                font-size: 16px;
+            .carousel-caption strong {
+                font-size: 28px;
             }
 
             .carousel-caption p {
-                font-size: 12px;
-                line-height: 0.8em;
+                font-size: 18px;
+                line-height: 1.2em;
+                margin-top: 15px;
             }
 
             .carousel-caption a {
-                font-size: 12px;
+                font-size: 24px;
             }
 
             .servicebg {
@@ -302,12 +309,25 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         @media (min-width: 576px) {
+            .container {
+                width: 550px;
+            }
 
             .carousel-caption {
                 top: 0%;
             }
 
-            .carousel-caption h1 {
+            .carousel-caption strong {
+                font-size: 28px;
+            }
+
+            .carousel-caption p {
+                font-size: 18px;
+                line-height: 1.2em;
+                margin-top: 15px;
+            }
+
+            .carousel-caption a {
                 font-size: 24px;
             }
 
@@ -320,69 +340,154 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         @media (min-width: 768px) {
+
+            .container {
+                width: 750px;
+            }
+
+            .carousel-caption .astro {
+                font-size: 26px;
+            }
+
+            .servicebg {
+                width: 100%;
+            }
+
             .carousel-caption {
-                top: 25%;
+                top: 6%;
             }
 
-            .carousel-caption h1 {
+            .carousel-caption strong {
                 font-size: 26px;
-            }
-
-            .carousel-caption p {
-                font-size: 16px;
-                line-height: 0.8em;
-            }
-
-            .carousel-caption a {
-                font-size: 24px;
-            }
-
-            .servicebg {
-                position: relative;
-                width: 80% !important;
-                bottom: auto;
-                top: -145px;
-            }
-        }
-
-        @media (min-width: 992px) {
-
-            .servicebg {
-                width: 100%;
-            }
-
-            .carousel-caption h1 {
-                font-size: 26px;
-            }
-
-            .carousel-caption p {
-                font-size: 16px;
-                line-height: 0.8em;
-            }
-
-            .carousel-caption a {
-                font-size: 24px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-
-            .servicebg {
-                width: 100%;
-            }
-
-            .carousel-caption h1 {
-                font-size: 28px;
+                font-weight: 700;
             }
 
             .carousel-caption p {
                 font-size: 18px;
-                line-height: 0.8em;
+                line-height: 0.7em;
+                margin-top: 15px;
+            }
+
+            .carousel-caption p span {
+                font-size: 18px !important;
+                line-height: 1.2em;
+                margin-top: 15px;
             }
 
             .carousel-caption a {
-                font-size: 24px;
+                font-size: 16px;
+
             }
+
+            .navbar-nav li a {
+                font-size: 20px;
+            }
+
+            navbar-header {
+                width: 100%;
+                padding-right: 8px !important;
+                float: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+
+            .carousel-caption .astro {
+                font-size: 28px;
+            }
+
+            .servicebg {
+                width: 100%;
+            }
+
+            .navbar-nav li a {
+                font-size: 17px;
+            }
+
+            .carousel-caption {
+                top: 10%;
+                bottom: auto;
+            }
+
+            .carousel-caption strong {
+                font-size: 28px;
+            }
+
+            .carousel-caption p {
+                font-size: 16px;
+                line-height: 1.2em;
+                margin-top: 15px;
+            }
+
+            .carousel-caption a {
+                font-size: 18px;
+                padding: 5px 35px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+
+            .carousel-caption .astro {
+                font-size: 40px;
+            }
+
+            .servicebg {
+                width: 100%;
+            }
+
+            .carousel-caption {
+                top: 18%;
+            }
+
+            .carousel-caption strong {
+                font-size: 40px;
+                font-weight: 700;
+            }
+
+            .carousel-caption p {
+                font-size: 24px;
+                line-height: 1.2em;
+                margin-top: 15px;
+            }
+
+            .carousel-caption p span {
+                font-size: 24px !important;
+                line-height: 1.2em;
+                margin-top: 15px;
+            }
+
+            .carousel-caption a {
+                font-size: 18px;
+
+            }
+
+            .navbar-nav li a {
+                font-size: 20px;
+            }
+        }
+
+        .carousel-caption a {
+            font-family: "Poppins", sans-serif;
+            display: block;
+            width: max-content;
+            height: auto;
+            background: url(../frontend/img/Button-png.png) center;
+            padding: 5px 35px;
+            text-align: center;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+        }
+
+        .carousel-caption a:hover {
+            color: #ffc6c6;
         }
     </style>
     @include('element.frontheader')

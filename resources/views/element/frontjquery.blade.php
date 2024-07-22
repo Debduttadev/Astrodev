@@ -15,6 +15,9 @@
 
     $(document).ready(function() {
 
+        let width = screen.width;
+        alert(width);
+
         var base_url = "{{ URL::to('/') }}";
 
         $(document).on('click', '.tagsearch', function() {

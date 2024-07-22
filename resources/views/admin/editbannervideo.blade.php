@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <main>
     <div class="container-fluid px-4">
-        <h2 class="mt-4">Edit Admin User</h2>
+        <h2 class="mt-4">Edit Banner and Video</h2>
         <div class="row">
 
             <form class="user" id="formdata7" method="POST" action="{{ URL::to('updatebannervideo') }}" enctype="multipart/form-data">
