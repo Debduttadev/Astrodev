@@ -82,4 +82,13 @@
             </div> <!-- /.navigation-overlay -->
         </nav> <!-- /.navbar -->
     </header>
+
+    <a href="{{ URL::to('/appointment') }}" id="appoinment" class="btn btn-default btn-lg pull-right">Book an Appointment</a>
+
+    <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up roundbtn"></i></a>
+    @php
+    $aboutcontact=aboutalldetails();
+    @endphp
+
+    <a aria-label="Chat on WhatsApp" class="btn pull-right" href="https://wa.me/91{{$aboutcontact->whatsapp}}" id="whatsappbtn"> <img alt="Chat on WhatsApp" src="{{ URL::to('frontend/img/whatsappIcon.png') }}" title="Please visit us on whatsapp" /></a>
 </div>
