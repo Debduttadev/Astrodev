@@ -281,30 +281,29 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         @media (min-width:320px) {
-
-            .carousel-caption h1 {
-                /* margin: -10px 0px !important; */
-                margin: -10px 0px;
+            body {
+                font-size: 15px;
             }
 
-            .carousel-caption p span a {
-                /* margin-top: 8px !important;
-                padding: 8px 26px !important; */
-                margin-top: 8px;
-                padding: 8px 26px;
+            .container {
+                width: 300px;
+            }
+
+            .carousel-caption h1 {
+                margin: -25px 0px;
             }
 
             .carousel-caption .astro {
-                font-size: 20px;
+                font-size: 14px;
             }
 
             .carousel-caption {
-                top: 1%;
+                top: -25px;
                 bottom: auto;
             }
 
             .carousel-caption strong {
-                font-size: 20px;
+                font-size: 14px;
                 font-weight: 700;
             }
 
@@ -315,37 +314,45 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             }
 
             .carousel-caption p span {
-                /* font-size: 17px !important; */
-                font-size: 17px;
+                font-size: 15px !important;
                 line-height: 0.5em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
-                /* font-size: 12px !important;
-                padding: 3px 12px !important;
-                margin-top: -8px !important; */
                 font-size: 12px;
                 padding: 3px 12px;
-                margin-top: -8px;
+                margin-top: -20px;
             }
+
+            .carousel-caption p span a {
+                margin-top: -20px;
+                padding: 5px 12px;
+            }
+
 
             .servicebg {
                 position: relative;
-                /* width: 60% !important; */
                 width: 60%;
                 bottom: auto;
                 top: -145px;
             }
+
+            .blog-post-body p {
+                font-size: 15px;
+            }
         }
 
         @media (min-width: 576px) {
+            body {
+                font-size: 16px;
+            }
+
             .container {
                 width: 550px;
             }
 
             .carousel-caption h1 {
-                /* margin: -7px 0px !important; */
                 margin: -7px 0px;
             }
 
@@ -370,37 +377,51 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             }
 
             .carousel-caption p span {
-                /* font-size: 17px !important; */
-                font-size: 17px;
+                font-size: 17px !important;
                 line-height: 0.5em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
-                /* font-size: 12px !important;
-                padding: 5px 12px !important; */
                 font-size: 12px;
                 padding: 5px 12px;
+                margin-top: -8px;
 
+            }
+
+            .carousel-caption p span a {
+                margin-top: 8px;
+                padding: 8px 26px;
             }
 
             .servicebg {
                 position: relative;
-                /* width: 60% !important; */
                 width: 60%;
                 bottom: auto;
                 top: -145px;
+            }
+
+            .blog-post-body p {
+                font-size: 15px;
             }
         }
 
         @media (min-width: 768px) {
 
-            .container {
-                width: 750px;
+            body {
+                font-size: 16px;
             }
 
             .servicebg {
                 width: 100%;
+            }
+
+            .container {
+                width: 745px;
+            }
+
+            .carousel-caption h1 {
+                margin: 8px 0px;
             }
 
             .carousel-caption .astro {
@@ -424,15 +445,20 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             }
 
             .carousel-caption p span {
-                /* font-size: 18px !important; */
-                font-size: 18px;
+                font-size: 18px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
                 font-size: 16px;
+                padding: 5px 24px;
+                margin-top: 8px;
+            }
 
+            .carousel-caption p span a {
+                margin-top: 8px;
+                padding: 2px 24px;
             }
 
             .navbar-nav li a {
@@ -441,19 +467,18 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
             navbar-header {
                 width: 100%;
-                /* padding-right: 8px !important; */
                 padding-right: 8px;
                 float: none;
+            }
+
+            .blog-post-body p {
+                font-size: 15px;
             }
         }
 
         @media (min-width: 992px) {
-            .container {
-                width: 970px;
-            }
-
-            .carousel-caption .astro {
-                font-size: 32px;
+            body {
+                font-size: 18px;
             }
 
             .servicebg {
@@ -464,76 +489,116 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
                 font-size: 17px;
             }
 
+            .container {
+                width: 970px;
+            }
+
+            .carousel-caption .astro {
+                font-size: 32px;
+            }
+
+            .carousel-caption h1 {
+                margin: 12px 0px;
+            }
+
             .carousel-caption {
-                top: 16%;
+                top: 10%;
                 bottom: auto;
             }
 
             .carousel-caption strong {
                 font-size: 28px;
+                font-weight: 500;
             }
 
             .carousel-caption p {
-                /* font-size: 20px !important; */
                 font-size: 20px;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                /* font-size: 20px !important; */
-                font-size: 20px;
+                font-size: 20px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
                 font-size: 18px;
-                padding: 5px 35px;
+                padding: 5px 26px;
+                margin-top: 8px;
+            }
+
+            .carousel-caption p span a {
+                margin-top: 8px;
+                padding: 5px 26px;
+            }
+
+            .blog-post-body p {
+                font-size: 16px;
             }
         }
 
         @media (min-width: 1200px) {
+            .servicebg {
+                width: 100%;
+            }
+
             .container {
                 width: 1170px;
             }
 
             .carousel-caption .astro {
-                font-size: 43px;
+                font-size: 40px;
             }
 
-            .servicebg {
-                width: 100%;
+            .carousel-caption h1 {
+                margin: 15px 0px;
             }
 
             .carousel-caption {
-                top: 18%;
+                top: 21%;
                 bottom: auto;
             }
 
             .carousel-caption strong {
-                font-size: 43px;
+                font-size: 40px;
                 font-weight: 700;
             }
 
             .carousel-caption p {
-                font-size: 28px;
+                font-size: 25px;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 28px !important;
+                font-size: 25px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
                 font-size: 18px;
+                padding: 5px 26px;
+                margin-top: 8px;
+            }
+
+            .carousel-caption p span a {
+                margin-top: 8px;
+                padding: 5px 26px;
             }
 
             .navbar-nav li a {
                 font-size: 20px;
+            }
+
+            body {
+                font-size: 18px;
+            }
+
+            .blog-post-body p {
+                font-size: 17px;
             }
         }
 
@@ -543,7 +608,6 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             width: max-content;
             height: auto;
             background: url(../frontend/img/Button-png.png) center;
-            padding: 5px 35px;
             text-align: center;
             border: 1px solid #fff;
             border-radius: 4px;
@@ -562,10 +626,10 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
     <!-- Main content -->
     @yield('content')
     @include('element.frontfooter')
-    
+
     <!-- Back to top -->
     @include('element.frontmodal')
-    
+
 
     <!-- Components Plugin -->
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
