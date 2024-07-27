@@ -22,7 +22,7 @@
             <div class="col-md-5 col-md-offset-1 ">
                 <div class="feature-image parent ">
                     <img src="{{ URL::to('admin/img/astro.webp') }}" class="image1" />
-                    <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="{{$alttag}}" title={{$title}} class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
+                    <img src="{{ URL::to('about/'.$about_contact->image) }}" alt="{{$alttag}}" title="{{$title}}" class="img-responsive wow fadeInRight img-circle image2" data-wow-duration="1s" data-wow-delay="0.6s" />
                 </div>
 
             </div> <!-- /.col -->

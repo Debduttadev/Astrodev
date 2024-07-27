@@ -335,7 +335,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
                 position: relative;
                 width: 60%;
                 bottom: auto;
-                top: -145px;
+                top: -100px;
             }
 
             .blog-post-body p {
@@ -398,7 +398,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
                 position: relative;
                 width: 60%;
                 bottom: auto;
-                top: -145px;
+                top: -180px;
             }
 
             .blog-post-body p {
@@ -414,6 +414,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
             .servicebg {
                 width: 100%;
+                bottom: auto;
+                top: -280px;
             }
 
             .container {
@@ -483,6 +485,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
             .servicebg {
                 width: 100%;
+                bottom: auto;
+                top: -110px;
             }
 
             .navbar-nav li a {
@@ -542,6 +546,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         @media (min-width: 1200px) {
             .servicebg {
                 width: 100%;
+                bottom: auto;
+                top: -150px;
             }
 
             .container {
@@ -579,12 +585,13 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             }
 
             .carousel-caption a {
-                font-size: 18px;
+                font-size: 20px;
                 padding: 5px 26px;
                 margin-top: 8px;
             }
 
             .carousel-caption p span a {
+                font-size: 20px;
                 margin-top: 8px;
                 padding: 5px 26px;
             }

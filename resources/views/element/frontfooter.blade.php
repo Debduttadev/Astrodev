@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row footerlist">
             <div class="col-md-12">
-                <div class="col-md-4 pull-left listfooter">
+                <div class="col-md-4  col-sm-4  pull-left listfooter">
                     @php
                     $servicelistfooter=servicelistfooter();
                     @endphp
@@ -19,7 +19,7 @@
                     @endforeach
                 </div>
 
-                <div class="col-md-4 pull-left listfooter">
+                <div class="col-md-4 col-sm-4 pull-left listfooter">
                     <h2>Quick Link</h2>
                     <a href="{{ URL::to('/') }}">HOME</a><br>
                     <a href="{{ URL::to('/aboutus') }}">ABOUT</a><br>
@@ -33,7 +33,7 @@
                     <a href="{{ URL::to('/refund_policy') }}">REFUND POLICY</a><br>
                 </div>
 
-                <div class="col-md-4 pull-right">
+                <div class="col-md-4 col-sm-4 pull-right">
                     <div class="row">
                         <div class="social-icon pull-right">
                             <ul class="list-inline">
@@ -46,6 +46,8 @@
                                     <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-facebook social" aria-hidden="true"></i></a>
                                     @elseif($social['name'] == 'Youtube')
                                     <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-youtube-play social" aria-hidden="true"></i></a>
+                                    @elseif($social['name'] == 'WhatsApp')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-whatsapp social" aria-hidden="true"></i></a>
                                     @elseif($social['name'] == 'Instagram')
                                     <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-instagram social" aria-hidden="true"></i></a>
                                     @elseif($social['name'] == 'Linkedin')

@@ -31,7 +31,7 @@ $about_contact=aboutalldetails();
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="{{ URL::to('bannervideo')."/".'default.jpg'}}" alt="{{$alttag1}}" title="{{ $title1 }}">
+                <img src="{{ URL::to('bannervideo')."/".'default.jpg'}}" alt="{{$alttag1}}" title="{{$title1}}">
 
                 <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <p class="astro">Astro</p>
