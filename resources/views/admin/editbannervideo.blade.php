@@ -69,7 +69,7 @@
 
                 <div class="mt-4 bannertextshow" {!! $textareadisplay !!} maxlength="50">
                     <label class="control-label">Banner Text </label>
-                    <textarea class="form-control form-control-user" id="textareabanneredit" name="bannertext" rows="3">{{$bannervideodata->bannertext}}</textarea>
+                    <textarea class="form-control form-control-user" id="textareabanneredit" name="bannertext" rows="3">{!! html_entity_decode($bannervideodata->bannertext)!!}</textarea>
                 </div>
 
                 <div class="mt-4">

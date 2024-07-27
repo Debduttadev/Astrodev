@@ -36,7 +36,7 @@
                 <div class="mt-4">
                     <label class="control-label">Description</label>
                     limit <span class="limit">0</span>/2000
-                    <textarea name="blogdescription" class="form-control form-control-user" id="blogdefault" aria-describedby="description5" placeholder="Enter blog description..." value="{{html_entity_decode($blogsdata->description)}}">{{html_entity_decode($blogsdata->description)}}</textarea>
+                    <textarea name="blogdescription" class="form-control form-control-user" id="blogdefault" aria-describedby="description5" placeholder="Enter blog description...">{!! html_entity_decode($blogsdata->description) !!}</textarea>
                 </div>
                 @php
                 $blogtags = explode(',', $blogsdata->tags);

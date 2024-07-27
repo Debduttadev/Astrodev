@@ -25,7 +25,7 @@
                 <div class="mt-4">
                     <label class="control-label">Description</label>
                     limit <span class="limit">0</span>/2000
-                    <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description" maxlength="2000" rows="10" cols="50">{{$servicedata->description}}</textarea>
+                    <textarea name="description" class="form-control form-control-user" id="description" aria-describedby="description" maxlength="2000" rows="10" cols="50">{!! html_entity_decode($servicedata->description)!!}</textarea>
                 </div>
 
                 <div class="mt-4">

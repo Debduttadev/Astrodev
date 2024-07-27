@@ -505,7 +505,7 @@
                          <div class="mt-4">
                              <label class="control-label">Description</label>
                              limit <span class="limit">0</span>/2000
-                             <textarea name="description" class="form-control form-control-user" id="aboutdescription" aria-describedby="description5" placeholder="Enter blog description..." value="{{$aboutdescription}}">{{$aboutdescription}}</textarea>
+                             <textarea name="description" class="form-control form-control-user" id="aboutdescription" aria-describedby="description5" placeholder="Enter blog description...">{!! html_entity_decode($aboutdescription) !!}</textarea>
                          </div>
 
                          <div class="mt-4">
