@@ -36,6 +36,7 @@
             var value = $(".titleinput").val();
             var searchval = $(".titleinput").attr('search', value)
             var searchobj = $(".titleinput");
+            alert($('input[name="language"]:checked').val());
             alttagmodaldata(searchobj)
         });
 
@@ -62,6 +63,7 @@
         $("#dp1").on("dp.change", function(e) {
             var obj = $(this);
             var value = $(this).val();
+            //alert($('input[name="language"]:checked').val());
             // console.log(value);
             var searchval = $(this).attr('search', value);
             alttagmodaldata(obj)
@@ -88,10 +90,9 @@
                 url: actionUrl,
                 data: form.serialize(), // serializes the form's elements.
                 success: function(data) {
-                    console.log(data); // show response from the php script.
+                    //console.log(data); // show response from the php script.
                     var massage = JSON.parse(data);
-
-                    console.log(massage);
+                    //console.log(massage);
                     if (massage.status == 1) {
                         var titlehtml = "<strong> Your appointment has been scheduled successfully. </strong>";
                         $('.appoinmenttitle1').html(titlehtml);
@@ -199,7 +200,7 @@
             }).done(function(msg) {
 
                 var alldata = JSON.parse(msg);
-                console.log(alldata);
+                //console.log(alldata.status);
 
                 if (alldata == "0") {
 
@@ -211,8 +212,13 @@
 
                     var html = "";
                     var data = alldata.blogitems;
+
                     for (var x in data) {
-                        html += "<div class='col-sm-4 m-bottom-50'>";
+                        //console.log(x);
+                        var description = data[x].description;
+                        description = decodeEntities(description.substr(0, 118));
+                        //console.log(description);
+                        html += "<div class='col-md-4 m-bottom-50'>";
                         html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                         html += "<div class='blog-media'>"
                         html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
@@ -223,7 +229,7 @@
                         html += "</div>";
                         html += "<div class='blog-post-body'>";
                         html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
-                        html += "<p class='p-bottom-20'>" + data[x].description + "</p>";
+                        html += "<p class='p-bottom-20'>" + description + "</p>";
                         html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
                         html += "</div>";
                         html += "</div>";
@@ -273,6 +279,59 @@
             })
 
         });
+
+        $(document).on('change', '.languagefilter', function(e) {
+            var obj = $(this);
+            var value = $(this).val();
+            //alert(value);
+            $.ajax({
+                url: base_url + '/languagefilter',
+                method: "get",
+                data: {
+                    'language': value,
+                }
+            }).done(function(msg) {
+                var data = JSON.parse(msg);
+                //console.log(data.status);
+                if (data.status == "0") {
+                    $(".blogsearchdetails").empty();
+                    $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
+                    $("#paginationblog").remove();
+                } else {
+                    var html = "";
+                    var blogitems = data.blogitems;
+                    //console.log(blogitems);
+                    for (var x in blogitems) {
+                        var description = blogitems[x].description;
+                        description = decodeEntities(description.substr(0, 118));
+
+                        //console.log(description);
+                        html += "<div class='col-sm-4 m-bottom-50'>";
+                        html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
+                        html += "<div class='blog-media'>"
+                        html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "'>"
+                        html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
+                        html += "</div>";
+                        html += "<div class='blog-post-info clearfix'>";
+                        html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
+                        html += "</div>";
+                        html += "<div class='blog-post-body'>";
+                        html += "<h4><a class='title'>" + blogitems[x].title + "</a></h4>";
+                        html += "<p class='p-bottom-20'>" + description + "</p>";
+                        html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                    }
+
+                    $("#paginationblog").remove();
+                    $(".blogsearchdetails").empty();
+                    $(".blogsearchdetails").html(html);
+
+                }
+            })
+
+        });
     });
 
     function alttagmodaldata(obj) {
@@ -281,6 +340,7 @@
         var search = obj.attr('search');
         var type = obj.attr('typeblog');
         //console.log(search, type);
+        alert(search);
 
         $.ajax({
             url: base_url + '/searchblog',
@@ -290,18 +350,19 @@
                 'type': type,
             }
         }).done(function(msg) {
-
             var data = JSON.parse(msg);
+            //console.log(msg);
             if (data == "0") {
 
                 $(".blogsearchdetails").empty();
                 $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
                 $("#paginationblog").remove();
-
             } else {
-
                 var html = "";
                 for (var x in data) {
+                    var description = decodeEntities(data[x].description);
+                    description = description.substr(0, 120);
+                    //console.log(description);
                     html += "<div class='col-sm-4 m-bottom-50'>";
                     html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                     html += "<div class='blog-media'>"
@@ -313,7 +374,7 @@
                     html += "</div>";
                     html += "<div class='blog-post-body'>";
                     html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
-                    html += "<p class='p-bottom-20'>" + data[x].description + "</p>";
+                    html += "<p class='p-bottom-20'>" + description + "</p>";
                     html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
                     html += "</div>";
                     html += "</div>";
@@ -326,5 +387,12 @@
 
             }
         })
+    }
+
+    function decodeEntities(encodedString) {
+        $('.striptag').html(encodedString);
+        var description = $('.striptag').text();
+        console.log(description);
+        return description;
     }
 </script>

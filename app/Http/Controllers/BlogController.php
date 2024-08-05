@@ -34,7 +34,7 @@ class BlogController extends Controller
                 $category = category::where('id', $id)->first();
                 $categories[$id] = $category->category;
             }
-            $blogitems[$blogdata->id]['category'] = $categories;
+            $blogitems[$blogdata->language][$blogdata->id]['category'] = $categories;
 
             $keywordid = explode(",", $blogdata->keyword);
             $keywords = [];
@@ -42,7 +42,7 @@ class BlogController extends Controller
                 $keyword = keyword::where('id', $id)->first();
                 $keywords[$id] = $keyword->keyword;
             }
-            $blogitems[$blogdata->id]['keyword'] = $keywords;
+            $blogitems[$blogdata->language][$blogdata->id]['keyword'] = $keywords;
 
             $tagid = explode(",", $blogdata->tags);
             $tags = [];
@@ -50,13 +50,13 @@ class BlogController extends Controller
                 $tag = tag::where('id', $id)->first();
                 $tags[$id] = $tag->tag;
             }
-            $blogitems[$blogdata->id]['tag'] = $tags;
-
-            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
-            $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
-            $blogitems[$blogdata->id]['id'] = $blogdata->id;
-            $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            $blogitems[$blogdata->language][$blogdata->id]['tag'] = $tags;
+            $blogitems[$blogdata->language][$blogdata->id]['description'] = html_entity_decode($blogdata->description);
+            $blogitems[$blogdata->language][$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->language][$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+            $blogitems[$blogdata->language][$blogdata->id]['id'] = $blogdata->id;
+            $blogitems[$blogdata->language][$blogdata->id]['language'] = $blogdata->language;
+            $blogitems[$blogdata->language][$blogdata->id]['image'] = $blogdata->image;
         }
         //dd($blogitems);
 
@@ -91,6 +91,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savetag = new tag;
                     $savetag->tag = $tag;
+                    $savetag->language = $request->language;
                     $savetag->save();
                     $tagid[$i] = $savetag->id;
                     $i++;
@@ -124,6 +125,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savekeyword = new keyword;
                     $savekeyword->keyword = $keyword;
+                    $savekeyword->language = $request->language;
                     $savekeyword->save();
                     $keywordid[$k] = $savekeyword->id;
                     $k++;
@@ -157,6 +159,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savecategory = new category;
                     $savecategory->category = $category;
+                    $savecategory->language = $request->language;
                     $savecategory->save();
                     $categoryid[$c] = $savecategory->id;
                     $c++;
@@ -186,6 +189,7 @@ class BlogController extends Controller
             $newblog->keyword = $keywordid;
             $newblog->category = $categoryid;
             $newblog->title = $request->name;
+            $newblog->language = $request->language;
             $newblog->nameurl = $nameurl;
             $newblog->description = htmlentities($request->blogdescription);
 
@@ -350,6 +354,68 @@ class BlogController extends Controller
     }
 
 
+
+    public function languagefilter(Request $request)
+    {
+        $data = $request;
+        $language = $data->language;
+        // blog details
+        $limit = 6;
+        if ($language == "1") {
+            $blogs = blog::limit($limit)->get();
+        } else {
+            $blogs = blog::where('language', '=', $language)->limit($limit)->get();
+        }
+        $blogcount = blog::count();
+        $pagination = $blogcount / $limit;
+        $pagination = ceil($pagination);
+        //dd($pagination);
+        $blogitems = [];
+        foreach ($blogs as $blogdata) {
+
+            $cataegoryid = explode(",", $blogdata->category);
+            $categories = [];
+            foreach ($cataegoryid as $id) {
+                $category = category::where('id', $id)->first();
+                $categories[$id] = $category->category;
+            }
+            $blogitems[$blogdata->id]['category'] = $categories;
+
+            $keywordid = explode(",", $blogdata->keyword);
+            $keywords = [];
+            foreach ($keywordid as $id) {
+                $keyword = keyword::where('id', $id)->first();
+                $keywords[$id] = $keyword->keyword;
+            }
+            $blogitems[$blogdata->id]['keyword'] = $keywords;
+
+            $tagid = explode(",", $blogdata->tags);
+            $tags = [];
+            foreach ($tagid as $id) {
+                $tag = tag::where('id', $id)->first();
+                $tags[$id] = $tag->tag;
+            }
+            $blogitems[$blogdata->id]['tag'] = $tags;
+            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
+            $blogitems[$blogdata->id]['title'] = $blogdata->title;
+            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+            $blogitems[$blogdata->id]['id'] = $blogdata->id;
+            if (!empty($blogdata->image)) {
+                $blogitems[$blogdata->id]['image'] = $blogdata->image;
+            } else {
+                $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
+            }
+            $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
+        }
+
+        //dd($blogitems);
+        if (count($blogitems) != 0) {
+            print_r(json_encode(['status' => 1, 'blogitems' => $blogitems, 'pagination' => $pagination, 'page' => 1]));
+        } else {
+            print_r(json_encode(['status' => 0, 'message' => "No blog found"]));
+        }
+    }
+
     public function bloglistpagination($page)
     {
         // blog details
@@ -390,7 +456,7 @@ class BlogController extends Controller
             }
             $blogitems[$blogdata->id]['tag'] = $tags;
 
-            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
+            $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
@@ -400,11 +466,16 @@ class BlogController extends Controller
                 $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
             }
 
-            $createdat = $blogdata->created_at;
             $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
         }
 
-        print_r(json_encode(["blogitems" => $blogitems, 'pagination' => $pagination, 'page' => $page]));
+        //dd(count($blogitems));
+
+        if (count($blogitems) == 0) {
+            print_r(json_encode(['status' => 0, 'message' => "No blog found"]));
+        } else {
+            print_r(json_encode(['status' => 1, 'blogitems' => $blogitems, 'pagination' => $pagination, 'page' => $page]));
+        }
     }
 
     /**
@@ -468,10 +539,12 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['tag'] = $tags;
 
-            $blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
+            //$blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
+            $blogitems[$blogdata->id]['description'] = strip_tags(html_entity_decode($blogdata->description));
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
+
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
             } else {
@@ -495,7 +568,6 @@ class BlogController extends Controller
     {
         $id = base64_decode($id);
         $blogs = blog::where('id', $id)->first();
-        $blogitems = [];
         //dd($blogs);
 
 

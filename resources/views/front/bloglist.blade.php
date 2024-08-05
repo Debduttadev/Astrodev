@@ -10,6 +10,20 @@
     <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
         We write quality content regularly. check them out!
     </p>
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-default active">
+            <input class="languagefilter" type="radio" name="language" checked="checked" value="1"> All Blogs
+        </label>
+        <label class="btn btn-default">
+            <input class="languagefilter" type="radio" name="language" value="English"> English
+        </label>
+        <label class="btn btn-default">
+            <input class="languagefilter" type="radio" name="language" value="Hindi"> Hindi
+        </label>
+        <label class="btn btn-default">
+            <input class="languagefilter" type="radio" name="language" value="Bengali"> Bengali
+        </label>
+    </div>
 </div>
 <!-- End Regular Section -->
 <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
@@ -32,13 +46,12 @@
                     </form>
                 </div>
                 <!--End widget-->
-                @php
 
+                @php
                 $blogfilters=blogfilters();
                 $categorydata=$blogfilters['allcategory'];
                 $tagsdata=$blogfilters['alltag'];
                 $keyworddata=$blogfilters['allkeyword'];
-
                 @endphp
 
                 <!--Widget 4-->
@@ -101,7 +114,7 @@
                     $title=$alttagforimages['blog'][$blog['id']]['title'];
                     @endphp
                     <!-- === Blog item 1 === -->
-                    <div class="col-sm-4 m-bottom-50">
+                    <div class="col-md-4 m-bottom-50">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
 
                             <div class="blog-media">
@@ -137,8 +150,7 @@
                     @endforeach
                 </div>
                 <!-- /.inner-row -->
-            </div>
-            <div class="col-md-9">
+
                 @if($pagination>1)
                 <!-- blog pagination -->
                 <div class="blog-pagination" id="paginationblog">
@@ -182,18 +194,17 @@
                                 </li>
                         </ul>
                     </nav>
-
                 </div>
                 <!-- /.blog-pagination -->
                 @endif
             </div>
-            <!-- /.col -->
-
         </div>
         <!-- /.row -->
 
 
     </div>
+    <div class="striptag" style="display: none;"></div>
+
     <!-- /.container -->
 </section>
 <!--End blog single section-->

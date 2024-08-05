@@ -17,6 +17,30 @@
                 {{ csrf_field() }}
 
                 <div class="mt-4">
+                    <label class="control-label">Language</label>
+                    <select name="language" class="form-select" aria-label="Select language">
+                        <option selected>Select language</option>
+                        @if($blogsdata->language === 'English' )
+                        <option value="English" selected>English</option>
+                        @else
+                        <option value="English">English</option>
+                        @endif
+
+                        @if($blogsdata->language === 'Bengali' )
+                        <option value="Bengali" selected>Bengali</option>
+                        @else
+                        <option value="Bengali">Bengali</option>
+                        @endif
+
+                        @if($blogsdata->language === 'Hindi' )
+                        <option value="Hindi" selected>Hindi</option>
+                        @else
+                        <option value="Hindi">Hindi</option>
+                        @endif
+                    </select>
+                </div>
+
+                <div class="mt-4">
                     <label class="control-label">Title</label>
                     <input type="text" class="form-control form-control-user" placeholder="Daily Panchang" name="name" value="{{$blogsdata->title}}" required autofocus>
                     <input type="hidden" name="id" value="{{$blogsdata->id}}">
@@ -82,6 +106,7 @@
                             @endif
                         </select>
                     </div>
+
                     <div style="width: 60%;">
                         <label>New Category</label>
                         <lable style="font-size:12px;">(enter "," between two Category )</lable>

@@ -38,6 +38,8 @@ Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');
 Route::get('/blogs/{page}', [BlogController::class, 'bloglistpagination'])->name('blogs');
 Route::get('/blog/{nameurl}', [BlogController::class, 'blog'])->name('blog');
 Route::get('/searchblog', [BlogController::class, 'searchblog']);
+Route::get('/languagefilter', [BlogController::class, 'languagefilter']);
+
 
 
 Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers');

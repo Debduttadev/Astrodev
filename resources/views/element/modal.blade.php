@@ -343,6 +343,15 @@
                  <div class="container">
                      <form class="user" id="formdatablog" method="POST" action="{{ URL::to('addblog') }}" enctype="multipart/form-data">
                          {{ csrf_field() }}
+                         <div class="mt-4">
+                             <label class="control-label">Language</label>
+                             <select name="language" class="form-select" aria-label="Select language">
+                                 <option selected>Select language</option>
+                                 <option value="English">English</option>
+                                 <option value="Hindi">Hindi</option>
+                                 <option value="Bengali">Bengali</option>
+                             </select>
+                         </div>
 
                          <div class="mt-4">
                              <label class="control-label">Title</label>

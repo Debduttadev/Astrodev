@@ -66,9 +66,8 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($blogsdata as $data)
-
-
+                        @if(isset($blogsdata['English']) && count($blogsdata['English']) != 0)
+                        @foreach ($blogsdata['English'] as $data)
                         <tr>
                             <td>{{ $data['title'] }}</td>
 
@@ -112,6 +111,99 @@
                             </td>
                         </tr>
                         @endforeach
+                        @endif
+                        @if(isset($blogsdata['Bengali']) && count($blogsdata['Bengali']) != 0)
+                        @foreach ($blogsdata['Bengali'] as $data)
+                        <tr>
+                            <td>{{ $data['title'] }}</td>
+
+                            <td>
+                                <div class="text-center">
+                                    @if($data['image'] != null)
+                                    <img src="{{ URL::to('blog')."/".$data['image'] }}" class="rounded  img-fluid" alt="..." hight=200px width=200px>
+                                    @endif
+                                </div>
+                            </td>
+                            @php
+                            $small = substr( strip_tags($data['description']), 0, 200);
+                            @endphp
+
+                            <td>
+                                <p>{!!$small!!}</p>
+
+                                <a class="more" msg="{{html_entity_decode($data['description'])}}">
+                                    ...more
+                                </a>
+                            </td>
+                            </td>
+                            <td>
+                                @foreach ($data['tag'] as $tag)
+                                <span class="badge rounded-pill text-bg-secondary">{{$tag}}</span>
+                                @endforeach
+                            </td>
+                            <td>@foreach ($data['category'] as $category)
+                                <span class="badge rounded-pill text-bg-secondary">{{$category}}</span>
+                                @endforeach
+                            </td>
+                            <td>@foreach ($data['keyword'] as $keyword)
+                                <span class="badge rounded-pill text-bg-secondary">{{$keyword}}</span>
+                                @endforeach
+                            </td>
+
+                            <td>
+                                <a style="font-size: medium;" title="Edit Blog" class="btn btn-warning" href="{{ URL::to('editblog/' .base64_encode($data['id'])) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
+
+                                <a title="Delete Blogs" class="btn btn-danger deleteblog" blogid="{{ base64_encode($data['id'])}}" blogimage="{{$data['image']}}"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @endif
+                        @if(isset($blogsdata['Hindi']) && count($blogsdata['Hindi']) != 0)
+                        @foreach ($blogsdata['Hindi'] as $data)
+                        <tr>
+                            <td>{{ $data['title'] }}</td>
+
+                            <td>
+                                <div class="text-center">
+                                    @if($data['image'] != null)
+                                    <img src="{{ URL::to('blog')."/".$data['image'] }}" class="rounded  img-fluid" alt="..." hight=200px width=200px>
+                                    @endif
+                                </div>
+                            </td>
+                            @php
+                            $small = substr( strip_tags($data['description']), 0, 200);
+                            @endphp
+
+                            <td>
+                                <p>{!!$small!!}</p>
+
+                                <a class="more" msg="{{html_entity_decode($data['description'])}}">
+                                    ...more
+                                </a>
+                            </td>
+                            </td>
+                            <td>
+                                @foreach ($data['tag'] as $tag)
+                                <span class="badge rounded-pill text-bg-secondary">{{$tag}}</span>
+                                @endforeach
+                            </td>
+                            <td>@foreach ($data['category'] as $category)
+                                <span class="badge rounded-pill text-bg-secondary">{{$category}}</span>
+                                @endforeach
+                            </td>
+                            <td>@foreach ($data['keyword'] as $keyword)
+                                <span class="badge rounded-pill text-bg-secondary">{{$keyword}}</span>
+                                @endforeach
+                            </td>
+
+                            <td>
+                                <a style="font-size: medium;" title="Edit Blog" class="btn btn-warning" href="{{ URL::to('editblog/' .base64_encode($data['id'])) }}"><i class="fas fa-edit" style="color:#848795;"></i></a>
+
+                                <a title="Delete Blogs" class="btn btn-danger deleteblog" blogid="{{ base64_encode($data['id'])}}" blogimage="{{$data['image']}}"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @endif
                     </tbody>
                 </table>
                 @endif
