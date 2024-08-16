@@ -36,7 +36,7 @@
             var value = $(".titleinput").val();
             var searchval = $(".titleinput").attr('search', value)
             var searchobj = $(".titleinput");
-            alert($('input[name="language"]:checked').val());
+            // alert($('input[name="language"]:checked').val());
             alttagmodaldata(searchobj)
         });
 
@@ -191,22 +191,26 @@
             e.preventDefault();
 
             var actionUrl = $(this).attr('href');
+            var language = $('.globallanguage').val();
+            var search = $('.globalsearch').val();
+            var type = $('.globaltype').val();
             $.ajax({
-                url: actionUrl,
+                url: actionUrl + '/' + language + '/' + search + '/' + type,
                 method: "get",
                 data: {
-                    'search': "blog",
+                    'language': language,
+                    'search': search,
+                    'type': type
                 }
             }).done(function(msg) {
 
                 var alldata = JSON.parse(msg);
-                //console.log(alldata.status);
-
+                console.log(alldata);
                 if (alldata == "0") {
 
                     $(".blogsearchdetails").empty();
                     $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
-                    $("#paginationblog").remove();
+                    $(".paginationpage").empty();
 
                 } else {
 
@@ -250,6 +254,7 @@
                         varpage += '<a class="blogpage" href="' + base_url + '/blogs/' + prevpage + '" aria-label="Previous">';
                         varpage += '<span aria-hidden="false"><i class="fa fa-angle-left"></i></span></a>';
                     }
+
                     varpage += '</li>';
                     while (i <= alldata.pagination) {
                         if (i == page) {
@@ -266,14 +271,14 @@
                         varpage += '<li class = "disabled" >';
                         varpage += '<span aria-hidden="true" > <i class="fa fa-angle-right"></i></span>'
                     } else {
-                        var nextpage = page + 1;
+                        var nextpage = Number(page) + 1;
                         varpage += '<li><a class = "blogpage" href ="' + base_url + '/blogs/' + nextpage + '" aria-label="Next" >';
                         varpage += '<span aria-hidden="false"><i class="fa fa-angle-right"></i></span>';
                         varpage += '</a>';
                     }
                     varpage += '</li></ul>';
 
-                    $(".paginationpage").empty();
+                    $(".paginationpage").html('<li></li>');
                     $(".paginationpage").html(varpage);
                 }
             })
@@ -283,6 +288,8 @@
         $(document).on('change', '.languagefilter', function(e) {
             var obj = $(this);
             var value = $(this).val();
+            // alert($('.globalsearch').val());
+            // alert($('.globaltype').val());
             //alert(value);
             $.ajax({
                 url: base_url + '/languagefilter',
@@ -292,20 +299,22 @@
                 }
             }).done(function(msg) {
                 var data = JSON.parse(msg);
-                //console.log(data.status);
+                var blogfilters = data.blogfilters;
+                var pagination = data.pagination;
+
+                $('.globallanguage').val(value);
+
                 if (data.status == "0") {
                     $(".blogsearchdetails").empty();
                     $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
-                    $("#paginationblog").remove();
+                    $(".paginationpage").empty();
                 } else {
                     var html = "";
                     var blogitems = data.blogitems;
-                    //console.log(blogitems);
                     for (var x in blogitems) {
                         var description = blogitems[x].description;
                         description = decodeEntities(description.substr(0, 118));
 
-                        //console.log(description);
                         html += "<div class='col-sm-4 m-bottom-50'>";
                         html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                         html += "<div class='blog-media'>"
@@ -323,14 +332,74 @@
                         html += "</div>";
                         html += "</div>";
                     }
+                    if (data.pagination > 1) {
 
-                    $("#paginationblog").remove();
+                        var pagehtml = '';
+                        var i = 1;
+                        var page = data.page;
+                        var prevpage = data.page - 1;
+                        var pagination = data.pagination;
+                        if (data.page == 1) {
+                            pagehtml += "<li class='disabled'>";
+                            pagehtml += "<span aria-hidden='true'><i class='fa fa-angle-left'></i></span>";
+                        } else {
+                            pagehtml += "<li><a class='blogpage' href='" + base_url + "/blogs/" + prevpage + "' aria-label='Previous'>";
+                            pagehtml += "<span aria-hidden='false'><i class='fa fa-angle-left'></i></span></a>";
+                        }
+                        pagehtml += "</li>";
+
+                        while (i <= pagination) {
+                            if (i == page) {
+                                pagehtml += "<li class='active'>";
+                                pagehtml += "<span>" + i + "<span class='sr-only'>(current)</span></span>";
+                                pagehtml += "</li>";
+                            } else {
+                                pagehtml += "<li><a class='blogpage' href='" + base_url + "/blogs/" + i + "'>" + i + "</a></li>";
+                            }
+                            i++;
+                        }
+                        if (i - page == 1) {
+                            pagehtml += "<li class='disabled'><span aria-hidden='true'><i class='fa fa-angle-right'></i></span>";
+                        } else {
+                            var nextpage = Number(page) + 1;
+                            pagehtml += "<li> <a class='blogpage' href='" + base_url + "/blogs/" + nextpage + "' aria-label='Next'>";
+                            pagehtml += "<span aria-hidden='false'><i class='fa fa-angle-right'></i></span></a>";
+                        }
+                        pagehtml += "</li>";
+                        $(".paginationpage").html(pagehtml);
+                    } else {
+                        $(".paginationpage").html('<li></li>');
+                    }
+
                     $(".blogsearchdetails").empty();
                     $(".blogsearchdetails").html(html);
 
                 }
-            })
 
+                var taghtml = '';
+                var categoryhtml = '';
+                var keywordhtml = '';
+
+                var alltag = blogfilters.alltag;
+                var allkeyword = blogfilters.allkeyword;
+                var allcategory = blogfilters.allcategory;
+
+                for (var tag in alltag) {
+                    taghtml += "<li><a class='tagsearch' typeblog='tags' search='" + tag + "'>" + alltag[tag] + "</a></li>";
+                }
+
+                for (var keyword in allkeyword) {
+                    keywordhtml += "<li><a class='keysearch' typeblog='keyword' search='" + keyword + "'>" + allkeyword[keyword] + "</a></li>";
+                }
+
+                for (var category in allcategory) {
+                    categoryhtml += "<li><a class='categorysearch' typeblog='category' search='" + category + "'>" + allcategory[category] + "</a></li>";
+                }
+
+                $('.categoryfilter').html(categoryhtml);
+                $('.tagfilter').html(taghtml);
+                $('.keywordfilter').html(keywordhtml);
+            })
         });
     });
 
@@ -339,9 +408,11 @@
         var base_url = "{{ URL::to('/') }}";
         var search = obj.attr('search');
         var type = obj.attr('typeblog');
-        //console.log(search, type);
-        alert(search);
-
+        $('.globalsearch').val(search);
+        $('.globaltype').val(type);
+        // alert($('.globalsearch').val());
+        // alert($('.globaltype').val());
+        console.log(search, type);
         $.ajax({
             url: base_url + '/searchblog',
             method: "get",
@@ -349,42 +420,84 @@
                 'search': search,
                 'type': type,
             }
+
         }).done(function(msg) {
             var data = JSON.parse(msg);
-            //console.log(msg);
-            if (data == "0") {
+            var blogfilters = data.blogfilters;
+            var pagination = data.pagination;
+            console.log(data);
+
+            if (data.status == "0") {
 
                 $(".blogsearchdetails").empty();
                 $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
-                $("#paginationblog").remove();
+                $(".paginationpage").remove();
+
             } else {
+                var blogitems = data.blogitems;
                 var html = "";
-                for (var x in data) {
-                    var description = decodeEntities(data[x].description);
-                    description = description.substr(0, 120);
-                    //console.log(description);
+                for (var x in blogitems) {
+                    var description = blogitems[x].description;
+                    description = decodeEntities(description.substr(0, 118));
+
                     html += "<div class='col-sm-4 m-bottom-50'>";
                     html += "<div class='blog wow zoomIn' data-wow-duration='1s' data-wow-delay='0.7s'>";
                     html += "<div class='blog-media'>"
-                    html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
-                    html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
+                    html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "'>"
+                    html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
                     html += "</div>";
                     html += "<div class='blog-post-info clearfix'>";
-                    html += "<span class='time'><i class='fa fa-calendar'></i>" + data[x].createdate + "</span>";
+                    html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
                     html += "</div>";
                     html += "<div class='blog-post-body'>";
-                    html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
+                    html += "<h4><a class='title'>" + blogitems[x].title + "</a></h4>";
                     html += "<p class='p-bottom-20'>" + description + "</p>";
-                    html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
+                    html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";
                 }
 
-                $("#paginationblog").remove();
+                if (data.pagination > 1) {
+
+                    var pagehtml = '';
+                    var i = 1;
+                    var page = data.page;
+                    var prevpage = data.page - 1;
+                    var pagination = data.pagination;
+                    if (data.page == 1) {
+                        pagehtml += "<li class='disabled'>";
+                        pagehtml += "<span aria-hidden='true'><i class='fa fa-angle-left'></i></span>";
+                    } else {
+                        pagehtml += "<li><a class='blogpage' href='" + base_url + "/blogs/" + prevpage + "' aria-label='Previous'>";
+                        pagehtml += "<span aria-hidden='false'><i class='fa fa-angle-left'></i></span></a>";
+                    }
+                    pagehtml += "</li>";
+
+                    while (i <= pagination) {
+                        if (i == page) {
+                            pagehtml += "<li class='active'>";
+                            pagehtml += "<span>" + i + "<span class='sr-only'>(current)</span></span>";
+                            pagehtml += "</li>";
+                        } else {
+                            pagehtml += "<li><a class='blogpage' href='" + base_url + "/blogs/" + i + "'>" + i + "</a></li>";
+                        }
+                        i++;
+                    }
+                    if (i - page == 1) {
+                        pagehtml += "<li class='disabled'><span aria-hidden='true'><i class='fa fa-angle-right'></i></span>";
+                    } else {
+                        var nextpage = Number(page) + 1;
+                        pagehtml += "<li> <a class='blogpage' href='" + base_url + "/blogs/" + nextpage + "' aria-label='Next'>";
+                        pagehtml += "<span aria-hidden='false'><i class='fa fa-angle-right'></i></span></a>";
+                    }
+                    pagehtml += "</li>";
+                    $(".paginationpage").html(pagehtml);
+                } else {
+                    $(".paginationpage").html('<li></li>');
+                }
                 $(".blogsearchdetails").empty();
                 $(".blogsearchdetails").html(html);
-
             }
         })
     }
@@ -392,7 +505,7 @@
     function decodeEntities(encodedString) {
         $('.striptag').html(encodedString);
         var description = $('.striptag').text();
-        console.log(description);
+        // console.log(description);
         return description;
     }
 </script>

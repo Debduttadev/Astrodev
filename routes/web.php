@@ -35,7 +35,7 @@ Route::get('/services', [ServiceController::class, 'servicelists']);
 Route::get('/service/{nameurl}', [ServiceController::class, 'servicedetails'])->name('service');
 
 Route::get('/blogs', [BlogController::class, 'bloglist'])->name('blogs');
-Route::get('/blogs/{page}', [BlogController::class, 'bloglistpagination'])->name('blogs');
+Route::get('/blogs/{page}/{language}/{search}/{type}', [BlogController::class, 'bloglistpagination'])->name('blogs');
 Route::get('/blog/{nameurl}', [BlogController::class, 'blog'])->name('blog');
 Route::get('/searchblog', [BlogController::class, 'searchblog']);
 Route::get('/languagefilter', [BlogController::class, 'languagefilter']);

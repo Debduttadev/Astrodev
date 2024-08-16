@@ -319,8 +319,8 @@ class BlogController extends Controller
                 $categories[$id] = $category->category;
             }
             $blogitems[$blogdata->id]['category'] = $categories;
-
             $keywordid = explode(",", $blogdata->keyword);
+
             $keywords = [];
             foreach ($keywordid as $id) {
                 $keyword = keyword::where('id', $id)->first();
@@ -340,6 +340,7 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
+
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
             } else {
@@ -361,28 +362,69 @@ class BlogController extends Controller
         $language = $data->language;
         // blog details
         $limit = 6;
-        if ($language == "1") {
+        $blogfilters = [];
+        $alltag = [];
+        $allkeyword = [];
+        $allcategory = [];
+
+        if ($language == "all") {
             $blogs = blog::limit($limit)->get();
+            $blogcount = blog::count();
+
+            $alltags = tag::select('id', 'tag')->get();
+            $allkeywords = keyword::select('id', 'keyword')->get();
+            $allcategories = category::select('id', 'category')->get();
         } else {
             $blogs = blog::where('language', '=', $language)->limit($limit)->get();
+            $blogcount = blog::where('language', '=', $language)->count();
+
+            if ($blogcount === 0) {
+                $alltags = tag::select('id', 'tag')->get();
+                $allkeywords = keyword::select('id', 'keyword')->get();
+                $allcategories = category::select('id', 'category')->get();
+            } else {
+                $alltags = tag::select('id', 'tag')->where('language', '=', $language)->get();
+                $allkeywords = keyword::select('id', 'keyword')->where('language', '=', $language)->get();
+                $allcategories = category::select('id', 'category')->where('language', '=', $language)->get();
+            }
         }
-        $blogcount = blog::count();
+
+        foreach ($alltags as $tag) {
+            $alltag[$tag->id] = $tag->tag;
+        }
+        $blogfilters['alltag'] = $alltag;
+
+        foreach ($allkeywords as $keyword) {
+            $allkeyword[$keyword->id] = $keyword->keyword;
+        }
+        $blogfilters['allkeyword'] = $allkeyword;
+
+        foreach ($allcategories as $category) {
+            $allcategory[$category->id] = $category->category;
+        }
+
+        $blogfilters['allcategory'] = $allcategory;
+
+
         $pagination = $blogcount / $limit;
         $pagination = ceil($pagination);
-        //dd($pagination);
+
         $blogitems = [];
+        $i = 0;
         foreach ($blogs as $blogdata) {
 
             $cataegoryid = explode(",", $blogdata->category);
             $categories = [];
+
             foreach ($cataegoryid as $id) {
                 $category = category::where('id', $id)->first();
                 $categories[$id] = $category->category;
             }
-            $blogitems[$blogdata->id]['category'] = $categories;
 
+            $blogitems[$blogdata->id]['category'] = $categories;
             $keywordid = explode(",", $blogdata->keyword);
             $keywords = [];
+
             foreach ($keywordid as $id) {
                 $keyword = keyword::where('id', $id)->first();
                 $keywords[$id] = $keyword->keyword;
@@ -400,31 +442,149 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
+
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
             } else {
                 $blogitems[$blogdata->id]['image'] = 'noimage.jpg';
             }
             $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
+            if ($i == $limit) {
+                exit;
+            }
+            $i++;
         }
-
-        //dd($blogitems);
+        //dd($pagination);
         if (count($blogitems) != 0) {
-            print_r(json_encode(['status' => 1, 'blogitems' => $blogitems, 'pagination' => $pagination, 'page' => 1]));
+            print_r(json_encode(['status' => 1, 'blogitems' => $blogitems, 'blogfilters' => $blogfilters, 'pagination' => $pagination, 'page' => 1]));
         } else {
-            print_r(json_encode(['status' => 0, 'message' => "No blog found"]));
+            print_r(json_encode(['status' => 0, 'blogfilters' => $blogfilters, 'message' => "No blog found"]));
         }
     }
 
-    public function bloglistpagination($page)
+    public function bloglistpagination($page, $language, $search, $type)
     {
         // blog details
         $limit = 6;
         $countpage = $page - 1;
         $offset = $limit * $countpage;
 
-        $blogs = blog::offset($offset)->limit($limit)->get();
-        $blogcount = blog::count();
+        if ($language == "all") {
+
+            if ($type == 'all') {
+                $blogs = blog::offset($offset)->limit($limit)->get();
+                $blogcount = blog::count();
+            } else if ($type == 'created_at') {
+
+                $year = [];
+                $year = explode('-', $search);
+                $year = array_reverse($year);
+                $yearmonth = implode('-', $year);
+
+                $blogs = blog::where('created_at', 'like', '%' . $yearmonth . '%')
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+                $blogcount = blog::where('created_at', 'like', '%' . $yearmonth . '%')
+                    ->count();
+            } else if ($type == 'title') {
+
+                $blogs = blog::where($type, 'like', '%' . $search . '%')
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+                $blogcount = blog::where($type, 'like', '%' . $search . '%')
+                    ->count();
+            } else {
+
+                $search1 = '%' . ',' . $search . ',' . '%';
+                $search2 = $search . ',' . '%';
+                $search3 = '%,' . $search;
+
+                $blogs = blog::where($type, '=', $search)
+                    ->orWhere($type, 'like', $search1)
+                    ->orWhere($type, 'like', $search2)
+                    ->orWhere($type, 'like', $search3)
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+                $blogcount = blog::where($type, '=', $search)
+                    ->orWhere($type, 'like', $search1)
+                    ->orWhere($type, 'like', $search2)
+                    ->orWhere($type, 'like', $search3)
+                    ->count();
+            }
+        } else {
+
+            if ($type == 'all') {
+                $blogs = blog::where('language', '=', $language)
+                    ->offset($offset)
+                    ->limit($limit)->get();
+
+                $blogcount = blog::where('language', '=', $language)
+                    ->count();
+            } else if ($type == 'created_at') {
+                $year = [];
+                $year = explode('-', $search);
+                $year = array_reverse($year);
+                $yearmonth = implode('-', $year);
+                $blogs = blog::where([
+                    ['created_at', 'like', '%' . $yearmonth . '%'],
+                    ['language', '=', $language]
+                ])
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+
+                $blogcount = blog::where([
+                    ['created_at', 'like', '%' . $yearmonth . '%'],
+                    ['language', '=', $language]
+                ])
+                    ->count();
+            } else if ($type == 'title') {
+
+                $blogs = blog::where([
+                    [$type, 'like', '%' . $search . '%'],
+                    ['language', '=', $language]
+                ])
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+
+                $blogcount = blog::where([
+                    [$type, 'like', '%' . $search . '%'],
+                    ['language', '=', $language]
+                ])
+                    ->count();
+            } else {
+
+                $search1 = '%' . ',' . $search . ',' . '%';
+                $search2 = $search . ',' . '%';
+                $search3 = '%,' . $search;
+
+                $blogs = blog::where([
+                    [$type, '=', $search],
+                    ['language', '=', $language]
+                ])
+                    ->orWhere($type, 'like', $search1)
+                    ->orWhere($type, 'like', $search2)
+                    ->orWhere($type, 'like', $search3)
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+
+                $blogcount = blog::where([
+                    [$type, '=', $search],
+                    ['language', '=', $language]
+                ])
+                    ->orWhere($type, 'like', $search1)
+                    ->orWhere($type, 'like', $search2)
+                    ->orWhere($type, 'like', $search3)
+                    ->count();
+            }
+        }
+
+        //dd($blogs);
         $pagination = $blogcount / $limit;
         $pagination = ceil($pagination);
 
@@ -442,6 +602,7 @@ class BlogController extends Controller
 
             $keywordid = explode(",", $blogdata->keyword);
             $keywords = [];
+
             foreach ($keywordid as $id) {
                 $keyword = keyword::where('id', $id)->first();
                 $keywords[$id] = $keyword->keyword;
@@ -460,6 +621,7 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
             $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
+
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
             } else {
@@ -485,10 +647,9 @@ class BlogController extends Controller
     {
         $data = $request;
 
-        //dd($data->search);
+
         $search = $data->search;
         $type = $data->type;
-
         if ($type == 'created_at') {
 
             $year = [];
@@ -500,16 +661,31 @@ class BlogController extends Controller
                 'like',
                 '%' . $yearmonth . '%'
             )->get();
-        } else {
+        } else if ($type == 'title') {
             $blogs = blog::where(
                 $type,
                 'like',
                 '%' . $search . '%'
             )->get();
+        } else {
+            $search1 = '%' . ',' . $search . ',' . '%';
+            $search2 = $search . ',' . '%';
+            $search3 = '%,' . $search;
+
+            $blogs = blog::where($type, '=', $search)
+                ->orWhere($type, 'like', $search1)
+                ->orWhere($type, 'like', $search2)
+                ->orWhere($type, 'like', $search3)
+                ->get();
         }
 
-        $blogitems = [];
+        $limit = 6;
+        $blogcount = count($blogs);
+        $pagination = $blogcount / $limit;
+        $pagination = ceil($pagination);
 
+        $blogitems = [];
+        //dd($blogs);
         foreach ($blogs as $blogdata) {
 
             $cataegoryid = explode(",", $blogdata->category);
@@ -554,10 +730,12 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['createdate'] = $blogdata->created_at->format('d F, Y');
         }
 
+        $blogitems = array_slice($blogitems, 0, $limit);
+
         if (count($blogitems) != 0) {
-            print_r(json_encode($blogitems));
+            print_r(json_encode(['status' => 1, 'blogitems' => $blogitems, 'pagination' => $pagination, 'page' => 1]));
         } else {
-            print_r(json_encode("0"));
+            print_r(json_encode(['status' => 0, 'message' => "No blog found"]));
         }
     }
 
@@ -702,7 +880,9 @@ class BlogController extends Controller
                 });
                 if ($image->save(public_path('blog') . '/' . $filename)) {
                     $image = public_path('about') . '/' . $request->oldimage;
-                    unlink($image);
+                    if ($request->oldimage != null) {
+                        unlink($image);
+                    }
                     $updateblog['image'] = $filename;
                 }
             } else {

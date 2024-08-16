@@ -46,7 +46,7 @@
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="email">Email</label>
-                                <input name="email" id="email" type="text" placeholder="E-Mail: *" required />
+                                <input name="email" id="email" type="email" placeholder="E-Mail: *" required />
                                 <span class="error" id="err-email">please enter e-mail</span>
                                 <span class="error" id="err-emailvld">e-mail is not a valid format</span>
                             </div>

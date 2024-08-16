@@ -12,7 +12,7 @@
     </p>
     <div class="btn-group" data-toggle="buttons">
         <label class="btn btn-default active">
-            <input class="languagefilter" type="radio" name="language" checked="checked" value="1"> All Blogs
+            <input class="languagefilter" type="radio" name="language" checked="checked" value="all"> All Blogs
         </label>
         <label class="btn btn-default">
             <input class="languagefilter" type="radio" name="language" value="English"> English
@@ -38,6 +38,11 @@
                         <li>All Blogs</li>
                     </ol>
                 </a>
+
+                <input type="hidden" class="globallanguage" value="all">
+                <input type="hidden" class="globalsearch" value="all">
+                <input type="hidden" class="globaltype" value="all">
+
                 <!-- Widget 1 -->
                 <div class="widget widget-search">
                     <form class="search-form">
@@ -67,11 +72,9 @@
                 <!-- Widget 2 -->
                 <div class="widget">
                     <h4>Categories</h4>
-                    <ul class="tag-list">
+                    <ul class="tag-list categoryfilter">
                         @foreach ($categorydata as $key => $category )
-                        <li>
-                            <a class="categorysearch" typeblog="category" search="{{$key}}">{{$category}}</a>
-                        </li>
+                        <li><a class="categorysearch" typeblog="category" search="{{$key}}">{{$category}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -80,7 +83,7 @@
                 <!-- Widget 3 -->
                 <div class="widget">
                     <h4>Tags</h4>
-                    <ul class="tag-list">
+                    <ul class="tag-list tagfilter">
                         @foreach ($tagsdata as $key => $tag )
                         <li><a class="tagsearch" typeblog="tags" search="{{$key}}">{{ $tag }}</a></li>
                         @endforeach
@@ -91,7 +94,7 @@
                 <!--Widget 4-->
                 <div class="widget">
                     <h4>Keywords</h4>
-                    <ul class="tag-list">
+                    <ul class="tag-list keywordfilter">
                         @foreach ($keyworddata as $key => $keys )
                         <li><a class="keysearch" typeblog="keyword" search="{{$key}}">{{$keys}}</a></li>
                         @endforeach
@@ -114,7 +117,7 @@
                     $title=$alttagforimages['blog'][$blog['id']]['title'];
                     @endphp
                     <!-- === Blog item 1 === -->
-                    <div class="col-md-4 m-bottom-50">
+                    <div class="col-md-4 m-bottom-30">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
 
                             <div class="blog-media">
@@ -186,8 +189,8 @@
                                 <li class="disabled">
                                     <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
                                     @else
-
-                                <li> <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page+1}}" aria-label="Next">
+                                <li>
+                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page+1}}" aria-label="Next">
                                         <span aria-hidden="false"><i class="fa fa-angle-right"></i></span>
                                     </a>
                                     @endif

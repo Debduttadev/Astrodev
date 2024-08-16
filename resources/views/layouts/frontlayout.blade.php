@@ -226,6 +226,7 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
 
         .blogfilter {
             background-color: #ffe4ce;
+            padding-top: 20px;
         }
 
         .contactsubmit {

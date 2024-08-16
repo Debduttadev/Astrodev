@@ -1647,16 +1647,17 @@ blockquote {
     18. Blog
 ---------------------------------------------------*/
 .blog-index {
-    padding: 60px 0;
+    padding: 20px 0;
 }
 .blog {
     background-color: #f8f8f8;
 }
 .blog-post-info {
     border-bottom: 1px solid #ff0000;
+    background-color: #cdc0c0;
     padding: 10px 25px;
     color: #000000;
-    font-size: 16px;
+    font-size: 12px;
     font-style: italic;
 }
 .blog-post-info .time {
@@ -1834,7 +1835,7 @@ blockquote {
 .widget {
     margin-bottom: 20px;
     background-color: #ffe4ce;
-    padding: 25px 25px 12px;
+    padding: 12px 0px 12px;;
 }
 .widget h4 {
     margin-bottom: 20px;
