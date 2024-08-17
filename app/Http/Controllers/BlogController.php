@@ -858,6 +858,7 @@ class BlogController extends Controller
             $updateblog['keyword'] = $keywordid;
             $updateblog['category'] = $categoryid;
             $updateblog['title'] = $request->name;
+            $updateblog['language'] = $request->language;
             $updateblog['nameurl'] = $nameurl;
             $updateblog['description'] = htmlentities($request->blogdescription);
 
