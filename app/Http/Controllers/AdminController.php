@@ -137,7 +137,7 @@ class AdminController extends Controller
         ]);
 
         $userdata = User::where('id', $request->id)->first();
-        //dd($email);
+
         if ($userdata->email != $request->email) {
             $request->validate([
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class]

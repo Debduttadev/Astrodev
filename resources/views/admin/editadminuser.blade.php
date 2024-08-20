@@ -24,10 +24,10 @@
                         <option value="2" @if($admin->usertype === "2") selected @endif>
                             Seo management
                         </option>
-                        <option value="3" @if($admin->usertype === "4") selected @endif>
+                        <option value="4" @if($admin->usertype === "4") selected @endif>
                             Appointment Management
                         </option>
-                        <option value="4" @if($admin->usertype === "5") selected @endif>
+                        <option value="5" @if($admin->usertype === "5") selected @endif>
                             Blog Management
                         </option>
                     </select>
