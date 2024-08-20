@@ -345,8 +345,8 @@
                          {{ csrf_field() }}
                          <div class="mt-4">
                              <label class="control-label">Language</label>
-                             <select name="language" class="form-select" aria-label="Select language">
-                                 <option selected>Select language</option>
+                             <select name="language" class="form-select" aria-label="Select language" required>
+                                 <option value="1" selected>Select language</option>
                                  <option value="English">English</option>
                                  <option value="Hindi">Hindi</option>
                                  <option value="Bengali">Bengali</option>

@@ -18,7 +18,7 @@
 
                 <div class="mt-4">
                     <label class="control-label">Language</label>
-                    <select name="language" class="form-select" aria-label="Select language">
+                    <select name="language" class="form-select" aria-label="Select language" required>
                         <option selected>Select language</option>
                         @if($blogsdata->language === 'English' )
                         <option value="English" selected>English</option>
@@ -53,7 +53,7 @@
                     <label>Upload Image</label>
                     <input type="hidden" name="oldimage" value="{{$blogsdata->image}}">
 
-                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload11" accept="image/png, image/gif, image/jpeg, image/jpg">
+                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload11" accept="image/png, image/gif, image/jpeg, image/jpg" required>
 
                 </div>
 

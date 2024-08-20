@@ -27,9 +27,9 @@ use App\Http\Controllers\HomeController;
 //     return view("date");
 // });
 //frontend roots
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/aboutus', [AboutContactController::class, 'frontabout']);
-
 
 Route::get('/services', [ServiceController::class, 'servicelists']);
 Route::get('/service/{nameurl}', [ServiceController::class, 'servicedetails'])->name('service');
@@ -52,7 +52,6 @@ Route::post('paymentlinkcreate', [InvoiceController::class, 'paymentlinkcreate']
 
 Route::get('contactus', [ContactusController::class, 'contactus']);
 Route::post('addcontactus', [ContactusController::class, 'addcontactus']);
-
 
 Route::get('/dailyhoroscope', [HomeController::class, 'shipping'])->name('dailyhoroscope');
 
@@ -102,6 +101,7 @@ Route::middleware('auth')->group(function () {
         Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
 
         //horoscope
+        Route::get('/zodiacsigns', [HoroscopesController::class, 'zodiacsigns']);
         Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
         Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
     });
@@ -124,6 +124,13 @@ Route::middleware('auth')->group(function () {
         Route::post('addsociallink', [SocialController::class, 'addsociallink']);
         Route::get('/visibilitylink', [SocialController::class, 'visibilitylink']);
         Route::get('/addeditsocials', [SocialController::class, 'addeditsocials']);
+
+        //manage blog
+        Route::get('/manageblog', [BlogController::class, 'manageblog']);
+        Route::post('addblog', [BlogController::class, 'addblog']);
+        Route::get('/deleteblog', [BlogController::class, 'deleteblog']);
+        Route::get('editblog/{id}', [BlogController::class, 'editblog']);
+        Route::post('updateblog', [BlogController::class, 'updateblog']);
     });
 
     // usertype = 4 , appointment

@@ -30,6 +30,11 @@ class HoroscopesController extends Controller
         return view('admin.horoscope', ['page_name' => 'Manage horoscopr files', 'navstatus' => "horoscope", 'horoscopedata' => $horoscopedetails]);
     }
 
+    public function zodiacsigns()
+    {
+        //dd($horoscopedetails);
+        return view('admin.zodiacsigns', ['page_name' => 'Manage Zodiac Signs', 'navstatus' => "horoscope"]);
+    }
     /**
      * Show the form for creating a new resource.
      */

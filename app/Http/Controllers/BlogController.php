@@ -70,6 +70,12 @@ class BlogController extends Controller
     {
         $data = $request->except('_token');
         //dd($data);
+        $language = "";
+        if ($request->language == "1") {
+            $language = 'English';
+        } else {
+            $language = $request->language;
+        }
 
         if (!empty($request->newtags)) {
             $tagdata = explode(",", $request->newtags);
@@ -91,7 +97,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savetag = new tag;
                     $savetag->tag = $tag;
-                    $savetag->language = $request->language;
+                    $savetag->language = $language;
                     $savetag->save();
                     $tagid[$i] = $savetag->id;
                     $i++;
@@ -125,7 +131,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savekeyword = new keyword;
                     $savekeyword->keyword = $keyword;
-                    $savekeyword->language = $request->language;
+                    $savekeyword->language = $language;
                     $savekeyword->save();
                     $keywordid[$k] = $savekeyword->id;
                     $k++;
@@ -159,7 +165,7 @@ class BlogController extends Controller
                 if ($ifdata === null) {
                     $savecategory = new category;
                     $savecategory->category = $category;
-                    $savecategory->language = $request->language;
+                    $savecategory->language = $language;
                     $savecategory->save();
                     $categoryid[$c] = $savecategory->id;
                     $c++;
@@ -183,13 +189,12 @@ class BlogController extends Controller
             $tagid = implode(",", $tagid);
             $keywordid = implode(",", $keywordid);
             $categoryid = implode(",", $categoryid);
-
             $newblog = new blog;
             $newblog->tags = $tagid;
             $newblog->keyword = $keywordid;
             $newblog->category = $categoryid;
             $newblog->title = $request->name;
-            $newblog->language = $request->language;
+            $newblog->language = $language;
             $newblog->nameurl = $nameurl;
             $newblog->description = htmlentities($request->blogdescription);
 

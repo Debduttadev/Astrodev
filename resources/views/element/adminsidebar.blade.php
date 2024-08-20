@@ -56,6 +56,7 @@
                 $dashboard = "active";
                 }
                 $user = userdetails();
+
                 @endphp
 
                 <a class="nav-link {{ $dashboard }}" href="{{ route('dashboard') }}">
@@ -77,6 +78,7 @@
                 </a>
                 @endif
 
+
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5 )
                 <a class="nav-link {{ $adminservice }}" href="{{ URL::to('adminservice') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-hand-sparkles {{ $adminservice }}"></i></div>
@@ -85,10 +87,40 @@
                 @endif
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 )
-                <a class="nav-link {{ $adminhoroscope }}" href="{{ URL::to('adminhoroscope') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-circle-half-stroke" {{ $adminhoroscope }}"></i></div>
+                @php
+                if($adminhoroscope==="active"){
+                $aria_expanded=true;
+                $adminhoroscope = "show";
+                }else{
+                $adminhoroscope = "";
+                $aria_expanded=false;
+                }
+                @endphp
+
+                <!-- <a class="nav-link collapsed {{ $adminhoroscope }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="{{$aria_expanded}}" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon">
+                        <i class="fa-solid fa-circle-half-stroke" {{ $adminhoroscope }}"></i>
+                    </div>
                     Horoscopes
+                    <div class="sb-sidenav-collapse-arrow">
+                        <i class="fas fa-angle-down"></i>
+                    </div>
                 </a>
+
+                <div class="collapse {{ $adminhoroscope }}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link {{ $adminhoroscope }}" href="{{ URL::to('zodiacsigns') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa-regular fa-image {{ $adminhoroscope }}"></i>
+                            </div> Zodiac Signs
+                        </a>
+                        <a class="nav-link {{ $adminhoroscope }}" href="{{ URL::to('adminhoroscope') }}">
+                            <div class="sb-nav-link-icon">
+                                <i class="fa-regular fa-image {{ $adminhoroscope }}"></i>
+                            </div> Daily Horoscopes
+                        </a>
+                    </nav>
+                </div> -->
                 @endif
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 )
@@ -157,7 +189,7 @@
                 </a>
                 @endif
 
-                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
+                @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 2 || $user['usertype'] == 5)
                 <a class="nav-link {{ $manageblog }}" href="{{ URL::to('manageblog') }}">
                     <div class="sb-nav-link-icon"><i class="fa-regular fa-clipboard {{ $manageblog }}"></i></div>
                     Manage Blog
@@ -177,8 +209,6 @@
                     Manage customer review
                 </a>
                 @endif
-
-
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 )
                 <a class="nav-link {{ $managecontactus }}" href="managecontactus">
