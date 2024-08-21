@@ -53,7 +53,7 @@
                     <label>Upload Image</label>
                     <input type="hidden" name="oldimage" value="{{$blogsdata->image}}">
 
-                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload11" accept="image/png, image/gif, image/jpeg, image/jpg" required>
+                    <input type="file" class="form-control newimage" name="newimage" id="fileToUpload11" accept="image/png, image/gif, image/jpeg, image/jpg">
 
                 </div>
 

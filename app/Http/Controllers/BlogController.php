@@ -887,7 +887,10 @@ class BlogController extends Controller
                 if ($image->save(public_path('blog') . '/' . $filename)) {
                     $image = public_path('about') . '/' . $request->oldimage;
                     if ($request->oldimage != null) {
-                        unlink($image);
+                        if (file_exists($request->oldimage)) {
+                            // delete old image if exist
+                            unlink($image);
+                        }
                     }
                     $updateblog['image'] = $filename;
                 }

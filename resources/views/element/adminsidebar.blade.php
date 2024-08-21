@@ -97,7 +97,7 @@
                 }
                 @endphp
 
-                <!-- <a class="nav-link collapsed {{ $adminhoroscope }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="{{$aria_expanded}}" aria-controls="collapseLayouts">
+                <a class="nav-link collapsed {{ $adminhoroscope }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="{{$aria_expanded}}" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon">
                         <i class="fa-solid fa-circle-half-stroke" {{ $adminhoroscope }}"></i>
                     </div>
@@ -120,7 +120,7 @@
                             </div> Daily Horoscopes
                         </a>
                     </nav>
-                </div> -->
+                </div>
                 @endif
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 )
