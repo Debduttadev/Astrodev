@@ -43,16 +43,57 @@
                         <div id="flush-collapseOne" class="accordion-collapse collapse show " data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="row">
-                                    <form action="{{ URL::to('updatehoroscope') }}" method="post" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        <div class="mb-3">
-                                            <label for="dailyscope">Zodic sign Image</label>
-                                            <input type="file" id="dailyscope" class="form-control dailyhoroscopefile" multiple accept="image/png, image/jpeg, image/jpg">
-
-                                            <p class="help-block">Note: Supported image format: .jpeg, .jpg, .png</p>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary zodiacsignadded">Submit</button>
-                                    </form>
+                                    <div class="card-body">
+                                        <table id="datatablezodiac" class="table datatablereview">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Zodiac Name</th>
+                                                    <th>Zodiac Image</th>
+                                                    <th>Nature</th>
+                                                    <th>Color Type</th>
+                                                    <th>Upload Image Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Zodiac Name</th>
+                                                    <th>Zodiac Image</th>
+                                                    <th>Nature</th>
+                                                    <th>Color Type</th>
+                                                    <th>Upload Image Type</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                @php
+                                                $i = 1;
+                                                @endphp
+                                                @foreach ($zodiacdata as $data)
+                                                <tr>
+                                                    <td>{{ $i  }}</td>
+                                                    <td>{{ $data->zodiac_name }}</td>
+                                                    <td>
+                                                        @if(isset($data->image) & $data->image != null)
+                                                        <img src="{{ URL::to('zodiac')."/".$data->image }}" class="img-circle" alt="zodiac image" width="100px" height="100px">
+                                                        @else
+                                                        <img src="" class=" img-circle uploadedsign{{$data->id}}" alt="zodiac image" width="100px" height="100px">
+                                                        <div class="noimage"> No Image Uploaded </div>
+                                                        @endif
+                                                    </td>
+                                                    </td>
+                                                    <td>{{ $data->nature }}</td>
+                                                    <td>{{ $data->colortype }}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-outline-primary zodiacedit" zodiacid="{{$data->id}}"><i class="fa-regular fa-pen-to-square"></i></button>
+                                                    </td>
+                                                </tr>
+                                                @php $i++ @endphp
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--  -->
                                 </div>
                                 <div>
 

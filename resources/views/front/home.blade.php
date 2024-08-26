@@ -41,7 +41,7 @@ $about_contact=aboutalldetails();
                     </n>
                     <p> Vastu Influencer,</p>
                     </n>
-                    <p class="m-bottom-30">Life Coach, Success Guru</p>
+                    <p class="m-bottom-20">Life Coach, Success Guru</p>
                     </n>
                     <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn">Your Journey Begins Here</a>
                 </div>
@@ -78,7 +78,7 @@ $about_contact=aboutalldetails();
     </div>
 
     <!-- Start Regular Section -->
-    <section id="about" class="p-top-60 p-bottom-60 ">
+    <section id="about" class="p-top-30 p-bottom-30 ">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -88,7 +88,7 @@ $about_contact=aboutalldetails();
                             {!! html_entity_decode($about_contact->title)!!}
                         </div>
 
-                        <a href="{{ URL::to('/aboutus') }}" class="m-top-30 m-bottom-30 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
+                        <a href="{{ URL::to('/aboutus') }}" class="m-top-30 m-bottom-20 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">Know more</a>
                     </div> <!-- /.col -->
 
                     <div class="col-md-5 col-md-offset-1">
@@ -111,12 +111,12 @@ $about_contact=aboutalldetails();
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start Team -->
-    <section id="service" class="p-top-60 p-bottom-60">
+    <section id="service" class="p-top-30 p-bottom-30">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
+                    <div class="section-title text-center m-bottom-20">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Services</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                         <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">My mission is to kindle hope in humanity, offering the keys to solving life's puzzles through {{ $allservices}}. These ancient sciences, when understood and applied, unlock abundance for all.</p>
@@ -170,12 +170,12 @@ $about_contact=aboutalldetails();
     </section>
 
     <!-- End Team -->
-    <section id="myjourney" class="p-top-60 p-bottom-60">
+    <section id="myjourney" class="p-top-30 p-bottom-30">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
+                    <div class="section-title text-center m-bottom-20">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">MY JOURNEY</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                         <p class="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">Embarking on a spiritual odyssey in childhood, I cultivated a deep passion for astrology and palm reading. Rigorous meditation birthed my professional journey in astrology, palmistry, numerology, and Vastu. Beyond providing comfort, my services reflect a life well-lived. In times of joy, may we all find support. Welcome to a journey where spirituality meets practical wisdom.</p>
@@ -189,12 +189,12 @@ $about_contact=aboutalldetails();
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start blog -->
-    <section id="youtube" class="p-top-60 p-bottom-60">
+    <section id="youtube" class="p-top-30 p-bottom-30">
         <div class="container ">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
+                    <div class="section-title text-center m-bottom-20">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Featured Videos</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>
@@ -226,12 +226,12 @@ $about_contact=aboutalldetails();
     </section>
 
     <!-- Start Testimonial -->
-    <section id="testimonials" class="parallax-bg overlay-dark p-top-20 p-bottom-20" data-stellar-background-ratio="0.5">
+    <section id="testimonials" class="parallax-bg overlay-dark p-top-30 p-bottom-30" data-stellar-background-ratio="0.5">
         <div class="container ">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center white-color m-bottom-40">
+                    <div class="section-title text-center white-color m-bottom-20">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Happy Client Testimonials</h1>
                         <div class="divider-center-small divider-white wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>
@@ -262,12 +262,12 @@ $about_contact=aboutalldetails();
     <!-- End Testimonial -->
 
     <!-- Start blog -->
-    <section id="blog" class="p-top-60 p-bottom-60">
+    <section id="blog" class="p-top-30 p-bottom-30">
         <div class="container ">
             <div class="row">
                 <div class="col-md-12">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40 ">
+                    <div class="section-title text-center m-bottom-20 ">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Blog Posts</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>
@@ -311,7 +311,7 @@ $about_contact=aboutalldetails();
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ URL::to('/blogs') }}" class="pull-left m-top-30 m-bottom-30 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
+                        <a href="{{ URL::to('/blogs') }}" class="pull-left m-top-30 m-bottom-20 btn btn-main roundbtn wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.5s">See more Blogs</a>
                     </div><!-- /.col-md-12 -->
                 </div><!-- /.row -->
             </div><!-- /.container -->
@@ -320,12 +320,12 @@ $about_contact=aboutalldetails();
     <div class="divider-center divider-theme wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
 
     <!-- Start Contact -->
-    <section id="contact" class="p-top-60 p-bottom-60">
+    <section id="contact" class="p-top-30 p-bottom-30">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <!-- Section Title -->
-                    <div class="section-title text-center m-bottom-40">
+                    <div class="section-title text-center m-bottom-20">
                         <h1 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s">Contact</h1>
                         <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
                     </div>

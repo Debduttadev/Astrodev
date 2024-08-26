@@ -3,7 +3,6 @@
 
         var base_url = "{{ URL::to('/') }}";
 
-
         setTimeout(function() {
             $('.sessiondata').fadeOut('400');
         }, 3000);
@@ -99,7 +98,6 @@
             }
         });
 
-
         // delete chamber
         $(document).on('click', '.deletechember', function() {
             var obj = $(this);
@@ -126,7 +124,6 @@
                 } else {}
             });
         });
-
 
         // delete bannervideo
         $(document).on('click', '.deletebannervideo', function() {
@@ -156,7 +153,6 @@
                 } else {}
             });
         });
-
 
         // delete Social Link
         $(document).on('click', '.deletesocial', function() {
@@ -255,7 +251,6 @@
             convert_urls: false,
         });
 
-
         tinymce.init({
             selector: '#adddescription',
             license_key: 'gpl',
@@ -286,7 +281,6 @@
             convert_urls: false,
         });
 
-
         tinymce.init({
             selector: '#textareabanner',
             license_key: 'gpl',
@@ -302,7 +296,6 @@
             link_default_target: '_blank',
             convert_urls: false,
         });
-
 
         tinymce.init({
             selector: '#textareabanneredit',
@@ -574,11 +567,47 @@
 
         });
 
-        $(".dailyhoroscopesubmit").click(function() {
-            var $fileUpload = $(".dailyhoroscopefile");
-            if (parseInt($fileUpload.get(0).files.length) > 13) {
-                alert("You are only allowed to upload a maximum of 12 files");
-            }
+
+        $(document).on('click', '.zodiacedit', function() {
+            var zodiacid = $(this).attr('zodiacid');
+            $('.editzodiacid').val(zodiacid);
+            $('#zodiacimageedit').modal('show');
+        });
+
+        $('#zodiacsignform').submit(function(event) {
+            event.preventDefault();
+            var actionurl = $(this).attr("action");
+            $.ajax({
+                url: actionurl,
+                method: "POST",
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(result) {
+                    var massage = JSON.parse(result);
+                    console.log(massage);
+
+                    // if (massage.status == 1 && massage.msg == "true") {
+                    //     $('#zodiacimageedit').modal('hide');
+                    //     var file = massage.file;
+                    //     if (file) {
+                    //         var reader = new FileReader();
+                    //         reader.onload = function() {
+                    //             $(".uploadedsign").attr("src", reader.result);
+                    //         }
+                    //         reader.readAsDataURL(file);
+                    //     }
+                    // } else if (massage.status == 0 && massage.msg == "false") {
+                    //     alert("Sorry Zodiac Not Updated");
+                    // }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+
         });
 
         $('.paymentamout').click(function() {

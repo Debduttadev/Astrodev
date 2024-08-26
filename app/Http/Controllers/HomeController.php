@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Models\about_contact;
 use App\Models\banner_video;
 use App\Models\blog;
-use App\Models\tag;
-use App\Models\category;
-use App\Models\keyword;
-use App\Models\seodetails;
-use Illuminate\Http\Request;
 use App\Models\reviewsection;
 
 class HomeController extends Controller
@@ -55,31 +49,8 @@ class HomeController extends Controller
         // blog details
         $blogs = blog::get();
         $blogitems = [];
+
         foreach ($blogs as $blogdata) {
-
-            $cataegoryid = explode(",", $blogdata->category);
-            $categories = [];
-            foreach ($cataegoryid as $id) {
-                $category = category::where('id', $id)->first();
-                $categories[$id] = $category->category;
-            }
-            $blogitems[$blogdata->id]['category'] = $categories;
-
-            $keywordid = explode(",", $blogdata->keyword);
-            $keywords = [];
-            foreach ($keywordid as $id) {
-                $keyword = keyword::where('id', $id)->first();
-                $keywords[$id] = $keyword->keyword;
-            }
-            $blogitems[$blogdata->id]['keyword'] = $keywords;
-
-            $tagid = explode(",", $blogdata->tags);
-            $tags = [];
-            foreach ($tagid as $id) {
-                $tag = tag::where('id', $id)->first();
-                $tags[$id] = $tag->tag;
-            }
-            $blogitems[$blogdata->id]['tag'] = $tags;
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;

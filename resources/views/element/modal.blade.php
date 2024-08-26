@@ -709,3 +709,28 @@
          </div>
      </div>
  </div>
+
+ <!-- Modal -->
+ <div class="modal fade" id="zodiacimageedit" tabindex="-1" aria-labelledby="zodiacimageeditLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 <form action="{{ URL::to('updatezodiacimage') }}" method="POST" enctype="multipart/form-data" id="zodiacsignform">
+                     @csrf
+                     <div class="mb-3">
+                         <input type="hidden" name="zodiacid" class="editzodiacid" value="">
+                         <input type="file" name="zodiacimage" class="form-control zodiacsign" multiple accept="image/png, image/jpeg, image/jpg">
+                         <p class="help-block">Supported format: .jpeg, .jpg, .png</p>
+                         <div class="text-center d-grid gap-2">
+                             <button type="submit" class="btn btn-secondary">Update</button>
+                         </div>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>

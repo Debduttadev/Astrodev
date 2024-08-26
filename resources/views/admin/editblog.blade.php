@@ -136,8 +136,7 @@
                         <input type="text" class="form-control form-control-user" placeholder="New Keywords" name="newkeyword" multiple value="">
                     </div>
                 </div>
-
-
+                <a href="{{ URL::to('deletetagskeyword').'/भोलू">delete</a>
                 <div class="mt-4">
                     <button type="submit" class="btn btn-success btn-user btn-block">
                         Update Blog

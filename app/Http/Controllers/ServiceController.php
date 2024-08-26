@@ -3,13 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use App\Models\seodetails;
 

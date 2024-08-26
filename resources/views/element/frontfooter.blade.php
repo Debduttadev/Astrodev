@@ -1,5 +1,5 @@
 <!-- Start Footer -->
-<footer class="site-footer">
+<section id="footerlisting" class="p-top-20 p-bottom-10 footerlisting">
     <div class="container">
         <div class="row footerlist">
             <div class="col-md-12">
@@ -28,15 +28,15 @@
                     @else
                     <a href="{{ URL::to('/contactus') }}">CONTACT US</a><br>
                     @endif
-                    <a href="{{ URL::to('/terms_conditions') }}">TREM & CONDITIONS</a><br>
-                    <a href="{{ URL::to('/privacy_policy') }}">PRIVACY POLICY</a><br>
-                    <a href="{{ URL::to('/refund_policy') }}">REFUND POLICY</a><br>
+                    <a href="{{ URL::to('/terms-conditions') }}">TERMS & CONDITIONS</a><br>
+                    <a href="{{ URL::to('/privacy-policy') }}">PRIVACY POLICY</a><br>
+                    <a href="{{ URL::to('/refund-policy') }}">REFUND POLICY</a><br>
                 </div>
 
                 <div class="col-md-4 col-sm-4 pull-right">
                     <div class="row">
                         <div class="social-icon pull-right">
-                            <ul class="list-inline">
+                            <!-- <ul class="list-inline">
                                 @php
                                 $socialdata=scociallinks();
                                 @endphp
@@ -57,7 +57,7 @@
                                     @endif
                                 </li>
                                 @endforeach
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="row">
@@ -125,12 +125,29 @@
             </div>
         </div>
     </div>
+</section>
+<footer class="site-footer">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <small class="copyright">Copyrights © 2024 All Rights Reserved By Astroachariyadebdutta.com</small>
-                <!-- /social-icon -->
-            </div>
+        <small class="copyright pull-left">Copyrights © 2024 All Rights Reserved By <a href="https://astroachariyadebdutta.com/">Achariya Debdutta</a>.</small>
+        <div class="social-icon pull-right">
+            @php
+            $socialdata=scociallinks();
+            @endphp
+            @foreach ($socialdata as $social)
+            @if($social['name'] == 'Facebook')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-facebook social" aria-hidden="true"></i></a>
+            @elseif($social['name'] == 'Youtube')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-youtube-play social" aria-hidden="true"></i></a>
+            @elseif($social['name'] == 'WhatsApp')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-whatsapp social" aria-hidden="true"></i></a>
+            @elseif($social['name'] == 'Instagram')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-instagram social" aria-hidden="true"></i></a>
+            @elseif($social['name'] == 'Linkedin')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
+            @elseif($social['name'] == 'Twitter')
+            <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img src="{{ URL::to('admin/img/twitter1.png') }}" class="twitter" style="height: 29px; width: 25px;"></i></a>
+            @endif
+            @endforeach
         </div>
     </div>
     <!-- /container -->

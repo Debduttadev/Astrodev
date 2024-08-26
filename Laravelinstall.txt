@@ -61,7 +61,7 @@ sudo a2ensite astroachariya.conf
 sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'mysql_root_password';"
 
 sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED  WITH caching_sha2_password BY 'Astro#achariya1235';"
-
+mysql -u root -p 
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'Astro#achariya1235';
 FLUSH PRIVILEGES;
@@ -119,3 +119,15 @@ NameVirtualHost *:80
 php artisan make:migration add_nameurl_to_services_table --table=services
 
 php artisan make:migration add_nameurl_to_blogs_table --table=blogs
+
+USE astrodeb
+DELETE FROM keywords WHERE keyword='भोलू'
+
+
+//env file details
+APP_NAME=Astroachariyadebdutta
+APP_ENV=local
+APP_KEY=base64:KfTNsl03XNLcqpgS9BTt1IipJQquetbXqbrQYMAaP5Q=
+APP_DEBUG=false
+APP_TIMEZONE=UTC
+APP_URL=http://43.205.231.33/

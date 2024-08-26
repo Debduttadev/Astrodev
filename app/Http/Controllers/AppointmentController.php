@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
-use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
 use App\Models\chamber;
 use App\Models\Invoice;
 use Illuminate\Support\Carbon;

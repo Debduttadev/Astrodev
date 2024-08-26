@@ -637,7 +637,6 @@ class BlogController extends Controller
         }
 
         //dd(count($blogitems));
-
         if (count($blogitems) == 0) {
             print_r(json_encode(['status' => 0, 'message' => "No blog found"]));
         } else {

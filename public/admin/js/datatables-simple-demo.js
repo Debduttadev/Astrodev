@@ -20,4 +20,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
     if (datatablereview) {
         new simpleDatatables.DataTable(datatablereview);
     }
+
+    const datatablezodiac = document.getElementById("datatablezodiac");
+    if (datatablezodiac) {
+        new simpleDatatables.DataTable(datatablezodiac);
+    }
 });

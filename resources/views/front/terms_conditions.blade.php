@@ -13,7 +13,7 @@
             <p class="updated-date"><span>Last updated on {{$firstday}}</span></p>
 
 
-            <p class="content-text"><span>For the purpose of these Terms and Conditions, The term "we", "us", "our" used anywhere on this page shall mean Achariya Debdutta, whose registered/operational office is 20 R N TAGORE ROAD North Parganas WEST BENGAL 700056 . "you", &ldquo;your&rdquo;, "user", &ldquo;visitor&rdquo; shall mean any natural or legal person who is visiting our website and/or agreed to purchase from us.</span></p>
+            <p class="content-text"><span>For the purpose of these Terms and Conditions, The term "we", "us", "our" used anywhere on this page shall mean "Achariya Debdutta", whose registered/operational office is 20 R N TAGORE ROAD North Parganas WEST BENGAL 700056 . "you", &ldquo;your&rdquo;, "user", &ldquo;visitor&rdquo; shall mean any natural or legal person who is visiting our website and/or agreed to purchase from us.</span></p>
 
 
 

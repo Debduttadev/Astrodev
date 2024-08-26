@@ -342,6 +342,10 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
             .blog-post-body p {
                 font-size: 15px;
             }
+
+            footer.site-footer {
+                padding-bottom: 80px !important;
+            }
         }
 
         @media (min-width: 576px) {

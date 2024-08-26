@@ -6,23 +6,50 @@ use App\Models\zodiac;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorezodiacRequest;
 use App\Http\Requests\UpdatezodiacRequest;
+use Illuminate\Http\Request;
+use Intervention\Image\Laravel\Facades\Image;
+
 
 class ZodiacController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
-    public function index()
+     */ public function zodiacsigns()
     {
-        //
+        $zodiacdata = zodiac::get();
+        //dd($zodiacdata);
+        return view('admin.zodiacsigns', ['page_name' => 'Manage Zodiac Signs', 'navstatus' => "horoscope", 'zodiacdata' => $zodiacdata]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function updatezodiacimage(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $file = $request->file('zodiacimage');
+        $ext = $file->getClientOriginalExtension();
+        $filename = 'Zodiac' . time() . '.' . $ext;
+        $image = Image::read($file);
+
+        $image->resize(1200, 1200, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        $updatezodiac = [];
+        if ($image->save(public_path('zodiac') . '/' . $filename)) {
+            $updatezodiac['image'] = $filename;
+        }
+
+        $update = zodiac::where('id', $data['zodiacid'])
+            ->update($updatezodiac);
+        //dd($data['zodiacid']);
+
+        if ($update) {
+            print_r(json_encode(['status' => 1, 'msg' => "true", 'file' => $filename, 'id' => $data['zodiacid']]));
+        } else {
+            print_r(json_encode(['status' => 0, 'msg' => "false"]));
+        }
     }
 
     /**

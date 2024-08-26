@@ -13,6 +13,7 @@ use App\Http\Controllers\AlttagController;
 use App\Http\Controllers\SeodetailsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HoroscopesController;
+use App\Http\Controllers\ZodiacController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReviewsectionController;
@@ -56,14 +57,13 @@ Route::post('addcontactus', [ContactusController::class, 'addcontactus']);
 Route::get('/dailyhoroscope', [HomeController::class, 'shipping'])->name('dailyhoroscope');
 
 //pages for
-Route::get('/terms_conditions', [HomeController::class, 'terms_conditions'])->name('terms-conditions');
+Route::get('/terms-conditions', [HomeController::class, 'terms_conditions'])->name('terms-conditions');
 
-Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('privacy_policy');
+Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
 
-Route::get('/refund_policy', [HomeController::class, 'refund_policy'])->name('refund_policy');
+Route::get('/refund-policy', [HomeController::class, 'refund_policy'])->name('refund-policy');
 
-Route::get('/shipping_policy', [HomeController::class, 'shipping'])->name('shipping');
-
+Route::get('/shipping-policy', [HomeController::class, 'shipping'])->name('shipping-policy');
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -101,9 +101,12 @@ Route::middleware('auth')->group(function () {
         Route::post('updatebannervideo', [BannerVideoController::class, 'updatebannervideo']);
 
         //horoscope
-        Route::get('/zodiacsigns', [HoroscopesController::class, 'zodiacsigns']);
+
         Route::get('/adminhoroscope', [HoroscopesController::class, 'adminshow']);
         Route::post('updatehoroscope', [HoroscopesController::class, 'updatehoroscope']);
+
+        Route::get('/zodiacsigns', [ZodiacController::class, 'zodiacsigns']);
+        Route::post('updatezodiacimage', [ZodiacController::class, 'updatezodiacimage']);
     });
 
     // usertype = 2 , seo
