@@ -630,6 +630,10 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         .carousel-caption a:hover {
             color: #ffc6c6;
         }
+
+        .footerlisting {
+            background-color: #000 !important;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
