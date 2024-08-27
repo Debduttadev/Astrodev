@@ -634,6 +634,16 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         .footerlisting {
             background-color: #000 !important;
         }
+
+        .checkoutimage {
+            width: 20%;
+            background-color: black;
+        }
+
+        .chackoutlist .list-group-item {
+            background-color: #faf0e6;
+            border: none;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->

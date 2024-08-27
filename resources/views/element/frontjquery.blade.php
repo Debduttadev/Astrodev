@@ -44,9 +44,12 @@
             var type = $(this).val();
             if (type == 'm') {
                 $('.chamberselect').show();
+                $(".chamberoption").prop('required', true);
             } else {
                 $('.chamberselect').hide();
                 $('.chamberoption').removeAttr('checked');
+                $(".chamberoption").prop('required', false);
+
             }
         });
 
@@ -143,6 +146,9 @@
                         form.find("select").val("");
                         form.find("input[type=radio]").removeAttr('checked');
                         $('.chamberselect').hide();
+                        $(".chamberoption").prop('required', false);
+                        $('.chamberoption').removeAttr('checked');
+
                         $('#optionsRadios1').attr('checked', 'checked');
 
                     } else if (massage.status == 0) {

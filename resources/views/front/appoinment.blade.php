@@ -35,7 +35,7 @@
                 <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <div class="contact-form appointmentform row">
 
-                        <form class="user" id="appoinmentform" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
+                        <form class="user" id="appoinmentform1" method="POST" action="{{ URL::to('addappointment') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="col-sm-12 contact-form-item wow zoomIn ">

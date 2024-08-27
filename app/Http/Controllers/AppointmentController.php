@@ -155,47 +155,55 @@ class AppointmentController extends Controller
         $newappoinment->payment_status = "n";
 
         if ($newappoinment->save()) {
-            $chamberdata = [];
-            if ($data['appointmentType'] == 'm') {
-                $chambers = chamber::where('id', $data['chamberId'])->first();
+            $appoinmentid = $newappoinment->id;
+            // $chamberdata = [];
+            // if ($data['appointmentType'] == 'm') {
+            //     $chambers = chamber::where('id', $data['chamberId'])->first();
 
-                $availabledays = $chambers->availabledays;
-                $daysavailable = json_decode($availabledays);
-                $i = 0;
-                $days = [];
+            //     $availabledays = $chambers->availabledays;
+            //     $daysavailable = json_decode($availabledays);
+            //     $i = 0;
+            //     $days = [];
 
-                foreach ($daysavailable as $day) {
+            //     foreach ($daysavailable as $day) {
 
-                    if ($day == "1") {
-                        $days[$i] = "Sunday";
-                    } elseif ($day === "2") {
-                        $days[$i] = "Monday";
-                    } elseif ($day === "3") {
-                        $days[$i] = "Tuesday";
-                    } elseif ($day === "4") {
-                        $days[$i] = "Wednesday";
-                    } elseif ($day === "5") {
-                        $days[$i] = "Thursday";
-                    } elseif ($day === "6") {
-                        $days[$i] = "Friday";
-                    } else {
-                        $days[$i] = "Saturday";
-                    }
-                    $i++;
-                }
+            //         if ($day == "1") {
+            //             $days[$i] = "Sunday";
+            //         } elseif ($day === "2") {
+            //             $days[$i] = "Monday";
+            //         } elseif ($day === "3") {
+            //             $days[$i] = "Tuesday";
+            //         } elseif ($day === "4") {
+            //             $days[$i] = "Wednesday";
+            //         } elseif ($day === "5") {
+            //             $days[$i] = "Thursday";
+            //         } elseif ($day === "6") {
+            //             $days[$i] = "Friday";
+            //         } else {
+            //             $days[$i] = "Saturday";
+            //         }
+            //         $i++;
+            //     }
 
-                $chambers->availabledays = implode(',', $days);
-            } else {
+            //     $chambers->availabledays = implode(',', $days);
+            // } else {
 
-                $chambers = null;
-            }
+            //     // $chambers = null;
+            // }
 
-            echo json_encode(array('status' => "1", 'allchamber' => $chambers));
+            // echo json_encode(array('status' => "1", 'allchamber' => $chambers));
+            return redirect()->route('checkout', ['id' => base64_encode($appoinmentid)]);
         } else {
-
-            $chamberdata = null;
-            echo json_encode(array('status' => "0", 'allchamber' => $chamberdata));
+            return redirect()->back();
         }
+    }
+
+    public function checkout($id)
+    {
+        $id = base64_decode($id);
+        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->first();
+        //dd($users);
+        return view('front.checkout', ['appointment' => $users]);
     }
 
     /**
