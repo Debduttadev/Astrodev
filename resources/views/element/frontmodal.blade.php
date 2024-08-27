@@ -60,7 +60,7 @@
                 <p>Thank you for your interest. Your appointment is scheduled. Our Team will connect with you and will take care of this appointment and guide you accordingly.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default chackoutbtncls" data-dismiss="modal">Close</button>
             </div>
         </div>
 

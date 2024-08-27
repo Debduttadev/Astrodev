@@ -407,6 +407,11 @@
                 $('.keywordfilter').html(keywordhtml);
             })
         });
+
+        $(document).on('click', '.chackoutbtncls', function(e) {
+            disableBack();
+            window.location.replace("{{ URL::to('/') }}");
+        })
     });
 
     function alttagmodaldata(obj) {
@@ -513,5 +518,9 @@
         var description = $('.striptag').text();
         // console.log(description);
         return description;
+    }
+
+    function disableBack() {
+        window.history.forward();
     }
 </script>

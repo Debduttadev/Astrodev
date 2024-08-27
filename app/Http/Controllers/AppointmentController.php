@@ -192,20 +192,14 @@ class AppointmentController extends Controller
             // }
 
             // echo json_encode(array('status' => "1", 'allchamber' => $chambers));
-            return redirect()->route('checkout', ['id' => base64_encode($appoinmentid)]);
+            $id = $appoinmentid;
+            $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->first();
+            //dd($users);
+            return view('front.checkout', ['appointment' => $users]);
         } else {
             return redirect()->back();
         }
     }
-
-    public function checkout($id)
-    {
-        $id = base64_decode($id);
-        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->first();
-        //dd($users);
-        return view('front.checkout', ['appointment' => $users]);
-    }
-
     /**
      * creating payment link for customer and taking amount
      */
