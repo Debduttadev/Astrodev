@@ -63,7 +63,7 @@
                 <div class="widget">
                     <h4>Month wise Blogs</h4>
                     <div class="input-group">
-                        <input class="form-control dateblog" type="text" typeblog="created_at" search="" value="05-2024" id="dp1" />
+                        <input class="form-control dateblog" type="text" typeblog="created_at" search="" value="{{date("m-Y")}}" id="dp1" />
                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>

@@ -100,7 +100,7 @@
                         var titlehtml = "<strong> Your appointment has been scheduled successfully. </strong>";
                         $('.appoinmenttitle1').html(titlehtml);
 
-                        var titlehtml2 = "<p>Thank you for your interest. Your appointment is scheduled. Our Team will connect with you and will take care of this appointment and guide you accordingly.</p>";
+                        var titlehtml2 = "<p>Thank you for your interest. Your appointment has been scheduled. Our team will connect with you, take care of the details, and guide you accordingly.</p>";
                         $('.appoinmenttitle2').html(titlehtml2);
 
                         var chamber = massage.allchamber;
