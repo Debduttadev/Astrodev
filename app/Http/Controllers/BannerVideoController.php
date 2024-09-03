@@ -164,7 +164,9 @@ class BannerVideoController extends Controller
                         'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
                     ]);
                     $image = public_path('bannervideo') . '/' . $request->oldimage;
-                    unlink($image);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
 
                     $file = $request->file('fileToUpload');
                     $ext = $file->getClientOriginalExtension();

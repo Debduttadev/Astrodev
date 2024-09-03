@@ -178,7 +178,9 @@ class ServiceController extends Controller
                 ]);
 
                 $image = public_path('service') . '/' . $request->oldimage;
-                unlink($image);
+                if (file_exists($image)) {
+                    unlink($image);
+                }
 
                 $file = $request->file('fileToUpload');
                 $ext = $file->getClientOriginalExtension();
@@ -226,7 +228,9 @@ class ServiceController extends Controller
         $service = Service::where('id', $id)->delete();
         $seoblog = seodetails::where([['relatedid', $id], ['page', 'service']])->delete();
         if ($service) {
-            unlink($image);
+            if (file_exists($image)) {
+                unlink($image);
+            }
             echo json_encode(array('status' => 1, 'msg' => "true"));
         } else {
             echo json_encode(array('status' => 0, 'msg' => "false"));
