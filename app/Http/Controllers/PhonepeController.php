@@ -101,7 +101,7 @@ class PhonepeController extends Controller
 
         $finalXHeader = $sha256 . '###' . $saltIndex;
 
-        $url = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+        $url = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
@@ -136,7 +136,7 @@ class PhonepeController extends Controller
 
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
 
-        $response = Curl::to('https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
+        $response = Curl::to('https://api.phonepe.com/apis/hermes/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
