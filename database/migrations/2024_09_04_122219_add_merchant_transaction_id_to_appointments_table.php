@@ -10,8 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->enum('language', ['English', 'Bengali', 'Hindi'])->default("English")->after('category');
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->string('merchantTransactionIdp')->after('userId');
         });
     }
 
@@ -20,8 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('language');
+        Schema::table('appointments', function (Blueprint $table) {
+            $table->dropColumn('merchantTransactionIdp');
         });
     }
 };

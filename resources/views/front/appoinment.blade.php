@@ -15,15 +15,21 @@
         <div class="row p-bottom-50 ">
             <div class="col-md-4 p-top-140" style="text-align: center;">
                 <div class="feature-image parent appoinmentcolor">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl mt-7 font-semibold mb-4 font-philosopher text-center ">Book an Appointment</h2>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl mt-7 font-semibold mb-4 font-philosopher text-center ">
+                        Book an Appointment</h2>
                     <h3>Unlock Solutions, Embrace Serenity.</h3>
                     <div>
-                        <p>In years of practicing astrology, I've discovered a profound truth - every problem is a lock with a key. Whether it's delving into horoscopes, tarot, or palmistry, I provide seekers with remedies, unlocking doors to happiness and goals.</p>
-                        <p>Life becomes precious, and the lessons learned are cherished for good. Find solutions, feel sorted, and embrace the journey towards a fulfilled life.</p>
+                        <p>In years of practicing astrology, I've discovered a profound truth - every problem is a lock
+                            with a key. Whether it's delving into horoscopes, tarot, or palmistry, I provide seekers
+                            with remedies, unlocking doors to happiness and goals.</p>
+                        <p>Life becomes precious, and the lessons learned are cherished for good. Find solutions, feel
+                            sorted, and embrace the journey towards a fulfilled life.</p>
 
-                        <p>Kindly Fill in your Full Name, Date of Birth, Place of Birth, Time of Birth and Gender. Rest assured, we do not require any other personal or sensitive details.</p>
+                        <p>Kindly Fill in your Full Name, Date of Birth, Place of Birth, Time of Birth and Gender. Rest
+                            assured, we do not require any other personal or sensitive details.</p>
                         <p><strong>
-                                Please note that the appointment will be scheduled based on the availability of the slot.</strong>
+                                Please note that the appointment will be scheduled based on the availability of the
+                                slot.</strong>
                         </p>
                         <p>Our team will contact you and guide you accordingly.</p>
                     </div>
@@ -35,7 +41,8 @@
                 <div class="wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
                     <div class="contact-form appointmentform row">
 
-                        <form class="user" id="appoinmentform1" method="POST" action="{{ URL::to('checkout') }}" enctype="multipart/form-data">
+                        <form class="user" id="appoinmentform1" method="POST" action="{{ URL::to('checkout') }}"
+                            enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="col-sm-12 contact-form-item wow zoomIn ">
@@ -55,7 +62,9 @@
                                 <label class="darkcolorfont" for="phonenumber">Phone Number</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" placeholder="Phone Number: *" name="phoneNumber" aria-describedby="basic-addon1" id="phonenumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <input type="text" maxlength="10" placeholder="Phone Number: *" name="phoneNumber"
+                                        aria-describedby="basic-addon1" id="phonenumber"
+                                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
                                     <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
@@ -65,7 +74,9 @@
                                 <label class="darkcolorfont" for="whatsappNumber">Whatsapp Number</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">+91</span>
-                                    <input type="text" maxlength="10" placeholder="Whatsapp Number: *" name="whatsappNumber" aria-describedby="basic-addon1" id="whatsappNumber" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                    <input type="text" maxlength="10" placeholder="Whatsapp Number: *"
+                                        name="whatsappNumber" aria-describedby="basic-addon1" id="whatsappNumber"
+                                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
                                     <span class="error" id="err-phone">please enter phone number</span>
                                     <span class="error" id="err-emailvld">please enter numbers</span>
                                 </div>
@@ -96,16 +107,20 @@
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="dp2">Date of Birth</label>
                                 <div class="input-group">
-                                    <input type="text" class="inputstyleright" id="birthdate" name="dateOfBirth" value="" />
-                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont fa fa-calendar"></i></div>
+                                    <input type="text" class="inputstyleright" id="birthdate" name="dateOfBirth"
+                                        value="" />
+                                    <div class="input-group-addon addonstyleright"><i
+                                            class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="timepicker1">Time of Birth</label>
                                 <div class="input-group bootstrap-timepicker timepicker">
-                                    <input id="timepicker1" class="inputstyleright" type="text" name="timeOfBirth" required />
-                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont glyphicon glyphicon-time"></i></div>
+                                    <input id="timepicker1" class="inputstyleright" type="text" name="timeOfBirth"
+                                        required />
+                                    <div class="input-group-addon addonstyleright"><i
+                                            class="darkcolorfont glyphicon glyphicon-time"></i></div>
                                 </div>
                             </div>
 
@@ -120,7 +135,8 @@
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="placestate">State of Birth</label>
-                                <input name="stateOfBirth" id="placestate" type="text" placeholder="West bengal" required />
+                                <input name="stateOfBirth" id="placestate" type="text" placeholder="West bengal"
+                                    required />
                                 <span class="error" id="err-name">Please enter full name</span>
                             </div>
 
@@ -136,31 +152,35 @@
                             <div class="col-sm-12 contact-form-item chamberselect" style="display:none">
                                 <label class="darkcolorfont">Select Chamber</label>
                                 @php
-                                $i=0;
+                                    $i = 0;
                                 @endphp
-                                @foreach ($allchamber as $chamber )
-                                <div class="radio">
-                                    <label class="darkcolorfont">
-                                        @if($i == 0)
-                                        <input type="radio" class="chamberoption" name="chamberId" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
-                                        {{$chamber->locationname}}
-                                        @else
-                                        <input type="radio" class="chamberoption" name="chamberId" id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
-                                        {{$chamber->locationname}}
-                                        @endif
-                                    </label>
-                                </div>
-                                @php
-                                $i++;
-                                @endphp
+                                @foreach ($allchamber as $chamber)
+                                                                <div class="radio">
+                                                                    <label class="darkcolorfont">
+                                                                        @if($i == 0)
+                                                                            <input type="radio" class="chamberoption" name="chamberId"
+                                                                                id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
+                                                                            {{$chamber->locationname}}
+                                                                        @else
+                                                                            <input type="radio" class="chamberoption" name="chamberId"
+                                                                                id="chamber{{$chamber->id}}" value="{{$chamber->id}}">
+                                                                            {{$chamber->locationname}}
+                                                                        @endif
+                                                                    </label>
+                                                                </div>
+                                                                @php
+                                                                    $i++;
+                                                                @endphp
                                 @endforeach
                             </div>
 
                             <div class="col-sm-12 contact-form-item wow zoomIn">
                                 <label class="darkcolorfont" for="bookingdate">Booking schedule</label>
                                 <div class="input-group">
-                                    <input type="text" class="inputstyleright" name="bookingDate" id="bookingdate" value="" />
-                                    <div class="input-group-addon addonstyleright"><i class="darkcolorfont fa fa-calendar"></i></div>
+                                    <input type="text" class="inputstyleright" name="bookingDate" id="bookingdate"
+                                        value="" />
+                                    <div class="input-group-addon addonstyleright"><i
+                                            class="darkcolorfont fa fa-calendar"></i></div>
                                 </div>
                                 <span class="error" id="err-name">Please enter booking schedule</span>
                             </div>

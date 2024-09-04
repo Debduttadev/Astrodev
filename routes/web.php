@@ -17,6 +17,7 @@ use App\Http\Controllers\ZodiacController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ReviewsectionController;
+use App\Http\Controllers\PhonepeController;
 use Illuminate\Support\Facades\Route;
 // frontend controller
 use App\Http\Controllers\HomeController;
@@ -41,16 +42,12 @@ Route::get('/blog/{nameurl}', [BlogController::class, 'blog'])->name('blog');
 Route::get('/searchblog', [BlogController::class, 'searchblog']);
 Route::get('/languagefilter', [BlogController::class, 'languagefilter']);
 
-
-
 Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers');
-
 
 Route::get('/appointment', [AppointmentController::class, 'appointment']);
 Route::post('checkout', [AppointmentController::class, 'addappointment']);
 
 Route::post('paymentlinkcreate', [InvoiceController::class, 'paymentlinkcreate']);
-
 
 Route::get('contactus', [ContactusController::class, 'contactus']);
 Route::post('addcontactus', [ContactusController::class, 'addcontactus']);
@@ -59,14 +56,16 @@ Route::get('/dailyhoroscope', [HomeController::class, 'shipping'])->name('dailyh
 
 //pages for
 Route::get('/terms-conditions', [HomeController::class, 'terms_conditions'])->name('terms-conditions');
-
 Route::get('/privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
-
 Route::get('/refund-policy', [HomeController::class, 'refund_policy'])->name('refund-policy');
-
 Route::get('/shipping-policy', [HomeController::class, 'shipping'])->name('shipping-policy');
+
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+//payment routes
+Route::get('phonepe/{id}', [PhonepeController::class, 'phonePe'])->name('phonepe');
+Route::any('phonepe-response', [PhonepeController::class, 'response'])->name('response');
 
 Route::middleware('auth')->group(function () {
     //  profile edit
@@ -144,6 +143,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/appoinmentdetails/{id}', [AppointmentController::class, 'adminappoinmentdetails']);
         // Route::get('/paymentlinkcreateform/{id}', [AppointmentController::class, 'paymentlinkcreateform']);
         Route::get('/adminclient', [AdminController::class, 'adminclient']);
+
+        Route::get('/managepayment', [PhonepeController::class, 'managepayment']);
+        Route::post('updatepaymentdetails', [PhonepeController::class, 'create']);
+
     });
 
     // usertype = 5 , blog

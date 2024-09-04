@@ -924,10 +924,9 @@ class BlogController extends Controller
         $altblog = alttag::where([['relatedid', $id], ['page', 'blog']])->delete();
         $seoblog = seodetails::where([['relatedid', $id], ['page', 'blog']])->delete();
         if ($blog) {
-            if (isset($image)) {
+            if (file_exists($image)) {
                 unlink($image);
             }
-
             echo json_encode(array('status' => 1, 'msg' => "true"));
         } else {
             echo json_encode(array('status' => 0, 'msg' => "false"));

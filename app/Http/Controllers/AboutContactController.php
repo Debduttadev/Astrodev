@@ -49,7 +49,7 @@ class AboutContactController extends Controller
             $data['oldimage'] = "default.jpg";
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = 'Blog' . time() . '.' . $ext;
+            $filename = 'about' . time() . '.' . $ext;
             $image = Image::read($file);
             // Resize image
 
@@ -62,7 +62,10 @@ class AboutContactController extends Controller
             if ($image->save(public_path('about') . '/' . $filename)) {
                 if ($request->oldimage != null) {
                     $image = public_path('about') . '/' . $request->oldimage;
-                    unlink($image);
+                    //dd($request->oldimage);
+                    if (file_exists($image)) {
+                        unlink($image);
+                    }
                 }
                 $updateabout['image'] = $filename;
             }

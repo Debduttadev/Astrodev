@@ -45,7 +45,7 @@ class AppointmentController extends Controller
                 $appointment->invoicestatus = $invoice->status;
             } else {
                 $appointment->invoiceId = null;
-                $appointment->invoicestatus =  $appointment->payment_status;
+                $appointment->invoicestatus = $appointment->payment_status;
             }
 
             $timestamp1 = strtotime($appointment->dateOfBirth);
@@ -94,7 +94,7 @@ class AppointmentController extends Controller
             $appointment->invoicestatus = $invoice->status;
         } else {
             $appointment->invoiceId = null;
-            $appointment->invoicestatus =  $appointment->payment_status;
+            $appointment->invoicestatus = $appointment->payment_status;
         }
 
         $timestamp1 = strtotime($appointment->dateOfBirth);
@@ -142,6 +142,7 @@ class AppointmentController extends Controller
         $timeOfBirth = Carbon::parse($timestamp)->format('H:i:s');
         $newappoinment = new Appointment;
         $newappoinment->userId = $userid;
+        $newappoinment->merchantTransactionId = "";
         $newappoinment->phoneNumber = $data['phoneNumber'];
         $newappoinment->whatsappNumber = $data['whatsappNumber'];
         $newappoinment->gender = $data['gender'];
@@ -156,46 +157,10 @@ class AppointmentController extends Controller
 
         if ($newappoinment->save()) {
             $appoinmentid = $newappoinment->id;
-            // $chamberdata = [];
-            // if ($data['appointmentType'] == 'm') {
-            //     $chambers = chamber::where('id', $data['chamberId'])->first();
-
-            //     $availabledays = $chambers->availabledays;
-            //     $daysavailable = json_decode($availabledays);
-            //     $i = 0;
-            //     $days = [];
-
-            //     foreach ($daysavailable as $day) {
-
-            //         if ($day == "1") {
-            //             $days[$i] = "Sunday";
-            //         } elseif ($day === "2") {
-            //             $days[$i] = "Monday";
-            //         } elseif ($day === "3") {
-            //             $days[$i] = "Tuesday";
-            //         } elseif ($day === "4") {
-            //             $days[$i] = "Wednesday";
-            //         } elseif ($day === "5") {
-            //             $days[$i] = "Thursday";
-            //         } elseif ($day === "6") {
-            //             $days[$i] = "Friday";
-            //         } else {
-            //             $days[$i] = "Saturday";
-            //         }
-            //         $i++;
-            //     }
-
-            //     $chambers->availabledays = implode(',', $days);
-            // } else {
-
-            //     // $chambers = null;
-            // }
-
-            // echo json_encode(array('status' => "1", 'allchamber' => $chambers));
             $id = $appoinmentid;
             $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->first();
             //dd($users);
-            return view('front.checkout', ['appointment' => $users]);
+            return redirect()->route('phonepe', [base64_encode($appoinmentid)]);
         } else {
             return redirect()->back();
         }

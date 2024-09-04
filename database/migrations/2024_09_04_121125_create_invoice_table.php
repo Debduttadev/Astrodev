@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,24 +12,24 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-
-            //foreign key from user table id
-            $table->foreignId('userId')->constrained(
-                table: 'users',
-                indexName: 'invoices_user_id'
-            )->onUpdate('cascade')->onDelete('cascade');
-
             //foreign key from appointments table id
             $table->foreignId('appointmentId')->constrained(
                 table: 'appointments',
                 indexName: 'invoices_appointments_id'
             )->onUpdate('cascade')->onDelete('cascade');
-
-            $table->integer('amount');
-            $table->enum('status', ['p', 'c'])->default('p');
-            $table->softDeletes();
-            $table->date('DateOfpayment');
-            $table->string('TimeOfpayment');
+            $table->string('merchantTransactionId');
+            $table->string('transactionId');
+            $table->string('providerReferenceId');
+            $table->string('amount');
+            $table->string('status');
+            $table->string('responseCode');
+            $table->string('cardType');
+            $table->string('type');
+            $table->string('pgTransactionId');
+            $table->string('bankTransactionId');
+            $table->string('pgAuthorizationCode');
+            $table->string('bankId');
+            $table->string('brn');
             $table->timestamps();
         });
     }

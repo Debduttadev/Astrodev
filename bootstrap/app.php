@@ -31,6 +31,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('blog', [
             Blogcheck::class
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'phonepe-response',
+            'response'
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

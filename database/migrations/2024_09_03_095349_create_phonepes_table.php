@@ -10,8 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->enum('language', ['English', 'Bengali', 'Hindi'])->default("English")->after('category');
+        Schema::create('phonepes', function (Blueprint $table) {
+            $table->id();
+            $table->integer('paymentamount');
+            $table->string('marchecntkey');
+            $table->string('apikey');
+            $table->string('apiindex');
+            $table->timestamps();
         });
     }
 
@@ -20,8 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('language');
-        });
+        Schema::dropIfExists('phonepes');
     }
 };

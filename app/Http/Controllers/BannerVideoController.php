@@ -201,7 +201,9 @@ class BannerVideoController extends Controller
                     'image' => ['image|mimes:jpeg,png,jpg,gif,svg']
                 ]);
                 $image = public_path('bannervideo') . '/' . $request->oldimage;
-                unlink($image);
+                if (file_exists($image)) {
+                    unlink($image);
+                }
 
                 $file = $request->file('fileToUpload');
                 $ext = $file->getClientOriginalExtension();
@@ -248,7 +250,9 @@ class BannerVideoController extends Controller
         // echo json_encode(array('status' => 1, 'msg' => $image));
         $bannervideo = banner_video::where('id', $id)->delete();
         if ($bannervideo) {
-            unlink($image);
+            if (file_exists($image)) {
+                unlink($image);
+            }
             echo json_encode(array('status' => 1, 'msg' => "true"));
         } else {
             echo json_encode(array('status' => 0, 'msg' => "false"));
