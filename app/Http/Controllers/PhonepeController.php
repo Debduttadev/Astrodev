@@ -96,7 +96,6 @@ class PhonepeController extends Controller
         $saltKey = $phonepedata->apikey;
         $saltIndex = $phonepedata->apiindex;
 
-        dd($data);
         $string = $encode . '/pg/v1/pay' . $saltKey;
         $sha256 = hash('sha256', $string);
 
@@ -111,6 +110,7 @@ class PhonepeController extends Controller
             ->post();
 
         $rData = json_decode($response);
+        dd($rData);
         if ($rData->success == true) {
             dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
