@@ -96,6 +96,7 @@ class PhonepeController extends Controller
         $saltKey = $phonepedata->apikey;
         $saltIndex = $phonepedata->apiindex;
 
+        dd($data);
         $string = $encode . '/pg/v1/pay' . $saltKey;
         $sha256 = hash('sha256', $string);
 
