@@ -160,15 +160,16 @@ class PhonepeController extends Controller
             ->get();
 
         $response = json_decode($response);
-
+        $invoiceid = "INV" . substr(strtotime("now"), 6);
+        $userpaymentdetails['invoiceId'] = $invoiceid;
         if ($response) {
             //dd($response);
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
 
-                $newInvoice->invoiceId = "INV" . substr(strtotime("now"), 6);
-                $userpaymentdetails['invoiceId'] = $newInvoice->invoiceId;
+                $newInvoice->invoiceId = $invoiceid;
+
 
                 $newInvoice->appointmentid = $appointmentid->id;
                 $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
