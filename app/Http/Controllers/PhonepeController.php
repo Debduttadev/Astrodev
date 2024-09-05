@@ -152,7 +152,7 @@ class PhonepeController extends Controller
         $providerReferenceId = $input['providerReferenceId'];
 
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
-
+        dd($saltKey);
         $response = Curl::to('https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
@@ -164,7 +164,7 @@ class PhonepeController extends Controller
         $invoiceid = "INV" . substr(strtotime("now"), 6);
         $userpaymentdetails['invoiceId'] = $invoiceid;
         if ($response) {
-            dd($response);
+            // dd($response);
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
