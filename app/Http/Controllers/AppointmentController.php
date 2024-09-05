@@ -123,7 +123,6 @@ class AppointmentController extends Controller
         $userid = "";
 
         if ($user != null && $user->id != null) {
-
             $userid = $user->id;
         } else {
 

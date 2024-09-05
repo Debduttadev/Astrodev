@@ -21,7 +21,8 @@
             <div class="col-md-7 col-sm-7 p-bottom-30">
                 <div class="contact-form row">
 
-                    <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}" enctype="multipart/form-data">
+                    <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}"
+                        enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="col-sm-6 contact-form-item wow zoomIn">
                             <input name="fullname" id="name" type="text" placeholder="Your Name: *" required />
@@ -37,7 +38,9 @@
                         <div class="col-sm-12 contact-form-item wow zoomIn">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">+91</span>
-                                <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *" name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required>
+                                <input type="text" maxlength="10" class="form-control" placeholder="Phone Number: *"
+                                    name="phone" aria-describedby="basic-addon1" pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                                    required>
                                 <span class="error" id="err-phone">please enter phone number</span>
                                 <span class="error" id="err-phone">please enter numbers</span>
                             </div>
@@ -58,7 +61,8 @@
                     <div class="clearfix"></div>
                     <div class="panel panel-default" id="ajaxsuccess">
                         <div class="panel-body">
-                            Thank you for writing to us. We have received your message and will get back to you within as soon as possible.
+                            Thank you for writing to us. We have received your message and will get back to you within
+                            as soon as possible.
                         </div>
                     </div>
                 </div> <!-- /.contacts-form & inner row -->
@@ -103,7 +107,8 @@
                             WhatsApp:
                         </div>
                         <div class="contact-info-text">
-                            <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us" style="color: #000;">{{ $about_contact->whatsapp }}</a>
+                            <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us"
+                                style="color: #000;">{{ $about_contact->whatsapp }}</a>
                         </div>
                     </div>
 

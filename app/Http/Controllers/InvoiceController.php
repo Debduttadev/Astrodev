@@ -27,7 +27,8 @@ class InvoiceController extends Controller
                 'reminder_enable' => true, 'notes' => array('policy_name' => 'Jeevan Bima'), 'callback_url' => 'https://example-callback-url.com/',
                 'callback_method' => 'get'
             ));
-        } catch ( $e) {
+            
+        } catch ($e) {
             return $e->getMessage();
             Session::put('error', $e->getMessage());
             return redirect()->back();

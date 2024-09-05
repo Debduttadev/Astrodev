@@ -71,7 +71,7 @@ class PhonepeController extends Controller
         $id = base64_decode($id);
         $phonepedata = phonepe::first();
 
-        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->select('appointments.whatsappNumber', 'users.name', 'users.id')->where('appointments.id', $id)->first();
+        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->select('appointments.phoneNumber', 'users.name', 'users.id')->where('appointments.id', $id)->first();
 
         $username = preg_replace('/\s+/', '', $users->name);
         $merchantTransactionId = substr(strtoupper($username), 0, 4) . time();
@@ -84,7 +84,7 @@ class PhonepeController extends Controller
             'redirectUrl' => route('response'),
             'redirectMode' => 'POST',
             'callbackUrl' => route('response'),
-            'mobileNumber' => $users->whatsappNumber,
+            'mobileNumber' => $users->phoneNumber,
             'paymentInstrument' =>
                 array(
                     'type' => 'PAY_PAGE',
@@ -101,7 +101,7 @@ class PhonepeController extends Controller
 
         $finalXHeader = $sha256 . '###' . $saltIndex;
 
-        $url = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+        $url = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
@@ -126,6 +126,21 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
+        $merchantTransactionId = $input['transactionId'];
+        $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
+
+        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
+        //dd($users);
+        if ($users->appointmentType == 'o') {
+            $userpaymentdetails['appointmentType'] = "Online";
+        } else {
+            $userpaymentdetails['appointmentType'] = "Offline";
+        }
+
+        $userpaymentdetails['customername'] = $users->name;
+        $userpaymentdetails['customeremail'] = $users->email;
+        $userpaymentdetails['customerphonenumber'] = $users->phoneNumber;
+        $userpaymentdetails['merchantTransactionId'] = $merchantTransactionId;
 
         $phonepedata = phonepe::first();
         $saltKey = $phonepedata->apikey;
@@ -136,7 +151,7 @@ class PhonepeController extends Controller
 
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
 
-        $response = Curl::to('https://api.phonepe.com/apis/hermes/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
+        $response = Curl::to('https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
@@ -146,13 +161,13 @@ class PhonepeController extends Controller
         $response = json_decode($response);
 
         if ($response) {
-
+            //dd($response);
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
 
-                $appointmentid = Appointment::where('merchantTransactionId', '=', $responcedata->merchantTransactionId)->select('id')->first();
-                //dd($appointmentid);
+                $newInvoice->invoiceId = "INV" . substr(strtotime("now"), 6);
+                $userpaymentdetails['invoiceId'] = $newInvoice->invoiceId;
 
                 $newInvoice->appointmentid = $appointmentid->id;
                 $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
@@ -162,7 +177,8 @@ class PhonepeController extends Controller
 
                 $newInvoice->providerReferenceId = $providerReferenceId;
 
-                $newInvoice->amount = $responcedata->amount;
+                $newInvoice->amount = $responcedata->amount / 100;
+
                 $newInvoice->status = $responcedata->state;
                 $newInvoice->responseCode = $responcedata->responseCode;
 
@@ -170,7 +186,12 @@ class PhonepeController extends Controller
                 //dd($carddata);
                 $newInvoice->cardType = $carddata->type;
                 $newInvoice->type = $carddata->type;
-                $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                if ($carddata->pgTransactionId == null) {
+                    $newInvoice->pgTransactionId = "";
+                } else {
+                    $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                }
+
                 if ($carddata->bankTransactionId == null) {
                     $bankTransactionId = "";
                 } else {
@@ -186,18 +207,31 @@ class PhonepeController extends Controller
                 $newInvoice->bankId = $bankId;
                 $newInvoice->brn = "";
 
+
+                $userpaymentdetails['amount'] = $responcedata->amount / 100;
+                $userpaymentdetails['paymentstatus'] = $responcedata->state;
+                $userpaymentdetails['responseCode'] = $responcedata->responseCode;
+
                 if ($newInvoice->save()) {
-                    session(['status' => "1", 'msg' => 'Payment is successfull']);
+                    $userpaymentdetails['date'] = date("Y-m-d");
+                    $userpaymentdetails['time'] = date("h:i a");
+                    $userpaymentdetails['status'] = 1;
+                    $userpaymentdetails['msg'] = $response->message;
                 } else {
-                    session(['status' => "0", 'msg' => $response->message]);
+                    $userpaymentdetails['status'] = 0;
+                    $userpaymentdetails['msg'] = $response->message;
                 }
+
             } else {
-                session(['status' => "0", 'msg' => $response->message]);
+                $userpaymentdetails['status'] = 0;
+                $userpaymentdetails['msg'] = $response->message;
             }
         } else {
-            session(['status' => "0", 'msg' => 'Payment failed']);
+            $userpaymentdetails['status'] = 0;
+            $userpaymentdetails['msg'] = $response->message;
         }
-        return redirect()->back();
+        //dd($userpaymentdetails);
+        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
     }
 
     /**
