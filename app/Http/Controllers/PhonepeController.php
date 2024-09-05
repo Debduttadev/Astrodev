@@ -127,6 +127,7 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
+        dd($input);
         $merchantTransactionId = $input['transactionId'];
         $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
 
