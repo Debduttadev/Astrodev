@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->string('merchantTransactionIdp')->after('userId');
+            $table->string('merchantTransactionId')->after('userId');
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('appointments', function (Blueprint $table) {
-            $table->dropColumn('merchantTransactionIdp');
+            $table->dropColumn('merchantTransactionId');
         });
     }
 };
