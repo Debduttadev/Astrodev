@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\chamber;
-use App\Models\Invoice;
+use App\Models\invoice;
 use Illuminate\Support\Carbon;
 
 
@@ -39,7 +39,7 @@ class AppointmentController extends Controller
             }
 
             // invoice details related to this appointment
-            $invoice = Invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
+            $invoice = invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
             if (!empty($invoice)) {
                 $appointment->invoiceId = $invoice->id;
                 $appointment->invoicestatus = $invoice->status;
