@@ -163,13 +163,12 @@ class PhonepeController extends Controller
         $invoiceid = "INV" . substr(strtotime("now"), 6);
         $userpaymentdetails['invoiceId'] = $invoiceid;
         if ($response) {
-            //dd($response);
+            dd($response);
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
 
                 $newInvoice->invoiceId = $invoiceid;
-
 
                 $newInvoice->appointmentid = $appointmentid->id;
                 $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
@@ -213,7 +212,7 @@ class PhonepeController extends Controller
                 $userpaymentdetails['amount'] = $responcedata->amount / 100;
                 $userpaymentdetails['paymentstatus'] = $responcedata->state;
                 $userpaymentdetails['responseCode'] = $responcedata->responseCode;
-
+                dd($newInvoice);
                 if ($newInvoice->save()) {
                     $userpaymentdetails['date'] = date("Y-m-d");
                     $userpaymentdetails['time'] = date("h:i a");
