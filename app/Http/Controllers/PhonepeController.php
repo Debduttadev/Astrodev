@@ -112,7 +112,7 @@ class PhonepeController extends Controller
         $rData = json_decode($response);
         //dd($rData);
         if ($rData->success == true) {
-            dd($rData);
+            //dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
             $updateappointment = Appointment::where('id', '=', $id)->update($updatedata);
             return redirect()->to($rData->data->instrumentResponse->redirectInfo->url);
