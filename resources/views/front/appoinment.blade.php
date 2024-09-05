@@ -152,7 +152,7 @@
                             <div class="col-sm-12 contact-form-item chamberselect" style="display:none">
                                 <label class="darkcolorfont">Select Chamber</label>
                                 @php
-                                    $i = 0;
+$i = 0;
                                 @endphp
                                 @foreach ($allchamber as $chamber)
                                                                 <div class="radio">
@@ -169,7 +169,7 @@
                                                                     </label>
                                                                 </div>
                                                                 @php
-                                                                    $i++;
+    $i++;
                                                                 @endphp
                                 @endforeach
                             </div>
@@ -185,7 +185,7 @@
                                 <span class="error" id="err-name">Please enter booking schedule</span>
                             </div>
 
-                            <button type="submit" class="btn appoinmentsubmit btn-lg">Submit</button>
+                            <button type="submit" class="btn appoinmentsubmit btn-lg btn-grad" >Pay  <i class="fa fa-inr" aria-hidden="true"></i>{{ $paymentamount }}</button>
                         </form>
                     </div> <!-- /.contacts-form & inner row -->
                 </div>

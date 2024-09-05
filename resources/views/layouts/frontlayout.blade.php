@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 @php
-$fullurl= Request::url();
-$appurl=URL::to('/');
+    $fullurl = Request::url();
+    $appurl = URL::to('/');
 
-if($fullurl == $appurl){
+    if ($fullurl == $appurl) {
 
-$seodetailsperpage = seodetailsperpage('home');
+        $seodetailsperpage = seodetailsperpage('home');
 
-}else{
+    } else {
 
-$page=str_replace($appurl,"",$fullurl);
-$urlname=explode("/",$page);
-$seodetailsperpage = seodetailsperpage(end($urlname));
+        $page = str_replace($appurl, "", $fullurl);
+        $urlname = explode("/", $page);
+        $seodetailsperpage = seodetailsperpage(end($urlname));
 
-}
-//dd($seodetailsperpage['metadata']);
+    }
+    //dd($seodetailsperpage['metadata']);
 @endphp
 
 <head>
@@ -29,8 +29,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
     <title>{{ $seodetailsperpage['title'] }}</title>
     <link rel="icon" type="image/x-icon" href="{{ URL::to('admin/img/llogoicon-01-01.png') }}" />
 
-    @foreach ($seodetailsperpage['metadata'] as $metaseo )
-    {!! $metaseo !!}
+    @foreach ($seodetailsperpage['metadata'] as $metaseo)
+        {!! $metaseo !!}
     @endforeach
 
     <!-- Bootstrap CSS -->
@@ -214,10 +214,8 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         }
 
         .appoinmentsubmit {
-            background-color: #ff0000;
-            color: #fff;
-            padding-left: 45%;
-            padding-right: 45%;
+            padding-left: 40%;
+            padding-right: 40%;
         }
 
         .allblogsbutton {
@@ -643,6 +641,28 @@ $seodetailsperpage = seodetailsperpage(end($urlname));
         .chackoutlist .list-group-item {
             background-color: #faf0e6;
             border: none;
+        }
+
+
+        .btn-grad {
+            background-image: linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%);
+            ;
+            margin: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: #000;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            /* change the direction of the change here */
+            color: #ff0000;
+            text-decoration: none;
         }
     </style>
     @include('element.frontheader')

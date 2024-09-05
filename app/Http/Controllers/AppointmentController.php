@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\chamber;
 use App\Models\invoice;
+use App\Models\phonepe;
 use Illuminate\Support\Carbon;
 
 
@@ -65,7 +66,9 @@ class AppointmentController extends Controller
     {
         $allchamber = chamber::select('id', 'locationname')->get();
         //dd($allchamber);
-        return view('front.appoinment', ['allchamber' => $allchamber, 'navstatus' => "adminappointment"]);
+        $paymentdetails = phonepe::select('paymentamount')->first();
+
+        return view('front.appoinment', ['allchamber' => $allchamber, 'navstatus' => "adminappointment", 'paymentamount' => (int) $paymentdetails->paymentamount / 100]);
     }
 
     public function adminappoinmentdetails($id)

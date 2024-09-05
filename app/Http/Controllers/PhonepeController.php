@@ -220,16 +220,16 @@ class PhonepeController extends Controller
                     $userpaymentdetails['msg'] = $response->message;
                 } else {
                     $userpaymentdetails['status'] = 0;
-                    $userpaymentdetails['msg'] = $response->message;
+                    $userpaymentdetails['msg'] = "Payment failed, Please try again";
                 }
 
             } else {
                 $userpaymentdetails['status'] = 0;
-                $userpaymentdetails['msg'] = $response->message;
+                $userpaymentdetails['msg'] = "Payment failed, Please try again";
             }
         } else {
             $userpaymentdetails['status'] = 0;
-            $userpaymentdetails['msg'] = $response->message;
+            $userpaymentdetails['msg'] = "Payment failed, Please try again";
         }
         //dd($userpaymentdetails);
         return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
