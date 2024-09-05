@@ -26,7 +26,7 @@
                     session()->forget(['status', 'msg']);
                 @endphp
         @endif
-        @if($paymentdetails->apikey != null)
+        @if($paymentdetails != null)
                 @php
                     $paymentamount = $paymentdetails->paymentamount;
                     $marchecntkey = $paymentdetails->marchecntkey;
@@ -55,7 +55,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">$</span>
                             <input type="text" name="paymentamount" class="form-control"
-                                aria-label="Amount (to the nearest dollar)" value="{{ $paymentamount / 100 }}">
+                                aria-label="Amount (to the nearest dollar)" value="{{ (int) $paymentamount / 100 }}">
                             <span class="input-group-text">.00</span>
                         </div>
                         <div class="mb-4">
