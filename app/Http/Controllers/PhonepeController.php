@@ -129,7 +129,7 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
-        //dd($input);
+        // dd($input);
         $merchantTransactionId = $input['transactionId'];
         $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
 
@@ -156,9 +156,9 @@ class PhonepeController extends Controller
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
         //dd($saltKey);
         $phonepedata = phonepe::first();
-        $url = $phonepedata->hosturl;
-        //dd($url . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId']);
-        $response = Curl::to($url . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
+        $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
+        dd($url);
+        $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
