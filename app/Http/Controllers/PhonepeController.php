@@ -37,6 +37,7 @@ class PhonepeController extends Controller
             $phonepe['marchecntkey'] = $data['marchecntkey'];
             $phonepe['apikey'] = $data['apikey'];
             $phonepe['apiindex'] = $data['apiindex'];
+            $phonepe['hosturl'] = $data['hosturl'];
 
             $update = phonepe::where('id', $phonepedata->id)
                 ->update($phonepe);
@@ -52,6 +53,7 @@ class PhonepeController extends Controller
             $newphonepe->marchecntkey = $data['marchecntkey'];
             $newphonepe->apikey = $data['apikey'];
             $newphonepe->apiindex = $data['apiindex'];
+            $newphonepe->hosturl = $data['hosturl'];
 
             //set session
             if ($newphonepe->save()) {
@@ -101,8 +103,8 @@ class PhonepeController extends Controller
 
         $finalXHeader = $sha256 . '###' . $saltIndex;
 
-        $url = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-
+        $url = $phonepedata->hosturl . 'pg/v1/pay';
+        //dd($url);
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
@@ -153,7 +155,10 @@ class PhonepeController extends Controller
 
         $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
         //dd($saltKey);
-        $response = Curl::to('https://api.phonepe.com/apis/hermes/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
+        $phonepedata = phonepe::first();
+        $url = $phonepedata->hosturl;
+        //dd($url . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId']);
+        $response = Curl::to($url . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'])
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
@@ -164,7 +169,7 @@ class PhonepeController extends Controller
         $invoiceid = "INV" . substr(strtotime("now"), 6);
         $userpaymentdetails['invoiceId'] = $invoiceid;
         if ($response) {
-            // dd($response);
+            //dd($response);
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
@@ -209,11 +214,10 @@ class PhonepeController extends Controller
                 $newInvoice->bankId = $bankId;
                 $newInvoice->brn = "";
 
-
                 $userpaymentdetails['amount'] = $responcedata->amount / 100;
                 $userpaymentdetails['paymentstatus'] = $responcedata->state;
                 $userpaymentdetails['responseCode'] = $responcedata->responseCode;
-                dd($newInvoice);
+                //dd($newInvoice);
                 if ($newInvoice->save()) {
                     $userpaymentdetails['date'] = date("Y-m-d");
                     $userpaymentdetails['time'] = date("h:i a");

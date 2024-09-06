@@ -32,6 +32,7 @@
                     $marchecntkey = $paymentdetails->marchecntkey;
                     $apikey = $paymentdetails->apikey;
                     $apiindex = $paymentdetails->apiindex;
+                    $hosturl = $paymentdetails->hosturl;
                 @endphp
         @else
                 @php
@@ -39,6 +40,7 @@
                     $marchecntkey = "";
                     $apikey = "";
                     $apiindex = "";
+                    $hosturl = "";
                 @endphp
         @endif
 
@@ -62,6 +64,12 @@
                             <label for="marchecntkey" class="form-label">Marchecnt key</label>
                             <input type="text" name="marchecntkey" class="form-control" id="marchecntkey" placeholder=""
                                 value="{{$marchecntkey}}">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="hosturl" class="form-label">Marchecnt key</label>
+                            <input type="text" name="hosturl" class="form-control" id="hosturl" placeholder=""
+                                value="{{$hosturl}}">
                         </div>
 
                         <div class="mb-4">
