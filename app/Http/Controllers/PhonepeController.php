@@ -112,7 +112,7 @@ class PhonepeController extends Controller
             ->post();
 
         $rData = json_decode($response);
-        dd($rData);
+        //dd($rData);
         if ($rData->success == true) {
             //dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
