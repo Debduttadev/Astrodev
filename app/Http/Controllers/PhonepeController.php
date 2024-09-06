@@ -168,9 +168,8 @@ class PhonepeController extends Controller
         $response = json_decode($response);
         $invoiceid = "INV" . substr(strtotime("now"), 6);
         $userpaymentdetails['invoiceId'] = $invoiceid;
-        dd($response);
+        //dd($response);
         if ($response) {
-
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
