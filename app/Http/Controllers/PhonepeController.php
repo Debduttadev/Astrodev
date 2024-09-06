@@ -157,7 +157,7 @@ class PhonepeController extends Controller
         //dd($saltKey);
         $phonepedata = phonepe::first();
         $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
-        dd($url);
+        //dd($url);
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
