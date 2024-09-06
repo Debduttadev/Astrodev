@@ -104,7 +104,7 @@ class PhonepeController extends Controller
         $finalXHeader = $sha256 . '###' . $saltIndex;
 
         $url = $phonepedata->hosturl . 'pg/v1/pay';
-        dd($url);
+        //dd($url);
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
@@ -112,7 +112,7 @@ class PhonepeController extends Controller
             ->post();
 
         $rData = json_decode($response);
-        //dd($rData);
+        dd($rData);
         if ($rData->success == true) {
             //dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
