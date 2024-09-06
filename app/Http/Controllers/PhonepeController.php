@@ -157,7 +157,7 @@ class PhonepeController extends Controller
         //dd($saltKey);
         $phonepedata = phonepe::first();
         $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
-        dd($url);
+        ///dd($url);
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('accept:application/json')
@@ -168,8 +168,9 @@ class PhonepeController extends Controller
         $response = json_decode($response);
         $invoiceid = "INV" . substr(strtotime("now"), 6);
         $userpaymentdetails['invoiceId'] = $invoiceid;
+        dd($response);
         if ($response) {
-            //dd($response);
+
             if ($response->success == true) {
                 $newInvoice = new invoice;
                 $responcedata = $response->data;
