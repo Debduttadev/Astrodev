@@ -236,7 +236,7 @@ class PhonepeController extends Controller
             $userpaymentdetails['status'] = 0;
             $userpaymentdetails['msg'] = "Payment failed, Please try again";
         }
-        //dd($userpaymentdetails);
+        dd($userpaymentdetails);
         return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
     }
 
