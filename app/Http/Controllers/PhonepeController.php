@@ -104,7 +104,7 @@ class PhonepeController extends Controller
         $finalXHeader = $sha256 . '###' . $saltIndex;
 
         $url = $phonepedata->hosturl . 'pg/v1/pay';
-        //dd($url);
+        dd($url);
         $response = Curl::to($url)
             ->withHeader('Content-Type:application/json')
             ->withHeader('X-VERIFY:' . $finalXHeader)
