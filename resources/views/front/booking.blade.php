@@ -5,6 +5,13 @@
 <section id="contact" class="p-top-80 p-bottom-50">
     <div class="container">
         <div class="row">
+            <!-- Section Title -->
+            <div class="section-title text-center m-bottom-40">
+                <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">Thank you for
+                    your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
+                    details, and guide you accordingly.</>
+                <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+            </div>
             <!-- === Contact Form === -->
             <div class="col-md-12 col-sm-12 p-bottom-30">
                 @if($userpaymentdetails['status'] == 0)
@@ -106,8 +113,7 @@
                                     <div class="card-footer bg-black"></div>
                                 </div>
                 @endif  
-
-          </div> <!-- /.col -->
+            </div> <!-- /.col -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
 </section>

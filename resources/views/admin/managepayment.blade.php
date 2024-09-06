@@ -61,13 +61,13 @@
                             <span class="input-group-text">.00</span>
                         </div>
                         <div class="mb-4">
-                            <label for="marchecntkey" class="form-label">Marchecnt key</label>
+                            <label for="marchecntkey" class="form-label">Marchecnt Id</label>
                             <input type="text" name="marchecntkey" class="form-control" id="marchecntkey" placeholder=""
                                 value="{{$marchecntkey}}">
                         </div>
 
                         <div class="mb-4">
-                            <label for="hosturl" class="form-label">Marchecnt key</label>
+                            <label for="hosturl" class="form-label">Host URL</label>
                             <input type="text" name="hosturl" class="form-control" id="hosturl" placeholder=""
                                 value="{{$hosturl}}">
                         </div>
