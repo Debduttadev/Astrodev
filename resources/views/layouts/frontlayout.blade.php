@@ -37,7 +37,9 @@
     <link href="{{ URL::to('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js">
     </script>
+
     <!-- CSS Files For Plugin -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="{{ URL::to('frontend/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
@@ -101,7 +103,7 @@
         }
 
         .social {
-            font-size: 20px;
+            font-size: 18px;
             color: #000;
         }
 
@@ -126,9 +128,36 @@
             position: relative;
             top: 0;
             left: 0;
-            -webkit-animation: spin 15s linear infinite;
-            -moz-animation: spin 15s linear infinite;
-            animation: spin 15s linear infinite;
+            -webkit-animation: spin 50s linear infinite;
+            -moz-animation: spin 50s linear infinite;
+            animation: spin 50s linear infinite;
+        }
+
+        .image2 {
+            position: absolute;
+            width: 67%;
+            top: 17%;
+            left: 17%;
+        }
+
+        .logoimage1 {
+            position: relative;
+            top: 0;
+            left: 0;
+            -webkit-animation: spin 50s linear infinite;
+            -moz-animation: spin 50s linear infinite;
+            animation: spin 50s linear infinite;
+        }
+
+        .logoimage2 {
+            position: absolute;
+            width: 67%;
+            top: 17%;
+            left: 17%;
+        }
+
+        .logoimage3 {
+            background-color: #000;
         }
 
         .servicebg {
@@ -154,13 +183,6 @@
                 -webkit-transform: rotate(360deg);
                 transform: rotate(360deg);
             }
-        }
-
-        .image2 {
-            position: absolute;
-            width: 67%;
-            top: 17%;
-            left: 17%;
         }
 
         .chamberlist {
@@ -281,7 +303,7 @@
 
         @media (min-width:320px) {
             body {
-                font-size: 15px;
+                font-size: 12px;
             }
 
             .container {
@@ -329,6 +351,9 @@
                 padding: 5px 12px;
             }
 
+            .navbar-nav li a {
+                font-size: 14px;
+            }
 
             .servicebg {
                 position: relative;
@@ -341,8 +366,44 @@
                 font-size: 15px;
             }
 
+            .headerbookappointment {
+                font-size: 12px;
+                margin-left: 25px;
+            }
+
+            .headercall {
+                font-size: 12px;
+                margin-left: 25px;
+            }
+
             footer.site-footer {
                 padding-bottom: 80px !important;
+            }
+
+            .headersocial {
+                display: none;
+            }
+
+            .logoimage1 {
+                height: 150px;
+                width: auto;
+                margin-top: -80px;
+                margin-left: -16%;
+            }
+
+            .logoimage2 {
+                height: 140%;
+                width: auto;
+                margin-top: -65px;
+                margin-left: -14%;
+            }
+
+            .nav-solid .navigation {
+                height: 30px;
+            }
+
+            .nav-solid {
+                height: 40px;
             }
         }
 
@@ -386,7 +447,7 @@
             }
 
             .carousel-caption a {
-                font-size: 12px;
+                font-size: 14px;
                 padding: 5px 12px;
                 margin-top: -8px;
 
@@ -395,6 +456,10 @@
             .carousel-caption p span a {
                 margin-top: 8px;
                 padding: 8px 26px;
+            }
+
+            .navbar-nav li a {
+                font-size: 14px;
             }
 
             .servicebg {
@@ -406,6 +471,38 @@
 
             .blog-post-body p {
                 font-size: 15px;
+            }
+
+            .logoimage1 {
+                height: 200px;
+                width: auto;
+                margin-top: -70px;
+                margin-left: -15%;
+            }
+
+            .logoimage2 {
+                height: 108%;
+                width: auto;
+                margin-top: -62px;
+                margin-left: -12%;
+            }
+
+            .nav-solid .navigation {
+                height: 60px;
+            }
+
+            .headercall {
+                font-size: 14px;
+                margin-left: 25px;
+            }
+
+            .headerbookappointment {
+                font-size: 14px;
+                margin-left: 25px;
+            }
+
+            .headersocial {
+                display: block;
             }
         }
 
@@ -467,7 +564,7 @@
             }
 
             .navbar-nav li a {
-                font-size: 20px;
+                font-size: 14px;
             }
 
             navbar-header {
@@ -478,6 +575,34 @@
 
             .blog-post-body p {
                 font-size: 15px;
+            }
+
+            .logoimage1 {
+                height: 200px;
+                width: auto;
+                margin-top: -70px;
+                margin-left: -15%;
+            }
+
+            .logoimage2 {
+                height: 108%;
+                width: auto;
+                margin-top: -62px;
+                margin-left: -12%;
+            }
+
+            .nav-solid .navigation {
+                height: 60px;
+            }
+
+            .headercall {
+                font-size: 16px;
+                margin-left: 25px;
+            }
+
+            .headerbookappointment {
+                font-size: 14px;
+                margin-left: 25px;
             }
         }
 
@@ -493,7 +618,7 @@
             }
 
             .navbar-nav li a {
-                font-size: 17px;
+                font-size: 14px;
             }
 
             .container {
@@ -543,6 +668,34 @@
 
             .blog-post-body p {
                 font-size: 16px;
+            }
+
+            .logoimage1 {
+                height: 200px;
+                width: auto;
+                margin-top: -70px;
+                margin-left: -15%;
+            }
+
+            .logoimage2 {
+                height: 108%;
+                width: auto;
+                margin-top: -62px;
+                margin-left: -12%;
+            }
+
+            .nav-solid .navigation {
+                height: 60px;
+            }
+
+            .headercall {
+                font-size: 16px;
+                margin-left: 25px;
+            }
+
+            .headerbookappointment {
+                font-size: 14px;
+                margin-left: 25px;
             }
         }
 
@@ -600,20 +753,52 @@
             }
 
             .navbar-nav li a {
-                font-size: 20px;
+                font-size: 14px;
             }
 
             body {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .blog-post-body p {
                 font-size: 17px;
             }
+
+            .logoimage1 {
+                height: 270px;
+                width: auto;
+                margin-top: -40%;
+                margin-left: -15%;
+            }
+
+            .logoimage2 {
+                height: 105%;
+                width: auto;
+                margin-top: -85px;
+                margin-left: -12%;
+            }
+
+            .nav-solid .navigation {
+                height: 60px;
+            }
+
+            .headercall {
+                font-size: 16px;
+                margin-left: 25px;
+            }
+
+            .headerbookappointment {
+                font-size: 14px;
+                margin-left: 25px;
+            }
+        }
+
+        .headerbookappointment {
+            background-color: #b4975d;
         }
 
         .carousel-caption a {
-            font-family: "Poppins", sans-serif;
+            font-family: 'Lato', sans-serif;
             display: block;
             width: max-content;
             height: auto;
@@ -643,26 +828,13 @@
             border: none;
         }
 
-
-        .btn-grad {
-            background-image: linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%);
-            ;
-            margin: 10px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: #000;
-            box-shadow: 0 0 20px #eee;
-            border-radius: 10px;
-            display: block;
+        .vl {
+            border-left: 6px solid black;
+            height: 20px;
         }
 
-        .btn-grad:hover {
-            background-position: right center;
-            /* change the direction of the change here */
-            color: #ff0000;
-            text-decoration: none;
+        .headerbookappointment {
+            padding: 2px 12px;
         }
     </style>
     @include('element.frontheader')

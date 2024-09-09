@@ -1,36 +1,42 @@
 <script type="text/javascript">
     var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
+    window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
 
         if (prevScrollpos >= currentScrollPos) {
             if (currentScrollPos <= 48) {
-                document.getElementById("fixednavbar").style.top = "30px";
+                document.getElementById("fixednavbar").style.top = "70px";
+                document.getElementById("logoimage1").style.display = "block";
+                document.getElementById("logoimage2").style.display = "block";
+                document.getElementById("logoimage3").style.display = "none";
             }
         } else {
             document.getElementById("fixednavbar").style.top = "0px";
+            document.getElementById("logoimage1").style.display = "none";
+            document.getElementById("logoimage2").style.display = "none";
+            document.getElementById("logoimage3").style.display = "block";
         }
         prevScrollpos = currentScrollPos;
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var base_url = "{{ URL::to('/') }}";
 
-        $(document).on('click', '.tagsearch', function() {
+        $(document).on('click', '.tagsearch', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
-        $(document).on('click', '.categorysearch', function() {
+        $(document).on('click', '.categorysearch', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
-        $(document).on('click', '.keysearch', function() {
+        $(document).on('click', '.keysearch', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $(document).on('click', '.searchtitle', function(e) {
+        $(document).on('click', '.searchtitle', function (e) {
             event.preventDefault();
             var obj = $(this);
             var value = $(".titleinput").val();
@@ -40,7 +46,7 @@
             alttagmodaldata(searchobj)
         });
 
-        $('.appointmentType').change(function() {
+        $('.appointmentType').change(function () {
             var type = $(this).val();
             if (type == 'm') {
                 $('.chamberselect').show();
@@ -63,7 +69,7 @@
             maxDate: new Date(),
         });
 
-        $("#dp1").on("dp.change", function(e) {
+        $("#dp1").on("dp.change", function (e) {
             var obj = $(this);
             var value = $(this).val();
             //alert($('input[name="language"]:checked').val());
@@ -82,7 +88,7 @@
             calendarWeeks: true
         });
 
-        $("#appoinmentform").submit(function(event) {
+        $("#appoinmentform").submit(function (event) {
             event.preventDefault(); // avoid to execute the actual submit of the form.
 
             var form = $(this);
@@ -92,7 +98,7 @@
                 type: "POST",
                 url: actionUrl,
                 data: form.serialize(), // serializes the form's elements.
-                success: function(data) {
+                success: function (data) {
                     //console.log(data); // show response from the php script.
                     var massage = JSON.parse(data);
                     //console.log(massage);
@@ -160,7 +166,7 @@
         });
 
         // Contact us forn in home page data stor in database
-        $("#contactusform").submit(function(event) {
+        $("#contactusform").submit(function (event) {
 
             event.preventDefault();
             //alert("sdgfg");
@@ -171,7 +177,7 @@
                 url: actionUrl,
                 data: form.serialize(), // serializes the form's elements.
 
-                success: function(data) {
+                success: function (data) {
                     //console.log(data); // show response from the php script.
                     var massage = JSON.parse(data);
 
@@ -180,7 +186,7 @@
                         form.find("input").val("");
                         form.find("textarea").val("");
                         $('#ajaxsuccess').show();
-                        setTimeout(function() {
+                        setTimeout(function () {
                             $('#ajaxsuccess').hide();
                         }, 4000);
 
@@ -193,7 +199,7 @@
             });
         });
 
-        $(document).on('click', '.blogpage', function(e) {
+        $(document).on('click', '.blogpage', function (e) {
             e.preventDefault();
 
             var actionUrl = $(this).attr('href');
@@ -208,7 +214,7 @@
                     'search': search,
                     'type': type
                 }
-            }).done(function(msg) {
+            }).done(function (msg) {
 
                 var alldata = JSON.parse(msg);
                 console.log(alldata);
@@ -291,7 +297,7 @@
 
         });
 
-        $(document).on('change', '.languagefilter', function(e) {
+        $(document).on('change', '.languagefilter', function (e) {
             var obj = $(this);
             var value = $(this).val();
             // alert($('.globalsearch').val());
@@ -303,7 +309,7 @@
                 data: {
                     'language': value,
                 }
-            }).done(function(msg) {
+            }).done(function (msg) {
                 var data = JSON.parse(msg);
                 var blogfilters = data.blogfilters;
                 var pagination = data.pagination;
@@ -408,10 +414,18 @@
             })
         });
 
-        $(document).on('click', '.chackoutbtncls', function(e) {
+        $(document).on('click', '.chackoutbtncls', function (e) {
             disableBack();
             window.location.replace("{{ URL::to('/') }}");
         })
+
+        $('.servicedropdown').hover(function () {
+            $(this).addClass('show');
+            $(this).find('.dropdown-menu').addClass('show');
+        }, function () {
+            $(this).removeClass('show');
+            $(this).find('.dropdown-menu').removeClass('show');
+        });
     });
 
     function alttagmodaldata(obj) {
@@ -432,7 +446,7 @@
                 'type': type,
             }
 
-        }).done(function(msg) {
+        }).done(function (msg) {
             var data = JSON.parse(msg);
             var blogfilters = data.blogfilters;
             var pagination = data.pagination;

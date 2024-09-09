@@ -115,7 +115,7 @@ class PhonepeController extends Controller
 
         // dd($rData);
         if ($rData->success == true) {
-            //dd($rData);
+            // dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
             $updateappointment = Appointment::where('id', '=', $id)->update($updatedata);
             return redirect()->to($rData->data->instrumentResponse->redirectInfo->url);
@@ -130,7 +130,7 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
-        //dd($input);
+        //`dd`($input);
         // if ($input["code"] != "PAYMENT_PENDING") {
         //     return redirect()->back();
         // } else

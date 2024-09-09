@@ -1,36 +1,49 @@
 <!-- Start Navigation -->
 
 <div class="container">
-    <div class="social-icon pull-right">
-        <ul class="list-inline">
-            @php
-                $socialdata = scociallinks();
-            @endphp
-            @foreach ($socialdata as $social)
-                <li>
-                    @if($social['name'] == 'Facebook')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
-                                class="fa fa-facebook social" aria-hidden="true"></i></a>
-                    @elseif($social['name'] == 'Youtube')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
-                                class="fa fa-youtube-play social" aria-hidden="true"></i></a>
-                    @elseif($social['name'] == 'WhatsApp')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
-                                class="fa fa-whatsapp social" aria-hidden="true"></i></a>
-                    @elseif($social['name'] == 'Instagram')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
-                                class="fa fa-instagram social" aria-hidden="true"></i></a>
-                    @elseif($social['name'] == 'Linkedin')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
-                                class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
-                    @elseif($social['name'] == 'Twitter')
-                        <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i class="social"><img
-                                    src="{{ URL::to('frontend/img/twitter1.png') }}" class="twitter"
-                                    alt="Twitter account"></i></a>
-                    @endif
-                </li>
-            @endforeach
-        </ul>
+    <div class="row">
+        <div class="col-md-10 col-sm-8 col-xs-6 m-top-15" style="border-right: 1px solid black; height: 35px;">
+            <div class="row">
+                <div class="social-icon pull-right headersocial">
+                    <ul class="list-inline">
+                        @php
+                            $socialdata = scociallinks();
+                        @endphp
+                        @foreach ($socialdata as $social)
+                            <li>
+                                @if($social['name'] == 'Facebook')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="fa fa-facebook social" aria-hidden="true"></i></a>
+                                @elseif($social['name'] == 'Youtube')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="fa fa-youtube-play social" aria-hidden="true"></i></a>
+                                @elseif($social['name'] == 'WhatsApp')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="fa fa-whatsapp social" aria-hidden="true"></i></a>
+                                @elseif($social['name'] == 'Instagram')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="fa fa-instagram social" aria-hidden="true"></i></a>
+                                @elseif($social['name'] == 'Linkedin')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="fa fa-linkedin-square social" aria-hidden="true"></i></a>
+                                @elseif($social['name'] == 'Twitter')
+                                    <a href="{{$social['url']}}" title="{{$social['name']}}" target="_blank"><i
+                                            class="social"><img src="{{ URL::to('frontend/img/twitter1.png') }}" class="twitter"
+                                                alt="Twitter account"></i></a>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 text-center">
+            <div class="row m-top-10"><button type="button" class="btn btn-default headerbookappointment ">Book an
+                    Appointment</button></div>
+            <div class="row m-top-5">
+                <div class="headercall">Call: +918888888888</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -38,9 +51,8 @@
     <header class="nav-solid" id="home">
         <nav class="navbar navbar-fixed-top" id="fixednavbar">
             <div class="navigation">
-                <div class="container-fluid">
-                    <div class="row">
-
+                <div class="container-fluid" style="height: inherit;">
+                    <div class="row" style="height: inherit;">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target="#navbar-collapse">
@@ -52,10 +64,14 @@
 
                             <!-- Logo -->
                             <div class="logo-container">
-                                <div class="logo-wrap local-scroll">
+                                <div class="logo-wrap local-scroll parent">
                                     <a href="{{ URL::to('/') }}">
-                                        <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}"
-                                            alt="logo" data-rjs="2" height="80">
+                                        <img src="{{ URL::to('admin/img/sun.png') }}" class="logoimage1"
+                                            id="logoimage1" />
+                                        <img src="{{ URL::to('admin/img/roundlogo.png') }}" alt="Feature Image"
+                                            class="logo img-responsive logoimage2" id="logoimage2" />
+                                        <img src="{{ URL::to('admin/img/navlogo3.png') }}" alt="Feature Image"
+                                            class="logo img-responsive logoimage3" id="logoimage3" />
                                     </a>
                                 </div>
                             </div>
@@ -65,11 +81,20 @@
                             <div class="collapse navbar-collapse" id="navbar-collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="{{ URL::to('/') }}">Home</a></li>
-                                    @if(Request::is('/'))
-                                        <li><a data-scroll href="#service">Services</a></li>
-                                    @else
-                                        <li><a href="{{ URL::to('/services') }}">Services</a></li>
-                                    @endif
+                                    <li class="dropdown servicedropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                            aria-haspopup="true" aria-expanded="false">Dropdown <span
+                                                class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">One more separated link</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="{{ URL::to('/appointment') }}">Appointment</a></li>
                                     @if(Request::is('/'))
                                         <li><a data-scroll href="#blog">Blog</a></li>
