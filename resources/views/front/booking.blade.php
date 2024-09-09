@@ -7,9 +7,13 @@
         <div class="row">
             <!-- Section Title -->
             <div class="section-title text-center m-bottom-40">
-                <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">Thank you for
-                    your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
-                    details, and guide you accordingly.</>
+                @if($userpaymentdetails['status'] == 1)
+                    <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">Thank you for
+                        your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
+                        details, and guide you accordingly.</p>
+                @else
+                    <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">Your payment could not be processed. Please try again or use a different payment method.</p>
+                @endif
                 <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
             </div>
             <!-- === Contact Form === -->
@@ -43,7 +47,7 @@
 
                                                     <div class="col-md-6">
                                                         @php
-                                                            $about_contact = aboutalldetails();
+    $about_contact = aboutalldetails();
                                                         @endphp <ul class="list-unstyled pull-right">
                                                             <li style="font-size: 30px; color: red;">ASTRO</li>
                                                             <li style="font-size: 30px; color: red;">ACHARIYA DEBDUTTA</li>
@@ -113,7 +117,7 @@
                                     <div class="card-footer bg-black"></div>
                                 </div>
                 @endif  
-            </div> <!-- /.col -->
+          </div> <!-- /.col -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
 </section>

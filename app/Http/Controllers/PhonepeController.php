@@ -9,6 +9,7 @@ use App\Models\invoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
+use PDF;
 
 class PhonepeController extends Controller
 {
@@ -110,9 +111,9 @@ class PhonepeController extends Controller
             ->withHeader('X-VERIFY:' . $finalXHeader)
             ->withData(json_encode(['request' => $encode]))
             ->post();
-
         $rData = json_decode($response);
-        //dd($rData);
+
+        // dd($rData);
         if ($rData->success == true) {
             //dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
@@ -129,115 +130,128 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
-        // dd($input);
-        $merchantTransactionId = $input['transactionId'];
-        $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
-
-        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
-        //dd($users);
-        if ($users->appointmentType == 'o') {
-            $userpaymentdetails['appointmentType'] = "Online";
+        //dd($input);
+        // if ($input["code"] != "PAYMENT_PENDING") {
+        //     return redirect()->back();
+        // } else
+        if ($input["code"] == "PAYMENT_ERROR") {
+            //dd("error");
+            $userpaymentdetails['status'] = 0;
+            $userpaymentdetails['msg'] = "Payment failed, Please try again";
         } else {
-            $userpaymentdetails['appointmentType'] = "Offline";
-        }
+            $merchantTransactionId = $input['transactionId'];
+            $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
 
-        $userpaymentdetails['customername'] = $users->name;
-        $userpaymentdetails['customeremail'] = $users->email;
-        $userpaymentdetails['customerphonenumber'] = $users->phoneNumber;
-        $userpaymentdetails['merchantTransactionId'] = $merchantTransactionId;
+            $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
+            //dd($users);
+            if ($users->appointmentType == 'o') {
+                $userpaymentdetails['appointmentType'] = "Online";
+            } else {
+                $userpaymentdetails['appointmentType'] = "Offline";
+            }
 
-        $phonepedata = phonepe::first();
-        $saltKey = $phonepedata->apikey;
-        $saltIndex = $phonepedata->apiindex;
+            $userpaymentdetails['customername'] = $users->name;
+            $userpaymentdetails['customeremail'] = $users->email;
+            $userpaymentdetails['customerphonenumber'] = $users->phoneNumber;
+            $userpaymentdetails['merchantTransactionId'] = $merchantTransactionId;
 
-        $merchantId = $input['merchantId'];
-        $providerReferenceId = $input['providerReferenceId'];
+            $phonepedata = phonepe::first();
+            $saltKey = $phonepedata->apikey;
+            $saltIndex = $phonepedata->apiindex;
 
-        $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
-        //dd($saltKey);
-        $phonepedata = phonepe::first();
-        $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
-        //dd($url);
-        $response = Curl::to($url)
-            ->withHeader('Content-Type:application/json')
-            ->withHeader('accept:application/json')
-            ->withHeader('X-VERIFY:' . $finalXHeader)
-            ->withHeader('X-MERCHANT-ID:' . $input['transactionId'])
-            ->get();
+            $merchantId = $input['merchantId'];
+            $providerReferenceId = "";
 
-        $response = json_decode($response);
-        $invoiceid = "INV" . substr(strtotime("now"), 6);
-        $userpaymentdetails['invoiceId'] = $invoiceid;
-        //dd($response);
-        if ($response) {
-            if ($response->success == true) {
-                $newInvoice = new invoice;
-                $responcedata = $response->data;
+            $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
+            //dd($saltKey);
+            $phonepedata = phonepe::first();
+            $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
+            //dd($url);
+            $response = Curl::to($url)
+                ->withHeader('Content-Type:application/json')
+                ->withHeader('accept:application/json')
+                ->withHeader('X-VERIFY:' . $finalXHeader)
+                ->withHeader('X-MERCHANT-ID:' . $input['transactionId'])
+                ->get();
 
-                $newInvoice->invoiceId = $invoiceid;
+            $response = json_decode($response);
+            $invoiceid = "INV" . substr(strtotime("now"), 6);
+            $userpaymentdetails['invoiceId'] = $invoiceid;
+            //dd($response);
+            if ($response) {
+                //dd($response->success);
+                if ($response->success == true) {
+                    $newInvoice = new invoice;
+                    $responcedata = $response->data;
 
-                $newInvoice->appointmentid = $appointmentid->id;
-                $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
+                    $newInvoice->invoiceId = $invoiceid;
 
-                $transactionId = $responcedata->transactionId;
-                $newInvoice->transactionId = $transactionId;
+                    $newInvoice->appointmentid = $appointmentid->id;
+                    $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
 
-                $newInvoice->providerReferenceId = $providerReferenceId;
+                    $transactionId = $responcedata->transactionId;
+                    $newInvoice->transactionId = $transactionId;
 
-                $newInvoice->amount = $responcedata->amount / 100;
+                    $newInvoice->providerReferenceId = $providerReferenceId;
 
-                $newInvoice->status = $responcedata->state;
-                $newInvoice->responseCode = $responcedata->responseCode;
+                    $newInvoice->amount = $responcedata->amount / 100;
 
-                $carddata = $responcedata->paymentInstrument;
-                //dd($carddata);
-                $newInvoice->cardType = $carddata->type;
-                $newInvoice->type = $carddata->type;
-                if ($carddata->pgTransactionId == null) {
-                    $newInvoice->pgTransactionId = "";
-                } else {
-                    $newInvoice->pgTransactionId = $carddata->pgTransactionId;
-                }
+                    $newInvoice->status = $responcedata->state;
+                    $newInvoice->responseCode = $responcedata->responseCode;
 
-                if ($carddata->bankTransactionId == null) {
-                    $bankTransactionId = "";
-                } else {
-                    $bankTransactionId = $carddata->bankTransactionId;
-                }
-                $newInvoice->bankTransactionId = $bankTransactionId;
-                $newInvoice->pgAuthorizationCode = "";
-                if ($carddata->bankId == null) {
-                    $bankId = "";
-                } else {
-                    $bankId = $carddata->bankId;
-                }
-                $newInvoice->bankId = $bankId;
-                $newInvoice->brn = "";
+                    $carddata = $responcedata->paymentInstrument;
+                    $newInvoice->cardType = $carddata->type;
+                    $newInvoice->type = $carddata->type;
+                    if ($carddata->pgTransactionId == null) {
+                        $newInvoice->pgTransactionId = "";
+                    } else {
+                        $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                    }
 
-                $userpaymentdetails['amount'] = $responcedata->amount / 100;
-                $userpaymentdetails['paymentstatus'] = $responcedata->state;
-                $userpaymentdetails['responseCode'] = $responcedata->responseCode;
-                //dd($newInvoice);
-                if ($newInvoice->save()) {
-                    $userpaymentdetails['date'] = date("Y-m-d");
-                    $userpaymentdetails['time'] = date("h:i a");
-                    $userpaymentdetails['status'] = 1;
-                    $userpaymentdetails['msg'] = $response->message;
+                    if ($carddata->bankTransactionId == null) {
+                        $bankTransactionId = "";
+                    } else {
+                        $bankTransactionId = $carddata->bankTransactionId;
+                    }
+                    $newInvoice->bankTransactionId = $bankTransactionId;
+                    $newInvoice->pgAuthorizationCode = "";
+
+                    if ($carddata->bankId == null) {
+                        $bankId = "";
+                    } else {
+                        $bankId = $carddata->bankId;
+                    }
+                    $newInvoice->bankId = $bankId;
+                    $newInvoice->brn = "";
+
+                    $userpaymentdetails['amount'] = $responcedata->amount / 100;
+                    $userpaymentdetails['paymentstatus'] = $responcedata->state;
+                    $userpaymentdetails['responseCode'] = $responcedata->responseCode;
+                    //dd($newInvoice);
+
+                    if ($newInvoice->save()) {
+                        $userpaymentdetails['date'] = date("Y-m-d");
+                        $userpaymentdetails['time'] = date("h:i a");
+                        $userpaymentdetails['status'] = 1;
+                        $userpaymentdetails['msg'] = $response->message;
+                        //dd("invoice savbe");
+                    } else {
+                        //dd("invoice not save");
+                        $userpaymentdetails['status'] = 0;
+                        $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                    }
+
                 } else {
                     $userpaymentdetails['status'] = 0;
                     $userpaymentdetails['msg'] = "Payment failed, Please try again";
                 }
-
             } else {
                 $userpaymentdetails['status'] = 0;
                 $userpaymentdetails['msg'] = "Payment failed, Please try again";
             }
-        } else {
-            $userpaymentdetails['status'] = 0;
-            $userpaymentdetails['msg'] = "Payment failed, Please try again";
+            //dd($userpaymentdetails);
+            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
         }
-        //dd($userpaymentdetails);
-        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
     }
 
     /**

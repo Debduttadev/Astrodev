@@ -22,7 +22,9 @@ class Admincheck
                 return $next($request);
             }
             return redirect()->route('dashboard')->with('error', 'Unauthorized Access');
+        } else {
+            return redirect()->route('login');
         }
-        return redirect()->route('login')->with('error', 'Unauthorized Access');
+        //return redirect()->route('login')->with('error', 'Unauthorized Access');
     }
 }
