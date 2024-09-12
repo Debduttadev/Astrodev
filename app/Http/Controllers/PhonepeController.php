@@ -130,20 +130,24 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
-        //`dd`($input);
-        // if ($input["code"] != "PAYMENT_PENDING") {
-        //     return redirect()->back();
-        // } else
-        if ($input["code"] == "PAYMENT_ERROR") {
-            //dd("error");
+        //dd($input);
+        if ($input["code"] == "PAYMENT_PENDING") {
+            $userpaymentdetails['status'] = 0;
+            $userpaymentdetails['msg'] = "Your payment is currently being processed. We’ll notify you once it’s completed. Thank you for your patience!";
+            //return with error msg
+            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+        } else if ($input["code"] == "PAYMENT_ERROR") {
             $userpaymentdetails['status'] = 0;
             $userpaymentdetails['msg'] = "Payment failed, Please try again";
+
+            //return with error msg
+            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+
         } else {
             $merchantTransactionId = $input['transactionId'];
             $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
 
             $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
-            //dd($users);
             if ($users->appointmentType == 'o') {
                 $userpaymentdetails['appointmentType'] = "Online";
             } else {
@@ -160,7 +164,8 @@ class PhonepeController extends Controller
             $saltIndex = $phonepedata->apiindex;
 
             $merchantId = $input['merchantId'];
-            $providerReferenceId = "";
+
+            $providerReferenceId = $input['providerReferenceId'];
 
             $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
             //dd($saltKey);
@@ -177,52 +182,55 @@ class PhonepeController extends Controller
             $response = json_decode($response);
             $invoiceid = "INV" . substr(strtotime("now"), 6);
             $userpaymentdetails['invoiceId'] = $invoiceid;
-            //dd($response);
+
             if ($response) {
-                //dd($response->success);
                 if ($response->success == true) {
+
                     $newInvoice = new invoice;
                     $responcedata = $response->data;
 
                     $newInvoice->invoiceId = $invoiceid;
-
                     $newInvoice->appointmentid = $appointmentid->id;
                     $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
-
-                    $transactionId = $responcedata->transactionId;
-                    $newInvoice->transactionId = $transactionId;
-
+                    $newInvoice->transactionId = $responcedata->transactionId;
                     $newInvoice->providerReferenceId = $providerReferenceId;
-
                     $newInvoice->amount = $responcedata->amount / 100;
-
                     $newInvoice->status = $responcedata->state;
                     $newInvoice->responseCode = $responcedata->responseCode;
-
+                    //card data individual for every transection type
                     $carddata = $responcedata->paymentInstrument;
-                    $newInvoice->cardType = $carddata->type;
                     $newInvoice->type = $carddata->type;
-                    if ($carddata->pgTransactionId == null) {
-                        $newInvoice->pgTransactionId = "";
-                    } else {
+
+                    if ($carddata->type == 'UPI') {
+
+                        $newInvoice->utr = $responcedata->utr;
+                        $userpaymentdetails['referenceid'] = $responcedata->utr;
+                        $userpaymentdetails['cardType'] = $carddata->type;
+
+                    } else if ($carddata->type == 'CARD') {
+
+                        $newInvoice->cardType = $carddata->type;
                         $newInvoice->pgTransactionId = $carddata->pgTransactionId;
-                    }
+                        $newInvoice->bankTransactionId = $carddata->bankTransactionId;
+                        $newInvoice->pgAuthorizationCode = $carddata->pgAuthorizationCode;
+                        $newInvoice->bankId = $carddata->bankId;
+                        $newInvoice->arn = $carddata->arn;
+                        $newInvoice->brn = $carddata->brn;
 
-                    if ($carddata->bankTransactionId == null) {
-                        $bankTransactionId = "";
-                    } else {
-                        $bankTransactionId = $carddata->bankTransactionId;
-                    }
-                    $newInvoice->bankTransactionId = $bankTransactionId;
-                    $newInvoice->pgAuthorizationCode = "";
+                        $userpaymentdetails['cardType'] = $carddata->cardType;
+                        $userpaymentdetails['referenceid'] = $carddata->pgTransactionId;
 
-                    if ($carddata->bankId == null) {
-                        $bankId = "";
+                    } else if ($carddata->type == 'NETBANKING') {
+                        $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                        $newInvoice->bankTransactionId = $carddata->bankTransactionId;
+                        $newInvoice->bankId = $carddata->bankId;
+                        $newInvoice->pgServiceTransactionId = $carddata->pgServiceTransactionId;
+
+                        $userpaymentdetails['referenceid'] = $carddata->pgTransactionId;
+                        $userpaymentdetails['cardType'] = $carddata->type;
+
                     } else {
-                        $bankId = $carddata->bankId;
                     }
-                    $newInvoice->bankId = $bankId;
-                    $newInvoice->brn = "";
 
                     $userpaymentdetails['amount'] = $responcedata->amount / 100;
                     $userpaymentdetails['paymentstatus'] = $responcedata->state;
@@ -230,36 +238,75 @@ class PhonepeController extends Controller
                     //dd($newInvoice);
 
                     if ($newInvoice->save()) {
+
                         $userpaymentdetails['date'] = date("Y-m-d");
                         $userpaymentdetails['time'] = date("h:i a");
                         $userpaymentdetails['status'] = 1;
-                        $userpaymentdetails['msg'] = $response->message;
-                        //dd("invoice savbe");
+                        $userpaymentdetails['msg'] = "Thank you for
+                        your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
+                        details, and guide you accordingly.";
+                        $userpaymentdetails['appointmentid'] = $appointmentid->id;
+                        $updatedata['payment_status'] = "c";
+                        $updateappointment = Appointment::where('id', '=', $appointmentid->id)->update($updatedata);
+
+                        //dd($userpaymentdetails);
+                        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+
                     } else {
-                        //dd("invoice not save");
+
                         $userpaymentdetails['status'] = 0;
-                        $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                        $userpaymentdetails['msg'] = "Your payment has been processed successfully. We are in the process of updating our records. We’ll notify you once it’s completed. Thanks for bearing with us!";
+                        //return with error msg
+                        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
                     }
 
                 } else {
+
+                    if (isset($response->data)) {
+                        $userpaymentdetails['msg'] = $response->data->responseCodeDescription;
+                    } else {
+                        $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                    }
+
                     $userpaymentdetails['status'] = 0;
-                    $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                    //return with error msg
+                    return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
                 }
             } else {
+
                 $userpaymentdetails['status'] = 0;
                 $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                //return with error msg
+                return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
             }
-            //dd($userpaymentdetails);
-            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
         }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(phonepe $phonepe)
+    public function generatePDF($id)
     {
-        //
+        //dd($id);
+        $apoinmentdetails = Appointment::leftJoin('users', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->leftJoin('invoices', 'invoices.appointmentId', '=', 'appointments.id')->where('appointments.id', $id)->select('users.name', 'users.email', 'appointments.phoneNumber', 'appointments.bookingDate', 'appointments.appointmentType', 'appointments.created_at', 'invoices.*')->first();
+
+        //dd($apoinmentdetails);
+
+        $data = [
+            'title' => 'Invoice for Astro Achariya Debdutta Appointment',
+            'image' => public_path('admin/img/astroachariyalogo.png'),
+            'rupee' => public_path('admin/img/rupee.png'),
+            'date' => date('m-d-Y', strtotime('$apoinmentdetails->created_at')),
+            'users' => $apoinmentdetails
+        ];
+
+        //dd($data);
+        Pdf::setOption(['defaultFont' => 'Poppin, sans-serif']);
+        $pdf = PDF::loadView('front.invoicepdf', $data)->setPaper('a4', 'potraite');
+        $path = public_path('admin/invoices');
+        $fileName = 'invoiceAAD' . $apoinmentdetails->invoiceId . '.pdf';
+        $pdf->save($path . '/' . $fileName);
+        return $pdf->download('invoiceAAD' . $apoinmentdetails->invoiceId . '.pdf');
     }
 
     /**
