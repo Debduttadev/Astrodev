@@ -9,6 +9,7 @@ use App\Models\invoice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
+use PDF;
 
 class PhonepeController extends Controller
 {
@@ -110,11 +111,11 @@ class PhonepeController extends Controller
             ->withHeader('X-VERIFY:' . $finalXHeader)
             ->withData(json_encode(['request' => $encode]))
             ->post();
-
         $rData = json_decode($response);
-        //dd($rData);
+
+        // dd($rData);
         if ($rData->success == true) {
-            //dd($rData);
+            // dd($rData);
             $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
             $updateappointment = Appointment::where('id', '=', $id)->update($updatedata);
             return redirect()->to($rData->data->instrumentResponse->redirectInfo->url);
@@ -129,123 +130,182 @@ class PhonepeController extends Controller
     public function response(Request $request)
     {
         $input = $request->all();
-        // dd($input);
-        $merchantTransactionId = $input['transactionId'];
-        $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
+        //dd($input);
+        if ($input["code"] == "PAYMENT_PENDING") {
+            $userpaymentdetails['status'] = 0;
+            $userpaymentdetails['msg'] = "Your payment is currently being processed. We’ll notify you once it’s completed. Thank you for your patience!";
+            //return with error msg
+            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+        } else if ($input["code"] == "PAYMENT_ERROR") {
+            $userpaymentdetails['status'] = 0;
+            $userpaymentdetails['msg'] = "Payment failed, Please try again";
 
-        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
-        //dd($users);
-        if ($users->appointmentType == 'o') {
-            $userpaymentdetails['appointmentType'] = "Online";
+            //return with error msg
+            return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+
         } else {
-            $userpaymentdetails['appointmentType'] = "Offline";
-        }
+            $merchantTransactionId = $input['transactionId'];
+            $appointmentid = Appointment::where('merchantTransactionId', '=', $merchantTransactionId)->select('id')->first();
 
-        $userpaymentdetails['customername'] = $users->name;
-        $userpaymentdetails['customeremail'] = $users->email;
-        $userpaymentdetails['customerphonenumber'] = $users->phoneNumber;
-        $userpaymentdetails['merchantTransactionId'] = $merchantTransactionId;
+            $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->where('appointments.id', $appointmentid->id)->first();
+            if ($users->appointmentType == 'o') {
+                $userpaymentdetails['appointmentType'] = "Online";
+            } else {
+                $userpaymentdetails['appointmentType'] = "Offline";
+            }
 
-        $phonepedata = phonepe::first();
-        $saltKey = $phonepedata->apikey;
-        $saltIndex = $phonepedata->apiindex;
+            $userpaymentdetails['customername'] = $users->name;
+            $userpaymentdetails['customeremail'] = $users->email;
+            $userpaymentdetails['customerphonenumber'] = $users->phoneNumber;
+            $userpaymentdetails['merchantTransactionId'] = $merchantTransactionId;
 
-        $merchantId = $input['merchantId'];
-        $providerReferenceId = $input['providerReferenceId'];
+            $phonepedata = phonepe::first();
+            $saltKey = $phonepedata->apikey;
+            $saltIndex = $phonepedata->apiindex;
 
-        $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
-        //dd($saltKey);
-        $phonepedata = phonepe::first();
-        $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
-        //dd($url);
-        $response = Curl::to($url)
-            ->withHeader('Content-Type:application/json')
-            ->withHeader('accept:application/json')
-            ->withHeader('X-VERIFY:' . $finalXHeader)
-            ->withHeader('X-MERCHANT-ID:' . $input['transactionId'])
-            ->get();
+            $merchantId = $input['merchantId'];
+            $providerReferenceId = "";
 
-        $response = json_decode($response);
-        $invoiceid = "INV" . substr(strtotime("now"), 6);
-        $userpaymentdetails['invoiceId'] = $invoiceid;
-        //dd($response);
-        if ($response) {
-            if ($response->success == true) {
-                $newInvoice = new invoice;
-                $responcedata = $response->data;
+            $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
 
-                $newInvoice->invoiceId = $invoiceid;
+            $phonepedata = phonepe::first();
+            $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
 
-                $newInvoice->appointmentid = $appointmentid->id;
-                $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
+            $response = Curl::to($url)
+                ->withHeader('Content-Type:application/json')
+                ->withHeader('accept:application/json')
+                ->withHeader('X-VERIFY:' . $finalXHeader)
+                ->withHeader('X-MERCHANT-ID:' . $input['transactionId'])
+                ->get();
 
-                $transactionId = $responcedata->transactionId;
-                $newInvoice->transactionId = $transactionId;
+            $response = json_decode($response);
+            $invoiceid = "INV" . substr(strtotime("now"), 6);
+            $userpaymentdetails['invoiceId'] = $invoiceid;
 
-                $newInvoice->providerReferenceId = $providerReferenceId;
+            if ($response) {
+                if ($response->success == true) {
 
-                $newInvoice->amount = $responcedata->amount / 100;
+                    $newInvoice = new invoice;
+                    $responcedata = $response->data;
 
-                $newInvoice->status = $responcedata->state;
-                $newInvoice->responseCode = $responcedata->responseCode;
+                    $newInvoice->invoiceId = $invoiceid;
+                    $newInvoice->appointmentid = $appointmentid->id;
+                    $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
+                    $newInvoice->transactionId = $responcedata->transactionId;
+                    $newInvoice->providerReferenceId = $providerReferenceId;
+                    $newInvoice->amount = $responcedata->amount / 100;
+                    $newInvoice->status = $responcedata->state;
+                    $newInvoice->responseCode = $responcedata->responseCode;
+                    //card data individual for every transection type
+                    $carddata = $responcedata->paymentInstrument;
+                    $newInvoice->type = $carddata->type;
 
-                $carddata = $responcedata->paymentInstrument;
-                //dd($carddata);
-                $newInvoice->cardType = $carddata->type;
-                $newInvoice->type = $carddata->type;
-                if ($carddata->pgTransactionId == null) {
-                    $newInvoice->pgTransactionId = "";
+                    if ($carddata->type == 'UPI') {
+
+                        $newInvoice->utr = $responcedata->utr;
+                        $userpaymentdetails['referenceid'] = $responcedata->utr;
+                        $userpaymentdetails['cardType'] = $carddata->type;
+
+                    } else if ($carddata->type == 'CARD') {
+
+                        $newInvoice->cardType = $carddata->type;
+                        $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                        $newInvoice->bankTransactionId = $carddata->bankTransactionId;
+                        $newInvoice->pgAuthorizationCode = $carddata->pgAuthorizationCode;
+                        $newInvoice->bankId = $carddata->bankId;
+                        $newInvoice->arn = $carddata->arn;
+                        $newInvoice->brn = $carddata->brn;
+
+                        $userpaymentdetails['cardType'] = $carddata->cardType;
+                        $userpaymentdetails['referenceid'] = $carddata->pgTransactionId;
+
+                    } else if ($carddata->type == 'NETBANKING') {
+                        $newInvoice->pgTransactionId = $carddata->pgTransactionId;
+                        $newInvoice->bankTransactionId = $carddata->bankTransactionId;
+                        $newInvoice->bankId = $carddata->bankId;
+                        $newInvoice->pgServiceTransactionId = $carddata->pgServiceTransactionId;
+
+                        $userpaymentdetails['referenceid'] = $carddata->pgTransactionId;
+                        $userpaymentdetails['cardType'] = $carddata->type;
+
+                    } else {
+                    }
+
+                    $userpaymentdetails['amount'] = $responcedata->amount / 100;
+                    $userpaymentdetails['paymentstatus'] = $responcedata->state;
+                    $userpaymentdetails['responseCode'] = $responcedata->responseCode;
+                    //dd($newInvoice);
+
+                    if ($newInvoice->save()) {
+
+                        $userpaymentdetails['date'] = date("Y-m-d");
+                        $userpaymentdetails['time'] = date("h:i a");
+                        $userpaymentdetails['status'] = 1;
+                        $userpaymentdetails['msg'] = "Thank you for
+                        your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
+                        details, and guide you accordingly.";
+                        $userpaymentdetails['appointmentid'] = $appointmentid->id;
+                        $updatedata['payment_status'] = "c";
+                        $updateappointment = Appointment::where('id', '=', $appointmentid->id)->update($updatedata);
+
+                        //dd($userpaymentdetails);
+                        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+
+                    } else {
+
+                        $userpaymentdetails['status'] = 0;
+                        $userpaymentdetails['msg'] = "Your payment has been processed successfully. We are in the process of updating our records. We’ll notify you once it’s completed. Thanks for bearing with us!";
+                        //return with error msg
+                        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
+                    }
+
                 } else {
-                    $newInvoice->pgTransactionId = $carddata->pgTransactionId;
-                }
 
-                if ($carddata->bankTransactionId == null) {
-                    $bankTransactionId = "";
-                } else {
-                    $bankTransactionId = $carddata->bankTransactionId;
-                }
-                $newInvoice->bankTransactionId = $bankTransactionId;
-                $newInvoice->pgAuthorizationCode = "";
-                if ($carddata->bankId == null) {
-                    $bankId = "";
-                } else {
-                    $bankId = $carddata->bankId;
-                }
-                $newInvoice->bankId = $bankId;
-                $newInvoice->brn = "";
-
-                $userpaymentdetails['amount'] = $responcedata->amount / 100;
-                $userpaymentdetails['paymentstatus'] = $responcedata->state;
-                $userpaymentdetails['responseCode'] = $responcedata->responseCode;
-                //dd($newInvoice);
-                if ($newInvoice->save()) {
-                    $userpaymentdetails['date'] = date("Y-m-d");
-                    $userpaymentdetails['time'] = date("h:i a");
-                    $userpaymentdetails['status'] = 1;
-                    $userpaymentdetails['msg'] = $response->message;
-                } else {
+                    if (isset($response->data)) {
+                        $userpaymentdetails['msg'] = $response->data->responseCodeDescription;
+                    } else {
+                        $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                    }
                     $userpaymentdetails['status'] = 0;
-                    $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                    //return with error msg
+                    return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
                 }
 
             } else {
+
                 $userpaymentdetails['status'] = 0;
                 $userpaymentdetails['msg'] = "Payment failed, Please try again";
+                //return with error msg
+                return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
             }
-        } else {
-            $userpaymentdetails['status'] = 0;
-            $userpaymentdetails['msg'] = "Payment failed, Please try again";
         }
-        //dd($userpaymentdetails);
-        return view('front.booking', ['page_name' => 'Booking', 'userpaymentdetails' => $userpaymentdetails]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(phonepe $phonepe)
+    public function generatePDF($id)
     {
-        //
+        //dd($id);
+        $apoinmentdetails = Appointment::leftJoin('users', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->leftJoin('invoices', 'invoices.appointmentId', '=', 'appointments.id')->where('appointments.id', $id)->select('users.name', 'users.email', 'appointments.phoneNumber', 'appointments.bookingDate', 'appointments.appointmentType', 'appointments.created_at', 'invoices.*')->first();
+
+        //dd($apoinmentdetails);
+
+        $data = [
+            'title' => 'Invoice for Astro Achariya Debdutta Appointment',
+            'image' => public_path('admin/img/astroachariyalogo.png'),
+            'rupee' => public_path('admin/img/rupee.png'),
+            'date' => date('m-d-Y', strtotime('$apoinmentdetails->created_at')),
+            'users' => $apoinmentdetails
+        ];
+
+        //dd($data);
+        Pdf::setOption(['defaultFont' => 'Poppin, sans-serif']);
+        $pdf = PDF::loadView('front.invoicepdf', $data)->setPaper('a4', 'potraite');
+        $path = public_path('admin/invoices');
+        $fileName = 'invoiceAAD' . $apoinmentdetails->invoiceId . '.pdf';
+        $pdf->save($path . '/' . $fileName);
+        return $pdf->download('invoiceAAD' . $apoinmentdetails->invoiceId . '.pdf');
     }
 
     /**

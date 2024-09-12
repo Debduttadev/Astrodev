@@ -7,46 +7,46 @@
         <div class="row">
             <!-- Section Title -->
             <div class="section-title text-center m-bottom-40">
-                <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">Thank you for
-                    your interest. Your appointment has been scheduled. Our team will connect with you, take care of the
-                    details, and guide you accordingly.</>
-                <div class="divider-center-small wow zoomIn" data-wow-duration="1s" data-wow-delay="0.6s"></div>
+                <p class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.6s" style="color:black">
+                    {{ $userpaymentdetails['msg'] }}
+                </p>
             </div>
+
             <!-- === Contact Form === -->
-            <div class="col-md-12 col-sm-12 p-bottom-30">
-                @if($userpaymentdetails['status'] == 0)
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Payment Staus</h5>
-                            <p class="card-text">{{  $userpaymentdetails['msg'] }}</p>
-                        </div>
-                    </div>
-                @else
+            <div class="col-md-8 col-sm-8 col-md-offset-2 p-bottom-30">
+                @if($userpaymentdetails['status'] == 1)
+                                @php
+                                    $about_contact = aboutalldetails();
+                                @endphp
                                 <!-- invoice -->
                                 <div class="card">
                                     <div class="card-header bg-black"></div>
                                     <div class="card-body">
-                                        <div class="container">
-
+                                        <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="col-md-6">
                                                         <ul class="list-unstyled pull-left">
                                                             <li style="font-size: 30px; color: red;">Customer Details</li>
-                                                            <li>Name:{{ $userpaymentdetails['customername'] }}</li>
-                                                            <li>Email:{{ $userpaymentdetails['customeremail'] }}</li>
-                                                            <li>Phone number:{{ $userpaymentdetails['customerphonenumber'] }}
+                                                            <li style="font-size: 14px; color: black !important;">
+                                                                Name:{{ $userpaymentdetails['customername'] }}</li>
+                                                            <li style="font-size: 14px; color: black !important;">
+                                                                Email:{{ $userpaymentdetails['customeremail'] }}</li>
+                                                            <li style="font-size: 14px; color: black !important;">Phone
+                                                                number:{{ $userpaymentdetails['customerphonenumber'] }}
                                                             </li>
-                                                            <li>Transection ID:{{ $userpaymentdetails['merchantTransactionId'] }}</li>
+                                                            <li style="font-size: 14px; color: black !important;">Transection
+                                                                ID:{{ $userpaymentdetails['merchantTransactionId'] }}</li>
                                                         </ul>
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        @php
-                                                            $about_contact = aboutalldetails();
-                                                        @endphp <ul class="list-unstyled pull-right">
-                                                            <li style="font-size: 30px; color: red;">ASTRO</li>
-                                                            <li style="font-size: 30px; color: red;">ACHARIYA DEBDUTTA</li>
+                                                        <ul class="list-unstyled pull-right">
+                                                            <li style="font-size: 30px; color: red;">
+                                                                <img class="logo" src="{{ URL::to('admin/img/astroachariyalogo.png') }}"
+                                                                    alt="logo" data-rjs="2"
+                                                                    style="background-color: black;width: 65%;height: 55px;">
+                                                            </li>
                                                             <li>
                                                                 @foreach ($about_contact->phone as $phone)
                                                                     <a style="font-size: 14px; color: black !important;"
@@ -65,35 +65,38 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row text-center">
-                                                <h3 class="text-uppercase text-center mt-3" style="font-size: 40px;">Invoice</h3>
-                                                <p> ID #{{ $userpaymentdetails['invoiceId']}}</p>
+                                                <div class="col-md-12">
+                                                    <h3 class="text-uppercase text-center mt-3" style="font-size: 40px;">Invoice</h3>
+                                                    <p> ID #{{ $userpaymentdetails['invoiceId']}}</p>
+                                                </div>
                                             </div>
 
                                             <div class="row mx-3">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Description</th>
-                                                            <th scope="col">Amount</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Appointment: {{ $userpaymentdetails['appointmentType']}}</td>
-                                                            <td><i class="fa fa-inr"
-                                                                    aria-hidden="true"></i>{{ $userpaymentdetails['amount'] }}
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div class="col-md-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Amount</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Appointment: {{ $userpaymentdetails['appointmentType']}}</td>
+                                                                <td><i class="fa fa-inr"
+                                                                        aria-hidden="true"></i>{{ $userpaymentdetails['amount'] }}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                             <hr>
                                             <div class="row">
-                                                <div class="col-xl-8" style="margin-left:60px">
+                                                <div class="col-xl-12 col-md-12 col-sm-12">
                                                     <p class="pull-right"
-                                                        style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;">
+                                                        style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;margin-right: 20%;">
                                                         Total:
                                                         <span>
                                                             <i class="fa fa-inr"
@@ -104,16 +107,26 @@
                                             </div>
 
                                             <div class="row mt-2 mb-5">
-                                                <p class="fw-bold">Date: <span
-                                                        class="text-muted">{{ $userpaymentdetails['date']}}</span>
-                                                </p>
+                                                <div class="col-xl-8 col-md-8 col-sm-8">
+                                                    <p class="fw-bold">Date: <span
+                                                            class="text-muted">{{ $userpaymentdetails['date']}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row text-center">
+                                                <div class="col-xl-12 col-md-12 col-sm-12">
+                                                    <a href="{{ URL::to('generate-pdf') . '/' . $userpaymentdetails['appointmentid']}}"
+                                                        type="button" class="btn btn-default" style="background-color: #f27f4e;"><i
+                                                            class="fa fa-print" aria-hidden="true"></i>
+                                                        print</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer bg-black"></div>
                                 </div>
                 @endif  
-            </div> <!-- /.col -->
+          </div> <!-- /.col -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
 </section>

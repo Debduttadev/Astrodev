@@ -64,6 +64,8 @@ Route::get('/shipping-policy', [HomeController::class, 'shipping'])->name('shipp
 Route::get('phonepe/{id}', [PhonepeController::class, 'phonePe'])->name('phonepe');
 Route::any('phonepe-response', [PhonepeController::class, 'response'])->name('response');
 Route::any('booking', [PhonepeController::class, 'booking'])->name('booking');
+Route::get('generate-pdf/{id}', [PhonepeController::class, 'generatePDF']);
+
 // admin roots
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
