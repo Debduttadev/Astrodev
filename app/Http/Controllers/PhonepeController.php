@@ -164,13 +164,13 @@ class PhonepeController extends Controller
             $saltIndex = $phonepedata->apiindex;
 
             $merchantId = $input['merchantId'];
-            $providerReferenceId = "";
+            $providerReferenceId = $input['providerReferenceId'];
 
             $finalXHeader = hash('sha256', '/pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'] . $saltKey) . '###' . $saltIndex;
-
+            //dd($saltKey);
             $phonepedata = phonepe::first();
             $url = $phonepedata->hosturl . 'pg/v1/status/' . $input['merchantId'] . '/' . $input['transactionId'];
-
+            //dd($url);
             $response = Curl::to($url)
                 ->withHeader('Content-Type:application/json')
                 ->withHeader('accept:application/json')
@@ -181,6 +181,7 @@ class PhonepeController extends Controller
             $response = json_decode($response);
             $invoiceid = "INV" . substr(strtotime("now"), 6);
             $userpaymentdetails['invoiceId'] = $invoiceid;
+
 
             if ($response) {
                 if ($response->success == true) {
