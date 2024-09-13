@@ -45,7 +45,7 @@ $socialdata = scociallinks();
 $aboutcontact = aboutalldetails();
             @endphp
              <div class="headercall">Call: 
-                +91 {{$about_contact->phone['0']}}
+                +91 {{$aboutcontact->phone['0']}}
                 </div>
             </div>
         </div>

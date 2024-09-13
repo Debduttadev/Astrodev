@@ -238,8 +238,9 @@
         }
 
         .appoinmentsubmit {
-            padding-left: 40%;
+            padding-left: 50%;
             padding-right: 40%;
+            background-color: #be994f !important;
         }
 
         .allblogsbutton {
