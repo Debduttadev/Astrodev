@@ -15,7 +15,8 @@
                                             // convert the string to all lowercase
                                             $servicename = strtolower($servicename);
                                         @endphp
-                                        <a href="{{ URL::to('service') . '/' . $service['nameurl'] }}">{{strtoupper($service['name'])}}</a><br>
+                                        <a
+                                            href="{{ URL::to('service') . '/' . $service['nameurl'] }}">{{strtoupper($service['name'])}}</a><br>
                     @endforeach
                 </div>
 

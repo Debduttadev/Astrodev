@@ -81,20 +81,29 @@
                             <div class="collapse navbar-collapse" id="navbar-collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li><a href="{{ URL::to('/') }}">Home</a></li>
-                                    <li class="dropdown servicedropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-haspopup="true" aria-expanded="false">Dropdown <span
-                                                class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">Separated link</a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="#">One more separated link</a></li>
+                                    <li class="servicemenu" style="display:none"><a
+                                            href="{{ URL::to('/services') }}">Service</a></li>
+                                    @php
+                                        $servicelistfooter = servicelistfooter();
+                                    @endphp
+                                    <li class="dropdown servicedropdown" style="display:block">
+                                        <a href="#" class="dropdown-toggle servicenav" data-toggle="dropdown"
+                                            role="button" aria-haspopup="true" aria-expanded="false" status="0">Service
+                                            <span class="caret"></span></a>
+                                        <ul class="dropdown-menu sevicesubmenu">
+                                            @foreach ($servicelistfooter as $key => $service)
+                                                                                        @php
+                                                                                            $servicename = preg_replace('/\s*/', '', $service['name']);
+
+                                                                                            $servicename = strtolower($servicename);
+                                                                                        @endphp
+                                                                                        <li><a
+                                                                                                href="{{ URL::to('service') . '/' . $service['nameurl'] }}">{{strtoupper($service['name'])}}</a>
+                                                                                        </li>
+                                            @endforeach
                                         </ul>
                                     </li>
+
                                     <li><a href="{{ URL::to('/appointment') }}">Appointment</a></li>
                                     @if(Request::is('/'))
                                         <li><a data-scroll href="#blog">Blog</a></li>

@@ -76,7 +76,7 @@ img {
 }
 
 .label-theme {
-    background-color: #ff3c00;
+    background-color: #be994f;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -240,8 +240,8 @@ overlay-light .YTPOverlay:before {
 }
 
 .scroll-down:hover:before {
-    background: #ff3c00;
-    border: 1px solid #ff3c00;
+    background: #be994f;
+    border: 1px solid #be994f;
 }
 
 .scroll-down .scroll-down-icon {
@@ -278,14 +278,14 @@ overlay-light .YTPOverlay:before {
     line-height: 32px;
     color: #fff;
     font-size: 16px;
-    background: #ff3c00;
+    background: #be994f;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 #back-to-top i:hover {
-    background: #ff3c00;
+    background: #be994f;
 }
 
 #back-to-top.show {
@@ -315,7 +315,7 @@ overlay-light .YTPOverlay:before {
     line-height: 32px;
     color: #fff;
     font-size: 16px;
-    background: #ff3c00;
+    background: #be994f;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -358,7 +358,7 @@ overlay-light .YTPOverlay:before {
     }
 
     50% {
-        background-color: #ff3c00;
+        background-color: #be994f;
     }
 }
 
@@ -528,7 +528,7 @@ overlay-light .YTPOverlay:before {
     02. Custom Button 
 ---------------------------------------------------*/
 .btn-main {
-    background-color: orangered;
+    background-color: #be994f;
     padding: 10px 18px;
     border: 1px solid #fff;
     font-family: 'Lato', sans-serif;
@@ -595,8 +595,8 @@ overlay-light .YTPOverlay:before {
 }
 
 .btn-main.btn-theme {
-    background-color: #ff3c00;
-    border: 1px solid #ff3c00;
+    background-color: #be994f;
+    border: 1px solid #be994f;
     box-shadow: inset 0 0 0 0 #8f5d01;
     -webkit-box-shadow: inset 0 0 0 0 #8f5d01;
 }
@@ -652,8 +652,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Lato', sans-serif;
-    color: orangered;
+    font-family: "Alegreya", serif;
+    color: #be994f;
     text-transform: uppercase;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -682,11 +682,11 @@ h5 {
 
 h6 {
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.6em;
 }
 
 p {
-    line-height: 2.1em;
+    line-height: 1.8em;
 }
 
 .section-title-bg {
@@ -736,7 +736,7 @@ p {
 .theme-color h6,
 .theme-color p,
 .theme-color li {
-    color: #ff3c00 !important;
+    color: #be994f !important;
 }
 
 .divider {
@@ -776,7 +776,7 @@ p {
 }
 
 .divider-theme {
-    background-color: #ff3c00;
+    background-color: #be994f;
 }
 
 blockquote {
@@ -882,6 +882,10 @@ blockquote {
 
 .p-10 {
     padding: 10px;
+}
+
+.p-l-20 {
+    padding: 10px 30px;
 }
 
 .m-top-5 {
@@ -1072,7 +1076,7 @@ blockquote {
 }
 
 .navbar-header .logo-container {
-    padding-left: 15px;
+    padding-left: 10px;
     float: left;
 }
 
@@ -1097,7 +1101,7 @@ blockquote {
 }
 
 .navbar-header .logo-container .logo-wrap.shrink a {
-    height: 70px;
+    height: 60px;
 }
 
 .navbar-header .logo-container .logo-wrap img {
@@ -1114,7 +1118,7 @@ blockquote {
 .navbar-nav li a {
     font-family: 'Lato', sans-serif;
     padding: 0 15px;
-    line-height: 60px;
+    line-height: 40px;
     color: #fff;
     font-size: 19px;
     text-transform: uppercase;
@@ -1209,7 +1213,7 @@ blockquote {
     background-color: transparent;
     text-decoration: none;
     border-color: #f7f7f7;
-    border-bottom: 1px solid red;
+    border-bottom: 2px solid red;
 }
 
 @media (max-width: 991px) {
@@ -1228,7 +1232,7 @@ blockquote {
     }
 
     .navbar-header .logo-container .logo-wrap a {
-        height: 70px;
+        height: 45px;
     }
 
     .navbar-header .navbar-toggle {
@@ -1267,6 +1271,7 @@ blockquote {
 
     .navbar-collapse.collapse.in {
         display: block !important;
+        background-color: #7a653bcf
     }
 
     .navbar .container-fluid {
@@ -1321,7 +1326,7 @@ blockquote {
     }
 
     .nav-solid .nav>li>a {
-        padding: 15px 0 15px 15px;
+        padding: 15px 0 15px 40px;
         border-bottom: 1px solid #f7f7f7;
         line-height: 1px;
     }
@@ -1367,7 +1372,7 @@ blockquote {
 }
 
 .rev_slider .tp-caption.NotGeneric-SubTitle {
-    font-family: "Lato Thin";
+    font-family: "Lato", sans-serif;
     text-transform: uppercase;
 }
 
@@ -1406,7 +1411,7 @@ blockquote {
 }
 
 .service-icon {
-    background-color: #ff3c00;
+    background-color: #be994f;
     color: #fff;
     width: 44px;
     height: 44px;
@@ -1436,8 +1441,8 @@ blockquote {
 .service.service-type-2 .service-header .service-icon {
     background-color: transparent;
     margin-right: 25px;
-    color: #ff3c00;
-    border: 1px solid #ff3c00;
+    color: #be994f;
+    border: 1px solid #be994f;
     width: 36px;
     height: 36px;
     font-size: 16px;
@@ -1452,7 +1457,7 @@ blockquote {
 }
 
 .service.service-type-2:hover .service-header .service-icon {
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
 }
 
@@ -1537,7 +1542,7 @@ blockquote {
 
 .pf-style:hover .overlay-content {
     opacity: 1;
-    background-color: #ff3c00;
+    background-color: #be994f;
 }
 
 .portfolio.no-filter .pf-item {
@@ -1583,11 +1588,11 @@ blockquote {
 }
 
 .pf-filter li .iso-button:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .pf-filter li .iso-active {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .pf-filter.pf-filter-gray .iso-button {
@@ -1596,11 +1601,11 @@ blockquote {
 }
 
 .pf-filter.pf-filter-gray .iso-button:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .pf-filter.pf-filter-gray .iso-active {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 @media screen and (max-width: 992px) {
@@ -1705,7 +1710,7 @@ blockquote {
     font-size: 24px;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .team-item-position {
@@ -1775,7 +1780,7 @@ blockquote {
 }
 
 .progress-bar {
-    background-color: #ff3c00;
+    background-color: #be994f;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -1811,7 +1816,7 @@ blockquote {
 
 .panel-title a {
     position: relative;
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
     display: block;
     padding: 22px 40px;
@@ -1861,7 +1866,7 @@ blockquote {
 
 .stat-item-icon {
     float: left;
-    background-color: #ff3c00;
+    background-color: #be994f;
     color: #fff;
     width: 44px;
     height: 44px;
@@ -1936,7 +1941,7 @@ blockquote {
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
-    height: 400px;
+    height: 280px;
     ;
 }
 
@@ -1955,7 +1960,7 @@ blockquote {
 .testimonial-icon i {
     font-size: 42px;
     margin: 0 auto 10px;
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .testimonial-author {
@@ -1999,7 +2004,7 @@ blockquote {
 }
 
 .blog-post-info .comments a:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .blog-post-info i {
@@ -2019,7 +2024,7 @@ blockquote {
 }
 
 .blog-post-body h4 a:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .blog-post-body a.read-more {
@@ -2050,7 +2055,7 @@ blockquote {
 }
 
 .postSingle .postMeta a:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .postSingle .postMeta-info {
@@ -2094,7 +2099,7 @@ blockquote {
 }
 
 .postSingle .postTags ul li a {
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
     display: inline-block;
     padding: 5px 12px;
@@ -2112,8 +2117,8 @@ blockquote {
 }
 
 .entriesContainer .comments-list .img {
-    border: 2px solid #ff3c00;
-    color: #ff3c00;
+    border: 2px solid #be994f;
+    color: #be994f;
     float: left;
     height: 35px;
     width: 35px;
@@ -2134,7 +2139,7 @@ blockquote {
 }
 
 .entriesContainer .comments-list .commentContent .date a {
-    color: #ff3c00;
+    color: #be994f;
     font-size: 16px;
     display: inline-block;
 }
@@ -2246,7 +2251,7 @@ blockquote {
     top: 0;
     padding: 10px 15px;
     color: #000000;
-    background: #ff3c00;
+    background: #be994f;
 }
 
 .widget .searchdate {
@@ -2257,11 +2262,11 @@ blockquote {
     top: 0;
     padding: 12px 15px;
     color: #fff;
-    background: #ff3c00;
+    background: #be994f;
 }
 
 .widget .search-form .submit-search:hover {
-    background: #ff3c00;
+    background: #be994f;
 }
 
 .widget .cat-list li,
@@ -2281,7 +2286,7 @@ blockquote {
 .widget .cat-list li a:hover,
 .widget .cat-archives li a:hover,
 .widget .meta li a:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .widget .cat-list li:last-child,
@@ -2291,12 +2296,12 @@ blockquote {
 }
 
 .widget .cat-list li span.countCat {
-    color: #ff3c00;
+    color: #be994f;
     font-size: 16px;
 }
 
 .widget .meta abbr {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .widget .tag-list li {
@@ -2363,18 +2368,18 @@ blockquote {
 
 .pagination li a,
 .pagination li span {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .pagination .active span {
-    background-color: #ff3c00;
-    border-color: #ff3c00;
+    background-color: #be994f;
+    border-color: #be994f;
 }
 
 .pagination .active span:focus,
 .pagination .active span:hover {
-    background-color: #ff3c00;
-    border-color: #ff3c00;
+    background-color: #be994f;
+    border-color: #be994f;
 }
 
 @media screen and (max-width: 768px) {
@@ -2594,7 +2599,7 @@ blockquote {
 
 .contact-info-icon {
     float: left;
-    background-color: #ff3c00;
+    background-color: #be994f;
     color: #fff;
     width: 40px;
     height: 40px;
@@ -2659,7 +2664,7 @@ blockquote {
 }
 
 .site-footer .copyright a:hover {
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .site-footer .social-icon {
@@ -2678,7 +2683,7 @@ blockquote {
 }
 
 .site-footer .social-icon a:hover i {
-    background-color: #ff3c00;
+    background-color: #be994f;
     color: #fff;
 }
 
@@ -2729,7 +2734,7 @@ blockquote {
 .nav-tabs li.active a,
 .nav-tabs li.active a:hover,
 .nav-tabs li.active a:focus {
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
     cursor: default;
 }
@@ -2774,7 +2779,7 @@ blockquote {
     line-height: 1em;
     font-family: 'Lato', sans-serif;
     margin-bottom: 0;
-    color: #ff3c00;
+    color: #be994f;
 }
 
 .price-item-price .big .currency {
@@ -2824,8 +2829,8 @@ blockquote {
 }
 
 .owl-theme .owl-dots .owl-dot:hover span {
-    background: #ff3c00;
-    border: 1px solid #ff3c00;
+    background: #be994f;
+    border: 1px solid #be994f;
 }
 
 .owl-theme .owl-nav,
@@ -2850,14 +2855,14 @@ blockquote {
     line-height: 28px;
     text-align: center;
     color: #000000;
-    background: #ff3c00;
+    background: #be994f;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
 .owl-theme .owl-nav [class*="owl-"] i:hover {
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
 }
 
@@ -2871,8 +2876,8 @@ blockquote {
 }
 
 .owl-theme.white-color .owl-dots .owl-dot:hover span {
-    border: 1px solid #ff3c00;
-    background: #ff3c00;
+    border: 1px solid #be994f;
+    background: #be994f;
 }
 
 .owl-theme.white-color .owl-nav [class*="owl-"] {
@@ -2883,16 +2888,16 @@ blockquote {
 }
 
 .owl-theme.white-color .owl-nav [class*="owl-"]:hover {
-    background: #ff3c00;
+    background: #be994f;
 }
 
 .owl-theme.white-color .owl-nav [class*="owl-"] i {
     color: #909090;
-    background: #ff3c00;
+    background: #be994f;
 }
 
 .owl-theme.white-color .owl-nav [class*="owl-"] i:hover {
-    background: #ff3c00;
+    background: #be994f;
     color: #fff;
 }
 

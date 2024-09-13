@@ -19,6 +19,14 @@
         prevScrollpos = currentScrollPos;
     }
 
+    if ($(window).width() < 992) {
+        $('.servicedropdown').css("display", "none");
+        $('.servicemenu').css("display", "block");
+    } else {
+        $('.servicedropdown').css("display", "block");
+        $('.servicemenu').css("display", "none");
+    }
+
     $(document).ready(function () {
 
         var base_url = "{{ URL::to('/') }}";
@@ -419,12 +427,18 @@
             window.location.replace("{{ URL::to('/') }}");
         })
 
-        $('.servicedropdown').hover(function () {
-            $(this).addClass('show');
-            $(this).find('.dropdown-menu').addClass('show');
-        }, function () {
-            $(this).removeClass('show');
-            $(this).find('.dropdown-menu').removeClass('show');
+        $('.servicenav').click(function () {
+            var status = $(this).attr('status');
+            if (status == 0) {
+                $(this).next('.dropdown-menu').addClass("show");
+                $(this).next('.dropdown-menu').show();
+                $(this).attr('status', 1);
+            } else {
+                $(this).next('.dropdown-menu').removeClass("show");
+                $(this).attr('status', 0);
+                $(this).next('.dropdown-menu').hide();
+            }
+
         });
     });
 

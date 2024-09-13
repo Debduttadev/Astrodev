@@ -40,6 +40,8 @@
 
     <!-- CSS Files For Plugin -->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
     <link href="{{ URL::to('frontend/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
@@ -78,7 +80,7 @@
         .blog-post-body {
             color: #fff5f5;
             background-color: #0c0808;
-            height: 320px;
+            height: 240px;
         }
 
         .blog-post-body a {
@@ -251,7 +253,7 @@
 
         .contactsubmit {
             background-color: #100e0e;
-            color: #ff3c00;
+            color: #be994f;
             font-size: larger;
             padding-left: 46%;
             padding-right: 46%;
@@ -282,15 +284,20 @@
             right: auto;
             left: 18%;
             text-align: left;
-            font-family: Cormorant;
+            font-family: "Lato", sans-serif;
+            color: #000;
+            text-shadow: 0 0 black
         }
 
         .carousel-caption strong {
-            font-family: Cormorant !important;
+            font-family: "Alegreya", serif !important;
         }
 
         .carousel-caption h1 {
-            color: #fff;
+            color: #dbb362;
+            font-weight: 100;
+            font-family: "Alegreya", serif !important;
+            text-transform: capitalize !important;
         }
 
         .aboutcss a {
@@ -312,14 +319,35 @@
 
             .carousel-caption h1 {
                 margin: -25px 0px;
+                line-height: 4em;
             }
 
             .carousel-caption .astro {
-                font-size: 14px;
+                font-size: 14px !important;
+            }
+
+            .team-item-name {
+                font-size: 14px !important;
+            }
+
+            .footerlist div.listfooter a {
+                font-size: 10px;
+            }
+
+            .contact-info-title {
+                font-size: 10px !important;
+            }
+
+            .contact-info-text {
+                font-size: 10px !important;
+            }
+
+            h1 {
+                font-size: 14px !important;
             }
 
             .carousel-caption {
-                top: -25px;
+                top: 12%;
                 bottom: auto;
             }
 
@@ -328,27 +356,39 @@
                 font-weight: 700;
             }
 
-            .carousel-caption p {
+            .section-subtitle {
+                font-size: 8px;
+            }
+
+            .team-item-position {
                 font-size: 12px;
+            }
+
+            .carousel-caption p {
+                font-size: 8px;
                 line-height: 0.3em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 15px !important;
+                font-size: 8px !important;
                 line-height: 0.5em;
                 margin-top: 15px;
             }
 
             .carousel-caption a {
-                font-size: 12px;
+                font-size: 10px;
                 padding: 3px 12px;
-                margin-top: -20px;
+                margin-top: -10px;
             }
 
             .carousel-caption p span a {
-                margin-top: -20px;
+                margin-top: -10px;
                 padding: 5px 12px;
+            }
+
+            .carousel-indicators {
+                bottom: 0px;
             }
 
             .navbar-nav li a {
@@ -363,7 +403,7 @@
             }
 
             .blog-post-body p {
-                font-size: 15px;
+                font-size: 8px;
             }
 
             .headerbookappointment {
@@ -398,12 +438,20 @@
                 margin-left: -14%;
             }
 
+            .logoimage3 {
+                width: 145px !important;
+            }
+
             .nav-solid .navigation {
-                height: 30px;
+                height: 45px;
             }
 
             .nav-solid {
                 height: 40px;
+            }
+
+            .navbar .nav-wrap {
+                height: 0%;
             }
         }
 
@@ -421,7 +469,27 @@
             }
 
             .carousel-caption .astro {
-                font-size: 20px;
+                font-size: 18px !important;
+            }
+
+            .team-item-name {
+                font-size: 14px !important;
+            }
+
+            .footerlist div.listfooter a {
+                font-size: 10px;
+            }
+
+            .contact-info-title {
+                font-size: 10px !important;
+            }
+
+            .contact-info-text {
+                font-size: 10px !important;
+            }
+
+            h1 {
+                font-size: 18px !important;
             }
 
             .carousel-caption {
@@ -434,14 +502,22 @@
                 font-weight: 700;
             }
 
+            .section-subtitle {
+                font-size: 12px;
+            }
+
+            .team-item-position {
+                font-size: 12px;
+            }
+
             .carousel-caption p {
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 0.5em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 17px !important;
+                font-size: 12px !important;
                 line-height: 0.5em;
                 margin-top: 15px;
             }
@@ -470,7 +546,7 @@
             }
 
             .blog-post-body p {
-                font-size: 15px;
+                font-size: 12px;
             }
 
             .logoimage1 {
@@ -485,6 +561,10 @@
                 width: auto;
                 margin-top: -62px;
                 margin-left: -12%;
+            }
+
+            .logoimage3 {
+                width: 190px !important;
             }
 
             .nav-solid .navigation {
@@ -527,7 +607,27 @@
             }
 
             .carousel-caption .astro {
-                font-size: 26px;
+                font-size: 24px !important;
+            }
+
+            .team-item-name {
+                font-size: 16px !important;
+            }
+
+            .footerlist div.listfooter a {
+                font-size: 12px;
+            }
+
+            .contact-info-title {
+                font-size: 12px !important;
+            }
+
+            .contact-info-text {
+                font-size: 12px !important;
+            }
+
+            h1 {
+                font-size: 24px !important;
             }
 
             .carousel-caption {
@@ -540,14 +640,22 @@
                 font-weight: 700;
             }
 
+            .section-subtitle {
+                font-size: 12px;
+            }
+
+            .team-item-position {
+                font-size: 12px;
+            }
+
             .carousel-caption p {
-                font-size: 18px;
+                font-size: 12px;
                 line-height: 0.7em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 18px !important;
+                font-size: 12px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
@@ -563,6 +671,10 @@
                 padding: 2px 24px;
             }
 
+            .carousel-indicators {
+                bottom: 10px;
+            }
+
             .navbar-nav li a {
                 font-size: 14px;
             }
@@ -574,7 +686,7 @@
             }
 
             .blog-post-body p {
-                font-size: 15px;
+                font-size: 12px;
             }
 
             .logoimage1 {
@@ -591,6 +703,10 @@
                 margin-left: -12%;
             }
 
+            .logoimage3 {
+                width: 155px !important;
+            }
+
             .nav-solid .navigation {
                 height: 60px;
             }
@@ -604,6 +720,8 @@
                 font-size: 14px;
                 margin-left: 25px;
             }
+
+
         }
 
         @media (min-width: 992px) {
@@ -619,6 +737,11 @@
 
             .navbar-nav li a {
                 font-size: 14px;
+                line-height: 60px;
+            }
+
+            .navbar .nav-wrap {
+                height: 100%;
             }
 
             .container {
@@ -626,15 +749,36 @@
             }
 
             .carousel-caption .astro {
-                font-size: 32px;
+                font-size: 28px !important;
+            }
+
+            .team-item-name {
+                font-size: 20px !important;
+            }
+
+            .footerlist div.listfooter a {
+                font-size: 14px;
+            }
+
+            .contact-info-title {
+                font-size: 14px !important;
+            }
+
+            .contact-info-text {
+                font-size: 14px !important;
+            }
+
+            h1 {
+                font-size: 28px !important;
             }
 
             .carousel-caption h1 {
                 margin: 12px 0px;
+                line-height: 1.2em;
             }
 
             .carousel-caption {
-                top: 10%;
+                top: 28%;
                 bottom: auto;
             }
 
@@ -643,14 +787,22 @@
                 font-weight: 500;
             }
 
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .team-item-position {
+                font-size: 14px;
+            }
+
             .carousel-caption p {
-                font-size: 20px;
+                font-size: 14px;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 20px !important;
+                font-size: 14px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
@@ -667,7 +819,7 @@
             }
 
             .blog-post-body p {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             .logoimage1 {
@@ -697,6 +849,7 @@
                 font-size: 14px;
                 margin-left: 25px;
             }
+
         }
 
         @media (min-width: 1200px) {
@@ -711,15 +864,36 @@
             }
 
             .carousel-caption .astro {
-                font-size: 40px;
+                font-size: 32px !important;
+            }
+
+            .team-item-name {
+                font-size: 24px !important;
+            }
+
+            .footerlist div.listfooter a {
+                font-size: 14px;
+            }
+
+            .contact-info-title {
+                font-size: 14px !important;
+            }
+
+            .contact-info-text {
+                font-size: 14px !important;
+            }
+
+            h1 {
+                font-size: 32px !important;
             }
 
             .carousel-caption h1 {
                 margin: 15px 0px;
+                line-height: 1.2em;
             }
 
             .carousel-caption {
-                top: 21%;
+                top: 35%;
                 bottom: auto;
             }
 
@@ -728,14 +902,22 @@
                 font-weight: 700;
             }
 
+            .section-subtitle {
+                font-size: 16px;
+            }
+
+            .team-item-position {
+                font-size: 16px;
+            }
+
             .carousel-caption p {
-                font-size: 25px;
+                font-size: 16px;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
 
             .carousel-caption p span {
-                font-size: 25px !important;
+                font-size: 16px !important;
                 line-height: 1.2em;
                 margin-top: 15px;
             }
@@ -752,8 +934,10 @@
                 padding: 5px 26px;
             }
 
+
             .navbar-nav li a {
                 font-size: 14px;
+                line-height: 60px;
             }
 
             body {
@@ -761,7 +945,7 @@
             }
 
             .blog-post-body p {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .logoimage1 {
@@ -776,6 +960,10 @@
                 width: auto;
                 margin-top: -85px;
                 margin-left: -12%;
+            }
+
+            .logoimage3 {
+                width: 185px !important;
             }
 
             .nav-solid .navigation {
@@ -836,6 +1024,24 @@
         .headerbookappointment {
             padding: 2px 12px;
         }
+
+        .servicenav {
+            background: transparent;
+            color: #fff;
+            font-size: 16px;
+            padding: 0px 10px;
+        }
+
+        .servicenav:hover {
+            background: transparent;
+            color: #fff;
+            font-size: 16px;
+            padding: 0px 10px;
+        }
+
+        .sevicesubmenu {
+            background-color: #98885dbf;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
@@ -850,6 +1056,7 @@
 
 
     <!-- Components Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ URL::to('frontend/js/smooth-scroll.js') }}"></script>
     <script src="{{ URL::to('frontend/js/jquery.appear.js') }}"></script>
