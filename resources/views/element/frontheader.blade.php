@@ -7,7 +7,7 @@
                 <div class="social-icon pull-right headersocial">
                     <ul class="list-inline">
                         @php
-                            $socialdata = scociallinks();
+$socialdata = scociallinks();
                         @endphp
                         @foreach ($socialdata as $social)
                             <li>
@@ -41,7 +41,12 @@
             <div class="row m-top-10"><button type="button" class="btn btn-default headerbookappointment ">Book an
                     Appointment</button></div>
             <div class="row m-top-5">
-                <div class="headercall">Call: +918888888888</div>
+            @php
+$aboutcontact = aboutalldetails();
+            @endphp
+             <div class="headercall">Call: 
+                +91 {{$about_contact->phone['0']}}
+                </div>
             </div>
         </div>
     </div>
@@ -84,7 +89,7 @@
                                     <li class="servicemenu" style="display:none"><a
                                             href="{{ URL::to('/services') }}">Service</a></li>
                                     @php
-                                        $servicelistfooter = servicelistfooter();
+$servicelistfooter = servicelistfooter();
                                     @endphp
                                     <li class="dropdown servicedropdown" style="display:block">
                                         <a href="#" class="dropdown-toggle servicenav" data-toggle="dropdown"
@@ -93,9 +98,9 @@
                                         <ul class="dropdown-menu sevicesubmenu">
                                             @foreach ($servicelistfooter as $key => $service)
                                                                                         @php
-                                                                                            $servicename = preg_replace('/\s*/', '', $service['name']);
+    $servicename = preg_replace('/\s*/', '', $service['name']);
 
-                                                                                            $servicename = strtolower($servicename);
+    $servicename = strtolower($servicename);
                                                                                         @endphp
                                                                                         <li><a
                                                                                                 href="{{ URL::to('service') . '/' . $service['nameurl'] }}">{{strtoupper($service['name'])}}</a>
@@ -131,7 +136,7 @@
 
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up roundbtn"></i></a>
     @php
-        $aboutcontact = aboutalldetails();
+$aboutcontact = aboutalldetails();
     @endphp
 
     <a aria-label="Chat on WhatsApp" class="btn pull-right" href="https://wa.me/91{{$aboutcontact->whatsapp}}"
