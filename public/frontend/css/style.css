@@ -2493,7 +2493,7 @@ blockquote {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 .contact-form-item input[type="text"]:focus,
@@ -2501,13 +2501,13 @@ blockquote {
 .contact-form-item select:focus,
 .contact-form-item textarea:focus {
     border: 1px solid rgb(0, 0, 0);
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 .contact-form-item textarea {
     height: 160px;
     border: 1px solid #be994f;
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 .contact-form-item .input-group input[type="text"] {
