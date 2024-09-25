@@ -13,6 +13,11 @@ return new class extends Migration {
         Schema::table('about_contacts', function (Blueprint $table) {
             $table->longText('homedescription')->after('description');
         });
+
+        DB::table('about_contacts')
+            ->insert(array(
+                array('homedescription' => "astrology"),
+            ));
     }
 
     /**
