@@ -130,7 +130,7 @@
                             </div>
                             <!--post media-->
                             <div>
-                                <div class="team-item-name text-center" style="height:60px">
+                                <div class="team-item-name text-center" style="height:70px">
                                     {{ucfirst($blog['title'])}}
                                 </div>
                             </div>
