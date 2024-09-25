@@ -24,7 +24,7 @@ class AdminController extends Controller
     public function dashboard()
     {
 
-        $appointments = Appointment::where('bookingDate', '>=', date("Y-m-d"))->orderBy('bookingDate', 'asc')->get();
+        $appointments = Appointment::where('bookingDate', '>=', date("Y-m-d"))->orderBy('payment_status', 'desc')->get();
 
         foreach ($appointments as $appointment) {
 
@@ -149,7 +149,7 @@ class AdminController extends Controller
         $data['usertype'] = $request->usertype;
 
         //dd($data);
-        if (!empty($request->password) or  $request->password != "") {
+        if (!empty($request->password) or $request->password != "") {
             $request->validate(['password' => ['required', 'confirmed', Rules\Password::defaults()]]);
 
             $data['password'] = Hash::make($request->password);

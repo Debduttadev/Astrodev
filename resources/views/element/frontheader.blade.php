@@ -7,7 +7,7 @@
                 <div class="social-icon pull-right headersocial">
                     <ul class="list-inline">
                         @php
-$socialdata = scociallinks();
+                            $socialdata = scociallinks();
                         @endphp
                         @foreach ($socialdata as $social)
                             <li>
@@ -38,14 +38,15 @@ $socialdata = scociallinks();
             </div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 text-center">
-            <div class="row m-top-10"><button type="button" class="btn btn-default headerbookappointment ">Book an
-                    Appointment</button></div>
+            <div class="row m-top-10"><a href="{{ URL::to('/appointment') }}" type="button"
+                    class="btn btn-default headerbookappointment ">Book an
+                    Appointment</a></div>
             <div class="row m-top-5">
-            @php
-$aboutcontact = aboutalldetails();
-            @endphp
-             <div class="headercall">Call: 
-                +91 {{$aboutcontact->phone['0']}}
+                @php
+                    $aboutcontact = aboutalldetails();
+                @endphp
+                <div class="headercall">Call:
+                    +91 {{$aboutcontact->phone['0']}}
                 </div>
             </div>
         </div>
@@ -69,7 +70,7 @@ $aboutcontact = aboutalldetails();
 
                             <!-- Logo -->
                             <div class="logo-container">
-                                <div class="logo-wrap local-scroll parent">
+                                <div class="logo-wrap local-scroll logoparent">
                                     <a href="{{ URL::to('/') }}">
                                         <img src="{{ URL::to('admin/img/sun.png') }}" class="logoimage1"
                                             id="logoimage1" />
@@ -89,7 +90,7 @@ $aboutcontact = aboutalldetails();
                                     <li class="servicemenu" style="display:none"><a
                                             href="{{ URL::to('/services') }}">Service</a></li>
                                     @php
-$servicelistfooter = servicelistfooter();
+                                        $servicelistfooter = servicelistfooter();
                                     @endphp
                                     <li class="dropdown servicedropdown" style="display:block">
                                         <a href="#" class="dropdown-toggle servicenav" data-toggle="dropdown"
@@ -97,10 +98,9 @@ $servicelistfooter = servicelistfooter();
                                             <span class="caret"></span></a>
                                         <ul class="dropdown-menu sevicesubmenu">
                                             @foreach ($servicelistfooter as $key => $service)
-                                                                                        @php
-    $servicename = preg_replace('/\s*/', '', $service['name']);
+                                                                                        @php    $servicename = preg_replace('/\s*/', '', $service['name']);
 
-    $servicename = strtolower($servicename);
+                                                                                            $servicename = strtolower($servicename);
                                                                                         @endphp
                                                                                         <li><a
                                                                                                 href="{{ URL::to('service') . '/' . $service['nameurl'] }}">{{strtoupper($service['name'])}}</a>
@@ -136,7 +136,7 @@ $servicelistfooter = servicelistfooter();
 
     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up roundbtn"></i></a>
     @php
-$aboutcontact = aboutalldetails();
+        $aboutcontact = aboutalldetails();
     @endphp
 
     <a aria-label="Chat on WhatsApp" class="btn pull-right" href="https://wa.me/91{{$aboutcontact->whatsapp}}"

@@ -91,7 +91,18 @@
                                                                 @else
                                                                     <td>{{ $data->locationname }}</td>
                                                                 @endif
-                                                                <td>{{$data->invoicestatus}}</td>
+                                                                <td>
+                                                                    @if($data->payment_status == "n")
+                                                                        Payment not Done
+                                                                    @elseif($data->payment_status == "p")
+                                                                        Pending
+                                                                    @else
+                                                                        <a href="{{ URL::to('generate-pdf') . '/' . $data->id}}" type="button"
+                                                                            class="btn btn-default" style="background-color: #f3ae30;"
+                                                                            title="download invoice"><i class="fa fa-print" aria-hidden="true"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                </td>
                                                                 <td>
                                                                     <a href="{{ URL::to('appoinmentdetails') . '/' . base64_encode($data->id) }}"
                                                                         class="btn btn-primary" role="button" aria-disabled="true"

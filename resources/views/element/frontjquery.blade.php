@@ -18,6 +18,22 @@
         }
         prevScrollpos = currentScrollPos;
     }
+    window.onload = (event) => {
+        var currentScrollPos = window.pageYOffset;
+
+        if (currentScrollPos <= 48) {
+            document.getElementById("fixednavbar").style.top = "70px";
+            document.getElementById("logoimage1").style.display = "block";
+            document.getElementById("logoimage2").style.display = "block";
+            document.getElementById("logoimage3").style.display = "none";
+        } else {
+            document.getElementById("fixednavbar").style.top = "0px";
+            document.getElementById("logoimage1").style.display = "none";
+            document.getElementById("logoimage2").style.display = "none";
+            document.getElementById("logoimage3").style.display = "block";
+        }
+        prevScrollpos = currentScrollPos;
+    };
 
     if ($(window).width() < 992) {
         $('.servicedropdown').css("display", "none");
@@ -248,13 +264,15 @@
                         html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "'>"
                         html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
                         html += "</div>";
+                        html += "<div>";
+                        html += "<div class='team-item-name text-center' style = 'height:60px;' >" +
+                            blogitems[x].title + "</div></div>";
                         html += "<div class='blog-post-info clearfix'>";
                         html += "<span class='time'><i class='fa fa-calendar'></i>" + data[x].createdate + "</span>";
                         html += "</div>";
                         html += "<div class='blog-post-body'>";
-                        html += "<h4><a class='title'>" + data[x].title + "</a></h4>";
                         html += "<p class='p-bottom-20'>" + description + "</p>";
-                        html += "<a href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
+                        html += "<a class='btn btn-service roundbtn' href='" + base_url + "/blog/" + data[x].nameurl + "' class='read-more'>Read More >></a>";
                         html += "</div>";
                         html += "</div>";
                         html += "</div>";
@@ -341,13 +359,15 @@
                         html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "'>"
                         html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
                         html += "</div>";
+                        html += "<div>";
+                        html += "<div class='team-item-name text-center' style = 'height:60px;' >" +
+                            blogitems[x].title + "</div></div>";
                         html += "<div class='blog-post-info clearfix'>";
                         html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
                         html += "</div>";
                         html += "<div class='blog-post-body'>";
-                        html += "<h4><a class='title'>" + blogitems[x].title + "</a></h4>";
                         html += "<p class='p-bottom-20'>" + description + "</p>";
-                        html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
+                        html += "<a class='btn btn-service roundbtn' href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
                         html += "</div>";
                         html += "</div>";
                         html += "</div>";
@@ -485,13 +505,15 @@
                     html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "'>"
                     html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
                     html += "</div>";
+                    html += "<div>";
+                    html += "<div class='team-item-name text-center' style = 'height:60px;' >" +
+                        blogitems[x].title + "</div></div>";
                     html += "<div class='blog-post-info clearfix'>";
                     html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
                     html += "</div>";
                     html += "<div class='blog-post-body'>";
-                    html += "<h4><a class='title'>" + blogitems[x].title + "</a></h4>";
                     html += "<p class='p-bottom-20'>" + description + "</p>";
-                    html += "<a href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
+                    html += "<a class='btn btn-service roundbtn' href='" + base_url + "/blog/" + blogitems[x].nameurl + "' class='read-more'>Read More >></a>";
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";

@@ -21,7 +21,7 @@ class AppointmentController extends Controller
      */
     public function adminappointment()
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::orderBy('bookingDate', 'desc')->get();
         //dd($appointments);
         foreach ($appointments as $appointment) {
 
@@ -37,16 +37,6 @@ class AppointmentController extends Controller
             } else {
 
                 $appointment->locationname = null;
-            }
-
-            // invoice details related to this appointment
-            $invoice = invoice::select('id', 'status')->where('appointmentId', $appointment->id)->first();
-            if (!empty($invoice)) {
-                $appointment->invoiceId = $invoice->id;
-                $appointment->invoicestatus = $invoice->status;
-            } else {
-                $appointment->invoiceId = null;
-                $appointment->invoicestatus = $appointment->payment_status;
             }
 
             $timestamp1 = strtotime($appointment->dateOfBirth);

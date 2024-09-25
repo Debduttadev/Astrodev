@@ -16,7 +16,7 @@ $adminclient = "";
 $managebannervideo = "";
 $adminsocial = "";
 $manageblog = "";
-$magageaboutcontactus = "";
+$manageaboutcontactus = "";
 $managecontactus = "";
 $seodetails = "";
 $seodetailsubmenu = "";
@@ -43,8 +43,8 @@ if ($navstatus == "adminuser") {
     $adminsocial = "active";
 } elseif ($navstatus == "manageblog") {
     $manageblog = "active";
-} elseif ($navstatus == "magageaboutcontactus") {
-    $magageaboutcontactus = "active";
+} elseif ($navstatus == "manageaboutcontactus") {
+    $manageaboutcontactus = "active";
 } elseif ($navstatus == "managecontactus") {
     $managecontactus = "active";
 } elseif ($navstatus == "seodetails") {
@@ -214,8 +214,8 @@ $user = userdetails();
                 @endif
 
                 @if($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5)
-                    <a class="nav-link {{ $magageaboutcontactus }}" href="{{ URL::to('magageaboutcontactus') }}">
-                        <div class="sb-nav-link-icon"><i class="fa-regular fa-address-card {{ $magageaboutcontactus }}"></i>
+                    <a class="nav-link {{ $manageaboutcontactus }}" href="{{ URL::to('manageaboutcontactus') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-address-card {{ $manageaboutcontactus }}"></i>
                         </div>
                         About and Contact details
                     </a>

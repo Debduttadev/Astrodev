@@ -46,24 +46,27 @@
                 <!-- Widget 1 -->
                 <div class="widget widget-search">
                     <form class="search-form">
-                        <input class="titleinput" type="text" typeblog="title" search="" name="search" onfocus="if(this.value == 'Search') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Search'; }" value="Search" />
+                        <input class="titleinput" type="text" typeblog="title" search="" name="search"
+                            onfocus="if(this.value == 'Search') { this.value = ''; }"
+                            onblur="if(this.value == '') { this.value = 'Search'; }" value="Search" />
                         <input type="submit" class="submit-search searchtitle" value="Ok" />
                     </form>
                 </div>
                 <!--End widget-->
 
                 @php
-                $blogfilters=blogfilters();
-                $categorydata=$blogfilters['allcategory'];
-                $tagsdata=$blogfilters['alltag'];
-                $keyworddata=$blogfilters['allkeyword'];
+                $blogfilters = blogfilters();
+                $categorydata = $blogfilters['allcategory'];
+                $tagsdata = $blogfilters['alltag'];
+                $keyworddata = $blogfilters['allkeyword'];
                 @endphp
 
                 <!--Widget 4-->
                 <div class="widget">
                     <h4>Month wise Blogs</h4>
                     <div class="input-group">
-                        <input class="form-control dateblog" type="text" typeblog="created_at" search="" value="{{date("m-Y")}}" id="dp1" />
+                        <input class="form-control dateblog" type="text" typeblog="created_at" search="" value="{{date("
+                            m-Y")}}" id="dp1" />
                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                     </div>
                 </div>
@@ -73,7 +76,7 @@
                 <div class="widget">
                     <h4>Categories</h4>
                     <ul class="tag-list categoryfilter">
-                        @foreach ($categorydata as $key => $category )
+                        @foreach ($categorydata as $key => $category)
                         <li><a class="categorysearch" typeblog="category" search="{{$key}}">{{$category}}</a></li>
                         @endforeach
                     </ul>
@@ -81,25 +84,25 @@
                 <!--End widget-->
 
                 <!-- Widget 3 -->
-                <div class="widget">
+                <!-- <div class="widget">
                     <h4>Tags</h4>
                     <ul class="tag-list tagfilter">
                         @foreach ($tagsdata as $key => $tag )
                         <li><a class="tagsearch" typeblog="tags" search="{{$key}}">{{ $tag }}</a></li>
                         @endforeach
                     </ul>
-                </div>
+                </div> -->
                 <!--End widget-->
 
                 <!--Widget 4-->
-                <div class="widget">
+                <!-- <div class="widget">
                     <h4>Keywords</h4>
                     <ul class="tag-list keywordfilter">
                         @foreach ($keyworddata as $key => $keys )
                         <li><a class="keysearch" typeblog="keyword" search="{{$key}}">{{$keys}}</a></li>
                         @endforeach
                     </ul>
-                </div>
+                </div> -->
                 <!--End widget-->
 
             </div>
@@ -108,32 +111,37 @@
             <div class="col-md-9">
                 <div class="row multi-columns-row blogsearchdetails">
                     @php
-                    $alttagforimages =alttagforimages();
+                    $alttagforimages = alttagforimages();
                     @endphp
 
                     @foreach ($blogitems as $blog)
                     @php
-                    $alttag=$alttagforimages['blog'][$blog['id']]['alttag'];
-                    $title=$alttagforimages['blog'][$blog['id']]['title'];
+                    $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
+                    $title = $alttagforimages['blog'][$blog['id']]['title'];
                     @endphp
                     <!-- === Blog item 1 === -->
                     <div class="col-md-4 m-bottom-30">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
 
                             <div class="blog-media">
-                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}"><img src="{{ URL::to('blog').'/'.$blog['image'] }}" alt="{{$alttag}}" title="{{$title}}" /></a>
+                                <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
+                                        src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
+                                        title="{{$title}}" /></a>
                             </div>
                             <!--post media-->
-
+                            <div>
+                                <div class="team-item-name text-center" style="height:60px">
+                                    {{ucfirst($blog['title'])}}
+                                </div>
+                            </div>
                             <div class="blog-post-info clearfix">
                                 <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
                             </div>
                             <!--post info-->
 
                             <div class="blog-post-body">
-                                <h4><a class="title" href="#">{{ $blog['title']}}</a></h4>
                                 @php
-                                $small = substr( strip_tags($blog['description']), 0, 120);
+                                $small = substr(strip_tags($blog['description']), 0, 120);
                                 @endphp
                                 <p class="p-bottom-20" style="font-size: 15px;">{!! $small !!}.....</p>
                                 @php
@@ -143,8 +151,11 @@
                                 $blogname = strtolower($blogname);
                                 @endphp
 
-                                <a href="{{ URL::to('/blog').'/'.$blog['nameurl'] }}" class="read-more">Read More >></a>
-                            </div><!--post body-->
+                                <a class="btn btn-service roundbtn"
+                                    href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}" class="read-more">Read More
+                                    >></a>
+                            </div>
+                            <!--post body-->
                             <!--post body-->
                         </div>
                         <!-- /.blog -->
@@ -154,7 +165,7 @@
                 </div>
                 <!-- /.inner-row -->
 
-                @if($pagination>1)
+                @if($pagination > 1)
                 <!-- blog pagination -->
                 <div class="blog-pagination" id="paginationblog">
 
@@ -162,7 +173,7 @@
                         <ul class="pagination paginationpage">
                             @php
                             $i = 1;
-                            $prevpage=$page-1;
+                            $prevpage = $page - 1;
                             @endphp
                             @if($page == 1)
                             <li class="disabled">
@@ -175,7 +186,7 @@
                                 </a>
                                 @endif
                             </li>
-                            @while ($i <= $pagination) @if($i==$page ) <li class="active">
+                            @while ($i <= $pagination) @if($i==$page) <li class="active">
                                 <span>{{$i}} <span class="sr-only">(current)</span></span>
                                 </li>
                                 @else
@@ -185,12 +196,12 @@
                                 $i++;
                                 @endphp
                                 @endwhile
-                                @if($i-$page==1)
+                                @if($i - $page == 1)
                                 <li class="disabled">
                                     <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
                                     @else
                                 <li>
-                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page+1}}" aria-label="Next">
+                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page + 1}}" aria-label="Next">
                                         <span aria-hidden="false"><i class="fa fa-angle-right"></i></span>
                                     </a>
                                     @endif

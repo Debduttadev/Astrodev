@@ -17,14 +17,14 @@ class AboutContactController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function magageaboutcontactus()
+    public function manageaboutcontactus()
     {
         $user = userdetails();
         // dd($user);
         if ($user['usertype'] == 0 || $user['usertype'] == 1 || $user['usertype'] == 5) {
             $aboutcontactus = about_contact::first();
             //dd(($aboutcontactus));
-            return view('admin.magageaboutcontactus', ['page_name' => 'Manage About and Contact details', 'navstatus' => "magageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
+            return view('admin.manageaboutcontactus', ['page_name' => 'Manage About and Contact details', 'navstatus' => "manageaboutcontactus", 'aboutcontactus' => $aboutcontactus]);
         } else {
             return redirect('/dashboard');
         }
@@ -39,6 +39,8 @@ class AboutContactController extends Controller
         //dd($data);
         $updateabout['title'] = htmlentities($request->title);
         $updateabout['description'] = htmlentities($request->description);
+        $updateabout['homedescription'] = htmlentities($request->homedescription);
+
 
         if ($request->hasFile('image')) {
 
@@ -82,7 +84,7 @@ class AboutContactController extends Controller
         } else {
             session(['status' => "0", 'msg' => 'About details is not Updated']);
         }
-        return redirect('/magageaboutcontactus');
+        return redirect('/manageaboutcontactus');
     }
 
     /**
@@ -106,7 +108,7 @@ class AboutContactController extends Controller
         } else {
             session(['status' => "0", 'msg' => 'Contact details is not Updated']);
         }
-        return redirect('/magageaboutcontactus');
+        return redirect('/manageaboutcontactus');
     }
 
 

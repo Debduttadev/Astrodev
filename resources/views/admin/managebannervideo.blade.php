@@ -49,6 +49,7 @@
                             <th>Thumbnail</th>
                             <th>File Type</th>
                             <th>Banner Text</th>
+                            <th>Created At</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -58,6 +59,7 @@
                             <th>Thumbnail</th>
                             <th>File Type</th>
                             <th>Banner Text</th>
+                            <th>Created At</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -76,6 +78,7 @@
                             <td>
                                 {{$data->bannertext}}
                             </td>
+                            <td> {{date('jS F Y',strtotime($data->created_at))}}</td>
                             <td>
                                 @if( $data->show == 0)Hide @elseif($data->show == 1) Show @endif
                             </td>
@@ -108,6 +111,7 @@
                             <th>Thumbnail</th>
                             <th>Video Link</th>
                             <th>File Type</th>
+                            <th>Created At</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -117,6 +121,7 @@
                             <th>Thumbnail</th>
                             <th>Video Link</th>
                             <th>File Type</th>
+                            <th>Created At</th>
                             <th>Visibility</th>
                             <th>Action</th>
                         </tr>
@@ -133,6 +138,7 @@
                             <td>
                                 @if($data->thumbnailtype == 0)Banner Panel @elseif($data->thumbnailtype == 1) Video Panel @endif
                             </td>
+                            <td> {{date('jS F Y',strtotime($data->created_at))}}</td>
                             <td>
                                 @if( $data->show == 0)Hide @elseif($data->show == 1) Show @endif
                             </td>

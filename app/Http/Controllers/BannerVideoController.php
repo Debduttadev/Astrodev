@@ -21,7 +21,7 @@ class BannerVideoController extends Controller
     {
         $bannerthumbnail = banner_video::where('thumbnailtype', '0')->get();
         $videothumbnail = banner_video::where('thumbnailtype', '1')->get();
-        //dd($bannervideo);
+        //dd($bannerthumbnail);
         return view('admin.managebannervideo', ['page_name' => 'Manage Banners and Videos', 'navstatus' => "managebannervideo", 'bannerthumbnail' => $bannerthumbnail, 'videothumbnail' => $videothumbnail]);
     }
 

@@ -1,18 +1,18 @@
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         var base_url = "{{ URL::to('/') }}";
 
-        setTimeout(function() {
+        setTimeout(function () {
             $('.sessiondata').fadeOut('400');
         }, 3000);
 
         //  delete admin user
-        $(document).on('click', '.deleteadmin', function() {
+        $(document).on('click', '.deleteadmin', function () {
             var obj = $(this);
             var id = $(this).attr('adminid');
             //alert(id);
-            bootbox.confirm("Are you sure to delete this Admin?", function(result) {
+            bootbox.confirm("Are you sure to delete this Admin?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deleteadmin',
@@ -20,7 +20,7 @@
                         data: {
                             'id': id
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         //console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -30,17 +30,17 @@
                             bootbox.alert("Sorry Admin Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         // delete service
-        $(document).on('click', '.deleteservice', function() {
+        $(document).on('click', '.deleteservice', function () {
             var obj = $(this);
             var id = $(this).attr('serviceid');
             var serviceimage = $(this).attr('serviceimage');
             //alert(serviceimage);
-            bootbox.confirm("Are you sure to delete this Service?", function(result) {
+            bootbox.confirm("Are you sure to delete this Service?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deleteservice',
@@ -49,7 +49,7 @@
                             'id': id,
                             'serviceimage': serviceimage,
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -59,17 +59,17 @@
                             bootbox.alert("Sorry Service Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         //show image if edited in update service
-        $('.newimage').on('change', function() {
+        $('.newimage').on('change', function () {
             var obj = $(this);
             var file = $("input[type=file]").get(0).files[0];
             if (file) {
                 var reader = new FileReader();
-                reader.onload = function() {
+                reader.onload = function () {
                     $("#showimage").attr("src", reader.result);
                 }
 
@@ -78,7 +78,7 @@
         });
 
         //checkbox checked property change for add chamber section 
-        $('#alldays').on('change', function() {
+        $('#alldays').on('change', function () {
             var obj = $(this);
             if ($('#alldays').prop('checked') == true) {
                 $('.dayselect').prop('checked', true);
@@ -88,7 +88,7 @@
         });
 
         //checkbox checked property change for edit chamber section 
-        $('#editalldays').on('change', function() {
+        $('#editalldays').on('change', function () {
             var obj = $(this);
             if ($('#editalldays').prop('checked') == true) {
                 $('.dayselect').prop('checked', true);
@@ -99,11 +99,11 @@
         });
 
         // delete chamber
-        $(document).on('click', '.deletechember', function() {
+        $(document).on('click', '.deletechember', function () {
             var obj = $(this);
             var id = $(this).attr('chamberid');
 
-            bootbox.confirm("Are you sure to delete this Chamber Location?", function(result) {
+            bootbox.confirm("Are you sure to delete this Chamber Location?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deletechamber',
@@ -111,7 +111,7 @@
                         data: {
                             'id': id
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -121,17 +121,17 @@
                             bootbox.alert("Sorry Chamber Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         // delete bannervideo
-        $(document).on('click', '.deletebannervideo', function() {
+        $(document).on('click', '.deletebannervideo', function () {
             var obj = $(this);
             var id = $(this).attr('bannervideoid');
             var bannervideoimage = $(this).attr('bannervideoimage');
 
-            bootbox.confirm("Are you sure to delete this File?", function(result) {
+            bootbox.confirm("Are you sure to delete this File?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deletebannervideo',
@@ -140,7 +140,7 @@
                             'id': id,
                             'bannervideoimage': bannervideoimage
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -150,16 +150,16 @@
                             bootbox.alert("Sorry File Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         // delete Social Link
-        $(document).on('click', '.deletesocial', function() {
+        $(document).on('click', '.deletesocial', function () {
             var obj = $(this);
             var id = $(this).attr('socialid');
 
-            bootbox.confirm("Are you sure to delete this Social Link?", function(result) {
+            bootbox.confirm("Are you sure to delete this Social Link?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deletesocials',
@@ -167,7 +167,7 @@
                         data: {
                             'id': id
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -177,18 +177,18 @@
                             bootbox.alert("Sorry Chamber Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         // edit Social Link
-        $(document).on('change', '.addediturl', function() {
+        $(document).on('change', '.addediturl', function () {
             var obj = $(this);
             var preva = $(this).prev('.jqueryurl');
             var id = $(this).attr('socialid');
             var url = $(this).val();
             //alert(url);
-            bootbox.confirm("Are you sure to update this Social Link?", function(result) {
+            bootbox.confirm("Are you sure to update this Social Link?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/addeditsocials',
@@ -197,7 +197,7 @@
                             'id': id,
                             'url': url
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -207,12 +207,12 @@
                             bootbox.alert("Sorry Link Not Updated")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         // Change visibility of Social Link
-        $(document).on('click', '.urlradio', function() {
+        $(document).on('click', '.urlradio', function () {
             var obj = $(this);
             var id = $(this).attr('linkid');
             var radioValue = $('input[name="visibility' + id + '"]:checked').val();
@@ -224,7 +224,7 @@
                     'id': id,
                     'radioValue': radioValue
                 }
-            }).done(function(msg) {
+            }).done(function (msg) {
                 var massage = JSON.parse(msg);
                 console.log(massage);
                 if (massage.status == 1 && massage.msg == "true") {
@@ -243,7 +243,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 150,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -258,7 +258,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -273,7 +273,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 150,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -289,7 +289,7 @@
             max_height: 450,
             width: 480,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -305,7 +305,7 @@
             max_height: 450,
             width: 480,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -320,7 +320,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -335,7 +335,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -350,7 +350,7 @@
             plugins: ["wordcount", "code", "insertdatetime", "link"],
             max_height: 400,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -363,9 +363,9 @@
             license_key: 'gpl',
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
-            max_height: 400,
+            max_height: 220,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: '8pt 10pt 12pt 14pt 16pt 18pt 24pt 36pt 48pt',
@@ -378,9 +378,9 @@
             license_key: 'gpl',
             menubar: false,
             plugins: ["wordcount", "code", "insertdatetime", "link"],
-            max_height: 400,
+            max_height: 300,
             extended_valid_elements: 'b i ',
-            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating| wordcount |outdent indent | insertdatetime ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
             content_style: "body { font-size: 12pt; font-family: Calibri; }",
             insertdatetime_dateformat: '%d-%m-%Y',
             font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
@@ -388,23 +388,40 @@
             convert_urls: false,
         });
 
+        tinymce.init({
+            selector: '#abouthomedescription',
+            license_key: 'gpl',
+            menubar: false,
+            plugins: ["wordcount", "code", "insertdatetime", "link"],
+            max_height: 300,
+            extended_valid_elements: 'b i ',
+            toolbar: 'styles| undo redo |underline | sizeselect | bold italic | fontselect |  fontsize | link |floating|  lineheight | wordcount |outdent indent | insertdatetime ',
+            content_style: "body { font-size: 12pt; font-family: Calibri; }",
+            insertdatetime_dateformat: '%d-%m-%Y',
+            font_size_formats: "8pt 10pt 11pt 12pt 14pt 16pt 18pt 24pt 36pt",
+            link_default_target: '_blank',
+            convert_urls: false,
+        });
+
+
+
         document.addEventListener('focusin', (e) => {
             if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root .tox-dialog") !== null) {
                 e.stopImmediatePropagation();
             }
         });
 
-        $('#formdatablog').on('shown.bs.modal', function() {
+        $('#formdatablog').on('shown.bs.modal', function () {
             $(document).off('focusin.modal');
         });
 
         // delete blogs
-        $(document).on('click', '.deleteblog', function() {
+        $(document).on('click', '.deleteblog', function () {
             var obj = $(this);
             var id = $(this).attr('blogid');
             var blogimage = $(this).attr('blogimage');
 
-            bootbox.confirm("Are you sure to delete this Blog?", function(result) {
+            bootbox.confirm("Are you sure to delete this Blog?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deleteblog',
@@ -413,7 +430,7 @@
                             'id': id,
                             'blogimage': blogimage
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -423,17 +440,17 @@
                             bootbox.alert("Sorry File Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
         //show image if edited in update about
-        $(document).on('change', '.aboutimage', function() {
+        $(document).on('change', '.aboutimage', function () {
             var obj = $(this);
             var file = $(".aboutimage").get(0).files[0];
             if (file) {
                 var reader = new FileReader();
-                reader.onload = function() {
+                reader.onload = function () {
                     $("#showaboutimage").attr("src", reader.result);
                 }
                 //alert('sffsdf');
@@ -441,7 +458,7 @@
             }
         });
 
-        $(document).on('click', '#phonenum', function() {
+        $(document).on('click', '#phonenum', function () {
 
             var obj = $(this);
             var key = $(this).attr('key');
@@ -456,12 +473,12 @@
 
         });
 
-        $(document).on('click', '.phonenumminus', function() {
+        $(document).on('click', '.phonenumminus', function () {
             //alert("sdasdsadsad");
             $(this).parent().remove();
         });
 
-        $(document).on('click', '#seotext', function() {
+        $(document).on('click', '#seotext', function () {
 
             var obj = $(this);
             var key = $(this).attr('key');
@@ -474,17 +491,17 @@
             obj.parent().append(html);
         });
 
-        $(document).on('click', '.seominus', function() {
+        $(document).on('click', '.seominus', function () {
             //alert("sdasdsadsad");
             $(this).parent().remove();
         });
 
-        $(document).on('click', '.deletecontact', function() {
+        $(document).on('click', '.deletecontact', function () {
 
             var obj = $(this);
             var id = $(this).attr('contactid');
 
-            bootbox.confirm("Are you sure to delete this Contact?", function(result) {
+            bootbox.confirm("Are you sure to delete this Contact?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deletecontactdetails',
@@ -492,7 +509,7 @@
                         data: {
                             'id': id
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -502,16 +519,16 @@
                             bootbox.alert("Sorry Contact Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 
-        $('.more').on('click', function() {
+        $('.more').on('click', function () {
             var msg = $(this).attr('descriptiondata');
             bootbox.alert(msg)
         });
 
-        $('.filetypebannervideo').on('change', function() {
+        $('.filetypebannervideo').on('change', function () {
             var type = $(this).val();
             if (type == 0) {
                 $('.bannertextshow').show();
@@ -526,11 +543,11 @@
         let mybutton = document.getElementById("topbutton");
 
         // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {
+        window.onscroll = function () {
             scrollFunction()
         };
 
-        $('#topbutton').on('click', function() {
+        $('#topbutton').on('click', function () {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         });
@@ -545,36 +562,36 @@
         }
 
         // will try to call function
-        $(document).on('click', '.aboutalt', function() {
+        $(document).on('click', '.aboutalt', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
 
-        $(document).on('click', '.bannarsalt', function() {
+        $(document).on('click', '.bannarsalt', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $(document).on('click', '.servicealt', function() {
+        $(document).on('click', '.servicealt', function () {
             var obj = $(this);
             alttagmodaldata(obj);
         });
 
-        $(document).on('click', '.blogalt', function() {
+        $(document).on('click', '.blogalt', function () {
             var obj = $(this);
             alttagmodaldata(obj);
 
         });
 
 
-        $(document).on('click', '.zodiacedit', function() {
+        $(document).on('click', '.zodiacedit', function () {
             var zodiacid = $(this).attr('zodiacid');
             $('.editzodiacid').val(zodiacid);
             $('#zodiacimageedit').modal('show');
         });
 
-        $('#zodiacsignform').submit(function(event) {
+        $('#zodiacsignform').submit(function (event) {
             event.preventDefault();
             var actionurl = $(this).attr("action");
             $.ajax({
@@ -585,7 +602,7 @@
                 contentType: false,
                 cache: false,
                 processData: false,
-                success: function(result) {
+                success: function (result) {
                     var massage = JSON.parse(result);
                     console.log(massage);
 
@@ -603,14 +620,14 @@
                     //     alert("Sorry Zodiac Not Updated");
                     // }
                 },
-                error: function(data) {
+                error: function (data) {
                     console.log(data);
                 }
             });
 
         });
 
-        $('.paymentamout').click(function() {
+        $('.paymentamout').click(function () {
 
             var obj = $(this);
             var name = obj.attr('name');
@@ -628,12 +645,12 @@
         })
 
         //delete review
-        $(document).on('click', '.deletereview', function() {
+        $(document).on('click', '.deletereview', function () {
 
             var obj = $(this);
             var id = $(this).attr('reviewid');
 
-            bootbox.confirm("Are you sure to delete this Review?", function(result) {
+            bootbox.confirm("Are you sure to delete this Review?", function (result) {
                 if (result) {
                     $.ajax({
                         url: base_url + '/deletereview',
@@ -641,7 +658,7 @@
                         data: {
                             'id': id
                         }
-                    }).done(function(msg) {
+                    }).done(function (msg) {
                         var massage = JSON.parse(msg);
                         //console.log(massage);
                         if (massage.status == 1 && massage.msg == "true") {
@@ -651,7 +668,7 @@
                             bootbox.alert("Sorry Review Not Deleted")
                         }
                     })
-                } else {}
+                } else { }
             });
         });
 

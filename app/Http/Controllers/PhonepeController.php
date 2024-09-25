@@ -290,17 +290,15 @@ class PhonepeController extends Controller
         //dd($id);
         $apoinmentdetails = Appointment::leftJoin('users', 'users.id', '=', 'appointments.userId')->where('appointments.id', $id)->leftJoin('invoices', 'invoices.appointmentId', '=', 'appointments.id')->where('appointments.id', $id)->select('users.name', 'users.email', 'appointments.phoneNumber', 'appointments.bookingDate', 'appointments.appointmentType', 'appointments.created_at', 'invoices.*')->first();
 
-        //dd($apoinmentdetails);
-
         $data = [
             'title' => 'Invoice for Astro Achariya Debdutta Appointment',
             'image' => public_path('admin/img/astroachariyalogo.png'),
             'rupee' => public_path('admin/img/rupee.png'),
-            'date' => date('m-d-Y', strtotime('$apoinmentdetails->created_at')),
+            'date' => $apoinmentdetails->created_at->format('d M Y - H:i:s'),
             'users' => $apoinmentdetails
         ];
 
-        //dd($data);
+        //dd($apoinmentdetails->created_at);
         Pdf::setOption(['defaultFont' => 'Poppin, sans-serif']);
         $pdf = PDF::loadView('front.invoicepdf', $data)->setPaper('a4', 'potraite');
         $path = public_path('admin/invoices');
