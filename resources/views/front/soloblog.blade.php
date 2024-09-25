@@ -108,7 +108,7 @@
                             </div>
                             <!--post media-->
                             <div>
-                                <div class="team-item-name text-center" style="height:70px">
+                                <div class="team-item-name text-center" style="height:80px;">
                                     {{ucfirst($blog['title'])}}
                                 </div>
                             </div>
