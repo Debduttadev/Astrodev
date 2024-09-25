@@ -586,7 +586,7 @@
                             <textarea name="homedescription" class="form-control form-control-user"
                                 id="abouthomedescription" aria-describedby="description6"
                                 placeholder="Enter blog description fro home page..." required cols="5"
-                                value="{{$abouthomedescription}}">{{$abouthomedescription}}</textarea>
+                                value="ssddsdsdsd">ssddsdsdsd</textarea>
                         </div>
 
 
