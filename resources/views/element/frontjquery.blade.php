@@ -265,7 +265,7 @@
                         html += "<img src='" + base_url + "/blog/" + data[x].image + "' alt='' /></a>";
                         html += "</div>";
                         html += "<div>";
-                        html += "<div class='team-item-name text-center' style = 'height:80px;;' >" +
+                        html += "<div class='team-item-name text-center' style = 'height:90px;;' >" +
                             blogitems[x].title + "</div></div>";
                         html += "<div class='blog-post-info clearfix'>";
                         html += "<span class='time'><i class='fa fa-calendar'></i>" + data[x].createdate + "</span>";
@@ -360,7 +360,7 @@
                         html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
                         html += "</div>";
                         html += "<div>";
-                        html += "<div class='team-item-name text-center' style = 'height:80px;;' >" +
+                        html += "<div class='team-item-name text-center' style = 'height:90px;;' >" +
                             blogitems[x].title + "</div></div>";
                         html += "<div class='blog-post-info clearfix'>";
                         html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
@@ -506,7 +506,7 @@
                     html += "<img src='" + base_url + "/blog/" + blogitems[x].image + "' alt='' /></a>";
                     html += "</div>";
                     html += "<div>";
-                    html += "<div class='team-item-name text-center' style = 'height:80px;' >" +
+                    html += "<div class='team-item-name text-center' style = 'height:90px;' >" +
                         blogitems[x].title + "</div></div>";
                     html += "<div class='blog-post-info clearfix'>";
                     html += "<span class='time'><i class='fa fa-calendar'></i>" + blogitems[x].createdate + "</span>";
