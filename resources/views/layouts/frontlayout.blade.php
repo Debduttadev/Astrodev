@@ -936,6 +936,7 @@
             .team-item-name {
                 font-size: 16px !important;
                 height: 70px;
+
                 padding: 15px 0px;
             }
 
