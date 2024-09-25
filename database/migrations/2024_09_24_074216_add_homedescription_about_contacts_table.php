@@ -16,7 +16,7 @@ return new class extends Migration {
 
         DB::table('about_contacts')
             ->insert(array(
-                array('homedescription' => "astrology"),
+                array('title' => "astrology", 'homedescription' => "astrology", 'description' => "astrology"),
             ));
     }
 
