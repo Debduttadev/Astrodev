@@ -176,7 +176,7 @@ class PhonepeController extends Controller
                 ->withHeader('Content-Type:application/json')
                 ->withHeader('accept:application/json')
                 ->withHeader('X-VERIFY:' . $finalXHeader)
-                ->withHeader('X-MERCHANT-ID:' . $input['transactionId'])
+                ->withHeader('X-MERCHANT-ID:' . $input['merchantId'])
                 ->get();
 
             $response = json_decode($response);
