@@ -184,7 +184,6 @@ $i = 0;
                                 </div>
                                 <span class="error" id="err-name">Please enter booking schedule</span>
                             </div>
-
                             <button type="submit" class="btn appoinmentsubmit btn-lg btn-grad" >Pay  <i class="fa fa-inr" aria-hidden="true"></i>{{ $paymentamount }}</button>
                         </form>
                     </div> <!-- /.contacts-form & inner row -->

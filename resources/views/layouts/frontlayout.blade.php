@@ -1188,6 +1188,27 @@
         .headercall a:hover {
             color: #000;
         }
+
+
+        .btn-grad {
+            background-image: linear-gradient(to right, #b4975d 0%, #e3c17d 51%, #ffd47f 100%);
+            margin: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
