@@ -188,7 +188,7 @@ class PhonepeController extends Controller
 
                     $newInvoice = new invoice;
                     $responcedata = $response->data;
-                    dd($responcedata);
+                    //dd($responcedata);
                     $newInvoice->invoiceId = $invoiceid;
                     $newInvoice->appointmentid = $appointmentid->id;
                     $newInvoice->merchantTransactionId = $responcedata->merchantTransactionId;
@@ -203,8 +203,8 @@ class PhonepeController extends Controller
 
                     if ($carddata->type == 'UPI') {
 
-                        if (isset($responcedata->utr) && $responcedata->utr != null) {
-                            $newInvoice->utr = $responcedata->utr;
+                        if (isset($carddata->utr) && $carddata->utr != null) {
+                            $newInvoice->utr = $carddata->utr;
                         } else {
                             $newInvoice->utr = "";
                         }
