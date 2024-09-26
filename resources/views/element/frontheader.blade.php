@@ -46,7 +46,7 @@
                     $aboutcontact = aboutalldetails();
                 @endphp
                 <div class="headercall">Call:
-                    +91 {{$aboutcontact->phone['0']}}
+                    <a href="tel:+91 {{$aboutcontact->phone['0']}}">+91 {{$aboutcontact->phone['0']}}</a>
                 </div>
             </div>
         </div>

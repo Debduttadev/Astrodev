@@ -1179,6 +1179,15 @@
         .navbar-nav {
             margin: 0px 0px;
         }
+
+        .headercall a {
+            color: #977635;
+            ;
+        }
+
+        .headercall a:hover {
+            color: #000;
+        }
     </style>
     @include('element.frontheader')
     <!-- Start Intro -->
