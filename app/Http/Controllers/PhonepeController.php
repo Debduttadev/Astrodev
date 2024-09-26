@@ -203,7 +203,7 @@ class PhonepeController extends Controller
 
                     if ($carddata->type == 'UPI') {
 
-                        if ($responcedata->utr != null) {
+                        if (isset($responcedata->utr) && $responcedata->utr != null) {
                             $newInvoice->utr = $responcedata->utr;
                         } else {
                             $newInvoice->utr = "";
