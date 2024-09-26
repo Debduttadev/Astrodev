@@ -272,7 +272,6 @@
             color: #ffffff !important;
         }
 
-
         form.formdata3 {
             font-size: 18px;
         }
@@ -322,7 +321,7 @@
             }
 
             .container {
-                width: 310px;
+                width: 350px;
             }
 
             .carousel-caption h1 {
@@ -477,6 +476,11 @@
                 height: 0%;
                 margin: -25px 0px;
             }
+
+            .contactsubmit {
+                padding-left: 40%;
+                padding-right: 42%;
+            }
         }
 
         @media (min-width: 576px) {
@@ -627,6 +631,11 @@
             .navbar .nav-wrap {
                 height: 0%;
                 margin: -70px 0px;
+            }
+
+            .contactsubmit {
+                padding-left: 45%;
+                padding-right: 45%;
             }
         }
 
@@ -784,6 +793,11 @@
                 height: 0%;
                 margin: -70px 0px;
             }
+
+            .contactsubmit {
+                padding-left: 42%;
+                padding-right: 42%;
+            }
         }
 
         @media (min-width: 992px) {
@@ -932,6 +946,11 @@
                 margin: 0px 0px;
             }
 
+            .contactsubmit {
+                padding-left: 44%;
+                padding-right: 44%;
+            }
+
         }
 
         @media (min-width: 1200px) {
@@ -1033,7 +1052,6 @@
                 padding: 5px 26px;
             }
 
-
             .navbar-nav li a {
                 font-size: 14px;
                 line-height: 60px;
@@ -1077,6 +1095,11 @@
             .headerbookappointment {
                 font-size: 14px;
                 margin-left: 25px;
+            }
+
+            .contactsubmit {
+                padding-left: 45%;
+                padding-right: 46%;
             }
         }
 
