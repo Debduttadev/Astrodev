@@ -29,7 +29,7 @@
                                                 <div class="col-md-12">
                                                     <div class="col-md-6">
                                                         <ul class="list-unstyled pull-left">
-                                                            <li style="font-size: 30px; color: red;">Customer Details</li>
+                                                            <li style="font-size: 30px; color: #b4975d;">Customer Details</li>
                                                             <li style="font-size: 14px; color: black !important;">
                                                                 Name:{{ $userpaymentdetails['customername'] }}</li>
                                                             <li style="font-size: 14px; color: black !important;">
@@ -98,7 +98,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12 col-md-12 col-sm-12">
                                                     <p class="pull-right"
-                                                        style="font-size: 30px; color: red; font-weight: 400;font-family: Arial, Helvetica, sans-serif;margin-right: 20%;">
+                                                        style="font-size: 30px; color: #b4975d; font-weight: 400;font-family: Arial, Helvetica, sans-serif;margin-right: 20%;">
                                                         Total:
                                                         <span>
                                                             <i class="fa fa-inr"
@@ -118,9 +118,9 @@
                                             <div class="row text-center">
                                                 <div class="col-xl-12 col-md-12 col-sm-12">
                                                     <a href="{{ URL::to('generate-pdf') . '/' . $userpaymentdetails['appointmentid']}}"
-                                                        type="button" class="btn btn-default" style="background-color: #f27f4e;"><i
+                                                        type="button" class="btn btn-default" style="background-color: #be994f;"><i
                                                             class="fa fa-print" aria-hidden="true"></i>
-                                                        print</a>
+                                                        Download Invoice</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -20,7 +20,7 @@
 
         .invtitle {
             text-align: center;
-            color: #ff8c00;
+            color: #be994f;
             width: 100%;
             display: block;
         }
