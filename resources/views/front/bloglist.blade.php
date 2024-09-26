@@ -122,7 +122,6 @@
                     <!-- === Blog item 1 === -->
                     <div class="col-md-4 m-bottom-30">
                         <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
-
                             <div class="blog-media">
                                 <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
                                         src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
