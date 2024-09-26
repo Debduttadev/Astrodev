@@ -203,7 +203,11 @@ class PhonepeController extends Controller
 
                     if ($carddata->type == 'UPI') {
 
-                        $newInvoice->utr = $responcedata->utr;
+                        if ($responcedata->utr != null) {
+                            $newInvoice->utr = $responcedata->utr;
+                        } else {
+                            $newInvoice->utr = "";
+                        }
                         $userpaymentdetails['referenceid'] = $responcedata->utr;
                         $userpaymentdetails['cardType'] = $carddata->type;
 
