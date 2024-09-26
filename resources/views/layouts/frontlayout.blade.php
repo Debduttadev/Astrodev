@@ -475,6 +475,7 @@
 
             .navbar .nav-wrap {
                 height: 0%;
+                margin: -25px 0px;
             }
         }
 
@@ -621,6 +622,11 @@
 
             .headersocial {
                 display: block;
+            }
+
+            .navbar .nav-wrap {
+                height: 0%;
+                margin: -70px 0px;
             }
         }
 
@@ -773,6 +779,11 @@
                 font-size: 14px;
                 margin-left: 25px;
             }
+
+            .navbar .nav-wrap {
+                height: 0%;
+                margin: -70px 0px;
+            }
         }
 
         @media (min-width: 992px) {
@@ -914,6 +925,11 @@
             .headerbookappointment {
                 font-size: 14px;
                 margin-left: 25px;
+            }
+
+            .navbar .nav-wrap {
+                height: 0%;
+                margin: 0px 0px;
             }
 
         }
@@ -1158,6 +1174,10 @@
         .site-footer .social-icon .twitter {
             padding: 5px;
             background-color: #be994f;
+        }
+
+        .navbar-nav {
+            margin: 0px 0px;
         }
     </style>
     @include('element.frontheader')

@@ -1,7 +1,7 @@
 @extends('layouts.frontlayout')
 @section('content')
 <!--BLog single section-->
-<section id="blog-single" class="p-top-50 p-bottom-80">
+<section id="blog-single" class="p-top-40 p-bottom-80">
 
     <!--Container-->
     <div class="container clearfix">

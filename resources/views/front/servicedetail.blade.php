@@ -2,7 +2,7 @@
 @section('content')
 <!-- Begin Page Content -->
 <!--BLog single section-->
-<section id="blog-single" class="p-top-50 p-bottom-20 servicecss">
+<section id="blog-single" class="p-top-30 p-bottom-20 servicecss">
 
     <!--Container-->
     <div class="container clearfix ">
