@@ -414,46 +414,23 @@ $item = 1;
 
                         <!-- === Location === -->
                         <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->address }}
-                            </div>
+                            
+                            
                         </div>
 
                         <!-- === Phone === -->
                         <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="contact-info-text">
-
-                                @foreach ($about_contact->phone as $phone)
-                                    <a href="tel:+91{{$phone}}" style="color: black;">+91{{$phone}}</a><br />
-                                @endforeach
-                            </div>
+                            
                         </div>
 
                         <!-- === Whatsapp === -->
                         <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-info-text">
-                                <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us"
-                                    style="color: #000;">{{ $about_contact->whatsapp }}</a>
-                            </div>
+                            
                         </div>
 
                         <!-- === Mail === -->
                         <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->email }}
-                            </div>
+                            
                         </div>
                     </div>
                 </div> <!-- /.col -->
