@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\banner_video;
 use App\Models\blog;
 use App\Models\reviewsection;
+use Ixudra\Curl\Facades\Curl;
 
 class HomeController extends Controller
 {
@@ -67,6 +68,14 @@ class HomeController extends Controller
 
         $reviews = reviewsection::all();
         //dd($reviews);
+        // $url = 'https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channels.list?
+        // part=snippet,contentDetails
+        // &id=UCK8sQmJBp8GCxrOtXWBpyEA';
+        // $response = Curl::to($url)
+        //     ->get();
+
+        // dd($response);
+
         return view('front.home', ['banner_video' => $banner_video, 'servicedata' => $servicedata, 'allservices' => $allservices, 'youtube_video' => $youtube_video, 'blogitems' => $blogitems, 'reviews' => $reviews]);
     }
 

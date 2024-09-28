@@ -169,7 +169,6 @@
                             information for direct marketing purposes, you may change your mind at any time by writing
                             to or emailing us at</span></p>
 
-
                 </li>
 
             </ul>
