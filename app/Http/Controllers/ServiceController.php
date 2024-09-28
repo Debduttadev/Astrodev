@@ -40,7 +40,11 @@ class ServiceController extends Controller
             ['shortdescription' => ['required|max:255']],
             ['description' => 'required|max:255'],
         ]);
-        $nameurl = str_replace(" ", "-", strtolower(trim($data['name'])));
+
+        $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+        $nameurl = str_replace($find, "", $data['name']);
+        $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+        $nameurl = str_replace("&", "and", $nameurl);
 
         if (Service::where('nameurl', '=', $nameurl)->exists()) {
             // data found
@@ -156,7 +160,11 @@ class ServiceController extends Controller
             ['description' => 'required|max:255'],
         ]);
 
-        $nameurl = str_replace(" ", "-", strtolower(trim($data['name'])));
+        $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+        $nameurl = str_replace($find, "", $data['name']);
+        $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+        $nameurl = str_replace("&", "and", $nameurl);
+
         if (Service::where([['nameurl', '=', $nameurl], ['id', '!=', $request->id]])->exists()) {
             // data found
             session(['status' => "0", 'msg' => 'Service name already exists']);

@@ -55,10 +55,10 @@
                 <!--End widget-->
 
                 @php
-                $blogfilters = blogfilters();
-                $categorydata = $blogfilters['allcategory'];
-                $tagsdata = $blogfilters['alltag'];
-                $keyworddata = $blogfilters['allkeyword'];
+                    $blogfilters = blogfilters();
+                    $categorydata = $blogfilters['allcategory'];
+                    $tagsdata = $blogfilters['alltag'];
+                    $keyworddata = $blogfilters['allkeyword'];
                 @endphp
 
                 <!--Widget 4-->
@@ -77,7 +77,7 @@
                     <h4>Categories</h4>
                     <ul class="tag-list categoryfilter">
                         @foreach ($categorydata as $key => $category)
-                        <li><a class="categorysearch" typeblog="category" search="{{$key}}">{{$category}}</a></li>
+                            <li><a class="categorysearch" typeblog="category" search="{{$key}}">{{$category}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -111,104 +111,104 @@
             <div class="col-md-9">
                 <div class="row multi-columns-row blogsearchdetails">
                     @php
-                    $alttagforimages = alttagforimages();
+                        $alttagforimages = alttagforimages();
                     @endphp
 
                     @foreach ($blogitems as $blog)
-                    @php
-                    $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
-                    $title = $alttagforimages['blog'][$blog['id']]['title'];
-                    @endphp
-                    <!-- === Blog item 1 === -->
-                    <div class="col-md-4 m-bottom-30">
-                        <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
-                            <div class="blog-media">
-                                <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
-                                        src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
-                                        title="{{$title}}" /></a>
-                            </div>
-                            <!--post media-->
-                            <div>
-                                <div class="team-item-name text-center" style="height:90px;">
-                                    {{ucfirst($blog['title'])}}
-                                </div>
-                            </div>
-                            <div class="blog-post-info clearfix">
-                                <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
-                            </div>
-                            <!--post info-->
+                                        @php
+                                            $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
+                                            $title = $alttagforimages['blog'][$blog['id']]['title'];
+                                        @endphp
+                                        <!-- === Blog item 1 === -->
+                                        <div class="col-md-4 m-bottom-30">
+                                            <div class="blog wow zoomIn" data-wow-duration="1s" data-wow-delay="0.7s">
+                                                <div class="blog-media">
+                                                    <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
+                                                            src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
+                                                            title="{{$title}}" /></a>
+                                                </div>
+                                                <!--post media-->
+                                                <div>
+                                                    <div class="team-item-name text-center" style="height:90px;">
+                                                        {{ucfirst($blog['title'])}}
+                                                    </div>
+                                                </div>
+                                                <div class="blog-post-info clearfix">
+                                                    <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
+                                                </div>
+                                                <!--post info-->
 
-                            <div class="blog-post-body">
-                                @php
-                                $small = substr(strip_tags($blog['description']), 0, 120);
-                                @endphp
-                                <p class="p-bottom-20" style="font-size: 15px;">{!! $small !!}.....</p>
-                                @php
-                                // strip out all whitespace
-                                $blogname = preg_replace('/\s*/', '', $blog['title']);
-                                // convert the string to all lowercase
-                                $blogname = strtolower($blogname);
-                                @endphp
+                                                <div class="blog-post-body">
+                                                    @php
+                                                        $small = substr(strip_tags($blog['description']), 0, 120);
+                                                    @endphp
+                                                    <p class="p-bottom-20" style="font-size: 15px;">{!! $small !!}.....</p>
+                                                    @php
+                                                        // strip out all whitespace
+                                                        $blogname = preg_replace('/\s*/', '', $blog['title']);
+                                                        // convert the string to all lowercase
+                                                        $blogname = strtolower($blogname);
+                                                    @endphp
 
-                                <a class="btn btn-service roundbtn"
-                                    href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}" class="read-more">Read More
-                                    >></a>
-                            </div>
-                            <!--post body-->
-                            <!--post body-->
-                        </div>
-                        <!-- /.blog -->
-                    </div>
-                    <!-- /.inner-col -->
+                                                    <a class="btn btn-service roundbtn"
+                                                        href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}" class="read-more">Read More
+                                                        >></a>
+                                                </div>
+                                                <!--post body-->
+                                                <!--post body-->
+                                            </div>
+                                            <!-- /.blog -->
+                                        </div>
+                                        <!-- /.inner-col -->
                     @endforeach
                 </div>
                 <!-- /.inner-row -->
 
                 @if($pagination > 1)
-                <!-- blog pagination -->
-                <div class="blog-pagination" id="paginationblog">
+                                <!-- blog pagination -->
+                                <div class="blog-pagination" id="paginationblog">
 
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination paginationpage">
-                            @php
-                            $i = 1;
-                            $prevpage = $page - 1;
-                            @endphp
-                            @if($page == 1)
-                            <li class="disabled">
-                                <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-                                @else
-                            <li>
-                                <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$prevpage}}" aria-label="Previous">
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination paginationpage">
+                                            @php
+                                                $i = 1;
+                                                $prevpage = $page - 1;
+                                            @endphp
+                                            @if($page == 1)
+                                                <li class="disabled">
+                                                    <span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+                                            @else
+                                                <li>
+                                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$prevpage}}" aria-label="Previous">
 
-                                    <span aria-hidden="false"><i class="fa fa-angle-left"></i></span>
-                                </a>
-                                @endif
-                            </li>
-                            @while ($i <= $pagination) @if($i==$page) <li class="active">
-                                <span>{{$i}} <span class="sr-only">(current)</span></span>
-                                </li>
-                                @else
-                                <li><a class="blogpage" href="{{ URL::to('/blogs') }}/{{$i}}">{{$i}}</a></li>
-                                @endif
-                                @php
-                                $i++;
-                                @endphp
-                                @endwhile
-                                @if($i - $page == 1)
-                                <li class="disabled">
-                                    <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-                                    @else
-                                <li>
-                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page + 1}}" aria-label="Next">
-                                        <span aria-hidden="false"><i class="fa fa-angle-right"></i></span>
-                                    </a>
-                                    @endif
-                                </li>
-                        </ul>
-                    </nav>
-                </div>
-                <!-- /.blog-pagination -->
+                                                        <span aria-hidden="false"><i class="fa fa-angle-left"></i></span>
+                                                    </a>
+                                            @endif
+                                            </li>
+                                            @while ($i <= $pagination) @if($i == $page)    <li class="active">
+                                                    <span>{{$i}} <span class="sr-only">(current)</span></span>
+                                                </li>
+                                            @else
+                                                <li><a class="blogpage" href="{{ URL::to('/blogs') }}/{{$i}}">{{$i}}</a></li>
+                                            @endif
+                                                                    @php
+                                                                        $i++;
+                                                                    @endphp
+                                            @endwhile
+                                            @if($i - $page == 1)
+                                                <li class="disabled">
+                                                    <span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+                                            @else
+                                                <li>
+                                                    <a class="blogpage" href="{{ URL::to('/blogs') }}/{{$page + 1}}" aria-label="Next">
+                                                        <span aria-hidden="false"><i class="fa fa-angle-right"></i></span>
+                                                    </a>
+                                            @endif
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- /.blog-pagination -->
                 @endif
             </div>
         </div>

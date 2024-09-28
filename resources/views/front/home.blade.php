@@ -2,7 +2,7 @@
 @section('content')
 <!-- Begin Page Content -->
 @php
-    $about_contact = aboutalldetails();
+$about_contact = aboutalldetails();
 @endphp
 <section id="slider">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -10,24 +10,24 @@
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             @php
-                $i = "1";
-                $item = 1;
+$i = "1";
+$item = 1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail)
                     @if($i <= count($banner_video))
                             <li data-target="#carousel-example-generic" data-slide-to="{{$item}}">
                             </li>
                             @php
-                                $item++;
-                                $i++;
+        $item++;
+        $i++;
                             @endphp
                     @endif
             @endforeach
         </ol>
         @php
-            $alttagforimages = alttagforimages();
-            $alttag1 = $alttagforimages['banner'][$banner_video[0]->id]['alttag'];
-            $title1 = $alttagforimages['banner'][$banner_video[0]->id]['title'];
+$alttagforimages = alttagforimages();
+$alttag1 = $alttagforimages['banner'][$banner_video[0]->id]['alttag'];
+$title1 = $alttagforimages['banner'][$banner_video[0]->id]['title'];
         @endphp
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
@@ -41,29 +41,29 @@
                     </n>
                     <p> Vastu Influencer,</p>
                     </n>
-                    <p class="m-bottom-20">Life Coach, Success Guru</p>
+                    <p class="m-bottom-10">Life Coach, Success Guru</p>
                     </n>
                     <a type="button" href="{{ URL::to('/services') }}" id="bannerbtn">Your Journey Begins Here</a>
                 </div>
             </div>
             @php
-                $item = 1;
+$item = 1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail)
-                        @php
-                            $alttag = $alttagforimages['banner'][$thumbnail->id]['alttag'];
-                            $title = $alttagforimages['banner'][$thumbnail->id]['title'];
-                        @endphp
-                        <div class="item ">
-                            <img src="{{ URL::to('bannervideo') . "/" . $thumbnail->thumbnail }}" alt="{{$alttag}}"
-                                title="{{$title}}">
-                            <div class="carousel-caption wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay="0.5s">
-                                {!!$thumbnail->bannertext!!}
-                            </div>
-                        </div>
-                        @php
-                            $item++;
-                        @endphp
+                                    @php
+                $alttag = $alttagforimages['banner'][$thumbnail->id]['alttag'];
+                $title = $alttagforimages['banner'][$thumbnail->id]['title'];
+                                    @endphp
+                                    <div class="item ">
+                                        <img src="{{ URL::to('bannervideo') . "/" . $thumbnail->thumbnail }}" alt="{{$alttag}}"
+                                            title="{{$title}}">
+                                        <div class="carousel-caption wow fadeInLeft col-md-6" data-wow-duration="0.7s" data-wow-delay="0.5s">
+                                            {!!$thumbnail->bannertext!!}
+                                        </div>
+                                    </div>
+                                    @php
+                $item++;
+                                    @endphp
             @endforeach
         </div>
 
@@ -163,8 +163,8 @@
                                 </div>
                                 <div class="team-item-image">
                                     @php
-                                        $alttag = $alttagforimages['Service'][$services->id]['alttag'];
-                                        $title = $alttagforimages['Service'][$services->id]['title'];
+    $alttag = $alttagforimages['Service'][$services->id]['alttag'];
+    $title = $alttagforimages['Service'][$services->id]['title'];
                                     @endphp
                                     <a href="{{ URL::to('service') . '/' . $services->nameurl }}">
                                         <img class="img-circle" src="{{ URL::to('service') . '/' . $services->Image }}"
@@ -248,8 +248,8 @@
                 <div id="owl-blog" class="owl-carousel owl-loaded owl-drag owl-theme col-md-4">
                     @foreach ($blogitems as $blog)
                                         @php
-                                            $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
-                                            $title = $alttagforimages['blog'][$blog['id']]['title'];
+    $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
+    $title = $alttagforimages['blog'][$blog['id']]['title'];
                                         @endphp
                                         <!-- === Blog item 1 === -->
                                         <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
@@ -271,7 +271,7 @@
 
                                             <div class="blog-post-body">
                                                 @php
-                                                    $small = substr(strip_tags($blog['description']), 0, 120);
+    $small = substr(strip_tags($blog['description']), 0, 120);
                                                 @endphp
                                                 <p class="p-bottom-10">{!! $small !!}.....</p>
                                                 <a class="btn btn-service roundbtn" href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"
@@ -316,8 +316,8 @@
                 <div id="owl-youtube" class="owl-carousel owl-theme col-md-4">
                     @foreach ($youtube_video as $youtubedata)
                                         @php
-                                            $alttag2 = $alttagforimages['videos'][$youtubedata->id]['alttag'];
-                                            $title2 = $alttagforimages['videos'][$youtubedata->id]['title'];
+    $alttag2 = $alttagforimages['videos'][$youtubedata->id]['alttag'];
+    $title2 = $alttagforimages['videos'][$youtubedata->id]['title'];
                                         @endphp
                                         <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
                                             <div class="blog-media">

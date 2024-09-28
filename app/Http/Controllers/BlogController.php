@@ -53,7 +53,13 @@ class BlogController extends Controller
             $blogitems[$blogdata->language][$blogdata->id]['tag'] = $tags;
             $blogitems[$blogdata->language][$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->language][$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->language][$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->language][$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->language][$blogdata->id]['id'] = $blogdata->id;
             $blogitems[$blogdata->language][$blogdata->id]['language'] = $blogdata->language;
             $blogitems[$blogdata->language][$blogdata->id]['image'] = $blogdata->image;
@@ -179,7 +185,10 @@ class BlogController extends Controller
             return redirect()->back();
         }
 
-        $nameurl = str_replace(" ", "-", strtolower(trim($request->name)));
+        $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+        $nameurl = str_replace($find, "", $request->name);
+        $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+        $nameurl = str_replace("&", "and", $nameurl);
 
         if (blog::where('nameurl', '=', $nameurl)->exists()) {
 
@@ -288,7 +297,13 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['tag'] = $tags;
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
@@ -343,7 +358,13 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
 
             if (!empty($blogdata->image)) {
@@ -445,7 +466,13 @@ class BlogController extends Controller
             $blogitems[$blogdata->id]['tag'] = $tags;
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
 
             if (!empty($blogdata->image)) {
@@ -624,7 +651,13 @@ class BlogController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
 
             if (!empty($blogdata->image)) {
@@ -722,7 +755,13 @@ class BlogController extends Controller
             //$blogitems[$blogdata->id]['description'] = substr(strip_tags(html_entity_decode($blogdata->description)), 0, 120);
             $blogitems[$blogdata->id]['description'] = strip_tags(html_entity_decode($blogdata->description));
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+
+            $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+            $nameurl = str_replace($find, "", $blogdata->title);
+            $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+            $nameurl = str_replace("&", "and", $nameurl);
+
+            $blogitems[$blogdata->id]['nameurl'] = $nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
 
             if (!empty($blogdata->image)) {
@@ -846,7 +885,11 @@ class BlogController extends Controller
             }
         }
 
-        $nameurl = str_replace(" ", "-", strtolower(trim($request->name)));
+        $find = array('\/', '\\', ',', '\'', '/', '"', '!', '_', '-');
+        $nameurl = str_replace($find, "", $request->name);
+        $nameurl = str_replace(" ", "-", strtolower(trim($nameurl)));
+        $nameurl = str_replace("&", "and", $nameurl);
+
         if (blog::where([['nameurl', '=', $nameurl], ['id', '!=', $request->id]])->exists()) {
             // data found
             session(['status' => "0", 'msg' => 'Blog name already exists']);

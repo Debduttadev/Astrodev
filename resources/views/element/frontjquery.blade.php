@@ -241,15 +241,14 @@
             }).done(function (msg) {
 
                 var alldata = JSON.parse(msg);
-                console.log(alldata);
+                //console.log(alldata);
                 if (alldata == "0") {
 
                     $(".blogsearchdetails").empty();
-                    $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
+                    $(".blogsearchdetails").html("<div class='col-md-4'><h3>No Blog Found</h3></div>");
                     $(".paginationpage").empty();
 
                 } else {
-
                     var html = "";
                     var data = alldata.blogitems;
 
@@ -344,7 +343,7 @@
 
                 if (data.status == "0") {
                     $(".blogsearchdetails").empty();
-                    $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
+                    $(".blogsearchdetails").html("<div class='col-md-4'><h3>No Blog Found</h3></div>");
                     $(".paginationpage").empty();
                 } else {
                     var html = "";
@@ -489,7 +488,7 @@
             if (data.status == "0") {
 
                 $(".blogsearchdetails").empty();
-                $(".blogsearchdetails").html("<h3>No Blog Found</h3>");
+                $(".blogsearchdetails").html("<div class='col-md-4'><h3>No Blog Found</h3></div>");
                 $(".paginationpage").remove();
 
             } else {
