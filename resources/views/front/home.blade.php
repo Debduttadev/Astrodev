@@ -51,8 +51,8 @@ $item = 1;
             @endphp
             @foreach ($banner_video as $key => $thumbnail)
                                     @php
-                $alttag = $alttagforimages['banner'][$thumbnail->id]['alttag'];
-                $title = $alttagforimages['banner'][$thumbnail->id]['title'];
+    $alttag = $alttagforimages['banner'][$thumbnail->id]['alttag'];
+    $title = $alttagforimages['banner'][$thumbnail->id]['title'];
                                     @endphp
                                     <div class="item ">
                                         <img src="{{ URL::to('bannervideo') . "/" . $thumbnail->thumbnail }}" alt="{{$alttag}}"
@@ -62,7 +62,7 @@ $item = 1;
                                         </div>
                                     </div>
                                     @php
-                $item++;
+    $item++;
                                     @endphp
             @endforeach
         </div>
@@ -354,7 +354,6 @@ $item = 1;
                 <!-- === Contact Form === -->
                 <div class="col-md-7 col-sm-7 p-bottom-10">
                     <div class="contact-form">
-
                         <form class="user" id="contactusform" method="POST" action="{{ URL::to('addcontactus') }}"
                             enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -410,29 +409,58 @@ $item = 1;
 
                 <!-- === Contact Information === -->
                 <div class="col-md-5 col-sm-5 p-bottom-10">
-                    <div class="contact-info">
 
-                        <!-- === Location === -->
-                        <div class="m-top-10 wow slideInRight">
-                            
-                            
+                        <!-- === AchariyaDebdutta === -->
+                        <div class="row m-top-10 wow slideInRight youtubesection">
+                            @php
+$youtubedp1 = $youtubechanneldata1->thumbnails->medium->url;
+//dd($youtubechanneldata);
+$youtubetitle1 = $youtubechanneldata1->title;
+                            @endphp
+                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata1->customUrl}}">
+                            <div class="col-xs-4 col-md-4 text-center">
+                                <img src="{{ $youtubedp1 }}" alt="youtube" class="img-circle">
+                            </div>
+                            <div class="col-xs-8 col-md-8">
+                                <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle1}}</p>
+                                <p class="black">{{$youtubechanneldatasubscription1 / 1000}}K subscribers</p>
+                            </div>
+                            </a>
                         </div>
 
-                        <!-- === Phone === -->
-                        <div class="m-top-10 wow slideInRight">
-                            
+                        <!-- === TheDebduttaShow === -->
+                        <div class="row m-top-10 wow slideInRight youtubesection">
+                            @php
+$youtubedp2 = $youtubechanneldata2->thumbnails->medium->url;
+//dd($youtubechanneldata);
+$youtubetitle2 = $youtubechanneldata2->title;
+                            @endphp
+                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata2->customUrl}}">
+                                <div class="col-xs-4 col-md-4 text-center">
+                                    <img src="{{ $youtubedp2 }}" alt="youtube" class="img-circle"></div>
+                                <div class="col-xs-8 col-md-8">
+                                    <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle2}}</p>
+                                    <p class="black">{{$youtubechanneldatasubscription2 / 1000}}K subscribers</p>
+                                </div>
+                            </a>
                         </div>
 
-                        <!-- === Whatsapp === -->
-                        <div class="m-top-10 wow slideInRight">
-                            
+                        <!-- === AstroAchariya === -->
+                        <div class="row m-top-10 wow slideInRight youtubesection">
+                            @php
+$youtubedp3 = $youtubechanneldata3->thumbnails->medium->url;
+//dd($youtubechanneldata);
+$youtubetitle3 = $youtubechanneldata3->title;
+                            @endphp
+                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata3->customUrl}}">
+                                <div class="col-xs-4 col-md-4 text-center">
+                                    <img src="{{ $youtubedp3 }}" alt="youtube" class="img-circle "></div>
+                                <div class="col-md-8 col-xs-8">
+                                    <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle3}}</p>
+                                    <p class="black">{{$youtubechanneldatasubscription3 / 1000}}K subscribers</p>
+                                </div>
+                            </a>
                         </div>
-
-                        <!-- === Mail === -->
-                        <div class="m-top-10 wow slideInRight">
-                            
-                        </div>
-                    </div>
                 </div> <!-- /.col -->
             </div>
         </div> <!-- /.row -->

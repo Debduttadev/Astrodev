@@ -403,6 +403,10 @@ form div label {
         padding-left: 40%;
         padding-right: 42%;
     }
+
+    .youtubesection img {
+        width: 100% !important;
+    }
 }
 
 @media (min-width: 576px) {
@@ -559,6 +563,10 @@ form div label {
     .contactsubmit {
         padding-left: 45%;
         padding-right: 45%;
+    }
+
+    .youtubesection img {
+        width: 65% !important;
     }
 }
 
@@ -723,6 +731,10 @@ form div label {
         padding-left: 42%;
         padding-right: 42%;
     }
+
+    .youtubesection img {
+        width: 100% !important;
+    }
 }
 
 @media (min-width: 992px) {
@@ -877,6 +889,10 @@ form div label {
         padding-right: 44%;
     }
 
+    .youtubesection img {
+        width: 65% !important;
+    }
+
 }
 
 @media (min-width: 1200px) {
@@ -1028,6 +1044,10 @@ form div label {
         padding-left: 45%;
         padding-right: 46%;
     }
+
+    .youtubesection img {
+        width: 65% !important;
+    }
 }
 
 .headerbookappointment {
@@ -1158,4 +1178,26 @@ form div label {
     /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
+}
+
+.youtubesection a {
+    color: #be994f;
+    font-size: 16px;
+}
+
+.youtubesection a:hover {
+    color: #181817;
+    font-style: italic;
+}
+
+.youtubesection img {
+    width: 65%;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: #000;
 }
