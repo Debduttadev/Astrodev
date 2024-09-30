@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\contactus;
 use App\Models\about_contact;
-use App\Http\Requests\StorecontactusRequest;
 use App\Http\Requests\UpdatecontactusRequest;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
+use Ixudra\Curl\Facades\Curl;
 
 class ContactusController extends Controller
 {
@@ -51,7 +47,50 @@ class ContactusController extends Controller
     public function contactus(Request $request)
     {
         $about_contact = about_contact::first();
-        return view('front.contactus', ['about_contact' => $about_contact]);
+
+        //@AchariyaDebdutta
+        $url1 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCqDfG4lWZ5OJgJSc2XK7g4A' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
+
+        $response1 = Curl::to($url1)
+            ->get();
+        //dd($response);
+        $response1 = json_decode($response1);
+        $youtubechannelitems1 = $response1->items[0];
+        $youtubechanneldata1 = $youtubechannelitems1->snippet;
+        $youtubechanneldatasubscription1 = $youtubechannelitems1->statistics->subscriberCount;
+
+        //@TheDebduttaShow -
+        $url2 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCE6Wescg35pfTdUmOpJsYsQ' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
+
+        $response2 = Curl::to($url2)
+            ->get();
+        //dd($response);
+        $response2 = json_decode($response2);
+        $youtubechannelitems2 = $response2->items[0];
+        $youtubechanneldata2 = $youtubechannelitems2->snippet;
+        $youtubechanneldatasubscription2 = $youtubechannelitems2->statistics->subscriberCount;
+
+        //dd($youtubechanneldatasubscription2);
+
+        //@AstroAchariya -
+        $url3 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCHeZB0rv09RBnEySIfehLOA' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
+
+        $response3 = Curl::to($url3)
+            ->get();
+        $response3 = json_decode($response3);
+        $youtubechannelitems3 = $response3->items[0];
+        $youtubechanneldata3 = $youtubechannelitems3->snippet;
+        $youtubechanneldatasubscription3 = $youtubechannelitems3->statistics->subscriberCount;
+
+        return view('front.contactus', [
+            'about_contact' => $about_contact,
+            'youtubechanneldata1' => $youtubechanneldata1,
+            'youtubechanneldatasubscription1' => $youtubechanneldatasubscription1,
+            'youtubechanneldata2' => $youtubechanneldata2,
+            'youtubechanneldatasubscription2' => $youtubechanneldatasubscription2,
+            'youtubechanneldata3' => $youtubechanneldata3,
+            'youtubechanneldatasubscription3' => $youtubechanneldatasubscription3
+        ]);
     }
 
     /**

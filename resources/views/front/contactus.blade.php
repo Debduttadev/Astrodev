@@ -79,51 +79,58 @@
 
                 <!-- === Contact Information === -->
                 <div class="col-md-5 col-sm-5 p-bottom-10">
-                    <div class="contact-info">
+                    <!-- === AchariyaDebdutta === -->
+                    <div class="row m-top-10 wow slideInRight youtubesection">
+                        @php
+                            $youtubedp1 = $youtubechanneldata1->thumbnails->medium->url;
+                            //dd($youtubechanneldata);
+                            $youtubetitle1 = $youtubechanneldata1->title;
+                        @endphp
+                        <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata1->customUrl}}">
+                            <div class="col-xs-4 col-md-4 text-center">
+                                <img src="{{ $youtubedp1 }}" alt="youtube" class="img-circle">
+                            </div>
+                            <div class="col-xs-8 col-md-8">
+                                <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle1}}</p>
+                                <p class="black">{{$youtubechanneldatasubscription1 / 1000}}K subscribers</p>
+                            </div>
+                        </a>
+                    </div>
 
-                        <!-- === Location === -->
-                        <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <!-- === TheDebduttaShow === -->
+                    <div class="row m-top-10 wow slideInRight youtubesection">
+                        @php
+                            $youtubedp2 = $youtubechanneldata2->thumbnails->medium->url;
+                            //dd($youtubechanneldata);
+                            $youtubetitle2 = $youtubechanneldata2->title;
+                        @endphp
+                        <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata2->customUrl}}">
+                            <div class="col-xs-4 col-md-4 text-center">
+                                <img src="{{ $youtubedp2 }}" alt="youtube" class="img-circle">
                             </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->address }}
+                            <div class="col-xs-8 col-md-8">
+                                <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle2}}</p>
+                                <p class="black">{{$youtubechanneldatasubscription2 / 1000}}K subscribers</p>
                             </div>
-                        </div>
+                        </a>
+                    </div>
 
-                        <!-- === Phone === -->
-                        <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-phone"></i>
+                    <!-- === AstroAchariya === -->
+                    <div class="row m-top-10 wow slideInRight youtubesection">
+                        @php
+                            $youtubedp3 = $youtubechanneldata3->thumbnails->medium->url;
+                            //dd($youtubechanneldata);
+                            $youtubetitle3 = $youtubechanneldata3->title;
+                        @endphp
+                        <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata3->customUrl}}">
+                            <div class="col-xs-4 col-md-4 text-center">
+                                <img src="{{ $youtubedp3 }}" alt="youtube" class="img-circle ">
                             </div>
-                            <div class="contact-info-text">
-
-                                @foreach ($about_contact->phone as $phone)
-                                    <a href="tel:+91{{$phone}}" style="color: black;">+91{{$phone}}</a><br />
-                                @endforeach
+                            <div class="col-md-8 col-xs-8">
+                                <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle3}}</p>
+                                <p class="black">{{$youtubechanneldatasubscription3 / 1000}}K subscribers</p>
                             </div>
-                        </div>
-
-                        <!-- === Whatsapp === -->
-                        <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                            </div>
-                            <div class="contact-info-text">
-                                <a href="https://wa.me/91{{ $about_contact->whatsapp }}?text=Thank%20you%20behalf%20of%20Astro%20Achariya%20debdutta%20for%20connecting%20with%20us"
-                                    style="color: #000;">{{ $about_contact->whatsapp }}</a>
-                            </div>
-                        </div>
-
-                        <!-- === Mail === -->
-                        <div class="m-top-10 wow slideInRight">
-                            <div class="contact-info-icon roundbtn">
-                                <i class="fa fa-envelope"></i>
-                            </div>
-                            <div class="contact-info-text">
-                                {{ $about_contact->email }}
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div> <!-- /.col -->
             </div>
