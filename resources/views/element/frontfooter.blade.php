@@ -125,7 +125,7 @@ $about_contact = aboutalldetails();
 <footer class="site-footer">
     <div class="container">
         <small class="copyright pull-left">Copyrights © 2024 All Rights Reserved By <a
-                href="https://astroachariyadebdutta.com/">Achariya Debdutta</a>.</small>
+                href="https://astroachariyadebdutta.com/" >Achariya Debdutta</a>.</small>
         <div class="social-icon pull-right">
             @php
 $socialdata = scociallinks();
