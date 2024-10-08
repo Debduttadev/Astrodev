@@ -320,10 +320,63 @@ class PhonepeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Phonepelink
      */
-    public function destroy(phonepe $phonepe)
+    public function paymentlinkcreate(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        // dd(vars: $data);
+        $id = $data['id'];
+        $phonepedata = phonepe::first();
+
+        $users = User::leftJoin('appointments', 'users.id', '=', 'appointments.userId')->select('appointments.phoneNumber', 'users.name', 'users.id')->where('appointments.id', $id)->first();
+
+        $username = preg_replace('/\s+/', '', $users->name);
+        $merchantTransactionId = substr(strtoupper($username), 0, 4) . time();
+
+        $data = array(
+            "merchantId" => 'M222S7BESZIL0',
+            "transactionId" => 'AADD' . $merchantTransactionId,
+            "merchantOrderId" => 'AADD' . $merchantTransactionId,
+            "amount" => 100,
+            "mobileNumber" => $users->phoneNumber,
+            "message" => "paylink for " . $users->name,
+            "expiresIn" => 3600,
+            "storeId" => "store" . $id,
+            "terminalId" => "terminal" . $id,
+            "shortName" => $users->name,
+            "subMerchantId" => "Astro Achariya Debdutta"
+        );
+
+        $encode = base64_encode(json_encode($data));
+
+        $saltKey = '2e38a700-f726-49b6-ae86-70421c78577a';
+        $saltIndex = $phonepedata->apiindex;
+
+        $string = $encode . '/v3/payLink/init' . $saltKey;
+        $sha256 = hash('sha256', $string);
+        //dd($saltKey);
+        $finalXHeader = $sha256 . '###' . $saltIndex;
+
+        $url = 'https://mercury-uat.phonepe.com/enterprise-sandbox/v3/payLink/init';
+        $response = Curl::to($url)
+            ->withHeader('Content-Type:application/json')
+            ->withHeader('X-VERIFY:' . $finalXHeader)
+            ->withHeader('X-CALLBACK-URL:' . route('response'))
+            ->withData(json_encode(['data' => $encode]))
+            ->post();
+
+        $rData = json_decode($response);
+        dd($rData);
+        if ($rData->success == true) {
+            // dd($rData);
+            $updatedata['merchantTransactionId'] = $rData->data->merchantTransactionId;
+            $updateappointment = Appointment::where('id', '=', $id)->update($updatedata);
+            return redirect()->to($rData->data->instrumentResponse->redirectInfo->url);
+        } else {
+            session(['status' => "0", 'msg' => 'Payment failed, Please try again']);
+            return redirect()->back();
+        }
     }
 }

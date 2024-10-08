@@ -87,7 +87,7 @@
                                             @endif
                                         </li>
                                         <li class="list-group-item"> Payment Status :
-                                            {{ $appointment->invoicestatus }}
+                                            {{ b          }}
                                         </li>
                                     </ul>
                                 </div>

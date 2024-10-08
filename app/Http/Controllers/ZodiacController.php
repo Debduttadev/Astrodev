@@ -14,7 +14,8 @@ class ZodiacController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */ public function zodiacsigns()
+     */
+    public function zodiacsigns()
     {
         $zodiacdata = zodiac::get();
         //dd($zodiacdata);
@@ -27,26 +28,33 @@ class ZodiacController extends Controller
     public function updatezodiacimage(Request $request)
     {
         $data = $request->except('_token');
-        $file = $request->file('zodiacimage');
-        $ext = $file->getClientOriginalExtension();
-        $filename = 'Zodiac' . time() . '.' . $ext;
-        $image = Image::read($file);
 
-        $image->resize(1200, 1200, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        //dd($data);
+        if ($request->hasFile('zodiacimage')) {
+            $file = $request->file('zodiacimage');
+            $ext = $file->getClientOriginalExtension();
+            $filename = 'Zodiac' . time() . '.' . $ext;
+            $image = Image::read($file);
 
-        $updatezodiac = [];
-        if ($image->save(public_path('zodiac') . '/' . $filename)) {
-            $updatezodiac['image'] = $filename;
+            $image->resize(1200, 1200, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $updatezodiac = [];
+            if ($image->save(public_path('zodiac') . '/' . $filename)) {
+                $updatezodiac['image'] = $filename;
+            }
+        } else {
+            $filename = $data['oldimage'];
         }
 
+        $updatezodiac['planet'] = $data['planet'];
         $update = zodiac::where('id', $data['zodiacid'])
             ->update($updatezodiac);
         //dd($data['zodiacid']);
 
         if ($update) {
-            print_r(json_encode(['status' => 1, 'msg' => "true", 'file' => $filename, 'id' => $data['zodiacid']]));
+            print_r(json_encode(['status' => 1, 'msg' => "true", 'file' => $filename, 'id' => $data['zodiacid'], 'planet' => $data['planet']]));
         } else {
             print_r(json_encode(['status' => 0, 'msg' => "false"]));
         }

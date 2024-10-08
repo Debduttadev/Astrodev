@@ -815,7 +815,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Zodiac Sign</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -824,9 +824,19 @@
                     @csrf
                     <div class="mb-3">
                         <input type="hidden" name="zodiacid" class="editzodiacid" value="">
-                        <input type="file" name="zodiacimage" class="form-control zodiacsign" multiple
-                            accept="image/png, image/jpeg, image/jpg">
-                        <p class="help-block">Supported format: .jpeg, .jpg, .png</p>
+                        <input type="hidden" name="oldimage" class="editzodiacoldimage" value="">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Governing planets</label>
+                            <input type="text" name="planet" class="form-control" id="exampleInputEmail1"
+                                placeholder="Sun">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">File input</label>
+                            <input type="file" name="zodiacimage" class="form-control zodiacsign" multiple
+                                accept="image/png, image/jpeg, image/jpg">
+                            <p class="help-block">Supported format: .jpeg, .jpg, .png</p>
+                        </div>
                         <div class="text-center d-grid gap-2">
                             <button type="submit" class="btn btn-secondary">Update</button>
                         </div>

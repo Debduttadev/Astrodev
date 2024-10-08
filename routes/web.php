@@ -47,7 +47,7 @@ Route::get('/chambers', [ChamberController::class, 'chamber'])->name('chambers')
 Route::get('/appointment', [AppointmentController::class, 'appointment']);
 Route::post('checkout', [AppointmentController::class, 'addappointment']);
 
-Route::post('paymentlinkcreate', [InvoiceController::class, 'paymentlinkcreate']);
+Route::post('paymentlinkcreate', [PhonepeController::class, 'paymentlinkcreate']);
 
 Route::get('contactus', [ContactusController::class, 'contactus']);
 Route::post('addcontactus', [ContactusController::class, 'addcontactus']);

@@ -3,7 +3,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Payment for <span class="paymentlinkname"></span></h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Payment for <span class="paymentlinkname"></span>
+                </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -21,7 +22,8 @@
                         </p>
                     </li>
                 </ul>
-                <form class="user" id="paymentform" method="POST" action="{{ URL::to('paymentlinkcreate') }}" enctype="multipart/form-data">
+                <form class="user" id="paymentform" method="POST" action="{{ URL::to('paymentlinkcreate') }}"
+                    enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="mb-3">
                         <label for="basic-url" class="form-label">Amount</label>
@@ -29,6 +31,7 @@
                             <span class="input-group-text">$</span>
                             <input type="hidden" name="name" class="paymentformname" value="">
                             <input type="hidden" name="email" class="paymentformemail" value="">
+                            <input type="hidden" name="id" class="paymentformappointmentid" value="">
                             <input type="hidden" name="phonenumber" class="paymentformphone" value="">
                             <input type="text" class="form-control" aria-label="Amount" required>
                             <span class="input-group-text">.00</span>

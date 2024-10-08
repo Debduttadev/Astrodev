@@ -22,11 +22,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     @if($appointment->payment_status == "n")
-                                        <!-- <button class="btn btn-primary btn-xs paymentamout" data-bs-toggle="modal"
-                                                    data-bs-target="#paymentmodal" name="{{$appointment->name}}"
-                                                    email="{{$appointment->email}}" phone="{{$appointment->phoneNumber}}"
-                                                    bookingdate="{{ $appointment->bookingDate }}">Payment Link</button> -->
-                                        Payment not done
+                                        <button class="btn btn-primary btn-xs paymentamout" data-bs-toggle="modal"
+                                            data-bs-target="#paymentmodal" id="{{$appointment->id}}" name="{{$appointment->name}}"
+                                            email="{{$appointment->email}}" phone="{{$appointment->phoneNumber}}"
+                                            bookingdate="{{ $appointment->bookingDate }}">Payment Link</button>
+                                        <!-- Payment not done -->
                                     @elseif($appointment->payment_status == "p")
                                         Pending
                                     @else

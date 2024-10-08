@@ -128,7 +128,10 @@
                             </div>
                             <div class="col-md-8 col-xs-8">
                                 <p><i class="fa fa-youtube-play red" aria-hidden="true"></i> {{$youtubetitle3}}</p>
-                                <p class="black">{{$youtubechanneldatasubscription3 / 1000}}K subscribers</p>
+                                <p class="black">
+                                    {{$youtubechanneldatasubscription3 / 1000}}K
+                                    subscribers
+                                </p>
                             </div>
                         </a>
                     </div>

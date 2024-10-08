@@ -587,6 +587,9 @@
 
         $(document).on('click', '.zodiacedit', function () {
             var zodiacid = $(this).attr('zodiacid');
+            var oldimage = $(this).attr('oldimage');
+            //oldimage name needed
+            $('.editzodiacoldimage').val(oldimage);
             $('.editzodiacid').val(zodiacid);
             $('#zodiacimageedit').modal('show');
         });
@@ -594,6 +597,7 @@
         $('#zodiacsignform').submit(function (event) {
             event.preventDefault();
             var actionurl = $(this).attr("action");
+            var file = $(this).find("input[type=file]").get(0).files[0];
             $.ajax({
                 url: actionurl,
                 method: "POST",
@@ -603,22 +607,23 @@
                 cache: false,
                 processData: false,
                 success: function (result) {
-                    var massage = JSON.parse(result);
-                    console.log(massage);
-
-                    // if (massage.status == 1 && massage.msg == "true") {
-                    //     $('#zodiacimageedit').modal('hide');
-                    //     var file = massage.file;
-                    //     if (file) {
-                    //         var reader = new FileReader();
-                    //         reader.onload = function() {
-                    //             $(".uploadedsign").attr("src", reader.result);
-                    //         }
-                    //         reader.readAsDataURL(file);
-                    //     }
-                    // } else if (massage.status == 0 && massage.msg == "false") {
-                    //     alert("Sorry Zodiac Not Updated");
-                    // }
+                    var massage = result;
+                    console.log(massage.planet);
+                    if (massage.status == 1 && massage.msg == "true") {
+                        $('#zodiacimageedit').modal('hide');
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                $('.noimage').remove();
+                                console.log(massage.planet);
+                                $('#planet' + massage.id).html(massage.planet);
+                                $("#uploadedsign" + massage.id).attr("src", reader.result);
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    } else if (massage.status == 0 && massage.msg == "false") {
+                        alert("Sorry Zodiac Not Updated");
+                    }
                 },
                 error: function (data) {
                     console.log(data);
@@ -631,6 +636,7 @@
 
             var obj = $(this);
             var name = obj.attr('name');
+            var id = obj.attr('id');
             var email = obj.attr('email');
             var phone = obj.attr('phone');
             var bookingdate = obj.attr('bookingdate');
@@ -640,6 +646,7 @@
             $('.paymentlinkphonenumber').text("Phone : " + phone);
             $('.paymentlinkbookingdate').text("Booking Date : " + bookingdate);
             $('.paymentformname').val(name);
+            $('.paymentformappointmentid').val(id);
             $('.paymentformemail').val(email);
             $('.paymentformphone').val(phone);
         })
