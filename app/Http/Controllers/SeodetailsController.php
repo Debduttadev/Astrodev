@@ -154,15 +154,15 @@ class SeodetailsController extends Controller
     {
         $data = $request->except('_token');
         //dd($data);
-        if (seodetails::where([['page', '=', $request->pagetype], ['relatedid', '=', $request->relatedid]])->exists()) {
+        if (seodetails::where([['page', '=', $data['page']], ['relatedid', '=', $request->relatedid]])->exists()) {
             // page found
             $updateseo['title'] = $data['title'];
             $updateseo['keyword'] = $data['keyword'];
             $updateseo['description'] = $data['description'];
             $updateseo['metadata'] = json_encode($data['metadata']);
 
-            $update = seodetails::where([['page', '=', $request->pagetype], ['relatedid', '=', $request->relatedid]])->update($updateseo);
-
+            $update = seodetails::where([['page', '=', $data['page']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
+            // dd($update);
             if ($update) {
                 session(['status' => "1", 'msg' => 'Seo Updated successfully']);
             } else {
