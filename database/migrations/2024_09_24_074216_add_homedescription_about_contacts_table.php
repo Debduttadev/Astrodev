@@ -14,10 +14,9 @@ return new class extends Migration {
             $table->longText('homedescription')->after('description');
         });
 
-        DB::table('about_contacts')->where('id', 1)
-            ->update(array(
-                array('title' => "astrology", 'homedescription' => "astrology", 'description' => "astrology"),
-            ));
+
+
+        DB::table('about_contacts')->where('id', 1)->update(array('title' => "astrology", 'homedescription' => "astrology", 'description' => "astrology"));
     }
 
     /**
