@@ -11,12 +11,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->string('cardType')->nullable()->change();
-            $table->string('pgTransactionId')->nullable()->change();
-            $table->string('bankTransactionId')->nullable()->change();
-            $table->string('pgAuthorizationCode')->nullable()->change();
-            $table->string('bankId')->nullable()->change();
-            $table->string('brn')->nullable()->change();
+            $table->string('cardType')->after('type')->nullable();
+            $table->string('pgTransactionId')->after('type')->nullable()->nullable();
+            $table->string('bankTransactionId')->after('type')->nullable()->nullable();
+            $table->string('pgAuthorizationCode')->after('type')->nullable()->nullable();
+            $table->string('bankId')->after('type')->nullable()->nullable();
+            $table->string('brn')->after('type')->nullable()->nullable();
         });
     }
 
@@ -26,12 +26,12 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->string('cardType')->change();
-            $table->string('pgTransactionId')->change();
-            $table->string('bankTransactionId')->change();
-            $table->string('pgAuthorizationCode')->change();
-            $table->string('bankId')->change();
-            $table->string('brn')->change();
+            $table->string('cardType');
+            $table->string('pgTransactionId');
+            $table->string('bankTransactionId');
+            $table->string('pgAuthorizationCode');
+            $table->string('bankId');
+            $table->string('brn');
         });
     }
 };
