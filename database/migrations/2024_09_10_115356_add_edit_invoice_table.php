@@ -29,15 +29,15 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->dropColumn('cardType');
+            $table->string('cardType')->nullable()->change();
+            $table->string('pgTransactionId')->nullable()->change();
+            $table->string('bankTransactionId')->nullable()->change();
+            $table->string('pgAuthorizationCode')->nullable()->change();
+            $table->string('bankId')->nullable()->change();
+            $table->string('brn')->nullable()->change();
             $table->dropColumn('utr');
             $table->dropColumn('arn');
             $table->dropColumn('pgServiceTransactionId');
-            $table->dropColumn('pgTransactionId');
-            $table->dropColumn('bankTransactionId');
-            $table->dropColumn('pgAuthorizationCode');
-            $table->dropColumn('bankId');
-            $table->dropColumn('brn');
         });
     }
 };
