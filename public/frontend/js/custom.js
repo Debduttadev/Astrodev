@@ -211,100 +211,100 @@ $(function () {
     /*--------------------------------------------------
     Stat Counter
 ---------------------------------------------------*/
-    $(".stat-item-number").appear(function () {
-        var count = $(this);
-        count.countTo({
-            from: 0,
-            to: count.html(),
-            speed: 3000,
-            refreshInterval: 60,
-        });
-    });
+    // $(".stat-item-number").appear(function () {
+    //     var count = $(this);
+    //     count.countTo({
+    //         from: 0,
+    //         to: count.html(),
+    //         speed: 3000,
+    //         refreshInterval: 60,
+    //     });
+    // });
 
     /*--------------------------------------------------
     Magnific Popup
 ---------------------------------------------------*/
-    $(".lightbox-image").magnificPopup({
-        type: "image",
-        gallery: {
-            enabled: true,
-        },
-        mainClass: "mfp-fade",
-    });
+    // $(".lightbox-image").magnificPopup({
+    //     type: "image",
+    //     gallery: {
+    //         enabled: true,
+    //     },
+    //     mainClass: "mfp-fade",
+    // });
 
-    $(".individual-gallery").magnificPopup({
-        type: "image",
-        gallery: {
-            enabled: true,
-        },
-        mainClass: "mfp-fade",
-    });
+    // $(".individual-gallery").magnificPopup({
+    //     type: "image",
+    //     gallery: {
+    //         enabled: true,
+    //     },
+    //     mainClass: "mfp-fade",
+    // });
 
-    $(".lightbox-video").magnificPopup({
-        disableOn: 700,
-        type: "iframe",
-        mainClass: "mfp-fade",
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false,
-    });
+    // $(".lightbox-video").magnificPopup({
+    //     disableOn: 700,
+    //     type: "iframe",
+    //     mainClass: "mfp-fade",
+    //     removalDelay: 160,
+    //     preloader: false,
+    //     fixedContentPos: false,
+    // });
 
     /*--------------------------------------------------
     Portfolio Isotope 
 ---------------------------------------------------*/
 
-    if ($.fn.isotope && $.fn.imagesLoaded && $(".portfolio").length > 0) {
-        $(".portfolio-isotope").imagesLoaded(function () {
-            $(".iso-button").on("click", function () {
-                $(".iso-button").removeClass("iso-active");
-                $(this).addClass("iso-active");
+    // if ($.fn.isotope && $.fn.imagesLoaded && $(".portfolio").length > 0) {
+    //     $(".portfolio-isotope").imagesLoaded(function () {
+    //         $(".iso-button").on("click", function () {
+    //             $(".iso-button").removeClass("iso-active");
+    //             $(this).addClass("iso-active");
 
-                var selector = $(this).attr("data-filter");
-                container.isotope({
-                    filter: selector,
-                });
+    //             var selector = $(this).attr("data-filter");
+    //             container.isotope({
+    //                 filter: selector,
+    //             });
 
-                return false;
-            });
+    //             return false;
+    //         });
 
-            $(window).resize(function () {
-                container.isotope({});
-            });
+    //         $(window).resize(function () {
+    //             container.isotope({});
+    //         });
 
-            var container = $(".portfolio-isotope");
+    //         var container = $(".portfolio-isotope");
 
-            container.isotope({
-                itemSelector: ".pf-item",
-                transitionDuration: "0.6s",
-                layoutMode: "fitRows",
-                masonry: {
-                    columnWidth: 40,
-                    isFitWidth: true,
-                },
-            });
-        });
-    }
+    //         container.isotope({
+    //             itemSelector: ".pf-item",
+    //             transitionDuration: "0.6s",
+    //             layoutMode: "fitRows",
+    //             masonry: {
+    //                 columnWidth: 40,
+    //                 isFitWidth: true,
+    //             },
+    //         });
+    //     });
+    // }
 
     /*--------------------------------------------------
     Youtube Video Background
 ---------------------------------------------------*/
 
-    $(function () {
-        $(".video-player").YTPlayer();
-    });
+    // $(function () {
+    //     $(".video-player").YTPlayer();
+    // });
 
     /*--------------------------------------------------
     CountTo Facts 
 ---------------------------------------------------*/
 
-    $(".countup").appear(function () {
-        var count_element = $(this);
-        count_element.countTo({
-            from: 0,
-            to: parseInt(count_element.text(), 10),
-            speed: 3000,
-        });
-    });
+    // $(".countup").appear(function () {
+    //     var count_element = $(this);
+    //     count_element.countTo({
+    //         from: 0,
+    //         to: parseInt(count_element.text(), 10),
+    //         speed: 3000,
+    //     });
+    // });
 
     /* ---------------------------------------------
  Height 100%
