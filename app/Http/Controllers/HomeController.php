@@ -70,13 +70,16 @@ class HomeController extends Controller
 
         //@AchariyaDebdutta
         $url1 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCqDfG4lWZ5OJgJSc2XK7g4A' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
+        // echo "The time is " . date("h:i:s A", strtotime("now"));
+        date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+        echo date('H:i:s');
 
         $response1 = Curl::to($url1)
             ->get();
         //if(){$response}
         $response1 = json_decode($response1);
         //dd($response1->error);
-        if ($response1->error) {
+        if (isset($response1->error) && $response1->error) {
             $youtubetitle1 = "Astronama Achariya Debdutta";
             $youtubechanneldatasubscription1 = "176000";
             $youtubecustomUrl1 = "@AstronamaAchariyaDebdutta";
@@ -100,7 +103,7 @@ class HomeController extends Controller
 
         //dd($response);
         $response2 = json_decode($response2);
-        if ($response2->error) {
+        if (isset($response2->error) && $response2->error) {
 
             $youtubetitle2 = "The Debdutta Show";
             $youtubechanneldatasubscription2 = "7640";
@@ -125,7 +128,7 @@ class HomeController extends Controller
             ->get();
 
         $response3 = json_decode($response3);
-        if ($response3->error) {
+        if (isset($response3->error) && $response3->error) {
 
             $youtubetitle3 = "Astro Pandit Devdutt";
             $youtubechanneldatasubscription3 = "1634";
