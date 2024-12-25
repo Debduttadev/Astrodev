@@ -73,34 +73,75 @@ class HomeController extends Controller
 
         $response1 = Curl::to($url1)
             ->get();
-        //dd($response);
+        //if(){$response}
         $response1 = json_decode($response1);
-        $youtubechannelitems1 = $response1->items[0];
-        $youtubechanneldata1 = $youtubechannelitems1->snippet;
-        $youtubechanneldatasubscription1 = $youtubechannelitems1->statistics->subscriberCount;
+        //dd($response1->error);
+        if ($response1->error) {
+            $youtubetitle1 = "Astronama Achariya Debdutta";
+            $youtubechanneldatasubscription1 = "176000";
+            $youtubecustomUrl1 = "@AstronamaAchariyaDebdutta";
+            $youtubedp1 = "https://yt3.googleusercontent.com/t7EdcCiGFiXenJtLe5opcQAVXJjZ86z9-eRNPptoxtbXfK54aK_aerC7ygGnrcbl6W5C0JS5zfM=s160-c-k-c0x00ffffff-no-rj";
+
+        } else {
+            $youtubechannelitems1 = $response1->items[0];
+            $youtubechanneldata1 = $youtubechannelitems1->snippet;
+            $youtubedp1 = $youtubechanneldata1->thumbnails->medium->url;
+            $youtubetitle1 = $youtubechanneldata1->title;
+            $youtubecustomUrl1 = $youtubechanneldata1->customUrl;
+            $youtubechanneldatasubscription1 = $youtubechannelitems1->statistics->subscriberCount;
+        }
+
 
         //@TheDebduttaShow -
         $url2 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCE6Wescg35pfTdUmOpJsYsQ' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
 
         $response2 = Curl::to($url2)
             ->get();
+
         //dd($response);
         $response2 = json_decode($response2);
-        $youtubechannelitems2 = $response2->items[0];
-        $youtubechanneldata2 = $youtubechannelitems2->snippet;
-        $youtubechanneldatasubscription2 = $youtubechannelitems2->statistics->subscriberCount;
+        if ($response2->error) {
 
-        //dd($youtubechanneldatasubscription2);
+            $youtubetitle2 = "The Debdutta Show";
+            $youtubechanneldatasubscription2 = "7640";
+            $youtubecustomUrl2 = "@TheDebduttaShow";
+            $youtubedp2 = "https://yt3.googleusercontent.com/Khr_9QO7Q7zhiwSesX5O6qEEarOz2eFIJfv_A9n6StY2wyjdLGLHZMWsQjp9EjAbYbW2QT7_qw=s160-c-k-c0x00ffffff-no-rj";
+
+        } else {
+
+            $youtubechannelitems2 = $response2->items[0];
+            $youtubechanneldata2 = $youtubechannelitems2->snippet;
+            $youtubedp2 = $youtubechanneldata2->thumbnails->medium->url;
+            $youtubetitle2 = $youtubechanneldata2->title;
+            $youtubecustomUrl2 = $youtubechanneldata2->customUrl;
+            $youtubechanneldatasubscription2 = $youtubechannelitems2->statistics->subscriberCount;
+
+        }
 
         //@AstroAchariya -
         $url3 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCHeZB0rv09RBnEySIfehLOA' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
 
         $response3 = Curl::to($url3)
             ->get();
+
         $response3 = json_decode($response3);
-        $youtubechannelitems3 = $response3->items[0];
-        $youtubechanneldata3 = $youtubechannelitems3->snippet;
-        $youtubechanneldatasubscription3 = $youtubechannelitems3->statistics->subscriberCount;
+        if ($response3->error) {
+
+            $youtubetitle3 = "Astro Pandit Devdutt";
+            $youtubechanneldatasubscription3 = "1634";
+            $youtubecustomUrl3 = "@Astropanditdevdutt";
+            $youtubedp3 = "https://yt3.googleusercontent.com/Dp65a3j3JcIVMtWUIj1Ty6j1VIIJtppKM0wg8IIwGT6KjppEETkKG5DElfKLFN7EdZj-MXJTpw=s160-c-k-c0x00ffffff-no-rj";
+
+        } else {
+
+            $youtubechannelitems3 = $response3->items[0];
+            $youtubechanneldata3 = $youtubechannelitems3->snippet;
+            $youtubedp3 = $youtubechanneldata3->thumbnails->medium->url;
+            $youtubetitle3 = $youtubechanneldata3->title;
+            $youtubecustomUrl3 = $youtubechanneldata3->customUrl;
+            $youtubechanneldatasubscription3 = $youtubechannelitems3->statistics->subscriberCount;
+
+        }
 
         return view('front.home', [
             'banner_video' => $banner_video,
@@ -109,12 +150,19 @@ class HomeController extends Controller
             'youtube_video' => $youtube_video,
             'blogitems' => $blogitems,
             'reviews' => $reviews,
-            'youtubechanneldata1' => $youtubechanneldata1,
+            'youtubedp1' => $youtubedp1,
+            'youtubetitle1' => $youtubetitle1,
             'youtubechanneldatasubscription1' => $youtubechanneldatasubscription1,
-            'youtubechanneldata2' => $youtubechanneldata2,
+            'youtubecustomUrl1' => $youtubecustomUrl1,
+            'youtubedp2' => $youtubedp2,
+            'youtubetitle2' => $youtubetitle2,
             'youtubechanneldatasubscription2' => $youtubechanneldatasubscription2,
-            'youtubechanneldata3' => $youtubechanneldata3,
-            'youtubechanneldatasubscription3' => $youtubechanneldatasubscription3
+            'youtubecustomUrl2' => $youtubecustomUrl2,
+            'youtubedp3' => $youtubedp3,
+            'youtubetitle3' => $youtubetitle3,
+            'youtubechanneldatasubscription3' => $youtubechanneldatasubscription3,
+            'youtubecustomUrl3' => $youtubecustomUrl3,
+
         ]);
     }
 

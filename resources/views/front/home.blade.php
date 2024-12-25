@@ -412,12 +412,8 @@ $item = 1;
 
                         <!-- === AchariyaDebdutta === -->
                         <div class="row m-top-10 wow slideInRight youtubesection">
-                            @php
-$youtubedp1 = $youtubechanneldata1->thumbnails->medium->url;
-//dd($youtubechanneldata);
-$youtubetitle1 = $youtubechanneldata1->title;
-                            @endphp
-                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata1->customUrl}}">
+                            
+                            <a href="{{ 'https://www.youtube.com/' . $youtubecustomUrl1}}">
                             <div class="col-xs-4 col-md-4 text-center">
                                 <img src="{{ $youtubedp1 }}" alt="youtube" class="img-circle">
                             </div>
@@ -428,14 +424,9 @@ $youtubetitle1 = $youtubechanneldata1->title;
                             </a>
                         </div>
 
-                        <!-- === TheDebduttaShow === -->
+                        <!-- === TheDebduttaShow ===-->
                         <div class="row m-top-10 wow slideInRight youtubesection">
-                            @php
-$youtubedp2 = $youtubechanneldata2->thumbnails->medium->url;
-//dd($youtubechanneldata);
-$youtubetitle2 = $youtubechanneldata2->title;
-                            @endphp
-                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata2->customUrl}}">
+                            <a href="{{ 'https://www.youtube.com/' . $youtubecustomUrl2}}">
                                 <div class="col-xs-4 col-md-4 text-center">
                                     <img src="{{ $youtubedp2 }}" alt="youtube" class="img-circle"></div>
                                 <div class="col-xs-8 col-md-8">
@@ -443,16 +434,11 @@ $youtubetitle2 = $youtubechanneldata2->title;
                                     <p class="black">{{$youtubechanneldatasubscription2 / 1000}}K subscribers</p>
                                 </div>
                             </a>
-                        </div>
+                        </div>  
 
-                        <!-- === AstroAchariya === -->
+                        <!-- === AstroAchariya ===-->
                         <div class="row m-top-10 wow slideInRight youtubesection">
-                            @php
-$youtubedp3 = $youtubechanneldata3->thumbnails->medium->url;
-//dd($youtubechanneldata);
-$youtubetitle3 = $youtubechanneldata3->title;
-                            @endphp
-                            <a href="{{ 'https://www.youtube.com/' . $youtubechanneldata3->customUrl}}">
+                            <a href="{{ 'https://www.youtube.com/' . $youtubecustomUrl3}}">
                                 <div class="col-xs-4 col-md-4 text-center">
                                     <img src="{{ $youtubedp3 }}" alt="youtube" class="img-circle "></div>
                                 <div class="col-md-8 col-xs-8">
