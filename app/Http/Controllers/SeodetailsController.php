@@ -143,7 +143,6 @@ class SeodetailsController extends Controller
             $seodata['description'] = "";
             $seodata['metadata'] = [];
         }
-        //dd($seodata);
         return view('admin.editseo', ['page_name' => 'Edit Seo details', 'navstatus' => "seodetails", 'seodata' => $seodata]);
     }
 
@@ -153,6 +152,7 @@ class SeodetailsController extends Controller
     public function updateseo(Request $request)
     {
         $data = $request->except('_token');
+        //dd($data);
         if (seodetails::where([['page', '=', $data['pagetype']], ['relatedid', '=', $request->relatedid]])->exists()) {
             // page found
             if (!empty($data['title'])) {
@@ -172,25 +172,44 @@ class SeodetailsController extends Controller
             } else {
                 $updateseo['description'] = "Best Astrologer in Kolkata";
             }
-
-            if (!empty($data['metadata'])) {
+            if (!empty($data['metadata']) && count($data['metadata']) != 0) {
+                //dd(vars: "dsadasdsad");
                 $updateseo['metadata'] = json_encode($data['metadata']);
             } else {
+                //dd("fgfhgfhfh");
                 $data['metadata'] = "<meta property='og:url' content='https://astroachariyadebdutta.com/' />";
                 $updateseo['metadata'] = $data['metadata'];
             }
 
-            $update = seodetails::where([['page', '=', $data['pagetype']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
+            //dd($updateseo);
+            if ($data['pagetype'] == "static") {
+
+                $update = seodetails::where([['page', '=', $data['page']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
+
+            } else {
+
+                $update = seodetails::where([['page', '=', $data['pagetype']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
+
+            }
+
             if ($update) {
                 session(['status' => "1", 'msg' => 'Seo Updated successfully']);
             } else {
                 session(['status' => "0", 'msg' => 'Seo Updated not done']);
             }
+
         } else {
             //page not found
             $newseo = new seodetails;
-            $newseo->page = $data['pagetype'];
+
+            if ($data['pagetype'] == 'static') {
+                $newseo->page = $data['page'];
+            } else {
+                $newseo->page = $data['pagetype'];
+            }
+
             $newseo->relatedid = $data['relatedid'];
+
             if (!empty($data['title'])) {
                 $newseo->title = $data['title'];
             } else {
