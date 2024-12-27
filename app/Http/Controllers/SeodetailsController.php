@@ -153,16 +153,34 @@ class SeodetailsController extends Controller
     public function updateseo(Request $request)
     {
         $data = $request->except('_token');
-        //dd($data);
-        if (seodetails::where([['page', '=', $data['page']], ['relatedid', '=', $request->relatedid]])->exists()) {
+        if (seodetails::where([['page', '=', $data['pagetype']], ['relatedid', '=', $request->relatedid]])->exists()) {
             // page found
-            $updateseo['title'] = $data['title'];
-            $updateseo['keyword'] = $data['keyword'];
-            $updateseo['description'] = $data['description'];
-            $updateseo['metadata'] = json_encode($data['metadata']);
+            if (!empty($data['title'])) {
+                $updateseo['title'] = $data['title'];
+            } else {
+                $updateseo['title'] = "Best Astrologer in Kolkata";
+            }
 
-            $update = seodetails::where([['page', '=', $data['page']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
-            // dd($update);
+            if (!empty($data['keyword'])) {
+                $updateseo['keyword'] = $data['keyword'];
+            } else {
+                $updateseo['keyword'] = "Best Astrologer in Kolkata";
+            }
+
+            if (!empty($data['description'])) {
+                $updateseo['description'] = $data['description'];
+            } else {
+                $updateseo['description'] = "Best Astrologer in Kolkata";
+            }
+
+            if (!empty($data['metadata'])) {
+                $updateseo['metadata'] = json_encode($data['metadata']);
+            } else {
+                $data['metadata'] = "<meta property='og:url' content='https://astroachariyadebdutta.com/' />";
+                $updateseo['metadata'] = $data['metadata'];
+            }
+
+            $update = seodetails::where([['page', '=', $data['pagetype']], ['relatedid', '=', $data['relatedid']]])->update($updateseo);
             if ($update) {
                 session(['status' => "1", 'msg' => 'Seo Updated successfully']);
             } else {
@@ -173,10 +191,30 @@ class SeodetailsController extends Controller
             $newseo = new seodetails;
             $newseo->page = $data['pagetype'];
             $newseo->relatedid = $data['relatedid'];
-            $newseo->title = $data['title'];
-            $newseo->keyword = $data['keyword'];
-            $newseo->description = $data['description'];
-            $newseo->metadata = json_encode($data['metadata']);
+            if (!empty($data['title'])) {
+                $newseo->title = $data['title'];
+            } else {
+                $newseo->title = "Best Astrologer in Kolkata";
+            }
+
+            if (!empty($data['keyword'])) {
+                $newseo->keyword = $data['keyword'];
+            } else {
+                $newseo->keyword = "Best Astrologer in Kolkata";
+            }
+
+            if (!empty($data['description'])) {
+                $newseo->description = $data['description'];
+            } else {
+                $newseo->description = "Best Astrologer in Kolkata";
+            }
+
+            if (!empty($data['metadata'])) {
+                $newseo->metadata = json_encode($data['metadata']);
+            } else {
+                $data['metadata'] = "<meta property='og:url' content='https://astroachariyadebdutta.com/' />";
+                $newseo->metadata = $data['metadata'];
+            }
 
             if ($newseo->save()) {
                 session(['status' => "1", 'msg' => 'Seo Add is successful']);
