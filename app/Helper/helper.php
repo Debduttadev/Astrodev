@@ -274,11 +274,36 @@ if (!function_exists('alttagforimages')) {
 
 
 if (!function_exists('seodetailsperpage')) {
-    function seodetailsperpage($page)
+    function seodetailsperpage($page, $pagetype)
     {
         //seo detail
         $seodata = [];
-        $seodetails = seodetails::where('page', '=', $page)->first();
+        // dd($page . $pagetype);
+
+        if ($pagetype == 'service') {
+            $relatedid = Service::where('nameurl', $page)->first()->id;
+            $seodetails = seodetails::where(
+                [
+                    ['page', '=', $pagetype],
+                    ['relatedid', '=', $relatedid]
+                ]
+            )->first();
+        } else if ($pagetype == 'blog') {
+            $relatedid = blog::where('nameurl', $page)->first()->id;
+            $seodetails = seodetails::where(
+                [
+                    ['page', '=', $pagetype],
+                    ['relatedid', '=', $relatedid]
+                ]
+            )->first();
+        } else {
+            $seodetails = seodetails::where([
+                ['page', '=', $page],
+                ['relatedid', '=', 0]
+            ])->first();
+        }
+        //dd($seodetails);
+
         if (!empty($seodetails) && $seodetails != null) {
             $seodata['page'] = $seodetails->page;
             $seodata['title'] = $seodetails->title;
@@ -293,6 +318,7 @@ if (!function_exists('seodetailsperpage')) {
             $seodata['keyword'] = $seodefault->keyword;
             $seodata['metadata'] = json_decode($seodefault->metadata);
         }
+
 
         return $seodata;
     }

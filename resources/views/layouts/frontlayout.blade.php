@@ -6,13 +6,18 @@
 
     if ($fullurl == $appurl) {
 
-        $seodetailsperpage = seodetailsperpage('home');
+        $seodetailsperpage = seodetailsperpage('home', 'static');
 
     } else {
 
         $page = str_replace($appurl, "", $fullurl);
         $urlname = explode("/", $page);
-        $seodetailsperpage = seodetailsperpage(end($urlname));
+
+        if (count($urlname) == 2 || count($urlname) == 1) {
+            $seodetailsperpage = seodetailsperpage(end($urlname), 'static');
+        } else {
+            $seodetailsperpage = seodetailsperpage(end($urlname), $urlname[1]);
+        }
 
     }
     //dd($seodetailsperpage['metadata']);
@@ -44,18 +49,14 @@
         rel="stylesheet">
     <link href="{{ URL::to('frontend/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::to('frontend/css/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::to('frontend/css/magnific-popup.css') }}" rel="stylesheet" />
-    <link href="{{ URL::to('frontend/css/YTPlayer.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::to('frontend/inc/owlcarousel/css/owl.theme.default.min.css') }}" rel="stylesheet" />
-
     <!-- Custom CSS -->
     <link href="{{ URL::to('frontend/css/style.css') }}" rel="stylesheet">
     <!-- jQuery -->
     <script src="{{ URL::to('frontend/js/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
     <script src="{{ URL::to('frontend/bootstrap/js/bootstrap.min.js') }}"></script>
-
 
     <!-- date custom -->
     <link href="{{ URL::to('frontend/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -90,24 +91,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="{{ URL::to('frontend/js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ URL::to('frontend/js/smooth-scroll.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/jquery.appear.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/jquery.countTo.js') }}"></script>
     <script src="{{ URL::to('frontend/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/jquery.mb.YTPlayer.js') }}"></script>
-    <script src="{{ URL::to('frontend/js/retina.min.js') }}"></script>
     <script src="{{ URL::to('frontend/js/wow.min.js') }}"></script>
     <script src="{{ URL::to('frontend/inc/owlcarousel/js/owl.carousel.min.js') }}"></script>
-
     <script src="{{ URL::to('frontend/js/contact.js') }}"></script>
 
     <!-- Custom Plugin -->
     <script src="{{ URL::to('frontend/js/custom.js') }}"></script>
     @stack('scripts')
     @include('element.frontjquery')
-
 </body>
 
 
