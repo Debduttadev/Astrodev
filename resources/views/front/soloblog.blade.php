@@ -13,11 +13,11 @@
                 </a>
                 <!-- Widget 1 -->
                 @php
-                $blogfilters = blogfilters();
+                    $blogfilters = blogfilters();
 
-                $categorydata = $blogfilters['allcategory'];
-                $tagsdata = $blogfilters['alltag'];
-                $keyworddata = $blogfilters['allkeyword'];
+                    $categorydata = $blogfilters['allcategory'];
+                    $tagsdata = $blogfilters['alltag'];
+                    $keyworddata = $blogfilters['allkeyword'];
 
                 @endphp
 
@@ -27,9 +27,9 @@
             <!--Post Single-->
             <div class="col-md-12 postSingle blogsearchdetails">
                 @php
-                $alttagforimages = alttagforimages();
-                $alttag = $alttagforimages['blog'][$blogsdata['id']]['alttag'];
-                $title = $alttagforimages['blog'][$blogsdata['id']]['title'];
+                    $alttagforimages = alttagforimages();
+                    $alttag = $alttagforimages['blog'][$blogsdata['id']]['alttag'];
+                    $title = $alttagforimages['blog'][$blogsdata['id']]['title'];
                 @endphp
                 <div class="col-md-4">
                     <div class="postMedia">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="postMeta-date pull-left">
                             <span class="metaDate"><i class="fa fa-calendar"></i> <a href="#">{{
-                                    date_format($blogsdata['created_at'], "d F, Y")}}</a></span>
+    date_format($blogsdata['created_at'], "d F, Y")}}</a></span>
                         </div>
                     </div>
                     <!--Post meta-->
@@ -62,10 +62,10 @@
                         <h4><i class="fa fa-tags"></i>Categories :</h4>
                         <ul class="list-inline">
                             @php
-                            $categories = explode(',', $blogsdata['category']);
+                                $categories = explode(',', $blogsdata['category']);
                             @endphp
                             @foreach ($categories as $category)
-                            <li><a href="#">{{$categorydata[$category]}}</a></li>
+                                <li><a href="#">{{$categorydata[$category]}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -92,42 +92,42 @@
                     <!-- === blog === -->
                     <div id="owl-blog" class="owl-carousel owl-loaded owl-drag owl-theme">
                         @php
-                        $alttagforimages = alttagforimages();
+                            $alttagforimages = alttagforimages();
                         @endphp
                         @foreach ($blogitems as $blog)
-                        <!-- === Blog item 1 === -->
-                        <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
-                            @php
-                            $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
-                            $title = $alttagforimages['blog'][$blog['id']]['title'];
-                            @endphp
-                            <div class="blog-media">
-                                <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
-                                        src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
-                                        title="{{$title}}"></a>
-                            </div>
-                            <!--post media-->
-                            <div>
-                                <div class="team-item-name text-center" style="height:80px;">
-                                    {{ucfirst($blog['title'])}}
-                                </div>
-                            </div>
-                            <div class="blog-post-info clearfix">
-                                <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
-                            </div>
-                            <!--post info-->
+                                                <!-- === Blog item 1 === -->
+                                                <div class="blog wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.7s">
+                                                    @php
+                                                        $alttag = $alttagforimages['blog'][$blog['id']]['alttag'];
+                                                        $title = $alttagforimages['blog'][$blog['id']]['title'];
+                                                    @endphp
+                                                    <div class="blog-media">
+                                                        <a href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}"><img
+                                                                src="{{ URL::to('blog') . '/' . $blog['image'] }}" alt="{{$alttag}}"
+                                                                title="{{$title}}"></a>
+                                                    </div>
+                                                    <!--post media-->
+                                                    <div>
+                                                        <div class="team-item-name text-center" style="height:80px;">
+                                                            {{ucfirst($blog['title'])}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="blog-post-info clearfix">
+                                                        <span class="time"><i class="fa fa-calendar"></i>{{ $blog['createdat']}}</span>
+                                                    </div>
+                                                    <!--post info-->
 
-                            <div class="blog-post-body">
-                                @php
-                                $small = substr(strip_tags($blog['description']), 0, 120);
-                                @endphp
-                                <p class="p-bottom-20">{!! $small !!}</p>
-                                <a class="btn btn-service roundbtn"
-                                    href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}" class=" read-more">Read More
-                                    >></a>
-                            </div>
-                            <!--post body-->
-                        </div> <!-- /.blog -->
+                                                    <div class="blog-post-body">
+                                                        @php
+                                                            $small = substr(strip_tags($blog['description']), 0, 120);
+                                                        @endphp
+                                                        <p class="p-bottom-20">{!! $small !!}</p>
+                                                        <a class="btn btn-service roundbtn"
+                                                            href="{{ URL::to('/blog') . '/' . $blog['nameurl'] }}" class=" read-more">Read More
+                                                            >></a>
+                                                    </div>
+                                                    <!--post body-->
+                                                </div> <!-- /.blog -->
                         @endforeach
                     </div><!-- /#owl-testimonials -->
 

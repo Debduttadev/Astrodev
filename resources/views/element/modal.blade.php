@@ -400,6 +400,11 @@
                             <input type="text" class="form-control form-control-user" placeholder="Daily Panchang"
                                 name="name" value="" required autofocus>
                         </div>
+                        <div class="mt-4">
+                            <label class="control-label">Slug or Url</label>
+                            <input type="text" class="form-control form-control-user" placeholder="daily-panchang"
+                                name="nameurl" value="" required autofocus>
+                        </div>
 
                         <div class="mt-4">
                             <label>Upload Image</label>

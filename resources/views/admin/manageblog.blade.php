@@ -19,8 +19,8 @@
         <!-- to show the session status message -->
         @php
             $sessiondata = session()->all();
-
         @endphp
+
         @if(session()->has('status') && session()->has('msg'))
                 @if($sessiondata['status'] === '1')
                     <div class="alert alert-info sessiondata" role="alert">{{ $sessiondata['msg'] }}</div>
