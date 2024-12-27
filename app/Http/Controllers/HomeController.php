@@ -55,8 +55,9 @@ class HomeController extends Controller
 
             $blogitems[$blogdata->id]['description'] = html_entity_decode($blogdata->description);
             $blogitems[$blogdata->id]['title'] = $blogdata->title;
-            $blogitems[$blogdata->id]['nameurl'] = str_replace(" ", "-", strtolower(trim($blogdata->title)));
+            $blogitems[$blogdata->id]['nameurl'] = $blogdata->nameurl;
             $blogitems[$blogdata->id]['id'] = $blogdata->id;
+
             if (!empty($blogdata->image)) {
                 $blogitems[$blogdata->id]['image'] = $blogdata->image;
             } else {
@@ -84,7 +85,6 @@ class HomeController extends Controller
             $youtubechanneldatasubscription1 = "176000";
             $youtubecustomUrl1 = "@AstronamaAchariyaDebdutta";
             $youtubedp1 = "https://yt3.googleusercontent.com/t7EdcCiGFiXenJtLe5opcQAVXJjZ86z9-eRNPptoxtbXfK54aK_aerC7ygGnrcbl6W5C0JS5zfM=s160-c-k-c0x00ffffff-no-rj";
-
         } else {
             $youtubechannelitems1 = $response1->items[0];
             $youtubechanneldata1 = $youtubechannelitems1->snippet;
