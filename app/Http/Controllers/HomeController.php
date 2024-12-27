@@ -72,7 +72,7 @@ class HomeController extends Controller
         $url1 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCqDfG4lWZ5OJgJSc2XK7g4A' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
         // echo "The time is " . date("h:i:s A", strtotime("now"));
         date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
-        echo date('H:i:s');
+        //echo date('H:i:s');
 
         $response1 = Curl::to($url1)
             ->get();
@@ -93,7 +93,6 @@ class HomeController extends Controller
             $youtubecustomUrl1 = $youtubechanneldata1->customUrl;
             $youtubechanneldatasubscription1 = $youtubechannelitems1->statistics->subscriberCount;
         }
-
 
         //@TheDebduttaShow -
         $url2 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCE6Wescg35pfTdUmOpJsYsQ' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
@@ -121,7 +120,7 @@ class HomeController extends Controller
 
         }
 
-        //@AstroAchariya -
+        //@AstroAchariya
         $url3 = 'https://www.googleapis.com/youtube/v3/channels?part=snippet&part=statistics&id=UCHeZB0rv09RBnEySIfehLOA' . '&key=AIzaSyBUm1uVpuIGK2GudT_jFjagMWqnwZRojNI';
 
         $response3 = Curl::to($url3)
