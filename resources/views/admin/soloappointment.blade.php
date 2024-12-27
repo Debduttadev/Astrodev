@@ -87,7 +87,13 @@
                                             @endif
                                         </li>
                                         <li class="list-group-item"> Payment Status :
-                                            {{ b          }}
+                                            @if($appointment->payment_status == "n")
+                                                "Not done"
+                                            @elseif($appointment->payment_status == "p")
+                                                Pending
+                                            @else
+                                                "Completed"
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>

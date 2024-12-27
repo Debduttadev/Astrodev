@@ -38,7 +38,7 @@
                 @if(count($appointments) === 0)
                     <h5>No Appointments are available</h5>
                 @else
-                                <table id="datatablesSimple" class="servicetable">
+                                <table id="appointmenttable" class="servicetable">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -50,7 +50,6 @@
                                             <th>Booking Date</th>
                                             <th>Chamber</th>
                                             <th>Payment Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -64,7 +63,6 @@
                                             <th>Booking Date</th>
                                             <th>Chamber</th>
                                             <th>Payment Status</th>
-                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -74,7 +72,13 @@
                                         @foreach ($appointments as $data)
                                                             <tr>
                                                                 <td>{{$a}}</td>
-                                                                <td>{{ $data->name }}</td>
+                                                                <td>
+                                                                    <a href="{{ URL::to('appoinmentdetails') . '/' . base64_encode($data->id) }}"
+                                                                        role="button" aria-disabled="true"
+                                                                        title="This Appointment Details">{{ $data->name }}<i
+                                                                            class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </td>
                                                                 <td>{{ $data->email }}</td>
                                                                 <td>{{ $data->phoneNumber }}</td>
                                                                 <td><a
@@ -87,27 +91,27 @@
                                                                 @endif
                                                                 <td>{{ $data->bookingDate }}</td>
                                                                 @if($data->appointmentType == "o")
-                                                                    <td>No Chamber</td>
+                                                                    <td>Online</td>
                                                                 @else
-                                                                    <td>{{ $data->locationname }}</td>
+                                                                    <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+{{ $data->locationname }}</td>
                                                                 @endif
                                                                 <td>
                                                                     @if($data->payment_status == "n")
-                                                                        Payment not Done
+                                                                        <button class="btn btn-danger btn-xs paymentamout" data-bs-toggle="modal"
+                                                                            data-bs-target="#paymentmodal" id="{{$data->id}}" name="{{$data->name}}"
+                                                                            email="{{$data->email}}" phone="{{$data->phoneNumber}}"
+                                                                            bookingdate="{{ $data->bookingDate }}">
+                                                                            <i class="fa fa-link" aria-hidden="true"></i>
+                                                                        </button>
                                                                     @elseif($data->payment_status == "p")
                                                                         Pending
                                                                     @else
                                                                         <a href="{{ URL::to('generate-pdf') . '/' . $data->id}}" type="button"
-                                                                            class="btn btn-default" style="background-color: #f3ae30;"
-                                                                            title="download invoice"><i class="fa fa-print" aria-hidden="true"></i>
+                                                                            class="btn btn-success" title="download invoice"><i class="fa fa-print"
+                                                                                aria-hidden="true"></i>
                                                                         </a>
                                                                     @endif
-                                                                </td>
-                                                                <td>
-                                                                    <a href="{{ URL::to('appoinmentdetails') . '/' . base64_encode($data->id) }}"
-                                                                        class="btn btn-primary" role="button" aria-disabled="true"
-                                                                        title="This Appointment Details"><i class="fa fa-exclamation"
-                                                                            aria-hidden="true"></i></a>
                                                                 </td>
                                                             </tr>
                                                             @php
