@@ -47,6 +47,8 @@
 
         var base_url = "{{ URL::to('/') }}";
 
+
+
         $(document).on('click', '.tagsearch', function () {
             var obj = $(this);
             alttagmodaldata(obj);
@@ -106,9 +108,13 @@
             format: 'HH:mm:ss'
         });
 
+        var date = new Date();
+        // add a day
+        var startbookingdate = date.setDate(date.getDate() + 7);
+
         $('#bookingdate').datetimepicker({
             format: 'DD-MM-YYYY',
-            minDate: new Date(),
+            minDate: startbookingdate,
             calendarWeeks: true
         });
 
